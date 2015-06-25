@@ -1,0 +1,6 @@
+ls
+pwd
+(+ 1 2)
+top 
+(defun helloworld () (message "Hello, world."))
+helloworld
