@@ -20,7 +20,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(load "/home/jlucas/.emacs.d/user.el")
+;(load (concat (file-name-as-directory (getenv "HOME")) ".emacs.d/user.el"))
+(load "~/.emacs.d/user.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
