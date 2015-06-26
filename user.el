@@ -177,11 +177,6 @@
      ;(color-theme-black)
      ))
 
-;; Load emacs-color-themes
-;; From: https://github.com/owainlewis/emacs-color-themes
-(add-to-list 'load-path "~/.emacs.d/vendor/emacs-color-themes")
-(require 'emacs-color-themes)
-
 ;;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
 
