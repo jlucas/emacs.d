@@ -287,7 +287,7 @@
           (org-sec-stuck-with-view "STUCK with")))
         ("J" "Interactive TODO dowith and TASK with"
          ((org-sec-who-view "TODO dowith")))))
-(load "/home/jlucas/.emacs.d/vendor/org-secretary.el")
+(load "~/.emacs.d/vendor/org-secretary.el")
 (setq org-sec-me "jlucas")
 
 ; Add only a datestamp to DONE items
