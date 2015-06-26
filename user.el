@@ -13,7 +13,7 @@
 (setf this '(isn't what i'm talking about))
 
 ;;; Preserve history across sessions
-;;; http://stackoverflow.com/questions/1229142/how-can-i-save-my-mini-buffer-history-in-emacs
+;;; http://stackoverflow.com/questions/1229142
 (setq savehist-file "~/.emacs.d/savehist")
 (savehist-mode 1)
 
