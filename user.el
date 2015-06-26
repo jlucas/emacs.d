@@ -191,12 +191,12 @@
 ;;; ido
 (setq ido-use-filename-at-point nil)
 
-;;; Shen mode
-(add-to-list 'load-path "~/.emacs.d/vendor/shen-mode")
-(require 'shen-mode)
-(require 'inf-shen)
-(setq inferior-shen-program "/nfs/home/jlucas/ash-home/src/lisp/shen/shen-16/Platforms/SBCL/shen")
-(setq inferior-shen-buffer "inf-shen")
+;;;; Shen mode
+;(add-to-list 'load-path "~/.emacs.d/vendor/shen-mode")
+;(require 'shen-mode)
+;(require 'inf-shen)
+;(setq inferior-shen-program "/nfs/home/jlucas/ash-home/src/lisp/shen/shen-16/Platforms/SBCL/shen")
+;(setq inferior-shen-buffer "inf-shen")
 
 ;(when (>= emacs-major-version 24)
 ;  (require 'package)
