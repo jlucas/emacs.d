@@ -3,6 +3,27 @@
 ;; No splash screen messages
 (setq inhibit-startup-message t)
 
+;; Silence description of the *scratch* buffer
+(setq initial-scratch-message "")
+
+;; Prevent the cursor from blinking
+(blink-cursor-mode 0)
+
+;; No scroll bars
+(scroll-bar-mode 0)
+
+;; No toolbar
+(tool-bar-mode 0)
+
+;; No menu
+(menu-bar-mode 0)
+
+;; Doesn't seem to work in dwm
+;(toggle-frame-fullscreen)
+
+;; You can test for GUI mode with the function
+;(window-system)
+
 ;; Auto-save path
 (defconst my-temp-dir "~/tmp")
 (setq backup-directory-alist
@@ -130,13 +151,6 @@
 (setq-default tab-width 4) ; Emacs 23, 24 default to 8
 ;; Set current buffer's tab char's display width to four spaces
 ;(setq tab-width 4)
-
-;; Silence description of the *scratch* buffer
-(setq initial-scratch-message "")
-
-;; No menus unless in graphical mode
-(unless (window-system)
-  (menu-bar-mode 0))
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
