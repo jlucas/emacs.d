@@ -38,6 +38,28 @@
 (global-set-key (kbd "<mouse-4>") 'down-slightly)
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
 
+;; Poor man's surround-vim
+;; http://stackoverflow.com/questions/2951797
+;; Use "M-(" to surround selection with parens
+(global-set-key (kbd "M-\"") 'insert-pair)
+(global-set-key (kbd "M-'") 'insert-pair)
+
+;; Paredit
+;eval-after-load 'paredit
+; ;; need a binding that works in the terminal
+; '(define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
+; '(define-key paredit-mode-map (kbd "M-(") 'paredit-backward-barf-sexp)
+; '(define-key paredit-mode-map (kbd "C-cw") 'paredit-wrap-round))
+
+;(eval-after-load "paredit"
+;  '(define-key paredit-mode-map (kbd "M-)") nil))
+
+(add-hook 'paredit-mode-hook
+	  '(lambda ()
+	     (local-set-key (kbd "M-)") 'paredit-forward-slurp-sexp)
+	     (local-set-key (kbd "M-(") 'paredit-backward-barf-sexp)
+	     (local-set-key (kbd "C-c w") 'paredit-wrap-round)))
+
 ;;; Mimic vim's % key to move back and forth between matching parens
 (defun goto-match-paren (arg)
   "Go to the matching parenthesis if on parenthesis, otherwise insert %.
