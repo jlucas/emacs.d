@@ -283,9 +283,14 @@
 ;; FIXME: Doesn't work in console emacs
 ;(setq org-columns-skip-archived-trees nil)
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
-        (sequence "TASK(f)" "|" "DONE(d)")
-        (sequence "MAYBE(m)" "|" "CANCELLED(c)")))
+      '((sequence "TASK(t)"
+                  "SCHEDULED(s)"
+                  "FEEDBACK(f)"
+                  "ONHOLD(h)"
+                  "BLOCKED(b)"
+                  "|"
+                  "DONE(d)"
+                  "CANCELLED(c)")))
 (setq org-tags-exclude-from-inheritance '("prj")
       org-stuck-projects '("+prj/-MAYBE-DONE"
                            ("TODO" "TASK") ()))
