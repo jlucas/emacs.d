@@ -240,7 +240,11 @@
              (define-key function-key-map "\e[1;3D" [M-left])
              (define-key function-key-map "\e[1;3C" [M-right])
              (define-key function-key-map "\e[1;3A" [M-up])
-             (define-key function-key-map "\e[1;3B" [M-down])))
+             (define-key function-key-map "\e[1;3B" [M-down])
+             (define-key function-key-map "\e[1;2D" [S-left])
+             (define-key function-key-map "\e[1;2C" [S-right])
+             (define-key function-key-map "\e[1;2A" [S-up])
+             (define-key function-key-map "\e[1;2B" [S-down]))) 
 
 ;;;
 ;;; linum
