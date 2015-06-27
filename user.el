@@ -3,6 +3,27 @@
 ;; No splash screen messages
 (setq inhibit-startup-message t)
 
+;; Silence description of the *scratch* buffer
+(setq initial-scratch-message "")
+
+;; Prevent the cursor from blinking
+(blink-cursor-mode 0)
+
+;; No scroll bars
+(scroll-bar-mode 0)
+
+;; No toolbar
+(tool-bar-mode 0)
+
+;; No menu
+(menu-bar-mode 0)
+
+;; Doesn't seem to work in dwm
+;(toggle-frame-fullscreen)
+
+;; You can test for GUI mode with the function
+;(window-system)
+
 ;; Auto-save path
 (defconst my-temp-dir "~/tmp")
 (setq backup-directory-alist
@@ -153,13 +174,6 @@
 ;; Set current buffer's tab char's display width to four spaces
 ;(setq tab-width 4)
 
-;; Silence description of the *scratch* buffer
-(setq initial-scratch-message "")
-
-;; No menus unless in graphical mode
-(unless (window-system)
-  (menu-bar-mode 0))
-
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
 ;; (in lines high) Emacs will have whenever you start it
@@ -248,7 +262,11 @@
              (define-key function-key-map "\e[1;3D" [M-left])
              (define-key function-key-map "\e[1;3C" [M-right])
              (define-key function-key-map "\e[1;3A" [M-up])
-             (define-key function-key-map "\e[1;3B" [M-down])))
+             (define-key function-key-map "\e[1;3B" [M-down])
+             (define-key function-key-map "\e[1;2D" [S-left])
+             (define-key function-key-map "\e[1;2C" [S-right])
+             (define-key function-key-map "\e[1;2A" [S-up])
+             (define-key function-key-map "\e[1;2B" [S-down]))) 
 
 ;;;
 ;;; linum
@@ -287,9 +305,14 @@
 ;; FIXME: Doesn't work in console emacs
 ;(setq org-columns-skip-archived-trees nil)
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
-        (sequence "TASK(f)" "|" "DONE(d)")
-        (sequence "MAYBE(m)" "|" "CANCELLED(c)")))
+      '((sequence "TASK(t)"
+                  "SCHEDULED(s)"
+                  "FEEDBACK(f)"
+                  "ONHOLD(h)"
+                  "BLOCKED(b)"
+                  "|"
+                  "DONE(d)"
+                  "CANCELLED(c)")))
 (setq org-tags-exclude-from-inheritance '("prj")
       org-stuck-projects '("+prj/-MAYBE-DONE"
                            ("TODO" "TASK") ()))
