@@ -309,6 +309,10 @@
           (org-sec-stuck-with-view "STUCK with")))
         ("J" "Interactive TODO dowith and TASK with"
          ((org-sec-who-view "TODO dowith")))))
+(eval-after-load 'org-secretary
+  '(define-key org-mode-map (kbd "C-c w") 'org-sec-set-with))
+(eval-after-load 'org-secretary
+  '(define-key org-mode-map (kbd "C-c W") 'org-sec-set-where))
 (load "~/.emacs.d/vendor/org-secretary.el")
 (setq org-sec-me "jlucas")
 
