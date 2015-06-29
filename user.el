@@ -1,4 +1,11 @@
-;; This is where your customizations should live
+;; For the terminal you basically must use xterm and you'll want to
+;; set the following options in ~/.Xresources (or the deprecated
+;; ~/.Xdefaults)::
+;;
+;; xterm*metaSendsEscape: true
+;; xterm*eightBitInput: false
+;; xterm*vt100.modifyOtherKeys: 1
+;; xterm*vt100.formatOtherKeys: 1
 
 ;; No splash screen messages
 (setq inhibit-startup-message t)
@@ -17,6 +24,38 @@
 
 ;; No menu
 (menu-bar-mode 0)
+
+;; Syntax highlighting in the SLIME REPL
+(defvar slime-repl-font-lock-keywords lisp-font-lock-keywords-2)
+(defun slime-repl-font-lock-setup ()
+  (setq font-lock-defaults
+        '(slime-repl-font-lock-keywords
+         ;; From lisp-mode.el
+         nil nil (("+-*/.<>=!?$%_&~^:@" . "w")) nil
+         (font-lock-syntactic-face-function
+         . lisp-font-lock-syntactic-face-function))))
+
+(add-hook 'slime-repl-mode-hook 'slime-repl-font-lock-setup)
+
+(defadvice slime-repl-insert-prompt (after font-lock-face activate)
+  (let ((inhibit-read-only t))
+    (add-text-properties
+     slime-repl-prompt-start-mark (point)
+     '(font-lock-face
+      slime-repl-prompt-face
+      rear-nonsticky
+      (slime-repl-prompt read-only font-lock-face intangible)))))
+
+;; ibuffer
+(require 'ibuffer)
+(require 'ibuffer-vc)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+(add-hook 'ibuffer-hook
+          (lambda ()
+            (ibuffer-vc-set-filter-groups-by-vc-root)
+            (unless (eq ibuffer-sorting-mode 'alphabetic)
+              (ibuffer-do-sort-by-alphabetic))))
 
 ;; Doesn't seem to work in dwm
 ;(toggle-frame-fullscreen)
@@ -72,14 +111,27 @@
 ; '(define-key paredit-mode-map (kbd "M-(") 'paredit-backward-barf-sexp)
 ; '(define-key paredit-mode-map (kbd "C-cw") 'paredit-wrap-round))
 
-;(eval-after-load "paredit"
-;  '(define-key paredit-mode-map (kbd "M-)") nil))
+;; http://offbytwo.com/2012/01/15/emacs-plus-paredit-under-terminal.html
+;(define-key input-decode-map "\e[1;5A" [C-up])
+;(define-key input-decode-map "\e[1;5B" [C-down])
+;(define-key input-decode-map "\e[1;5C" [C-right])
+;(define-key input-decode-map "\e[1;5D" [C-left])
+;
+;(define-key input-decode-map "\e)" [M-\)])
+;(define-key input-decode-map "\e(" [M-\(])
 
-(add-hook 'paredit-mode-hook
-	  '(lambda ()
-	     (local-set-key (kbd "M-)") 'paredit-forward-slurp-sexp)
-	     (local-set-key (kbd "M-(") 'paredit-backward-barf-sexp)
-	     (local-set-key (kbd "C-c w") 'paredit-wrap-round)))
+;some testing (melhaus (value))
+
+;(eval-after-load 'paredit
+;  '(progn
+;     (define-key paredit-mode-map (kbd "M-)") nil)
+;     (define-key paredit-mode-map (kbd "M-(") nil)))
+
+;(add-hook 'paredit-mode-hook
+;	  '(lambda ()
+;	     (local-set-key (kbd "M-)") 'paredit-forward-slurp-sexp)
+;	     (local-set-key (kbd "M-(") 'paredit-backward-slurp-sexp)
+;	     (local-set-key (kbd "C-c w") 'paredit-wrap-round)))
 
 ;;; Mimic vim's % key to move back and forth between matching parens
 (defun goto-match-paren (arg)
@@ -98,7 +150,8 @@
 (auto-complete-mode t)
 
 ;;; I miss vim's . bind to repeat the last command
-;;(global-set-key (kdb "C-." 'repeat))
+;;; This is "C-x z" by default, but that's a terrible bind
+;(global-set-key (kbd "C-\.") 'repeat)
 
 ;; Code folding
 ;; Emacs users don't seem to place much stock in cold folding
@@ -225,7 +278,7 @@
 (setq hippie-expand-try-functions-list (delete 'try-complete-file-name-partially hippie-expand-try-functions-list))
 
 ;;; ido
-(setq ido-use-filename-at-point nil)
+;(setq ido-use-filename-at-point nil)
 
 ;;;; Shen mode
 ;(add-to-list 'load-path "~/.emacs.d/vendor/shen-mode")

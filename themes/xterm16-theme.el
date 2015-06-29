@@ -99,7 +99,7 @@
    `(mode-line-inactive ((t (:background, *mode-inactive-bg* :foreground, *mode-inactive-fg*))))
    `(cursor ((t (:background, *cursor-underscore*))))
    `(text-cursor ((t (:background, *cursor-underscore*))))
-   `(vertical-border ((t (:background, *mode-inactive-bg* :foreground, *mode-inactive-fg*)))) ;; between splits
+   `(vertical-border ((t (:foreground, *mode-inactive-bg*)))) ;; between splits
 
    ;; search
    `(isearch ((t (:background, *regexp* :foreground, *visual-selection*))))

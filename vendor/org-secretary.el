@@ -131,7 +131,7 @@
                        (if (string= w "")
                            nil
                          w))))
-(global-set-key "\C-cw" 'org-sec-set-with)
+;(global-set-key "\C-cw" 'org-sec-set-with)
 
 (defun org-sec-set-where ()
   "Changes the value of the org-sec-where variable for use
@@ -140,7 +140,7 @@
   (setq org-sec-where
         (read-string "Where: " nil
                      'org-sec-where-history "")))
-(global-set-key "\C-cW" 'org-sec-set-where)
+;(global-set-key "\C-cW" 'org-sec-set-where)
 
 (defun org-sec-set-dowith ()
   "Sets the value of the dowith property."
