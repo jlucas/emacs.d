@@ -25,6 +25,14 @@
 ;; No menu
 (menu-bar-mode 0)
 
+;; Fullscreen with f11 key
+;; From: http://emacswiki.org/emacs/FullScreen#toc22
+(defun fullscreen ()
+  (interactive)
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                         '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+(global-set-key [f11] 'fullscreen)
+
 ;; Syntax highlighting in the SLIME REPL
 (defvar slime-repl-font-lock-keywords lisp-font-lock-keywords-2)
 (defun slime-repl-font-lock-setup ()
