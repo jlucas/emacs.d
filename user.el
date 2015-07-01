@@ -25,6 +25,10 @@
 ;; No menu
 (menu-bar-mode 0)
 
+;; Use PRIMARY selection in X
+;; From: http://emacswiki.org/emacs/CopyAndPaste
+(setq x-select-enable-primary t)
+
 ;; Fullscreen with f11 key
 ;; From: http://emacswiki.org/emacs/FullScreen#toc22
 (defun fullscreen ()
