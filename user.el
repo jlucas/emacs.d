@@ -371,6 +371,7 @@
 ;(setq org-columns-skip-archived-trees nil)
 (setq org-todo-keywords
       '((sequence "TASK(t)"
+                  "INPROGRESS(i)"
                   "SCHEDULED(s)"
                   "FEEDBACK(f)"
                   "ONHOLD(h)"
