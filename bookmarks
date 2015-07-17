@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-refile-last-stored"
+(("make-character"
+ (filename . "~/src/lispmud/scratchpad.lisp")
+ (front-context-string . "(defun make-char")
+ (rear-context-string . "lue)\n      )))\n\n")
+ (position . 11713))
+("org-refile-last-stored"
  (filename . "~/src/lispmud/lispmud.org")
  (front-context-string . "**** Status opti")
  (rear-context-string . "-states.html\n\n\n\n")

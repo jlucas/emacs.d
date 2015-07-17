@@ -22,7 +22,9 @@
 
 (deftheme graham "A dark color theme for Emacs")
 
-(let ((*background*         "#161A1F")
+(let ((*background*         (if (display-graphic-p)
+                                "#161A1F"
+                                "#161616"))
       (*comments*           "#615953")
       (*constant*           "#F38630")
       (*current-line*       "#151515")
@@ -41,7 +43,10 @@
       (*regexp*             "#E9C")
       (*string*             "#615953")
       (*variable*           "#C6C5FE")
-      (*visual-selection*   "#1D1F21"))
+      (*visual-selection*   "#005f5f")
+      (*visual-text*        "#87ffaf"))
+
+  ;       (*visual-selection*   "#1D1F21")
 
   (custom-theme-set-faces
    'graham
@@ -54,7 +59,7 @@
    `(highlight-face ((t (:background, *current-line*))))
    `(hl-line ((t (:background, *current-line* :underline t))))
    `(info-xref ((t (:foreground, *keywords* :underline t))))
-   `(region ((t (:background, *visual-selection*))))
+   `(region ((t (:background, *visual-selection* :foreground, *visual-text*))))
    `(underline ((nil (:underline t))))
 
    ;; font-lock

@@ -4,3 +4,49 @@ pwd
 top 
 (defun helloworld () (message "Hello, world."))
 helloworld
+telnet localhost 9003
+find-file ~/.vimrc
+ls
+cat /etc/hosts
+fe00::0 ip6-localnetff00::0 ip6-mcastprefixff02::1 ip6-allnodesff02::2 ip6-allrouters
+ls
+cd src
+ls
+up2
+cd ../../
+ls
+telnet 	bbs.dmine.net 
+telnet 	eldritch.darktech.org
+set prompt="%m:%~%# "
+ls /tmp 
+vim test.scm
+ls
+cd lispmud2
+ls
+find-file lispmud2.lisp 
+listify ls -l /tmp /var
+echo $PATH
+split 
+dired
+dired . 
+dired . 
+vc-dir . 
+cd ../lispmud
+vc-dir . 
+telnet localhost 9003 
+telnet localhost 9003
+
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
