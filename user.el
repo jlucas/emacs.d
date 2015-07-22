@@ -104,7 +104,31 @@
                          '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
 (global-set-key [f11] 'fullscreen)
 
-;; expand-region
+;;;
+;;; ace-jump-mode
+;;;
+
+; https://github.com/winterTTr/ace-jump-mode
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+
+;;;
+;;; expand-region
+;;;
+
 ;; https://github.com/magnars/expand-region.el
 (require 'expand-region)
 (global-set-key (kbd "M-=") 'er/expand-region)
@@ -397,14 +421,14 @@
 ;(load-theme 'fogus
 ;(load-theme 'dorsey)
 ;(load-theme 'graham t)
-;(load-theme 'jlucas t)
-(load-theme 'xterm16 t)
+;(load-theme 'xterm16 t)
 ;(load-theme 'deep-thought t)
 ;(load-theme 'hickey t)
 ;(load-theme 'granger t)
 ;(load-theme 'odersky t)
 ;(load-theme 'fogus t)
-;(load-theme 'jlucas t)
+(load-theme 'jlucas t)
+;(load-theme 'tao-yin t)
 
 ;;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
