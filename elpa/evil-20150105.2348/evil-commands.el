@@ -235,7 +235,7 @@ of the current screen line."
   (evil-first-non-blank))
 
 (evil-define-motion evil-next-line-1-first-non-blank (count)
-  "Move the cursor COUNT-1 lines down on the first non-blank character."
+  "Move thek cursor COUNT-1 lines down on the first non-blank character."
   :type line
   (evil-next-line (1- (or count 1)))
   (evil-first-non-blank))
@@ -3502,7 +3502,7 @@ and opens a new buffer name or edits a certain FILE."
   (evil-resize-window (- (window-width) count) t))
 
 (evil-define-command evil-window-set-height (count)
-  "Sets the height of the current window to COUNT."
+  "Sets the height of the current window to ."
   :repeat nil
   (interactive "P")
   (evil-resize-window (or count (frame-height)) nil))

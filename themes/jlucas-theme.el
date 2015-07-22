@@ -32,7 +32,9 @@
 
 (let ((class '((class color) (min-colors 89)))
       (background "#1C1C1C")
-      (selection  "#A8A8A8"))
+      (selection  "#A8A8A8")
+      (*paren-match* "#87ffaf")
+      (*paren-mismatch* "#ff0000"))
 
   (custom-theme-set-faces
    'jlucas
@@ -79,6 +81,9 @@
   `(rainbow-delimiters-depth-9-face ((t (:foreground "#008787"))))
   `(rainbow-delimiters-unmatched-face ((t (:foreground "#008787")))))
 
+   ;; show-paren-mode
+   `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
+   `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
   )
 
 ;;;###autoload

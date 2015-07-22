@@ -3,7 +3,7 @@
   (error "requires Emacs 24 or later."))
 
 ;; this is great
-(deftheme xterm16 "A dark color theme for Emacs")
+(deftheme xterm16 "A dark color theme based on xterm16.vim")
 
 (let ((*background*         "#1c1c1c")
       (*comments*           "#8787af")
@@ -13,11 +13,13 @@
       (*keywords*           "#0087af")
       (*line-number*        "#afaf87")
       (*method-declaration* "#a8a8a8")
+;      (*method-declaration* "#ffffff")
       (*mode-line-bg*       "#777")
       (*mode-inactive-bg*   "#555")
       (*mode-line-fg*       "#333333")
       (*mode-inactive-fg*   "#222")
-      (*normal*             "#a8a8a8")
+      (*normal*             "#b0b0b0")
+;      (*normal*             "#ffffff")
       (*number*             "#87afaf")
       (*operators*          "#00af87")
       (*warning*            "#9d7a04")
@@ -29,27 +31,8 @@
       (*paren-match*        "#87ffaf")
       (*paren-mismatch*     "#ff0000"))
 
-  ;(defgroup paren-face nil
-  ;  "Face for parentheses in Lisp modes"
-  ;  :group 'font-lock-extra-types
-  ;  :group 'faces)
-  ;
-  ;(defface parenthesis
-  ;  '((t (:foreground "green")))
-  ;  :group 'basic-faces)
-  
   (custom-theme-set-faces
    'xterm16
-
-   ;`(default                          ((t (:foreground "#B2B2B2" :background ,background))))
-   ;`(region                           ((t (:background ,selection                       ))))
-   ;`(cursor                           ((t (:background "#ffffff"                        ))))
-   ;`(fringe                           ((t (:background "#2f2f2f"   :foreground "#ffffff"))))
-   ;`(linum                            ((t (:background ,background :foreground "#2f2f2f"))))
-   ;`(minibuffer-prompt                ((t (:foreground "#9489C4"            :weight bold))))
-   ;`(minibuffer-message               ((t (:foreground "#ffffff"                        ))))
-   ;`(mode-line                        ((t (:foreground "#303030" :background "#d78700"  ))))
-   ;`(mode-line-inactive               ((t (:foreground "#767676" :background "#303030"  ))))
 
    `(default ((t (:foreground ,*normal* :background ,*background*))))
    `(bold ((t (:bold t))))
@@ -118,11 +101,36 @@
   `(rainbow-delimiters-depth-9-face ((t (:foreground ,*paren*))))
   `(rainbow-delimiters-unmatched-face ((t (:foreground ,*paren*))))
 
-   ;; show-paren-mode
-   `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
-   `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
+  ;; show-paren-mode
+  `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
+  `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
 
-   ))
+  ;; dired
+  `(dired-directory ((t (:ground ,*keywords* :weight bold))))
+  `(dired-symlink ((t (:foreground ,*paren-match* :weight bold))))
+  ; `(dired-flagged ((t (:foreground ,red))))
+  ; `(dired-header ((t (:foreground ,type :weight bold))))
+  ; `(dired-ignored ((t (:inherit shadow))))
+  ; `(dired-mark ((t (:foreground ,type :weight bold))))
+  ; `(dired-marked ((t (:foreground ,violet :weight bold))))
+  ; `(dired-perm-write ((t (:foreground ,base :underline t))))
+  ; `(dired-warning ((t (:foreground ,war))))
+
+  ;; eshell
+  ;`(eshell-ls-archive-face ((t (:bold t :foreground "medium purple" :weight bold))))
+  ;`(eshell-ls-backup-face ((t (:foreground "dim gray"))))
+  ;`(eshell-ls-clutter-face ((t (:foreground "dim gray"))))
+  ;`(eshell-ls-directory-face ((t (:bold t :foreground "medium slate blue" :weight bold))))
+  ;`(eshell-ls-executable-face ((t (:bold t :foreground "aquamarine" :weight bold))))
+  ;`(eshell-ls-missing-face ((t (:foreground "black"))))
+  ;`(eshell-ls-picture-face ((t (:foreground "violet"))))
+  ;`(eshell-ls-product-face ((t (:foreground "light steel blue"))))
+  ;`(eshell-ls-readonly-face ((t (:foreground "aquamarine"))))
+  ;`(eshell-ls-special-face ((t (:foreground "gold"))))
+  `(eshell-ls-symlink-face ((t (:foreground ,*paren-match*))))
+  ;`(eshell-ls-unreadable-face ((t (:foreground "dim gray"))))
+  `(eshell-prompt ((t (:foreground ,*keywords* :weight bold))))
+  ))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)

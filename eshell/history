@@ -4,3 +4,86 @@ pwd
 top 
 (defun helloworld () (message "Hello, world."))
 helloworld
+telnet localhost 9003
+find-file ~/.vimrc
+ls
+cat /etc/hosts
+fe00::0 ip6-localnetff00::0 ip6-mcastprefixff02::1 ip6-allnodesff02::2 ip6-allrouters
+ls
+cd src
+ls
+up2
+cd ../../
+ls
+telnet 	bbs.dmine.net 
+telnet 	eldritch.darktech.org
+set prompt="%m:%~%# "
+ls /tmp 
+vim test.scm
+ls
+cd lispmud2
+ls
+find-file lispmud2.lisp 
+listify ls -l /tmp /var
+echo $PATH
+split 
+dired
+dired . 
+dired . 
+vc-dir . 
+cd ../lispmud
+vc-dir . 
+telnet localhost 9003 
+telnet localhost 9003
+
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+ls
+ll
+cd ..
+ls
+rm '#init.el#'
+ls
+top 
+(+ 2 2)
+ls
+cd
+ls
+ll
+ls -l 
+which ls
+alias ll="ls -l"
+ll
+ll
+ll
+find 
+cd
+ll
+cd etc
+ls
+rm "#!*"
+ls
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+telnet localhost 9003
+Connection closed by foreign host.
+Connection closed by foreign host.
+telnet localhost 9003
+telnet localhost 9003
+telnet: Unable to connect to remote host: Connection refused
+telnet: Unable to connect to remote host: Connection refused
+telnet: Unable to connect to remote host: Connection refused
+telnet localhost 9003
