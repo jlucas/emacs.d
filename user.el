@@ -96,7 +96,7 @@
 ;; Include newline when killing a line
 (setq kill-whole-line t)
 
-;; Fullscreen with f11 key
+;; Fullscreen in X with f11 key
 ;; From: http://emacswiki.org/emacs/FullScreen#toc22
 (defun fullscreen ()
   (interactive)
