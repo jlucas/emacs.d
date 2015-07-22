@@ -101,21 +101,36 @@
   `(rainbow-delimiters-depth-9-face ((t (:foreground ,*paren*))))
   `(rainbow-delimiters-unmatched-face ((t (:foreground ,*paren*))))
 
-   ;; show-paren-mode
-   `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
-   `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
+  ;; show-paren-mode
+  `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
+  `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
 
-   ;; dired
-   `(dired-directory ((t (:foreground ,*keywords* :weight bold))))
-   `(dired-symlink ((t (:foreground ,*paren-match* :weight bold))))
-   ; `(dired-flagged ((t (:foreground ,red))))
-   ; `(dired-header ((t (:foreground ,type :weight bold))))
-   ; `(dired-ignored ((t (:inherit shadow))))
-   ; `(dired-mark ((t (:foreground ,type :weight bold))))
-   ; `(dired-marked ((t (:foreground ,violet :weight bold))))
-   ; `(dired-perm-write ((t (:foreground ,base :underline t))))
-   ; `(dired-warning ((t (:foreground ,war))))
-   ))
+  ;; dired
+  `(dired-directory ((t (:ground ,*keywords* :weight bold))))
+  `(dired-symlink ((t (:foreground ,*paren-match* :weight bold))))
+  ; `(dired-flagged ((t (:foreground ,red))))
+  ; `(dired-header ((t (:foreground ,type :weight bold))))
+  ; `(dired-ignored ((t (:inherit shadow))))
+  ; `(dired-mark ((t (:foreground ,type :weight bold))))
+  ; `(dired-marked ((t (:foreground ,violet :weight bold))))
+  ; `(dired-perm-write ((t (:foreground ,base :underline t))))
+  ; `(dired-warning ((t (:foreground ,war))))
+
+  ;; eshell
+  ;`(eshell-ls-archive-face ((t (:bold t :foreground "medium purple" :weight bold))))
+  ;`(eshell-ls-backup-face ((t (:foreground "dim gray"))))
+  ;`(eshell-ls-clutter-face ((t (:foreground "dim gray"))))
+  ;`(eshell-ls-directory-face ((t (:bold t :foreground "medium slate blue" :weight bold))))
+  ;`(eshell-ls-executable-face ((t (:bold t :foreground "aquamarine" :weight bold))))
+  ;`(eshell-ls-missing-face ((t (:foreground "black"))))
+  ;`(eshell-ls-picture-face ((t (:foreground "violet"))))
+  ;`(eshell-ls-product-face ((t (:foreground "light steel blue"))))
+  ;`(eshell-ls-readonly-face ((t (:foreground "aquamarine"))))
+  ;`(eshell-ls-special-face ((t (:foreground "gold"))))
+  `(eshell-ls-symlink-face ((t (:foreground ,*paren-match*))))
+  ;`(eshell-ls-unreadable-face ((t (:foreground "dim gray"))))
+  `(eshell-prompt ((t (:foreground ,*keywords* :weight bold))))
+  ))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
