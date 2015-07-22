@@ -376,6 +376,7 @@
                   "FEEDBACK(f)"
                   "ONHOLD(h)"
                   "BLOCKED(b)"
+                  "DELEGATED(g)"
                   "|"
                   "DONE(d)"
                   "CANCELLED(c)")))
