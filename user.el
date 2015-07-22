@@ -41,7 +41,6 @@
 ;; Always try to indent on a new line
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-
 ;;;
 ;;; Global user binds
 ;;; "C-c [a-zA-Z]" space is reserved for users
