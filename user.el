@@ -63,10 +63,14 @@
 ;; Horizontal split
 (global-set-key (kbd "C-c s") 'split-window-below)
 
-;; Like zt in vim
+;; zt, zb as in vim
 (global-set-key (kbd "C-c t") (lambda () (interactive) (recenter 2)))
-;; Like zb in vim
 (global-set-key (kbd "C-c b") (lambda () (interactive) (recenter -3)))
+
+;; H, M, L as in vim
+(global-set-key (kbd "C-c H")(lambda () (interactive) (move-to-window-line-top-bottom 0)))
+(global-set-key (kbd "C-c M") (lambda () (interactive) (move-to-window-line-top-bottom)))
+(global-set-key (kbd "C-c L") (lambda () (interactive) (move-to-window-line-top-bottom -1)))
 
 ;; Just type the char you want to align your text to
 (global-set-key (kbd "C-c a") 'align-regexp)
