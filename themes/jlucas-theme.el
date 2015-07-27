@@ -33,7 +33,8 @@
 (let ((class '((class color) (min-colors 89)))
       (background "#1C1C1C")
       (selection  "#A8A8A8")
-      (*paren-match* "#87ffaf")
+      (*dark-blue-green* "#008787")
+      (*seafoam-green* "#87ffaf")
       (*paren-mismatch* "#ff0000"))
 
   (custom-theme-set-faces
@@ -70,21 +71,20 @@
   ;; Rainbow delimiters
   ;; *****************************************************************************************
 
-  `(rainbow-delimiters-depth-1-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-depth-2-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-depth-3-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-depth-4-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-depth-5-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-depth-6-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-depth-7-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-depth-8-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-depth-9-face ((t (:foreground "#008787"))))
-  `(rainbow-delimiters-unmatched-face ((t (:foreground "#008787")))))
+  `(rainbow-delimiters-depth-1-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-depth-2-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-depth-3-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-depth-4-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-depth-5-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-depth-6-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-depth-7-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-depth-8-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-depth-9-face ((t (:foreground ,*dark-blue-green*))))
+  `(rainbow-delimiters-unmatched-face ((t (:foreground ,*dark-blue-green*))))
 
    ;; show-paren-mode
-   `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
-   `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
-  )
+   `(show-paren-match-face ((t (:foreground ,*seafoam-green* :bold t))))
+   `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
