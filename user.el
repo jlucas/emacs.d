@@ -72,8 +72,14 @@
 (global-set-key (kbd "C-c M") (lambda () (interactive) (move-to-window-line-top-bottom)))
 (global-set-key (kbd "C-c L") (lambda () (interactive) (move-to-window-line-top-bottom -1)))
 
+;; Join line as in vim
+(global-set-key (kbd "C-c J") 'join-line)
+
 ;; Just type the char you want to align your text to
 (global-set-key (kbd "C-c a") 'align-regexp)
+
+;; Make this buffer the least likely candidate for C-x b
+(global-set-key (kbd "C-c r") 'bury-buffer)
 
 ;; Easy block indent
 (global-set-key (kbd "C-c >")
@@ -84,6 +90,28 @@
                 (lambda ()
                   (interactive)
                   (indent-rigidly (region-beginning) (region-end) -4)))
+
+;;; % to bounce between balanced parens as in vim
+(defun goto-match-paren (arg)
+  "Go to the matching parenthesis if on parenthesis, otherwise insert %.
+     vi style of % jumping to matching brace."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1)))))
+(global-set-key (kbd "C-c %") 'goto-match-paren)
+
+;; File finding
+;; Cribbed from http://stackoverflow.com/questions/3124844
+(global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
+(global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
+(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+
+;; Use regex searches by default.
+;(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+;(global-set-key (kbd "\C-r") 'isearch-backward-regexp)
+;(global-set-key (kbd "C-M-s") 'isearch-forward)
+;(global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ;;;
 ;;; End user binds
