@@ -207,9 +207,6 @@
             (unless (eq ibuffer-sorting-mode 'alphabetic)
               (ibuffer-do-sort-by-alphabetic))))
 
-;; You can test for GUI mode with the function
-;(window-system)
-
 ;; Auto-save path
 (defconst my-temp-dir "~/tmp")
 (setq backup-directory-alist
