@@ -260,6 +260,12 @@
 ;;; Paredit
 ;;;
 ;; http://offbytwo.com/2012/01/15/emacs-plus-paredit-under-terminal.html
+(add-hook 'lisp-mode-hook (lambda () (paredit-mode)))
+                                        ;eval-after-load 'paredit
+                                        ; ;; need a binding that works in the terminal
+                                        ; '(define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
+                                        ; '(define-key paredit-mode-map (kbd "M-(") 'paredit-backward-barf-sexp)
+                                        ; '(define-key paredit-mode-map (kbd "C-cw") 'paredit-wrap-round))
 
 ;; http://unix.stackexchange.com/questions/79374
 (defun my-terminal-config (&optional frame)
