@@ -259,27 +259,29 @@
 ;;;
 ;;; Paredit
 ;;;
-(add-hook 'lisp-mode-hook (lambda () (paredit-mode))) 
-;eval-after-load 'paredit
-; ;; need a binding that works in the terminal
-; '(define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
-; '(define-key paredit-mode-map (kbd "M-(") 'paredit-backward-barf-sexp)
-; '(define-key paredit-mode-map (kbd "C-cw") 'paredit-wrap-round))
-
 ;; http://offbytwo.com/2012/01/15/emacs-plus-paredit-under-terminal.html
-(define-key input-decode-map "\e[1;5A" [C-up])
-(define-key input-decode-map "\e[1;5B" [C-down])
-(define-key input-decode-map "\e[1;5C" [C-right])
-(define-key input-decode-map "\e[1;5D" [C-left])
-;(define-key input-decode-map "\e)" [M-\)])
-;(define-key input-decode-map "\e(" [M-\(])
 
-;some testing (melhaus (value))
+;; http://unix.stackexchange.com/questions/79374
+(defun my-terminal-config (&optional frame)
+  ;; You need this in order to make the hook run on the correct frame.
+  ;; This is important when running emacsclient in a terminal under an
+  ;; emacs server that was started in a graphical environment.
+  ;; http://stackoverflow.com/questions/7616761
+  (select-frame frame)
+ ;; non-nil when emacs is started graphically
+  (message (format "window-system is %s" window-system))
+  ;; nil when emacs is started graphically
+  (message (format "display-graphic-p is %s" (display-graphic-p)))
+  (unless (display-graphic-p)
+    (message "running my-terminal-config...")
+    (xterm-mouse-mode t)
+    (define-key input-decode-map "\e[1;5A" [C-up])
+    (define-key input-decode-map "\e[1;5B" [C-down])
+    (define-key input-decode-map "\e[1;5C" [C-right])
+    (define-key input-decode-map "\e[1;5D" [C-left])
+    (define-key input-decode-map "\e[13;5u" [(control return)])))
 
-;(eval-after-load 'paredit
-;  '(progn
-;     (define-key paredit-mode-map (kbd "M-)") nil)
-;     (define-key paredit-mode-map (kbd "M-(") nil)))
+(add-hook 'after-make-frame-functions 'my-terminal-config)
 
 ;(add-hook 'paredit-mode-hook
 ;	  '(lambda ()
@@ -293,6 +295,7 @@
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
 ;; http://superuser.com/questions/208488/how-do-i-re-open-a-file-in-emacs
 (global-auto-complete-mode t)
+
 ;; Opt out of auto-complete mode in minibuffer
 ;(defun auto-complete-mode-maybe ()
 ;  "No maybe for you. Only AC!"
