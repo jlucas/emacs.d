@@ -244,9 +244,7 @@
 (global-set-key (kbd "M-I") 'imenu)
 
 ;;; Mouse scrolling and pointing in terminal mode
-;(require 'mouse)
 (require 'xt-mouse)
-(xterm-mouse-mode t)
 (defun up-slightly () (interactive) (scroll-up 2))
 (defun down-slightly () (interactive) (scroll-down 2))
 (global-set-key (kbd "<mouse-4>") 'down-slightly)
