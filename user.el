@@ -581,6 +581,9 @@
 ;(load "~/.emacs.d/vendor/org-secretary.el")
 (setq org-sec-me "jlucas")
 
+;; http://orgmode.org/worg/org-contrib/org-collector.html
+(require 'org-collector)
+
 ; Add only a datestamp to DONE items
 ;(setq org-log-done 'time)
 
