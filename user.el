@@ -12,7 +12,12 @@
 ;; Fonts
 ;(set-frame-font "Envy Code R-16" nil t)
 ;(set-frame-font "Terminus-11" nil t)
-(set-frame-font "Monospace-11" nil t)
+(set-frame-font "Monospace-9" nil t)
+;;(set-face-attribute 'default nil :height 100)
+
+;; Resizing fonts
+;; C-x C-= to increase
+;; C-x C-- to decrease
 
 ;; No splash screen messages
 (setq inhibit-startup-message t)
