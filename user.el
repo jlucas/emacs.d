@@ -449,13 +449,13 @@
 ;(load-theme 'fogus
 ;(load-theme 'dorsey)
 ;(load-theme 'graham t)
-;(load-theme 'xterm16 t)
+(load-theme 'xterm16 t)
 ;(load-theme 'deep-thought t)
 ;(load-theme 'hickey t)
 ;(load-theme 'granger t)
 ;(load-theme 'odersky t)
 ;(load-theme 'fogus t)
-(load-theme 'jlucas t)
+;(load-theme 'jlucas t)
 ;(load-theme 'tao-yin t)
 
 ;;; Flyspell often slows down editing so it's turned off
