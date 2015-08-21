@@ -9,6 +9,10 @@
 ;; Influential .emacs files
 ;; https://github.com/alexdantas/.emacs.d/blob/master/config/keybindings.el
 
+;; Use mail-mode for files that contain the string "/mutt"
+;; http://www.emacswiki.org/emacs/MuttInEmacs
+(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+
 ;; Fonts
 ;(set-frame-font "Envy Code R-16" nil t)
 ;(set-frame-font "Terminus-11" nil t)
