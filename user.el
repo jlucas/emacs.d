@@ -166,6 +166,11 @@
 ;  '(ace-jump-mode-enable-mark-sync))
 ;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
+;; window-margin
+;; https://github.com/aculich/window-margin.el.git
+(add-to-list 'load-path "~/.emacs.d/vendor/window-margin")
+(require 'window-margin)
+
 ;;;
 ;;; expand-region
 ;;;
