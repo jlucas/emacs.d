@@ -9,6 +9,8 @@
 ;; Influential .emacs files
 ;; https://github.com/alexdantas/.emacs.d/blob/master/config/keybindings.el
 
+;; Use tcl-mode for module files
+(add-to-list 'magic-mode-alist '("#%Module" . tcl-mode))
 
 ;; Use mail-mode for files that contain the string "/mutt"
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
