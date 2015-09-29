@@ -9,9 +9,6 @@
 ;; Influential .emacs files
 ;; https://github.com/alexdantas/.emacs.d/blob/master/config/keybindings.el
 
-;; Start a server (emacs --daemon) if there isn't one running already
-(server-start)
-
 ;; Use mail-mode for files that contain the string "/mutt"
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
