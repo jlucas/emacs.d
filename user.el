@@ -215,6 +215,14 @@
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 (define-key dired-mode-map (kbd "^")
   (lambda () (interactive) (find-alternate-file "..")))
+(defun play-audio-jack ()
+  "In dired, open the file named on this line."
+  (interactive)
+  (let* ((file (dired-get-filename nil t)))
+    (message "Opening %s..." file)
+    (call-process "/usr/bin/mplayer" nil 0 nil "-ao" "jack" file)
+    (message "Opening %s done" file)))
+(define-key dired-mode-map (kbd "C-c C-c") 'play-audio-jack)
 
 ;;;
 ;;; ibuffer
