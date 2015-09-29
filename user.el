@@ -172,6 +172,20 @@
 (require 'window-margin)
 
 ;;;
+;;; speedbar
+;;;
+(custom-set-variables
+ '(sr-speedbar-show-unknown-files t))
+
+;;;
+;;; sr-speedbar
+;;;
+
+;; http://www.emacswiki.org/emacs/SrSpeedbar
+;; "SrSpeedbar is mode make SpeedBar show in Current Frame by SebastianRose."
+(require 'sr-speedbar)
+
+;;;
 ;;; expand-region
 ;;;
 
