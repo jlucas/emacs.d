@@ -6,5 +6,5 @@ places
 savehist
 recentf
 ac-comphist.dat
-elpa/*
-eshell/*
+eshell/history
+eshell/lastdir
