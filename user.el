@@ -237,6 +237,7 @@
             (ibuffer-vc-set-filter-groups-by-vc-root)
             (unless (eq ibuffer-sorting-mode 'alphabetic)
               (ibuffer-do-sort-by-alphabetic))))
+(setq ibuffer-show-empty-filter-groups nil)
 
 ;; Auto-save path
 (defconst my-temp-dir "~/tmp")
