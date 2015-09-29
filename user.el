@@ -9,6 +9,9 @@
 ;; Influential .emacs files
 ;; https://github.com/alexdantas/.emacs.d/blob/master/config/keybindings.el
 
+;; Use tcl-mode for module files
+(add-to-list 'magic-mode-alist '("#%Module" . tcl-mode))
+
 ;; Use mail-mode for files that contain the string "/mutt"
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
@@ -183,6 +186,12 @@
 (require 'sr-speedbar)
 
 ;;;
+;;; undo-tree
+;;;
+(require 'undo-tree)
+(global-undo-tree-mode 1)
+
+;;;
 ;;; expand-region
 ;;;
 
@@ -220,6 +229,14 @@
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 (define-key dired-mode-map (kbd "^")
   (lambda () (interactive) (find-alternate-file "..")))
+(defun play-audio-jack ()
+  "In dired, open the file named on this line."
+  (interactive)
+  (let* ((file (dired-get-filename nil t)))
+    (message "Opening %s..." file)
+    (call-process "/usr/bin/mplayer" nil 0 nil "-ao" "jack" file)
+    (message "Opening %s done" file)))
+(define-key dired-mode-map (kbd "C-c C-c") 'play-audio-jack)
 
 ;;;
 ;;; ibuffer
@@ -760,3 +777,7 @@
 
 ;;; Invoke evil
 ;(evil-mode)
+
+;; Start a server (emacs --daemon) if there isn't one running already
+(server-start)
+
