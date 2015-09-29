@@ -762,3 +762,7 @@
 
 ;;; Invoke evil
 ;(evil-mode)
+
+;; Start a server (emacs --daemon) if there isn't one running already
+(server-start)
+
