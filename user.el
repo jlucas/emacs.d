@@ -174,8 +174,7 @@
 ;;;
 ;;; speedbar
 ;;;
-(custom-set-variables
- '(sr-speedbar-show-unknown-files t))
+(setq sr-speedbar-show-unknown-files t)
 
 ;;;
 ;;; sr-speedbar
