@@ -397,7 +397,7 @@
 (global-set-key [f1] 'jlucas-toggle-selective-display)
 
 ;; C-SPC is my tmux prefix!
-;; You can get M-SPC ('just-one-space) functionality by doing M-\.
+;; You can get M-SPC #'just-one-space functionality with M-\
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 
 ;; Turn on automatic bracket insertion by pairs.  New in Emacs 24.
