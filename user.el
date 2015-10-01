@@ -102,6 +102,12 @@
 (global-set-key (kbd "C-c M") (lambda () (interactive) (move-to-window-line-top-bottom)))
 (global-set-key (kbd "C-c L") (lambda () (interactive) (move-to-window-line-top-bottom -1)))
 
+;; New GUI-mode frame (to be used when in terminal mode)
+(global-set-key (kbd "C-c F")
+                (lambda ()
+                  (interactive)
+                  (make-frame-on-display (getenv "DISPLAY"))))
+
 ;; Join line as in vim
 (global-set-key (kbd "C-c J") 'join-line)
 
