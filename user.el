@@ -9,6 +9,10 @@
 ;; Influential .emacs files
 ;; https://github.com/alexdantas/.emacs.d/blob/master/config/keybindings.el
 
+;;;
+;;; File formats
+;;;
+
 ;; Use tcl-mode for module files
 (add-to-list 'magic-mode-alist '("#%Module" . tcl-mode))
 
@@ -16,7 +20,10 @@
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 
-;; Fonts
+;;;
+;;; Fonts
+;;;
+
 ;(set-frame-font "Envy Code R-16" nil t)
 ;(set-frame-font "Terminus-11" nil t)
 (set-frame-font "Monospace-9" nil t)
@@ -25,6 +32,10 @@
 ;; Resizing fonts
 ;; C-x C-= to increase
 ;; C-x C-- to decrease
+
+;;;
+;;; Misc settings
+;;;
 
 ;; No splash screen messages
 (setq inhibit-startup-message t)
@@ -44,17 +55,24 @@
 ;; No menu
 (menu-bar-mode 0)
 
-;; Make C-w delete previous word.
-;; Make C-x C-k kill region.
-;; This makes C-w consistent between emacs and the shell.
+;;;
+;;; Delete setup
+;;;
+
+;; Make C-w delete previous word as in the shell, vim, etc.
 (global-set-key (kbd "C-w") 'backward-kill-word)
+;; Make C-x C-k kill region
 (global-set-key (kbd "C-x C-k") 'kill-region)
+
+;;;
+;;; Newline setup
+;;;
 
 ;; Always try to indent on a new line
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;;;
-;;; Global user binds
+;;; global user binds
 ;;; "C-c [a-zA-Z]" space is reserved for users
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
