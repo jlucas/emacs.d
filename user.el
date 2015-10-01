@@ -111,6 +111,9 @@
 ;; Undo tree
 (global-set-key (kbd "C-c u") 'undo-tree-visualize)
 
+;; Magit
+(global-set-key (kbd "C-c g") 'magit-status)
+
 ;; Join line as in vim
 (global-set-key (kbd "C-c J") 'join-line)
 
