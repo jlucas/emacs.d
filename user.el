@@ -9,6 +9,10 @@
 ;; Influential .emacs files
 ;; https://github.com/alexdantas/.emacs.d/blob/master/config/keybindings.el
 
+;;;
+;;; File formats
+;;;
+
 ;; Use tcl-mode for module files
 (add-to-list 'magic-mode-alist '("#%Module" . tcl-mode))
 
@@ -16,7 +20,10 @@
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 
-;; Fonts
+;;;
+;;; Fonts
+;;;
+
 ;(set-frame-font "Envy Code R-16" nil t)
 ;(set-frame-font "Terminus-11" nil t)
 (set-frame-font "Monospace-9" nil t)
@@ -25,6 +32,10 @@
 ;; Resizing fonts
 ;; C-x C-= to increase
 ;; C-x C-- to decrease
+
+;;;
+;;; Misc settings
+;;;
 
 ;; No splash screen messages
 (setq inhibit-startup-message t)
@@ -44,17 +55,24 @@
 ;; No menu
 (menu-bar-mode 0)
 
-;; Make C-w delete previous word.
-;; Make C-x C-k kill region.
-;; This makes C-w consistent between emacs and the shell.
+;;;
+;;; Delete setup
+;;;
+
+;; Make C-w delete previous word as in the shell, vim, etc.
 (global-set-key (kbd "C-w") 'backward-kill-word)
+;; Make C-x C-k kill region
 (global-set-key (kbd "C-x C-k") 'kill-region)
+
+;;;
+;;; Newline setup
+;;;
 
 ;; Always try to indent on a new line
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;;;
-;;; Global user binds
+;;; global user binds
 ;;; "C-c [a-zA-Z]" space is reserved for users
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
@@ -83,6 +101,18 @@
 (global-set-key (kbd "C-c H")(lambda () (interactive) (move-to-window-line-top-bottom 0)))
 (global-set-key (kbd "C-c M") (lambda () (interactive) (move-to-window-line-top-bottom)))
 (global-set-key (kbd "C-c L") (lambda () (interactive) (move-to-window-line-top-bottom -1)))
+
+;; New GUI-mode frame (to be used when in terminal mode)
+(global-set-key (kbd "C-c F")
+                (lambda ()
+                  (interactive)
+                  (make-frame-on-display (getenv "DISPLAY"))))
+
+;; Undo tree
+(global-set-key (kbd "C-c u") 'undo-tree-visualize)
+
+;; Magit
+(global-set-key (kbd "C-c g") 'magit-status)
 
 ;; Join line as in vim
 (global-set-key (kbd "C-c J") 'join-line)
@@ -148,23 +178,22 @@
 ;;; ace-jump-mode
 ;;;
 
-;; Disabled because C-x SPC shadows visual block mode
 ; https://github.com/winterTTr/ace-jump-mode
-;(autoload
-;  'ace-jump-mode
-;  "ace-jump-mode"
-;  "Emacs quick move minor mode"
-;  t)
-;(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(autoload
+ 'ace-jump-mode
+ "ace-jump-mode"
+ "Emacs quick move minor mode"
+ t)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-;(autoload
-;  'ace-jump-mode-pop-mark
-;  "ace-jump-mode"
-;  "Ace jump back"
-;  t)
-;(eval-after-load "ace-jump-mode"
-;  '(ace-jump-mode-enable-mark-sync))
-;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+(autoload
+ 'ace-jump-mode-pop-mark
+ "ace-jump-mode"
+ "Ace jump back"
+ t)
+(eval-after-load "ace-jump-mode"
+ '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x C-n") 'ace-jump-mode-pop-mark)
 
 ;; window-margin
 ;; https://github.com/aculich/window-margin.el.git
@@ -367,7 +396,7 @@
 (global-set-key [f1] 'jlucas-toggle-selective-display)
 
 ;; C-SPC is my tmux prefix!
-;; You can get M-SPC ('just-one-space) functionality by doing M-\.
+;; You can get M-SPC #'just-one-space functionality with M-\
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 
 ;; Turn on automatic bracket insertion by pairs.  New in Emacs 24.
