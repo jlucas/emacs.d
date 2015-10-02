@@ -473,8 +473,8 @@
 (setq-default indent-tabs-mode nil) ; Emacs 23, 24 default to t
 ;; Set default tab char's display width to four spaces
 (setq-default tab-width 4) ; Emacs 23, 24 default to 8
-;; Set current buffer's tab char's display width to four spaces
-;(setq tab-width 4)
+;; http://stackoverflow.com/questions/69934
+(setq tab-stop-list (number-sequence 4 200 4))
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
