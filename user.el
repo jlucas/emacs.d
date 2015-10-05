@@ -1,4 +1,4 @@
-;; set the following options in ~/.Xresources (or the deprecated
+;; Set the following options in ~/.Xresources (or the deprecated
 ;; ~/.Xdefaults)::
 ;;
 ;; xterm*metaSendsEscape: true
@@ -8,6 +8,9 @@
 
 ;; Influential .emacs files
 ;; https://github.com/alexdantas/.emacs.d/blob/master/config/keybindings.el
+
+;; Pick up any loosies from here
+(add-to-list 'load-path "~/.emacs.d/vendor")
 
 ;;;
 ;;; File formats
@@ -24,10 +27,10 @@
 ;;; Fonts
 ;;;
 
-;(set-frame-font "Envy Code R-16" nil t)
-;(set-frame-font "Terminus-11" nil t)
+;; (set-frame-font "Envy Code R-16" nil t)
+;; (set-frame-font "Terminus-11" nil t)
 (set-frame-font "Monospace-9" nil t)
-;;(set-face-attribute 'default nil :height 100)
+;; (set-face-attribute 'default nil :height 100)
 
 ;; Resizing fonts
 ;; C-x C-= to increase
@@ -56,7 +59,7 @@
 (menu-bar-mode 0)
 
 ;;;
-;;; Delete setup
+;;; C-w calls 'backward-kill-word
 ;;;
 
 ;; Make C-w delete previous word as in the shell, vim, etc.
@@ -69,10 +72,11 @@
 ;;;
 
 ;; Always try to indent on a new line
+;; XXX: Is this why pasting into terminal freaks out sometimes?
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;;;
-;;; global user binds
+;;; Global user binds
 ;;; "C-c [a-zA-Z]" space is reserved for users
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
@@ -80,7 +84,7 @@
 ;; Toggle line numbers on 'C-c l' (linum mode)
 (global-set-key (kbd "C-c n") 'linum-mode)
 
-;; Move around windows sensibly
+;; Move around windows with vim-like hjkl binds
 (global-set-key (kbd "C-c h") 'windmove-left)
 (global-set-key (kbd "C-c j") 'windmove-down)
 (global-set-key (kbd "C-c k") 'windmove-up)
@@ -94,6 +98,7 @@
 (global-set-key (kbd "C-c s") 'split-window-below)
 
 ;; zt, zb as in vim
+;; Not really necessary...  C-l is pretty convenient.
 (global-set-key (kbd "C-c t") (lambda () (interactive) (recenter 2)))
 (global-set-key (kbd "C-c b") (lambda () (interactive) (recenter -3)))
 
@@ -228,6 +233,23 @@
 (global-set-key (kbd "M-=") 'er/expand-region)
 (global-set-key (kbd "M--") 'er/contract-region)
 
+;;;
+;;; lisp-mode
+;;;
+
+;; See: http://stackoverflow.com/questions/18289329
+;; and emacs docs for font-lock-function-name-face
+(defun colorize-first-atom-in-list ()
+  (font-lock-add-keywords nil
+                          '(("(\\s-*\\(\\_<\\(?:\\sw\\|\\s_\\)+\\)\\_>"
+                             1 'font-lock-function-name-face))))
+(add-hook 'lisp-mode-hook 'colorize-first-atom-in-list)
+;; (add-hook 'emacs-lisp-mode-hook 'colorize-first-atom-in-list)
+
+;;;
+;;; slime
+;;;
+
 ;; Syntax highlighting in the SLIME REPL
 (defvar slime-repl-font-lock-keywords lisp-font-lock-keywords-2)
 (defun slime-repl-font-lock-setup ()
@@ -246,6 +268,16 @@
        slime-repl-prompt-face
        rear-nonsticky
        (slime-repl-prompt read-only font-lock-face intangible)))))
+
+;;;
+;;; emacs-lisp-mode
+;;;
+
+;; http://stackoverflow.com/questions/18289329
+;; Highlight all defined functions for elisp
+(require 'hl-defined)
+(add-hook 'emacs-lisp-mode-hook 'hdefd-highlight-mode 'APPEND)
+;; Also consider: http://ergoemacs.org/emacs/xah-elisp-mode.html
 
 ;;;
 ;;; dired
@@ -492,7 +524,6 @@
 ;; 
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
-(add-to-list 'load-path "~/.emacs.d/vendor")
 
 (add-to-list 'load-path "~/.emacs.d/vendor/emacs-git-gutter")
 (require 'git-gutter)
