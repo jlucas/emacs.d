@@ -34,7 +34,7 @@
 
    `(default ((t (:foreground ,*normal* :background ,*background*))))
    `(bold ((t (:bold t))))
-   ;`(fringe                           ((t (:background "#2f2f2f"   :foreground "#ffffff"))))
+   `(fringe ((t (:background ,*background* :foreground ,*number*))))
    `(linum ((t (:background ,*background* :foreground ,*line-number* :bold nil :underline nil))))
    `(button ((t (:foreground ,*keywords* :underline t))))
    `(default ((t (:background ,*background* :foreground ,*normal*))))
@@ -54,7 +54,8 @@
    `(font-lock-constant-face ((t (:foreground ,*constant*))))
    `(font-lock-doc-face ((t (:foreground ,*string*))))
    `(font-lock-doc-string-face ((t (:foreground ,*string*))))
-   `(font-lock-function-name-face ((t (:foreground ,*cyan*))))
+   `(font-lock-func-face ((t (:foreground ,*keywords*))))
+   `(font-lock-function-name-face ((t (:foreground ,*keywords*))))
    `(font-lock-keyword-face ((t (:foreground ,*keywords*))))
    `(font-lock-negation-char-face ((t (:foreground ,*warning*))))
    `(font-lock-number-face ((t (:foreground ,*number*))))
@@ -66,6 +67,8 @@
    `(font-lock-type-face ((t (:foreground ,*operators*))))
    `(font-lock-variable-name-face ((t (:foreground, *cyan*))))
    `(font-lock-warning-face ((t (:foreground ,*warning*))))
+   ;; `(font-lock-add-keywords 'lisp-mode
+   ;;                          )
    ;`(font-lock-add-keywords-face nil '(("[\(\)]+" 1 font-lock-constant-face t)))
    ;`(font-lock-add-keywords nil '(("[\(\)]+" 1 font-lock-warning-face t)))
    ;`(font-lock-add-keywords nil '(("\\([\{\}\\[\]\(\)]+\\)" 1 font-lock-warning-face t)))
@@ -78,8 +81,8 @@
    `(minibuffer-prompt ((t (:foreground, *cyan*))))
    `(mode-line ((t (:background, *mode-line-bg* :foreground, *mode-line-fg*))))
    `(mode-line-inactive ((t (:background, *mode-inactive-bg* :foreground, *mode-inactive-fg*))))
-   `(cursor ((t (:background, *cursor-underscore*))))
-   `(text-cursor ((t (:background, *cursor-underscore*))))
+   `(cursor ((t (:background, *normal*))))
+   ;; `(text-cursor ((t (:background, *cursor-underscore*))))
    `(vertical-border ((t (:foreground, *mode-inactive-bg*)))) ;; between splits
 
    ;; search
