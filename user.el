@@ -234,6 +234,13 @@
 (global-set-key (kbd "M--") 'er/contract-region)
 
 ;;;
+;;; wrap-region
+;;;
+
+;; Similar to vim-surround.  Wrap region with M-', M-", M-(, etc.
+(require 'wrap-region)
+
+;;;
 ;;; lisp-mode
 ;;;
 
