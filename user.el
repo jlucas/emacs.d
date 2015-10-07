@@ -12,6 +12,9 @@
 ;; Pick up any loosies from here
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+;; Accept simply 'y' or 'n'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;;;
 ;;; File formats
 ;;;
