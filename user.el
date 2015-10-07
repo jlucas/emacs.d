@@ -104,9 +104,15 @@
 ;; Balance windows likw "C-w =" in vim
 (global-set-key (kbd "C-c =") 'balance-windows)
 ;; Vertical split
-(global-set-key (kbd "C-c v") 'split-window-right)
+(global-set-key (kbd "C-c v") (lambda ()
+                                (interactive)
+                                (split-window-right)
+                                (windmove-right)))
 ;; Horizontal split
-(global-set-key (kbd "C-c s") 'split-window-below)
+(global-set-key (kbd "C-c s") (lambda ()
+                                (interactive)
+                                (split-window-below)
+                                (windmove-down)))
 
 ;; zt, zb as in vim
 ;; Not really necessary...  C-l is pretty convenient.
