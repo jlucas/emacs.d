@@ -25,6 +25,14 @@
 ;; Use mail-mode for files that contain the string "/mutt"
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+(add-to-list 'auto-mode-alist '(".muttrc" . muttrc-mode))
+(add-to-list 'auto-mode-alist '("/.mutt/rc" . muttrc-mode))
+;; Stay out of my user binds, muttrc-mode...
+(eval-after-load "muttrc-mode"
+  '(progn
+     (define-key muttrc-mode-map (kbd "C-c h") nil) ; my windmove-left bind
+     (define-key muttrc-mode-map (kbd "C-c s") nil) ; my split-window-below bind
+     ))
 
 ;;;
 ;;; Fonts
