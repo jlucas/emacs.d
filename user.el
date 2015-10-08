@@ -171,8 +171,6 @@
 
 (global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
-(global-set-key (kbd "C-l") 'downcase-region) ; instead of downcase-word
-(global-set-key (kbd "C-u") 'upcase-region) ; instead of upcase-word
 
 ;;;
 ;;; End global override binds
