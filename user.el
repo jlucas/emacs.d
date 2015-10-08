@@ -52,9 +52,10 @@
 ;; Stay out of my user binds, muttrc-mode...
 (eval-after-load "muttrc-mode"
   '(progn
-     (define-key muttrc-mode-map (kbd "C-c h") nil) ; my windmove-left bind
-     (define-key muttrc-mode-map (kbd "C-c s") nil) ; my split-window-below bind
-     ))
+     ;; Don't override my windmove-left bind
+     (define-key muttrc-mode-map (kbd "C-c h") nil)
+     ;; Don't override my split-window-below bind
+     (define-key muttrc-mode-map (kbd "C-c s") nil)))
 
 ;;;
 ;;; Fonts
