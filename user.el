@@ -865,8 +865,8 @@
 ;;; Invoke evil
 ;(evil-mode)
 
-;; Always open my emacs config file for the time being
-(find-file (concat (getenv "HOME") "/.emacs.d/user.el"))
+;; Always open open this file for the time being
+(find-file load-file-name)
 
 ;; Start a server (emacs --daemon) if there isn't one running already
 (server-start)
