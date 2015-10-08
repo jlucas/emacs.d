@@ -178,6 +178,10 @@
 ;;; End global override binds
 ;;;
 
+;;;
+;;; X settings
+;;;
+
 ;; Use PRIMARY selection in X
 ;; From: http://emacswiki.org/emacs/CopyAndPaste
 (setq x-select-enable-primary t)
