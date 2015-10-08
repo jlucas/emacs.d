@@ -12,6 +12,13 @@
 ;; Pick up any loosies from here
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+;; Accept simply 'y' or 'n'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Preserve scratch buffer across sessions
+(require 'persistent-scratch)
+(persistent-scratch-setup-default)
+
 ;;;
 ;;; File formats
 ;;;
@@ -22,6 +29,14 @@
 ;; Use mail-mode for files that contain the string "/mutt"
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+(add-to-list 'auto-mode-alist '(".muttrc" . muttrc-mode))
+(add-to-list 'auto-mode-alist '("/.mutt/rc" . muttrc-mode))
+;; Stay out of my user binds, muttrc-mode...
+(eval-after-load "muttrc-mode"
+  '(progn
+     (define-key muttrc-mode-map (kbd "C-c h") nil) ; my windmove-left bind
+     (define-key muttrc-mode-map (kbd "C-c s") nil) ; my split-window-below bind
+     ))
 
 ;;;
 ;;; Fonts
@@ -93,9 +108,15 @@
 ;; Balance windows likw "C-w =" in vim
 (global-set-key (kbd "C-c =") 'balance-windows)
 ;; Vertical split
-(global-set-key (kbd "C-c v") 'split-window-right)
+(global-set-key (kbd "C-c v") (lambda ()
+                                (interactive)
+                                (split-window-right)
+                                (windmove-right)))
 ;; Horizontal split
-(global-set-key (kbd "C-c s") 'split-window-below)
+(global-set-key (kbd "C-c s") (lambda ()
+                                (interactive)
+                                (split-window-below)
+                                (windmove-down)))
 
 ;; zt, zb as in vim
 ;; Not really necessary...  C-l is pretty convenient.
@@ -843,6 +864,9 @@
 
 ;;; Invoke evil
 ;(evil-mode)
+
+;; Always open open this file for the time being
+(find-file load-file-name)
 
 ;; Start a server (emacs --daemon) if there isn't one running already
 (server-start)
