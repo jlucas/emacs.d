@@ -9,8 +9,21 @@
 ;; Influential .emacs files
 ;; https://github.com/alexdantas/.emacs.d/blob/master/config/keybindings.el
 
-;; Pick up any loosies from here
+;;;
+;;; Misc settings
+;;;
+
+;; Pick up any elisp loosies from here
 (add-to-list 'load-path "~/.emacs.d/vendor")
+
+;; No splash screen messages
+(setq inhibit-startup-message t)
+
+;; Silence description of the *scratch* buffer
+(setq initial-scratch-message "")
+
+;; Prevent the cursor from blinking
+;;(blink-cursor-mode 0)
 
 ;; Accept simply 'y' or 'n'
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -18,6 +31,11 @@
 ;; Preserve scratch buffer across sessions
 (require 'persistent-scratch)
 (persistent-scratch-setup-default)
+
+;; Remove UI elements from GUI mode
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
 
 ;;;
 ;;; File formats
@@ -50,28 +68,6 @@
 ;; Resizing fonts
 ;; C-x C-= to increase
 ;; C-x C-- to decrease
-
-;;;
-;;; Misc settings
-;;;
-
-;; No splash screen messages
-(setq inhibit-startup-message t)
-
-;; Silence description of the *scratch* buffer
-(setq initial-scratch-message "")
-
-;; Prevent the cursor from blinking
-(blink-cursor-mode 0)
-
-;; No scroll bars
-(scroll-bar-mode 0)
-
-;; No toolbar
-(tool-bar-mode 0)
-
-;; No menu
-(menu-bar-mode 0)
 
 ;;;
 ;;; Newline setup
