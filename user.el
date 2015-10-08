@@ -74,15 +74,6 @@
 (menu-bar-mode 0)
 
 ;;;
-;;; C-w calls 'backward-kill-word
-;;;
-
-;; Make C-w delete previous word as in the shell, vim, etc.
-(global-set-key (kbd "C-w") 'backward-kill-word)
-;; Make C-x C-k kill region
-(global-set-key (kbd "C-x C-k") 'kill-region)
-
-;;;
 ;;; Newline setup
 ;;;
 
@@ -91,8 +82,9 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;;;
-;;; Global user binds
-;;; "C-c [a-zA-Z]" space is reserved for users
+;;; User-reserved binds
+;;;
+;;; The "C-c [a-zA-Z]" space is reserved for users.
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
@@ -169,20 +161,19 @@
         (t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "C-c %") 'goto-match-paren)
 
-;; File finding
-;; Cribbed from http://stackoverflow.com/questions/3124844
-(global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
-(global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
-(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
-
-;; Use regex searches by default.
-;(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-;(global-set-key (kbd "\C-r") 'isearch-backward-regexp)
-;(global-set-key (kbd "C-M-s") 'isearch-forward)
-;(global-set-key (kbd "C-M-r") 'isearch-backward)
+;;;
+;;; End user-reserved binds
+;;;
 
 ;;;
-;;; End user binds
+;;; Global override binds
+;;;
+
+(global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
+(global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
+
+;;;
+;;; End global override binds
 ;;;
 
 ;; Use PRIMARY selection in X
