@@ -15,6 +15,10 @@
 ;; Accept simply 'y' or 'n'
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Preserve scratch buffer across sessions
+(require 'persistent-scratch)
+(persistent-scratch-setup-default)
+
 ;;;
 ;;; File formats
 ;;;
