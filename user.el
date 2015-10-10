@@ -166,6 +166,9 @@
 ;;; Global override binds
 ;;;
 
+;; C-SPC is my tmux prefix!
+;; You can get M-SPC #'just-one-space functionality with M-\
+(global-set-key (kbd "M-SPC") 'set-mark-command)
 (global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
 
@@ -451,10 +454,6 @@
   (interactive)
   (set-selective-display (if selective-display nil 1)))
 (global-set-key [f1] 'jlucas-toggle-selective-display)
-
-;; C-SPC is my tmux prefix!
-;; You can get M-SPC #'just-one-space functionality with M-\
-(global-set-key (kbd "M-SPC") 'set-mark-command)
 
 ;; Turn on automatic bracket insertion by pairs.  New in Emacs 24.
 (if (>= emacs-major-version 24)
