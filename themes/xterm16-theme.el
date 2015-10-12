@@ -5,7 +5,8 @@
 ;; this is great
 (deftheme xterm16 "A dark color theme based on xterm16.vim")
 
-(let ((*background*         "#1c1c1c")
+(let ((*normal*             "#b0b0b0")
+      (*background*         "#1c1c1c")
       (*comments*           "#8787af")
       (*constant*           "#8700d7")
       (*current-line*       "#151515")
@@ -13,11 +14,10 @@
       (*keywords*           "#0087af")
       (*line-number*        "#afaf87")
       (*method-declaration* "#a8a8a8")
-      (*mode-line-bg*       "#777")
-      (*mode-inactive-bg*   "#555")
       (*mode-line-fg*       "#333333")
+      (*mode-line-bg*       "#777")
       (*mode-inactive-fg*   "#222")
-      (*normal*             "#b0b0b0")
+      (*mode-inactive-bg*   "#555")
       (*number*             "#87afaf")
       (*operators*          "#00af87")
       (*warning*            "#9d7a04")
