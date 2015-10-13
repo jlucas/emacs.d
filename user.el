@@ -186,6 +186,10 @@
 ;; C-\ is normally 'toggle-input-method
 (global-set-key (kbd "C-\\") 'whack-whitespace)
 
+;;; I miss vim's . bind to repeat the last command
+;;; This is "C-x z" by default, but that's a terrible bind
+;(global-set-key (kbd "C-\.") 'repeat)
+
 ;;;
 ;;; End global override binds
 ;;;
@@ -449,10 +453,6 @@
 ;  "No maybe for you. Only AC!"
 ;  (unless (minibufferp (current-buffer))
 ;    (auto-complete-mode 1)))
-
-;;; I miss vim's . bind to repeat the last command
-;;; This is "C-x z" by default, but that's a terrible bind
-;(global-set-key (kbd "C-\.") 'repeat)
 
 ;; Code folding
 ;; Emacs users don't seem to place much stock in cold folding
