@@ -384,12 +384,6 @@
 (global-set-key (kbd "<mouse-4>") 'down-slightly)
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
 
-;; Poor man's surround-vim
-;; http://stackoverflow.com/questions/2951797
-;; Use "M-(" to surround selection with parens
-(global-set-key (kbd "M-\"") 'insert-pair)
-(global-set-key (kbd "M-'") 'insert-pair)
-
 ;;;
 ;;; Paredit
 ;;;
