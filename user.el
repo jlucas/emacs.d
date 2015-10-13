@@ -172,6 +172,20 @@
 (global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
 
+;; Remove whitespace from point to first non-whitespace char
+(defun whack-whitespace (arg)
+  "Delete all white space from point to the next word.  With prefix ARG
+    delete across newlines as well.  The only danger in this is that you
+    don't have to actually be at the end of a word to make it work.  It
+    skips over to the next whitespace and then whacks it all to the next
+    word.  From: http://emacswiki.org/emacs/DeletingWhitespace#toc18"
+  (interactive "P")
+  (let ((regexp (if arg "[ \t\n]+" "[ \t]+")))
+    (re-search-forward regexp nil t)
+    (replace-match "" nil nil)))
+;; C-\ is normally 'toggle-input-method
+(global-set-key (kbd "C-\\") 'whack-whitespace)
+
 ;;;
 ;;; End global override binds
 ;;;
