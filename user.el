@@ -479,23 +479,23 @@
 (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;(setq slime-protocol-version 'ignore)
-;(mapc #'delete-file
-;  (file-wildcards (concat user-emacs-directory "elpa/slime-2*//*.elc")))
-;;(add-to-list 'load-path "~/.emacs.d/elpa/slime-20150221.645/contrib")
+;;;
+;;; slime
+;;;
+
+;; Use the same evil-mode keys to switch in/out of the repl window
+;; (require 'slime-autoloads)
+;; (add-hook 'slime-load-hook 'em-slime-load)
+;; (slime-setup '(slime-fancy))
+
+;; (setq slime-protocol-version 'ignore)
+;; (mapc #'delete-file
+;;  (file-wildcards (concat user-emacs-directory "elpa/slime-2*//*.elc")))
+;; (add-to-list 'load-path "~/.emacs.d/elpa/slime-20150221.645/contrib")
 (setq slime-contribs '(slime-fancy))
 (require 'slime)
 (require 'slime-autoloads)
 (slime-setup '(slime-repl))
-
-;;;
-;;; SLIME
-;;;
-
-;; Use the same evil-mode keys to switch in/out of the repl window
-;(require 'slime-autoloads)
-;(add-hook 'slime-load-hook 'em-slime-load)
-;(slime-setup '(slime-fancy))
 
 ;; When using evil-mode use my window navigation bindinds
 (if (boundp 'evil-state)
