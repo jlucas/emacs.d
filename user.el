@@ -166,6 +166,9 @@
 ;;; Global override binds
 ;;;
 
+;; C-SPC is my tmux prefix!
+;; You can get M-SPC #'just-one-space functionality with M-\
+(global-set-key (kbd "M-SPC") 'set-mark-command)
 (global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
 
@@ -182,6 +185,20 @@
   (scroll-up 1)
   (next-line 1))
 (global-set-key "\M-n" 'move-down-line)
+
+;; Remove whitespace from point to first non-whitespace char
+(defun whack-whitespace (arg)
+  "Delete all white space from point to the next word.  With prefix ARG
+    delete across newlines as well.  The only danger in this is that you
+    don't have to actually be at the end of a word to make it work.  It
+    skips over to the next whitespace and then whacks it all to the next
+    word.  From: http://emacswiki.org/emacs/DeletingWhitespace#toc18"
+  (interactive "P")
+  (let ((regexp (if arg "[ \t\n]+" "[ \t]+")))
+    (re-search-forward regexp nil t)
+    (replace-match "" nil nil)))
+;; C-\ is normally 'toggle-input-method
+(global-set-key (kbd "C-\\") 'whack-whitespace)
 
 ;;;
 ;;; End global override binds
@@ -395,12 +412,6 @@
 (global-set-key (kbd "<mouse-4>") 'down-slightly)
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
 
-;; Poor man's surround-vim
-;; http://stackoverflow.com/questions/2951797
-;; Use "M-(" to surround selection with parens
-(global-set-key (kbd "M-\"") 'insert-pair)
-(global-set-key (kbd "M-'") 'insert-pair)
-
 ;;;
 ;;; Paredit
 ;;;
@@ -466,10 +477,6 @@
   (set-selective-display (if selective-display nil 1)))
 (global-set-key [f1] 'jlucas-toggle-selective-display)
 
-;; C-SPC is my tmux prefix!
-;; You can get M-SPC #'just-one-space functionality with M-\
-(global-set-key (kbd "M-SPC") 'set-mark-command)
-
 ;; Turn on automatic bracket insertion by pairs.  New in Emacs 24.
 (if (>= emacs-major-version 24)
     (electric-pair-mode 1))
@@ -486,23 +493,23 @@
 (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;(setq slime-protocol-version 'ignore)
-;(mapc #'delete-file
-;  (file-wildcards (concat user-emacs-directory "elpa/slime-2*//*.elc")))
-;;(add-to-list 'load-path "~/.emacs.d/elpa/slime-20150221.645/contrib")
+;;;
+;;; slime
+;;;
+
+;; Use the same evil-mode keys to switch in/out of the repl window
+;; (require 'slime-autoloads)
+;; (add-hook 'slime-load-hook 'em-slime-load)
+;; (slime-setup '(slime-fancy))
+
+;; (setq slime-protocol-version 'ignore)
+;; (mapc #'delete-file
+;;  (file-wildcards (concat user-emacs-directory "elpa/slime-2*//*.elc")))
+;; (add-to-list 'load-path "~/.emacs.d/elpa/slime-20150221.645/contrib")
 (setq slime-contribs '(slime-fancy))
 (require 'slime)
 (require 'slime-autoloads)
 (slime-setup '(slime-repl))
-
-;;;
-;;; SLIME
-;;;
-
-;; Use the same evil-mode keys to switch in/out of the repl window
-;(require 'slime-autoloads)
-;(add-hook 'slime-load-hook 'em-slime-load)
-;(slime-setup '(slime-fancy))
 
 ;; When using evil-mode use my window navigation bindinds
 (if (boundp 'evil-state)
@@ -858,17 +865,22 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
-  "n" 'linum-mode
-  "z" 'delete-other-windows
-  "RET" 'dired
+  "RET" (lambda ()
+          (interactive)
+          (dired (file-name-directory (buffer-file-name))))
   "e" 'find-file
+  "f" 'fill-paragraph
   "w" 'save-buffer
   "c" 'delete-window
   "s" 'evil-window-split
   "v" 'evil-window-vsplit
   "b" 'switch-to-buffer
+  "B" 'ibuffer
+  "n" 'linum-mode
   "q" 'save-buffers-kill-terminal
   "Q" 'kill-emacs
+  "u" 'undo-tree-visualize
+  "z" 'delete-other-windows
   ")" 'paredit-forward-slurp-sexp
   "(" 'paredit-backward-slurp-sexp
   "}" 'paredit-forward-barf-sexp
