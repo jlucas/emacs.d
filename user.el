@@ -698,7 +698,8 @@
                   "DELEGATED(g)"
                   "|"
                   "DONE(d)"
-                  "CANCELLED(c)")))
+                  "CLOSED(c)"
+                  "CANCELLED(a)")))
 (setq org-tags-exclude-from-inheritance '("prj")
       org-stuck-projects '("+prj/-MAYBE-DONE"
                            ("TODO" "TASK") ()))
