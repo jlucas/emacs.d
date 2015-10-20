@@ -169,6 +169,20 @@
 (global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
 
+(defun move-up-line ()
+  "Move display up one line"
+  (interactive)
+  (scroll-down 1)
+  (previous-line 1))
+(global-set-key "\M-p" 'move-up-line)
+
+(defun move-down-line ()
+  "Move display down one line"
+  (interactive)
+  (scroll-up 1)
+  (next-line 1))
+(global-set-key "\M-n" 'move-down-line)
+
 ;;;
 ;;; End global override binds
 ;;;
