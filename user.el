@@ -47,6 +47,11 @@
 ;; Use mail-mode for files that contain the string "/mutt"
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+;; This was always getting set to 'indent-relative for some reason...
+(add-hook 'mail-mode-hook (lambda ()
+                            (setq indent-line-function 'insert-tab))))
+
+;; Use muttrc-mode for mutt configs
 (add-to-list 'auto-mode-alist '(".muttrc" . muttrc-mode))
 (add-to-list 'auto-mode-alist '("/.mutt/rc" . muttrc-mode))
 ;; Stay out of my user binds, muttrc-mode...
@@ -547,12 +552,15 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 
 ;;; Set up tabbing behavior
-;; Make indentation commands use space only (never tab character)
-(setq-default indent-tabs-mode nil) ; Emacs 23, 24 default to t
-;; Set default tab char's display width to four spaces
-(setq-default tab-width 4) ; Emacs 23, 24 default to 8
-;; http://stackoverflow.com/questions/69934
+;; ;; Make indentation commands use space only (never tab character)
+;; (setq-default indent-tabs-mode nil) ; Emacs 23, 24 default to t
+;; ;; Set default tab char's display width to four spaces
+;; (setq-default tab-width 4) ; Emacs 23, 24 default to 8
+;; ;; http://stackoverflow.com/questions/69934
 (setq tab-stop-list (number-sequence 4 200 4))
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
