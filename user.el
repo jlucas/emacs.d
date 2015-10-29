@@ -49,7 +49,7 @@
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 ;; This was always getting set to 'indent-relative for some reason...
 (add-hook 'mail-mode-hook (lambda ()
-                            (setq indent-line-function 'insert-tab))))
+                            (setq indent-line-function 'insert-tab)))
 
 ;; Use muttrc-mode for mutt configs
 (add-to-list 'auto-mode-alist '(".muttrc" . muttrc-mode))
