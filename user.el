@@ -464,12 +464,12 @@
 ;	     (local-set-key (kbd "M-(") 'paredit-backward-slurp-sexp)
 ;	     (local-set-key (kbd "C-c w") 'paredit-wrap-round)))
 
-;;; auto-complete
-(require 'auto-complete)
-(ac-config-default)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
-;; http://superuser.com/questions/208488/how-do-i-re-open-a-file-in-emacs
-(global-auto-complete-mode t)
+;; ;;; auto-complete
+;; (require 'auto-complete)
+;; (ac-config-default)
+;; (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+;; ;; http://superuser.com/questions/208488/how-do-i-re-open-a-file-in-emacs
+;; (global-auto-complete-mode t)
 
 ;; Opt out of auto-complete mode in minibuffer
 ;(defun auto-complete-mode-maybe ()
