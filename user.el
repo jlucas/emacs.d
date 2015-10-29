@@ -47,6 +47,11 @@
 ;; Use mail-mode for files that contain the string "/mutt"
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+;; This was always getting set to 'indent-relative for some reason...
+(add-hook 'mail-mode-hook (lambda ()
+                            (setq indent-line-function 'insert-tab))))
+
+;; Use muttrc-mode for mutt configs
 (add-to-list 'auto-mode-alist '(".muttrc" . muttrc-mode))
 (add-to-list 'auto-mode-alist '("/.mutt/rc" . muttrc-mode))
 ;; Stay out of my user binds, muttrc-mode...
@@ -172,6 +177,20 @@
 (global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
 
+(defun move-up-line ()
+  "Move display up one line"
+  (interactive)
+  (scroll-down 1)
+  (previous-line 1))
+(global-set-key "\M-p" 'move-up-line)
+
+(defun move-down-line ()
+  "Move display down one line"
+  (interactive)
+  (scroll-up 1)
+  (next-line 1))
+(global-set-key "\M-n" 'move-down-line)
+
 ;; Remove whitespace from point to first non-whitespace char
 (defun whack-whitespace (arg)
   "Delete all white space from point to the next word.  With prefix ARG
@@ -193,6 +212,14 @@
 ;;;
 ;;; End global override binds
 ;;;
+
+;;;
+;;; bracketed-paste-mode
+;;;
+
+;; What is it?  https://cirw.in/blog/bracketed-paste
+(require 'bracketed-paste)
+(bracketed-paste-enable)
 
 ;;;
 ;;; X settings
@@ -441,12 +468,12 @@
 ;	     (local-set-key (kbd "M-(") 'paredit-backward-slurp-sexp)
 ;	     (local-set-key (kbd "C-c w") 'paredit-wrap-round)))
 
-;;; auto-complete
-(require 'auto-complete)
-(ac-config-default)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
-;; http://superuser.com/questions/208488/how-do-i-re-open-a-file-in-emacs
-(global-auto-complete-mode t)
+;; ;;; auto-complete
+;; (require 'auto-complete)
+;; (ac-config-default)
+;; (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+;; ;; http://superuser.com/questions/208488/how-do-i-re-open-a-file-in-emacs
+;; (global-auto-complete-mode t)
 
 ;; Opt out of auto-complete mode in minibuffer
 ;(defun auto-complete-mode-maybe ()
@@ -533,12 +560,15 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 
 ;;; Set up tabbing behavior
-;; Make indentation commands use space only (never tab character)
-(setq-default indent-tabs-mode nil) ; Emacs 23, 24 default to t
-;; Set default tab char's display width to four spaces
-(setq-default tab-width 4) ; Emacs 23, 24 default to 8
-;; http://stackoverflow.com/questions/69934
+;; ;; Make indentation commands use space only (never tab character)
+;; (setq-default indent-tabs-mode nil) ; Emacs 23, 24 default to t
+;; ;; Set default tab char's display width to four spaces
+;; (setq-default tab-width 4) ; Emacs 23, 24 default to 8
+;; ;; http://stackoverflow.com/questions/69934
 (setq tab-stop-list (number-sequence 4 200 4))
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
@@ -691,7 +721,8 @@
                   "DELEGATED(g)"
                   "|"
                   "DONE(d)"
-                  "CANCELLED(c)")))
+                  "CLOSED(c)"
+                  "CANCELLED(a)")))
 (setq org-tags-exclude-from-inheritance '("prj")
       org-stuck-projects '("+prj/-MAYBE-DONE"
                            ("TODO" "TASK") ()))
@@ -736,140 +767,140 @@
                           'vertical-border
                           (make-glyph-code ?\ )))
 
-;;;;
-;;;; evil-mode
-;;;;
-;;;; This must come last as it relies on seeing what other modes are in
-;;;; your setup in order to apply itself correctly
-;;;;
+:;; ;;;;
+;; ;;;; evil-mode
+;; ;;;;
+;; ;;;; This must come last as it relies on seeing what other modes are in
+;; ;;;; your setup in order to apply itself correctly
+;; ;;;;
 
-;;; Evil mode plugins
-;evil-commentary    20150628.... unsigned              Comment stuff out. A port of vim-commentary.
-;evil-jumper        20150628.... unsigned              Jump like vimmers do!
-;evil-leader        20140606.543 unsigned              let there be <leader>
-;evil-numbers       20140606.551 unsigned              increment/decrement numbers like in vim
-;evil-org           20150513.... unsigned              evil keybindings for org-mode
-;evil-surround      20150605.... unsigned              emulate surround.vim from Vim
-;evil-terminal-cursor-changer  20150710.... unsigned              Change cursor shape by evil state on terminal.
-;evil-visual-mar... 20150202.... unsigned              Display evil marks on buffer
-;evil-visualstar    20150514.... unsigned              Starts a * or # search from the visual selection
+;; ;;; Evil mode plugins
+;; ;evil-commentary    20150628.... unsigned              Comment stuff out. A port of vim-commentary.
+;; ;evil-jumper        20150628.... unsigned              Jump like vimmers do!
+;; ;evil-leader        20140606.543 unsigned              let there be <leader>
+;; ;evil-numbers       20140606.551 unsigned              increment/decrement numbers like in vim
+;; ;evil-org           20150513.... unsigned              evil keybindings for org-mode
+;; ;evil-surround      20150605.... unsigned              emulate surround.vim from Vim
+;; ;evil-terminal-cursor-changer  20150710.... unsigned              Change cursor shape by evil state on terminal.
+;; ;evil-visual-mar... 20150202.... unsigned              Display evil marks on buffer
+;; ;evil-visualstar    20150514.... unsigned              Starts a * or # search from the visual selection
 
-(setq evil-toggle-key "C-M-z")
-(require 'evil)
+;; (setq evil-toggle-key "C-M-z")
+;; (require 'evil)
 
-;; evil-jumper
-;; https://github.com/bling/evil-jumper
-(require 'evil-jumper)
-(global-evil-jumper-mode)
+;; ;; evil-jumper
+;; ;; https://github.com/bling/evil-jumper
+;; (require 'evil-jumper)
+;; (global-evil-jumper-mode)
 
-;; evil-terminal-cursor-changer
-;; https://github.com/7696122/evil-terminal-cursor-changer
-(unless (display-graphic-p)
-  (require 'evil-terminal-cursor-changer))
-;; If want change cursor shape type, add below line. This is evil's setting.
-;; (setq evil-visual-state-cursor 'box)
-;; (setq evil-insert-state-cursor 'bar)
-;; (setq evil-emacs-state-cursor 'hbar)
+;; ;; evil-terminal-cursor-changer
+;; ;; https://github.com/7696122/evil-terminal-cursor-changer
+;; (unless (display-graphic-p)
+;;   (require 'evil-terminal-cursor-changer))
+;; ;; If want change cursor shape type, add below line. This is evil's setting.
+;; ;; (setq evil-visual-state-cursor 'box)
+;; ;; (setq evil-insert-state-cursor 'bar)
+;; ;; (setq evil-emacs-state-cursor 'hbar)
 
-;; evil-visual-mark-mode
-;; https://github.com/roman/evil-visual-mark-mode
-(require 'evil-visual-mark-mode)
+;; ;; evil-visual-mark-mode
+;; ;; https://github.com/roman/evil-visual-mark-mode
+;; (require 'evil-visual-mark-mode)
 
-;; evil-numbers
-;; https://github.com/cofi/evil-numbers
-(require 'evil-numbers)
-(define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
-(define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
+;; ;; evil-numbers
+;; ;; https://github.com/cofi/evil-numbers
+;; (require 'evil-numbers)
+;; (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+;; (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
 
-;; Make <C-]> do The Right Thing
-;; https://emacs.stackexchange.com/questions/608/evil-map-keybindings-the-vim-way
-(define-key evil-normal-state-map (kbd "C-]") (kbd "\\ M-."))
+;; ;; Make <C-]> do The Right Thing
+;; ;; https://emacs.stackexchange.com/questions/608/evil-map-keybindings-the-vim-way
+;; (define-key evil-normal-state-map (kbd "C-]") (kbd "\\ M-."))
 
-(defun my-esc (prompt)
-  "Functionality for escaping generally.  Includes exiting Evil insert
-   state and C-g binding. "
-  (cond
-   ;; If we're in one of the Evil states that defines [escape] key,
-   ;; return [escape] so as Key Lookup will use it.
-   ((or
-     (evil-insert-state-p)
-     (evil-normal-state-p)
-     (evil-replace-state-p)
-     (evil-visual-state-p))
-    [escape])
-   ;; This is the best way I could infer for now to have C-c work
-   ;; during evil-read-key.  Note: As long as I return [escape] in
-   ;; normal-state, I don't need this.  ((eq
-   ;; overriding-terminal-local-map evil-read-key-map) (keyboard-quit)
-   ;; (kbd ""))
-   ;(t
-   ; (kbd "C-g"))
-   ))
-(define-key key-translation-map (kbd "C-c") 'my-esc)
-;;;
-;;; Works around the fact that Evil uses read-event directly when in
-;;; operator state, which doesn't use the key-translation-map.
-(define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
-;;;
-;;; Not sure what behavior this changes, but might as well set it,
-;;; seeing the Elisp manual's documentation of it.
-;;(set-quit-char "C-c") ; recommended by the article, but doesn't work
-;;(set-quit-char ?\a) ; works, but isn't useful
-;;;
-;;; Set up some window switching binds
-(define-key evil-normal-state-map (kbd "M-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "M-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "M-k") 'evil-window-up)
-(define-key evil-normal-state-map (kbd "M-l") 'evil-window-right)
+;; (defun my-esc (prompt)
+;;   "Functionality for escaping generally.  Includes exiting Evil insert
+;;    state and C-g binding. "
+;;   (cond
+;;    ;; If we're in one of the Evil states that defines [escape] key,
+;;    ;; return [escape] so as Key Lookup will use it.
+;;    ((or
+;;      (evil-insert-state-p)
+;;      (evil-normal-state-p)
+;;      (evil-replace-state-p)
+;;      (evil-visual-state-p))
+;;     [escape])
+;;    ;; This is the best way I could infer for now to have C-c work
+;;    ;; during evil-read-key.  Note: As long as I return [escape] in
+;;    ;; normal-state, I don't need this.  ((eq
+;;    ;; overriding-terminal-local-map evil-read-key-map) (keyboard-quit)
+;;    ;; (kbd ""))
+;;    ;(t
+;;    ; (kbd "C-g"))
+;;    ))
+;; (define-key key-translation-map (kbd "C-c") 'my-esc)
+;; ;;;
+;; ;;; Works around the fact that Evil uses read-event directly when in
+;; ;;; operator state, which doesn't use the key-translation-map.
+;; (define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
+;; ;;;
+;; ;;; Not sure what behavior this changes, but might as well set it,
+;; ;;; seeing the Elisp manual's documentation of it.
+;; ;;(set-quit-char "C-c") ; recommended by the article, but doesn't work
+;; ;;(set-quit-char ?\a) ; works, but isn't useful
+;; ;;;
+;; ;;; Set up some window switching binds
+;; (define-key evil-normal-state-map (kbd "M-h") 'evil-window-left)
+;; (define-key evil-normal-state-map (kbd "M-j") 'evil-window-down)
+;; (define-key evil-normal-state-map (kbd "M-k") 'evil-window-up)
+;; (define-key evil-normal-state-map (kbd "M-l") 'evil-window-right)
 
-;; expand-region binds matching vim-expand-region
-(define-key evil-visual-state-map (kbd "+") 'er/expand-region)
-(define-key evil-visual-state-map (kbd "-") 'er/contract-region)
+;; ;; expand-region binds matching vim-expand-region
+;; (define-key evil-visual-state-map (kbd "+") 'er/expand-region)
+;; (define-key evil-visual-state-map (kbd "-") 'er/contract-region)
 
-;; Move down a split and maximize it
-(define-key evil-normal-state-map (kbd "C-j")
-  (lambda ()
-    (interactive)
-    (evil-window-down 1)
-    (evil-window-set-height (frame-height))))
+;; ;; Move down a split and maximize it
+;; (define-key evil-normal-state-map (kbd "C-j")
+;;   (lambda ()
+;;     (interactive)
+;;     (evil-window-down 1)
+;;     (evil-window-set-height (frame-height))))
 
-;; Move up a split and maximize it
-(define-key evil-normal-state-map (kbd "C-k")
-  (lambda ()
-    (interactive)
-    (evil-window-up 1)
-    (evil-window-set-height (frame-height))))
+;; ;; Move up a split and maximize it
+;; (define-key evil-normal-state-map (kbd "C-k")
+;;   (lambda ()
+;;     (interactive)
+;;     (evil-window-up 1)
+;;     (evil-window-set-height (frame-height))))
 
-(require 'evil-commentary)
-(evil-commentary-mode)
+;; (require 'evil-commentary)
+;; (evil-commentary-mode)
 
-(require 'evil-surround)
-(global-evil-surround-mode 1)
+;; (require 'evil-surround)
+;; (global-evil-surround-mode 1)
 
-(require 'evil-leader)
-(global-evil-leader-mode)
-(evil-leader/set-leader "<SPC>")
-(evil-leader/set-key
-  "RET" (lambda ()
-          (interactive)
-          (dired (file-name-directory (buffer-file-name))))
-  "e" 'find-file
-  "f" 'fill-paragraph
-  "w" 'save-buffer
-  "c" 'delete-window
-  "s" 'evil-window-split
-  "v" 'evil-window-vsplit
-  "b" 'switch-to-buffer
-  "B" 'ibuffer
-  "n" 'linum-mode
-  "q" 'save-buffers-kill-terminal
-  "Q" 'kill-emacs
-  "u" 'undo-tree-visualize
-  "z" 'delete-other-windows
-  ")" 'paredit-forward-slurp-sexp
-  "(" 'paredit-backward-slurp-sexp
-  "}" 'paredit-forward-barf-sexp
-  "{" 'paredit-backward-barf-sexp)
+;; (require 'evil-leader)
+;; (global-evil-leader-mode)
+;; (evil-leader/set-leader "<SPC>")
+;; (evil-leader/set-key
+;;   "RET" (lambda ()
+;;           (interactive)
+;;           (dired (file-name-directory (buffer-file-name))))
+;;   "e" 'find-file
+;;   "f" 'fill-paragraph
+;;   "w" 'save-buffer
+;;   "c" 'delete-window
+;;   "s" 'evil-window-split
+;;   "v" 'evil-window-vsplit
+;;   "b" 'switch-to-buffer
+;;   "B" 'ibuffer
+;;   "n" 'linum-mode
+;;   "q" 'save-buffers-kill-terminal
+;;   "Q" 'kill-emacs
+;;   "u" 'undo-tree-visualize
+;;   "z" 'delete-other-windows
+;;   ")" 'paredit-forward-slurp-sexp
+;;   "(" 'paredit-backward-slurp-sexp
+;;   "}" 'paredit-forward-barf-sexp
+;;  "{" 'paredit-backward-barf-sexp)
 
 ;;; Invoke evil
 ;(evil-mode)
