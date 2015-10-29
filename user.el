@@ -210,6 +210,14 @@
 ;;;
 
 ;;;
+;;; bracketed-paste-mode
+;;;
+
+;; What is it?  https://cirw.in/blog/bracketed-paste
+(require 'bracketed-paste)
+(bracketed-paste-enable)
+
+;;;
 ;;; X settings
 ;;;
 
