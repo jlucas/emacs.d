@@ -81,7 +81,7 @@
 
 ;; Always try to indent on a new line
 ;; XXX: Is this why pasting into terminal freaks out sometimes?
-(global-set-key (kbd "RET") 'newline-and-indent)
+;; (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;;;
 ;;; User-reserved binds
