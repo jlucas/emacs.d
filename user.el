@@ -95,6 +95,11 @@
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
+
+(global-set-key (kbd "C-c m") 'hs-toggle-hiding)
+(global-set-key (kbd "C-c z") 'hs-hide-all)
+(global-set-key (kbd "C-c Z") 'hs-show-all)
+
 ;; Toggle line numbers on 'C-c l' (linum mode)
 (global-set-key (kbd "C-c n") 'linum-mode)
 
