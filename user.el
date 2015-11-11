@@ -86,7 +86,6 @@
 ;; NOTE: Confirmed.  If you have RET bound to 'newline-and-indent and
 ;; 'electric-indent-mode active, you will get double indentation and
 ;; it's horrible
-;;
 ;; (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;;;
@@ -182,6 +181,7 @@
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 (global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
+(global-set-key (kbd "M-%") 'replace-regexp) ; do i ever not want this?
 
 (defun move-up-line ()
   "Move display up one line"

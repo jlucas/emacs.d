@@ -28,7 +28,8 @@
       (*lightgreenblue*     "#87ffaf")
       (*paren*              "#00af87")
       (*paren-match*        "#87ffaf")
-      (*paren-mismatch*     "#ff0000"))
+      (*paren-mismatch*     "#ff0000")
+      (*bright-orange*      "#ff8700"))
 
   (custom-theme-set-faces
    'xterm16
@@ -118,6 +119,9 @@
   ; `(dired-perm-write ((t (:foreground ,base :underline t))))
   ; `(dired-warning ((t (:foreground ,war))))
 
+  ;; org-mode
+  `(org-todo ((t (:foreground ,*bright-orange* :weight bold))))
+    
   ;; eshell
   ;`(eshell-ls-archive-face ((t (:bold t :foreground "medium purple" :weight bold))))
   ;`(eshell-ls-backup-face ((t (:foreground "dim gray"))))
