@@ -24,7 +24,8 @@
       (*regexp*             "#9d7")
       (*string*             "#87afaf")
       (*cyan*               "#00afaf")
-      (*visual-selection*   "#444")
+      (*greenblue*          "#005f5f")
+      (*lightgreenblue*     "#87ffaf")
       (*paren*              "#00af87")
       (*paren-match*        "#87ffaf")
       (*paren-mismatch*     "#ff0000"))
@@ -43,7 +44,7 @@
    `(highlight-face ((t (:background ,*current-line*))))
    `(hl-line ((t (:background ,*current-line* :underline t))))
    `(info-xref ((t (:foreground ,*keywords* :underline t))))
-   `(region ((t (:background ,*visual-selection*))))
+   `(region ((t (:background ,*greenblue* :foreground ,*lightgreenblue*))))
    `(underline ((nil (:underline t))))
    `(paren ((t (:foreground ,*paren*))))
 
@@ -86,9 +87,9 @@
    `(vertical-border ((t (:foreground, *mode-inactive-bg* :background, *mode-inactive-bg*)))) ;; between splits
 
    ;; search
-   `(isearch ((t (:background, *regexp* :foreground, *visual-selection*))))
+   `(isearch ((t (:background, *regexp* :foreground, *lightgreenblue*))))
    `(isearch-fail ((t (:background, *warning*))))
-   `(lazy-highlight ((t (:background, *operators* :foreground, *visual-selection*))))
+   `(lazy-highlight ((t (:background, *operators* :foreground, *lightgreenblue*))))
 
    ;; rainbow-delimiters
   `(rainbow-delimiters-depth-1-face ((t (:foreground ,*paren*))))
