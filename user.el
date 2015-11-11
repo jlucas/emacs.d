@@ -531,10 +531,15 @@
 ;; (mapc #'delete-file
 ;;  (file-wildcards (concat user-emacs-directory "elpa/slime-2*//*.elc")))
 ;; (add-to-list 'load-path "~/.emacs.d/elpa/slime-20150221.645/contrib")
-(setq slime-contribs '(slime-fancy))
+;;(setq slime-contribs '(slime-repl))
+;;(setq slime-contribs '(slime-fancy))
+
+;; Replace "sbcl" with the path to your implementation
+(setq inferior-lisp-program "sbcl")
 (require 'slime)
 (require 'slime-autoloads)
-(slime-setup '(slime-repl))
+(slime-setup '(slime-fancy))
+(setq swank:*globally-redirect-io* t)
 
 ;; When using evil-mode use my window navigation bindinds
 (if (boundp 'evil-state)
@@ -545,10 +550,7 @@
       (define-key slime-repl-mode-map (kbd "M-l") 'evil-window-right)))
 
 ;(load (expand-file-name "/nfs/home/jlucas/ash-home/quicklisp/slime-helper.el"))
-;;; Replace "sbcl" with the path to your implementation
-(setq inferior-lisp-program "sbcl")
-(setq slime-contribs '(slime-repl))
-;(setq SWANK:*GLOBALLY-REDIRECT-IO* t)
+
 
 ;(setq inferior-lisp-program "sbcl")
 ;(require 'slime-autoloads)
