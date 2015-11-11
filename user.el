@@ -420,7 +420,8 @@
 ;;; https://github.com/syohex/emacs-zoom-window
 (require 'zoom-window)
 (global-set-key (kbd "C-x C-z") 'zoom-window-zoom)
-(setq zoom-window-mode-line-color "gray")
+;; List colors with M-x list-colors-display
+(setq zoom-window-mode-line-color "color-27")
 
 ;;; change-inner
 ;;; https://github.com/magnars/change-inner.el
