@@ -80,8 +80,14 @@
 ;;;
 
 ;; Always try to indent on a new line
+;;
 ;; XXX: Is this why pasting into terminal freaks out sometimes?
-(global-set-key (kbd "RET") 'newline-and-indent)
+;;
+;; NOTE: Confirmed.  If you have RET bound to 'newline-and-indent and
+;; 'electric-indent-mode active, you will get double indentation and
+;; it's horrible
+;;
+;; (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;;;
 ;;; User-reserved binds
@@ -398,7 +404,7 @@
 ;(define-key eshell-mode-map (kbd "C-M-f") 'find-file-at-point)
 
 ;;; Automatically indent on newlines
-(define-key global-map (kbd "RET") 'newline-and-indent)
+;; (define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;;; Preserve history across sessions
 ;;; http://stackoverflow.com/questions/1229142
