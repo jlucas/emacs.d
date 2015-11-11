@@ -781,7 +781,7 @@
                           'vertical-border
                           (make-glyph-code ?\ )))
 
-:;; ;;;;
+;; ;;;;
 ;; ;;;; evil-mode
 ;; ;;;;
 ;; ;;;; This must come last as it relies on seeing what other modes are in
