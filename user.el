@@ -181,6 +181,23 @@
 ;;; Global override binds
 ;;;
 
+(defun replace-characters-in-line (str)
+  (interactive)
+  (move-beginning-of-line nil)
+  (set-mark-command nil)
+  (move-end-of-line nil)
+  (setq deactivate-mark nil)
+  (kill-ring-save (region-beginning) (region-end))
+  (newline)
+  (insert-char (string-to-char str) (length (car kill-ring))))
+
+;; Markdown h1
+(global-set-key (kbd "C-c 1")
+                (lambda () (interactive) (replace-characters-in-line "=")))
+;; Markdown h2
+(global-set-key (kbd "C-c 2")
+                (lambda () (interactive) (replace-characters-in-line "-")))
+
 ;; C-SPC is my tmux prefix!
 ;; You can get M-SPC #'just-one-space functionality with M-\
 (global-set-key (kbd "M-SPC") 'set-mark-command)
