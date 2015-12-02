@@ -294,6 +294,15 @@
  '(ace-jump-mode-enable-mark-sync))
 (define-key global-map (kbd "C-x C-n") 'ace-jump-mode-pop-mark)
 
+;;;
+;;; multiple-cursors
+;;;
+
+(require 'multiple-cursors)
+(global-set-key (kbd "C-c I") 'mc/mark-next-like-this)
+;; NOTE: In case of contiguious lines you can probably get away with
+;; "C-x SPC", select a block, then "C-x r t" and type a prefix.
+
 ;; window-margin
 ;; https://github.com/aculich/window-margin.el.git
 (add-to-list 'load-path "~/.emacs.d/vendor/window-margin")
