@@ -841,6 +841,20 @@
 
 (setq elmo-imap4-use-modified-utf7 t)
 
+(setq wl-message-ignored-field-list '(".*Received:" ".*X-.*:"
+                                      ".*Delivered-To:.*"
+                                      ".*Message-ID:"
+                                      ".*MIME-Version:"
+                                      ".*Content-Disposition:"
+                                      ".*X-BeenThere:"
+                                      ".*X-Mailman-Version:"
+                                      ".*Precedence:"
+                                      ".*Content-Type:"
+                                      ".*Content-Transfer-Encoding:"
+                                      ".*Sender:"
+                                      ".*Errors-To:"
+                                      ))
+
 (autoload 'wl-user-agent-compose "wl-draft" nil t)
 (if (boundp 'mail-user-agent)
     (setq mail-user-agent 'wl-user-agent))
