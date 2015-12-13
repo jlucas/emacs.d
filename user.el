@@ -1031,7 +1031,7 @@
 ;;  "{" 'paredit-backward-barf-sexp)
 
 ;;; Invoke evil
-;(evil-mode)
+;; (evil-mode)
 
 ;; Always open open this file for the time being
 (find-file load-file-name)
