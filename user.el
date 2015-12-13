@@ -428,6 +428,15 @@
     (message "Opening %s done" file)))
 (define-key dired-mode-map (kbd "C-c C-c") 'play-audio-jack)
 
+;; FIXME: load-theme doesn't seem to like the theme name as a string
+(defun my-dired-load-theme ()
+  "In dired mode, load color theme at point"
+  (interactive)
+  (let* ((file (file-name-nondirectory (dired-get-filename nil t)))
+        (theme-name (car (split-string file "-theme.el"))))
+    (message "Applying theme %s..." file)
+    (load-theme theme-name)))
+
 ;;;
 ;;; ibuffer
 ;;;
