@@ -242,6 +242,21 @@
 ;;;
 
 ;;;
+;;; python.el
+;;;
+
+;; In python.el C-c C-c is bound to PYTHON-SHELL-SEND-BUFFER but this
+;; is very rarely what I want.
+(eval-after-load 'python
+  '(define-key python-mode-map
+     (kbd "C-c C-c")
+     '(lambda ()
+        (interactive)
+        (unless mark-active
+            (mark-paragraph))
+        (python-shell-send-region (region-beginning) (region-end)))))
+
+;;;
 ;;; bracketed-paste-mode
 ;;;
 
