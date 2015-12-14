@@ -248,6 +248,21 @@
 ;;;
 
 ;;;
+;;; python.el
+;;;
+
+;; In python.el C-c C-c is bound to PYTHON-SHELL-SEND-BUFFER but this
+;; is very rarely what I want.
+(eval-after-load 'python
+  '(define-key python-mode-map
+     (kbd "C-c C-c")
+     '(lambda ()
+        (interactive)
+        (unless mark-active
+            (mark-paragraph))
+        (python-shell-send-region (region-beginning) (region-end)))))
+
+;;;
 ;;; bracketed-paste-mode
 ;;;
 
@@ -385,6 +400,11 @@
        rear-nonsticky
        (slime-repl-prompt read-only font-lock-face intangible)))))
 
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(eval-after-load "auto-complete" '(add-to-list 'ac-modes 'slime-repl-mode))
+
 ;;;
 ;;; emacs-lisp-mode
 ;;;
@@ -413,6 +433,15 @@
     (call-process "/usr/bin/mplayer" nil 0 nil "-ao" "jack" file)
     (message "Opening %s done" file)))
 (define-key dired-mode-map (kbd "C-c C-c") 'play-audio-jack)
+
+;; FIXME: load-theme doesn't seem to like the theme name as a string
+(defun my-dired-load-theme ()
+  "In dired mode, load color theme at point"
+  (interactive)
+  (let* ((file (file-name-nondirectory (dired-get-filename nil t)))
+        (theme-name (car (split-string file "-theme.el"))))
+    (message "Applying theme %s..." file)
+    (load-theme theme-name)))
 
 ;;;
 ;;; ibuffer
@@ -1008,7 +1037,7 @@
 ;;  "{" 'paredit-backward-barf-sexp)
 
 ;;; Invoke evil
-;(evil-mode)
+;; (evil-mode)
 
 ;; Always open open this file for the time being
 (find-file load-file-name)
