@@ -205,6 +205,12 @@
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
 (global-set-key (kbd "M-%") 'replace-regexp) ; do i ever not want this?
 
+(defun backward-kill-line (arg)
+  "Kill ARG lines backward."
+  (interactive "p")
+  (kill-line (- 1 arg)))
+(global-set-key (kbd "C-c w") 'backward-kill-line) ; C-u in readline
+
 (defun move-up-line ()
   "Move display up one line"
   (interactive)
