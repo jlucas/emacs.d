@@ -837,6 +837,14 @@
                           (make-glyph-code ?\ )))
 
 ;;;
+;;; ffap (find-file-at-point)
+;;;
+
+;; From: http://stackoverflow.com/questions/259354/goto-file-in-emacs
+;; Replace C-x C-f and others with ffap versions, ala vim's gf command.
+(ffap-bindings)
+
+;;;
 ;;; wanderlust
 ;;;
 
