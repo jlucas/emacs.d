@@ -121,11 +121,9 @@
                                 (interactive)
                                 (split-window-below)
                                 (windmove-down)))
-
-;; zt, zb as in vim
-;; Not really necessary...  C-l is pretty convenient.
-(global-set-key (kbd "C-c t") (lambda () (interactive) (recenter 2)))
-(global-set-key (kbd "C-c b") (lambda () (interactive) (recenter -3)))
+;; Move to previous/next buffer
+(global-set-key (kbd "C-c b n") 'switch-to-next-buffer)
+(global-set-key (kbd "C-c b p") 'switch-to-prev-buffer)
 
 ;; H, M, L as in vim
 (global-set-key (kbd "C-c H")(lambda () (interactive) (move-to-window-line-top-bottom 0)))
@@ -172,6 +170,31 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "C-c %") 'goto-match-paren)
+
+;; Swap windows
+;; From: http://www.emacswiki.org/emacs/TransposeWindows
+(defun swap-buffers-in-windows ()
+   "Swap buffers between two windows"
+   (interactive)
+   (if (and swapping-window
+            swapping-buffer)
+       (let ((this-buffer (current-buffer))
+             (this-window (selected-window)))
+         (if (and (window-live-p swapping-window)
+                  (buffer-live-p swapping-buffer))
+             (progn (switch-to-buffer swapping-buffer)
+                    (select-window swapping-window)
+                    (switch-to-buffer this-buffer)
+                    (select-window this-window)
+                    (message "Swapped buffers."))
+           (message "Old buffer/window killed.  Aborting."))
+         (setq swapping-buffer nil)
+         (setq swapping-window nil))
+     (progn
+       (setq swapping-buffer (current-buffer))
+       (setq swapping-window (selected-window))
+       (message "Buffer and window marked for swapping."))))
+(global-set-key (kbd "C-c p") 'swap-buffers-in-windows)
 
 ;;;
 ;;; End user-reserved binds
@@ -841,6 +864,14 @@
   (set-display-table-slot standard-display-table
                           'vertical-border
                           (make-glyph-code ?\ )))
+
+;;;
+;;; ffap (find-file-at-point)
+;;;
+
+;; From: http://stackoverflow.com/questions/259354/goto-file-in-emacs
+;; Replace C-x C-f and others with ffap versions, ala vim's gf command.
+(ffap-bindings)
 
 ;;;
 ;;; wanderlust
