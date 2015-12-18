@@ -121,6 +121,9 @@
                                 (interactive)
                                 (split-window-below)
                                 (windmove-down)))
+;; Move to previous/next buffer
+(global-set-key (kbd "C-c b n") 'switch-to-next-buffer)
+(global-set-key (kbd "C-c b p") 'switch-to-prev-buffer)
 
 ;; H, M, L as in vim
 (global-set-key (kbd "C-c H")(lambda () (interactive) (move-to-window-line-top-bottom 0)))
