@@ -122,11 +122,6 @@
                                 (split-window-below)
                                 (windmove-down)))
 
-;; zt, zb as in vim
-;; Not really necessary...  C-l is pretty convenient.
-(global-set-key (kbd "C-c t") (lambda () (interactive) (recenter 2)))
-(global-set-key (kbd "C-c b") (lambda () (interactive) (recenter -3)))
-
 ;; H, M, L as in vim
 (global-set-key (kbd "C-c H")(lambda () (interactive) (move-to-window-line-top-bottom 0)))
 (global-set-key (kbd "C-c M") (lambda () (interactive) (move-to-window-line-top-bottom)))
