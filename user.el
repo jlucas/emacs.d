@@ -28,10 +28,6 @@
 ;; Accept simply 'y' or 'n'
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Preserve scratch buffer across sessions
-(require 'persistent-scratch)
-(persistent-scratch-setup-default)
-
 ;; Remove UI elements from GUI mode
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
@@ -1072,6 +1068,11 @@
 
 ;; Always open open this file for the time being
 (find-file load-file-name)
+
+;; Preserve scratch buffer across sessions
+;; Had some problems with this coming too early in user.el.
+(require 'persistent-scratch)
+(persistent-scratch-setup-default)
 
 ;; Start a server (emacs --daemon) if there isn't one running already
 (server-start)
