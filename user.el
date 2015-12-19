@@ -140,7 +140,12 @@
 (global-set-key (kbd "C-c u") 'undo-tree-visualize)
 
 ;; Magit
-(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c g s") 'magit-status)
+(global-set-key (kbd "C-c g c") (lambda ()
+                                  (interactive)
+                                  (magit-commit (list (cons "-v" (magit-commit-arguments))))))
+(global-set-key (kbd "C-c g h") 'git-gutter+-stage-hunks)
+
 
 ;; Join line as in vim
 (global-set-key (kbd "C-c J") 'join-line)
