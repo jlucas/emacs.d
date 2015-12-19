@@ -145,7 +145,7 @@
                                   (interactive)
                                   (magit-commit (list (cons "-v" (magit-commit-arguments))))))
 (global-set-key (kbd "C-c g h") 'git-gutter+-stage-hunks)
-
+(global-set-key (kbd "C-c g p") 'magit-push-current-to-upstream)
 
 ;; Join line as in vim
 (global-set-key (kbd "C-c J") 'join-line)
