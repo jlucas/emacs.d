@@ -482,10 +482,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,my-temp-dir t)))
 
-;;; eshell
-; find a way to make this work
-;(define-key eshell-mode-map (kbd "C-M-f") 'find-file-at-point)
-
 ;;; Automatically indent on newlines
 ;; (define-key global-map (kbd "RET") 'newline-and-indent)
 
