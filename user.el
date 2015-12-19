@@ -312,6 +312,11 @@
 (setq magit-last-seen-setup-instructions "1.4.0") ; silence warnings
 
 ;;;
+;;; git-gutter
+;;;
+(global-git-gutter-mode)
+
+;;;
 ;;; ace-jump-mode
 ;;;
 
