@@ -686,9 +686,6 @@
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 
-(add-to-list 'load-path "~/.emacs.d/vendor/emacs-git-gutter")
-(require 'git-gutter)
-
 ;; unbound
 ;; call (describe-unbound-keys 5) to list keys
 ;; http://emacswiki.org/emacs/unbound.el
