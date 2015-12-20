@@ -137,7 +137,11 @@
   `(eshell-ls-symlink-face ((t (:foreground ,*paren-match*))))
   ;`(eshell-ls-unreadable-face ((t (:foreground "dim gray"))))
   `(eshell-prompt ((t (:foreground ,*keywords* :weight bold))))
-  ))
+
+  ;; git-gutter+
+  `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*mode-line-fg*))))
+  `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*mode-line-fg*))))
+  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*mode-line-fg*))))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
