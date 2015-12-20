@@ -33,6 +33,10 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 
+;; Show empty lines and indicate and start/end of buffer
+(setq-default indicate-empty-lines t)
+(setq-default indicate-buffer-boundaries t)
+
 ;;;
 ;;; File formats
 ;;;
