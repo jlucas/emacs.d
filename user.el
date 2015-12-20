@@ -319,7 +319,8 @@
 ;;;
 ;;; git-gutter
 ;;;
-(global-git-gutter-mode)
+(require 'git-gutter+)
+(global-git-gutter+-mode)
 
 ;;;
 ;;; ace-jump-mode
