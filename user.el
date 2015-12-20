@@ -798,19 +798,19 @@
 ;;; org-mode
 ;;;
 
-(load "org.lisp")
+(load "~/.emacs.d/org.el")
 
 ;;;
 ;;; wanderlust
 ;;; 
 
-(load "wanderlust.lisp")
+(load "~/.emacs.d/wanderlust.el")
 
 ;;;
 ;;; evil
 ;;;
 
-(load "evil.lisp")
+(load "~/.emacs.d/evil.el")
 
 ;; Preserve scratch buffer across sessions
 ;; Had some problems with this coming too early in user.el.
