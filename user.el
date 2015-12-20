@@ -791,6 +791,9 @@
 ;; Replace C-x C-f and others with ffap versions, ala vim's gf command.
 (ffap-bindings)
 
+;; Always open open this file for the time being
+(find-file load-file-name)
+
 ;;;
 ;;; org-mode
 ;;;
@@ -808,9 +811,6 @@
 ;;;
 
 (load "evil.lisp")
-
-;; Always open open this file for the time being
-(find-file load-file-name)
 
 ;; Preserve scratch buffer across sessions
 ;; Had some problems with this coming too early in user.el.
