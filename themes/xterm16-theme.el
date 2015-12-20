@@ -2,7 +2,6 @@
 (unless (>= emacs-major-version 24)
   (error "requires Emacs 24 or later."))
 
-;; this is great
 (deftheme xterm16 "A dark color theme based on xterm16.vim")
 
 (let ((*normal*             "#b0b0b0")
