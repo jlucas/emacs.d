@@ -29,7 +29,8 @@
       (*paren*              "#00af87")
       (*paren-match*        "#87ffaf")
       (*paren-mismatch*     "#ff0000")
-      (*bright-orange*      "#ff8700"))
+      (*bright-orange*      "#ff8700")
+      (*light-brown*        "#af8700"))
 
   (custom-theme-set-faces
    'xterm16
