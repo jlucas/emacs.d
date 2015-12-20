@@ -177,6 +177,8 @@
 
 ;; Swap windows
 ;; From: http://www.emacswiki.org/emacs/TransposeWindows
+(setq swapping-window nil)
+(setq swapping-buffer nil)
 (defun swap-buffers-in-windows ()
    "Swap buffers between two windows"
    (interactive)
