@@ -481,6 +481,9 @@
 ;; Don't open multiple windows when navigating subdirectories
 ;; From: http://ergoemacs.org/emacs/emacs_dired_tips.html
 (require 'dired)
+
+;; dired-x for 'F' bind which visits all marked files
+(add-hook 'dired-load-hook (function (lambda () (load "dired-x"))))
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 (define-key dired-mode-map (kbd "^")
   (lambda () (interactive) (find-alternate-file "..")))
