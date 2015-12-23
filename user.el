@@ -109,7 +109,9 @@
 (global-set-key (kbd "C-c l") 'windmove-right)
 
 ;; Balance windows likw "C-w =" in vim
-(global-set-key (kbd "C-c =") 'balance-windows)
+(global-set-key (kbd "C-c =") (lambda ()
+                                (interactive)
+                                (message "The command is (balance-windows) and the default emacs bind for this is \"C-x +\".  Use that instead.")))
 ;; Vertical split
 (global-set-key (kbd "C-c v") (lambda ()
                                 (interactive)
