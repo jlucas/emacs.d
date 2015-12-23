@@ -212,6 +212,34 @@
 ;;; Global override binds
 ;;;
 
+;;; Window navigation bindings (and rebindings of built-ins)
+
+;; Emacs defaults:
+;; M-h bound to mark-paragraph (now rebound to C-M-h)
+;; C-M-h bound to mark-defun (now unbound)
+(global-set-key (kbd "M-h" ) 'windmove-left)
+(global-set-key (kbd "C-M-h") 'mark-paragraph)
+
+;; Emacs defaults:
+;; M-j and C-M-j bound to indent-new-comment-line
+(global-set-key (kbd "M-j" ) 'windmove-down)
+(global-set-key (kbd "C-M-j" ) 'windmove-left)
+
+;; Emacs defaults:
+;; M-k bound to kill-sentence (now rebound to C-M-k)
+;; C-M-k bound to kill-sexp (now unbound, but kill-sentence has a
+;; similar effect under paredit))
+(global-set-key (kbd "M-k" ) 'windmove-up)
+(global-set-key (kbd "C-M-k" ) 'kill-sentence)
+
+;; Emacs defaults:
+;; M-l bound to downcase-word (now rebound to C-M-l)
+;; C-M-l bound to reposition-window (now unbound)
+(global-set-key (kbd "M-l" ) 'windmove-right)
+(global-set-key (kbd "C-M-l" ) 'downcase-word)
+
+;;; End window navigation binds
+
 (defun replace-characters-in-line (str)
   (interactive)
   (move-beginning-of-line nil)
