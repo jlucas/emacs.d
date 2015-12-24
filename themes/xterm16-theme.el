@@ -8,7 +8,7 @@
       (*background*         "#1c1c1c")
       (*comments*           "#8787af")
       (*constant*           "#8700d7")
-      (*current-line*       "#151515")
+      (*current-line*       "#333")
       (*cursor-underscore*  "#FFFAAA")
       (*keywords*           "#0087af")
       (*line-number*        "#afaf87")
@@ -43,7 +43,7 @@
    `(header-line ((t (:background ,*mode-line-bg* :foreground ,*normal*)))) ;; info header
    `(highlight ((t (:background ,*current-line*))))
    `(highlight-face ((t (:background ,*current-line*))))
-   `(hl-line ((t (:background ,*current-line* :underline t))))
+   `(hl-line ((t (:background ,*current-line*))))
    `(info-xref ((t (:foreground ,*keywords* :underline t))))
    `(region ((t (:background ,*greenblue* :foreground ,*lightgreenblue*))))
    `(underline ((nil (:underline t))))
