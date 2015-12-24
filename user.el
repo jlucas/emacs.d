@@ -37,6 +37,9 @@
 (setq-default indicate-empty-lines t)
 (setq-default indicate-buffer-boundaries t)
 
+;; Display cursor line/column number in modeline
+(column-number-mode)
+
 ;;;
 ;;; File formats
 ;;;
