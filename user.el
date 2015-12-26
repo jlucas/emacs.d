@@ -242,7 +242,7 @@
 ;; Emacs defaults:
 ;; M-j and C-M-j bound to indent-new-comment-line
 (global-set-key (kbd "M-j" ) 'windmove-down)
-(global-set-key (kbd "C-M-j" ) 'windmove-left)
+(global-set-key (kbd "C-M-j" ) 'indent-new-comment-line)
 
 ;; Emacs defaults:
 ;; M-k bound to kill-sentence (now rebound to C-M-k)
