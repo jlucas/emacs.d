@@ -66,6 +66,22 @@
      (define-key muttrc-mode-map (kbd "C-c s") nil)))
 
 ;;;
+;;; rectangle-utils
+;;;
+
+;; By default, Emacs will only draw a rectangular selection out to the
+;; shortest line.  This package has a function to make it behave like
+;; vim and extend the rectangular selection to the longest line.
+;; See: http://emacs.stackexchange.com/questions/3659
+(require 'rectangle-utils)
+;; XXX: This is kind of shit because it pads out the selection with spaces
+(global-set-key (kbd "C-x r e") 'extend-rectangle-to-end)
+;; TODO: Write a function that acts like pressing $ in visual block
+;; mode (note, this is implemented in evil-mode).  This should be
+;; triggered when the cursor is alread at the end of a line with a
+;; rectangular region active and the user presses C-e again.
+
+;;;
 ;;; Fonts
 ;;;
 
