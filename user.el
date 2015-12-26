@@ -442,6 +442,7 @@
 
 ;; Similar to vim-surround.  Wrap region with M-', M-", M-(, etc.
 (require 'wrap-region)
+(wrap-region-global-mode t)
 
 ;;;
 ;;; lisp-mode
