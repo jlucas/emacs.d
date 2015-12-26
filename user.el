@@ -582,6 +582,14 @@
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
 
 ;;;
+;;; smooth-scrolling
+;;;
+
+(setq scroll-margin 5
+scroll-conservatively 9999
+scroll-step 1)
+
+;;;
 ;;; Paredit
 ;;;
 ;; http://offbytwo.com/2012/01/15/emacs-plus-paredit-under-terminal.html
