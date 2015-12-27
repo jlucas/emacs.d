@@ -82,6 +82,14 @@
 ;; rectangular region active and the user presses C-e again.
 
 ;;;
+;;; etags-select
+;;;
+
+(require 'etags-select)
+(global-set-key "\M-?" 'etags-select-find-tag-at-point)
+(global-set-key "\M-." 'etags-select-find-tag)
+
+;;;
 ;;; Fonts
 ;;;
 
