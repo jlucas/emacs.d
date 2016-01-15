@@ -28,14 +28,17 @@
 ;; Accept simply 'y' or 'n'
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Preserve scratch buffer across sessions
-(require 'persistent-scratch)
-(persistent-scratch-setup-default)
-
 ;; Remove UI elements from GUI mode
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
+
+;; Show empty lines and indicate and start/end of buffer
+(setq-default indicate-empty-lines t)
+(setq-default indicate-buffer-boundaries t)
+
+;; Display cursor line/column number in modeline
+(column-number-mode)
 
 ;;;
 ;;; File formats
@@ -61,6 +64,30 @@
      (define-key muttrc-mode-map (kbd "C-c h") nil)
      ;; Don't override my split-window-below bind
      (define-key muttrc-mode-map (kbd "C-c s") nil)))
+
+;;;
+;;; rectangle-utils
+;;;
+
+;; By default, Emacs will only draw a rectangular selection out to the
+;; shortest line.  This package has a function to make it behave like
+;; vim and extend the rectangular selection to the longest line.
+;; See: http://emacs.stackexchange.com/questions/3659
+(require 'rectangle-utils)
+;; XXX: This is kind of shit because it pads out the selection with spaces
+(global-set-key (kbd "C-x r e") 'extend-rectangle-to-end)
+;; TODO: Write a function that acts like pressing $ in visual block
+;; mode (note, this is implemented in evil-mode).  This should be
+;; triggered when the cursor is alread at the end of a line with a
+;; rectangular region active and the user presses C-e again.
+
+;;;
+;;; etags-select
+;;;
+
+(require 'etags-select)
+(global-set-key "\M-?" 'etags-select-find-tag-at-point)
+(global-set-key "\M-." 'etags-select-find-tag)
 
 ;;;
 ;;; Fonts
@@ -95,7 +122,6 @@
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
-
 (global-set-key (kbd "C-c m") 'hs-toggle-hiding)
 (global-set-key (kbd "C-c z") 'hs-hide-all)
 (global-set-key (kbd "C-c Z") 'hs-show-all)
@@ -110,7 +136,9 @@
 (global-set-key (kbd "C-c l") 'windmove-right)
 
 ;; Balance windows likw "C-w =" in vim
-(global-set-key (kbd "C-c =") 'balance-windows)
+(global-set-key (kbd "C-c =") (lambda ()
+                                (interactive)
+                                (message "The command is (balance-windows) and the default emacs bind for this is \"C-x +\".  Use that instead.")))
 ;; Vertical split
 (global-set-key (kbd "C-c v") (lambda ()
                                 (interactive)
@@ -140,7 +168,12 @@
 (global-set-key (kbd "C-c u") 'undo-tree-visualize)
 
 ;; Magit
-(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c g s") 'magit-status)
+(global-set-key (kbd "C-c g c") (lambda ()
+                                  (interactive)
+                                  (magit-commit (list (cons "-v" (magit-commit-arguments))))))
+(global-set-key (kbd "C-c g h") 'git-gutter+-stage-hunks)
+(global-set-key (kbd "C-c g p") 'magit-push-current-to-upstream)
 
 ;; Join line as in vim
 (global-set-key (kbd "C-c J") 'join-line)
@@ -173,6 +206,8 @@
 
 ;; Swap windows
 ;; From: http://www.emacswiki.org/emacs/TransposeWindows
+(setq swapping-window nil)
+(setq swapping-buffer nil)
 (defun swap-buffers-in-windows ()
    "Swap buffers between two windows"
    (interactive)
@@ -203,6 +238,34 @@
 ;;;
 ;;; Global override binds
 ;;;
+
+;;; Window navigation bindings (and rebindings of built-ins)
+
+;; Emacs defaults:
+;; M-h bound to mark-paragraph (now rebound to C-M-h)
+;; C-M-h bound to mark-defun (now unbound)
+(global-set-key (kbd "M-h" ) 'windmove-left)
+(global-set-key (kbd "C-M-h") 'mark-paragraph)
+
+;; Emacs defaults:
+;; M-j and C-M-j bound to indent-new-comment-line
+(global-set-key (kbd "M-j" ) 'windmove-down)
+(global-set-key (kbd "C-M-j" ) 'indent-new-comment-line)
+
+;; Emacs defaults:
+;; M-k bound to kill-sentence (now rebound to C-M-k)
+;; C-M-k bound to kill-sexp (now unbound, but kill-sentence has a
+;; similar effect under paredit))
+(global-set-key (kbd "M-k" ) 'windmove-up)
+(global-set-key (kbd "C-M-k" ) 'kill-sentence)
+
+;; Emacs defaults:
+;; M-l bound to downcase-word (now rebound to C-M-l)
+;; C-M-l bound to reposition-window (now unbound)
+(global-set-key (kbd "M-l" ) 'windmove-right)
+(global-set-key (kbd "C-M-l" ) 'downcase-word)
+
+;;; End window navigation binds
 
 (defun replace-characters-in-line (str)
   (interactive)
@@ -318,6 +381,13 @@
 (setq magit-last-seen-setup-instructions "1.4.0") ; silence warnings
 
 ;;;
+;;; git-gutter
+;;;
+(require 'git-gutter+)
+(global-git-gutter+-mode)
+(custom-set-variables '(git-gutter+-window-width 2))
+
+;;;
 ;;; ace-jump-mode
 ;;;
 
@@ -386,6 +456,7 @@
 
 ;; Similar to vim-surround.  Wrap region with M-', M-", M-(, etc.
 (require 'wrap-region)
+(wrap-region-global-mode t)
 
 ;;;
 ;;; lisp-mode
@@ -445,6 +516,9 @@
 ;; Don't open multiple windows when navigating subdirectories
 ;; From: http://ergoemacs.org/emacs/emacs_dired_tips.html
 (require 'dired)
+
+;; dired-x for 'F' bind which visits all marked files
+(add-hook 'dired-load-hook (function (lambda () (load "dired-x"))))
 (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 (define-key dired-mode-map (kbd "^")
   (lambda () (interactive) (find-alternate-file "..")))
@@ -488,10 +562,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,my-temp-dir t)))
 
-;;; eshell
-; find a way to make this work
-;(define-key eshell-mode-map (kbd "C-M-f") 'find-file-at-point)
-
 ;;; Automatically indent on newlines
 ;; (define-key global-map (kbd "RET") 'newline-and-indent)
 
@@ -524,6 +594,14 @@
 (defun down-slightly () (interactive) (scroll-down 2))
 (global-set-key (kbd "<mouse-4>") 'down-slightly)
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
+
+;;;
+;;; smooth-scrolling
+;;;
+
+(setq scroll-margin 5
+scroll-conservatively 9999
+scroll-step 1)
 
 ;;;
 ;;; Paredit
@@ -685,9 +763,6 @@
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 
-(add-to-list 'load-path "~/.emacs.d/vendor/emacs-git-gutter")
-(require 'git-gutter)
-
 ;; unbound
 ;; call (describe-unbound-keys 5) to list keys
 ;; http://emacswiki.org/emacs/unbound.el
@@ -706,17 +781,17 @@
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)))
-;(load-theme 'fogus
-;(load-theme 'dorsey)
-;(load-theme 'graham t)
+;;(load-theme 'fogus
+;;(load-theme 'dorsey)
+;;(load-theme 'graham t)
 (load-theme 'xterm16 t)
-;(load-theme 'deep-thought t)
-;(load-theme 'hickey t)
-;(load-theme 'granger t)
-;(load-theme 'odersky t)
-;(load-theme 'fogus t)
-;(load-theme 'jlucas t)
-;(load-theme 'tao-yin t)
+;;(load-theme 'deep-thought t)
+;;(load-theme 'hickey t)
+;;(load-theme 'granger t)
+;;(load-theme 'odersky t)
+;;(load-theme 'fogus t)
+;;(load-theme 'jlucas t)
+;;(load-theme 'tao-yin t)
 
 ;;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
@@ -772,87 +847,6 @@
 ; Line numbers
 (setq linum-format "%3d ")
 
-;;;
-;;; org-mode
-;;;
-;; Support embedding the following languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((sh . t)
-   (python . t)
-   (dot . t)
-   (sqlite . t)
-   (lisp . t)))
-;; Prompt for a comment and add a datestamp to DONE items.
-(setq org-log-done 'note)
-;; http://orgmode.org/manual/Clean-view.html
-;; If you decide you don't like this, you can enable it on specific
-;; org files by adding the text "#+STARTUP: indent" somewhere in the
-;; file
-(setq org-startup-indented t)
-;; Agenda files
-(setq org-agenda-files (list "~/org/work.org"
-                             "~/org/home.org"))
-;; From: http://orgmode.org/worg/org-faq.html#orgheadline41
-;; The following lines are always needed.  Choose your own keys.
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-;(global-set-key "\C-cl" 'org-store-link)
-;(global-set-key "\C-ca" 'org-agenda)
-;(global-set-key "\C-cb" 'org-iswitchb)
-;; From: http://orgmode.org/manual/Workflow-states.html
-;(setq org-todo-keywords
-;      '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
-;; http://sachachua.com/blog/2015/02/learn-take-notes-efficiently-org-mode/
-(setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))
-                           ("~/src/lispmud/lispmud.org" . (:maxlevel . 6))))
-;; From: http://orgmode.org/manual/Internal-archiving.html#Internal-archiving
-;; Show archived items when cycling with S-TAB
-;; FIXME: Doesn't work in console emacs
-;(setq org-columns-skip-archived-trees nil)
-(setq org-todo-keywords
-      '((sequence "TASK(t)"
-                  "INPROGRESS(i)"
-                  "SCHEDULED(s)"
-                  "FEEDBACK(f)"
-                  "ONHOLD(h)"
-                  "BLOCKED(b)"
-                  "DELEGATED(g)"
-                  "|"
-                  "DONE(d)"
-                  "CLOSED(c)"
-                  "CANCELLED(a)")))
-(setq org-tags-exclude-from-inheritance '("prj")
-      org-stuck-projects '("+prj/-MAYBE-DONE"
-                           ("TODO" "TASK") ()))
-(setq org-agenda-custom-commands
-      '(("h" "Work todos" tags-todo
-         "-personal-doat={.+}-dowith={.+}/!-TASK"
-         ((org-agenda-todo-ignore-scheduled t)))
-        ("H" "All work todos" tags-todo "-personal/!-TASK-MAYBE"
-         ((org-agenda-todo-ignore-scheduled nil)))
-        ("A" "Work todos with doat or dowith" tags-todo
-         "-personal+doat={.+}|dowith={.+}/!-TASK"
-         ((org-agenda-todo-ignore-scheduled nil)))
-        ("j" "TODO dowith and TASK with"
-         ((org-sec-with-view "TODO dowith")
-          (org-sec-where-view "TODO doat")
-          (org-sec-assigned-with-view "TASK with")
-          (org-sec-stuck-with-view "STUCK with")))
-        ("J" "Interactive TODO dowith and TASK with"
-         ((org-sec-who-view "TODO dowith")))))
-(eval-after-load 'org-secretary
-  '(define-key org-mode-map (kbd "C-c w") 'org-sec-set-with))
-(eval-after-load 'org-secretary
-  '(define-key org-mode-map (kbd "C-c W") 'org-sec-set-where))
-;(load "~/.emacs.d/vendor/org-secretary.el")
-(setq org-sec-me "jlucas")
-
-;; http://orgmode.org/worg/org-contrib/org-collector.html
-(require 'org-collector)
-
-; Add only a datestamp to DONE items
-;(setq org-log-done 'time)
-
 ;;; Set vertical window character in the terminal
 ;;; http://stackoverflow.com/questions/18210631
 (unless (window-system)
@@ -873,205 +867,31 @@
 ;; Replace C-x C-f and others with ffap versions, ala vim's gf command.
 (ffap-bindings)
 
-;;;
-;;; wanderlust
-;;;
-
-(autoload 'wl "wl" "Wanderlust" t)
-(autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
-(autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
-
-;; IMAP
-(setq elmo-imap4-default-server "imap.gmail.com")
-(setq elmo-imap4-default-user "jesse.lucas@framestore.com")
-(setq elmo-imap4-default-authenticate-type 'clear)
-(setq elmo-imap4-default-port '993)
-(setq elmo-imap4-default-stream-type 'ssl)
-
-(setq elmo-imap4-use-modified-utf7 t)
-
-;; SMTP
-(setq wl-smtp-connection-type 'starttls)
-(setq wl-smtp-posting-port 587)
-(setq wl-smtp-authenticate-type "plain")
-(setq wl-smtp-posting-user "jesse.lucas@framestore.com")
-(setq wl-smtp-posting-server "smtp.gmail.com")
-(setq wl-local-domain "gmail.com")
-
-(setq wl-default-folder "%inbox")
-(setq wl-default-spec "%")
-(setq wl-draft-folder "%[Gmail]/Drafts") ; Gmail IMAP
-(setq wl-trash-folder "%[Gmail]/Trash")
-
-(setq wl-folder-check-async t)
-
-(setq elmo-imap4-use-modified-utf7 t)
-
-(setq wl-message-ignored-field-list '(".*Received:" ".*X-.*:"
-                                      ".*Delivered-To:.*"
-                                      ".*Message-ID:"
-                                      ".*MIME-Version:"
-                                      ".*Content-Disposition:"
-                                      ".*X-BeenThere:"
-                                      ".*X-Mailman-Version:"
-                                      ".*Precedence:"
-                                      ".*Content-Type:"
-                                      ".*Content-Transfer-Encoding:"
-                                      ".*Sender:"
-                                      ".*Errors-To:"
-                                      ))
-
-(autoload 'wl-user-agent-compose "wl-draft" nil t)
-(if (boundp 'mail-user-agent)
-    (setq mail-user-agent 'wl-user-agent))
-(if (fboundp 'define-mail-user-agent)
-    (define-mail-user-agent
-      'wl-user-agent
-      'wl-user-agent-compose
-      'wl-draft-send
-      'wl-draft-kill
-      'mail-send-hook))
-
-;; ;;;;
-;; ;;;; evil-mode
-;; ;;;;
-;; ;;;; This must come last as it relies on seeing what other modes are in
-;; ;;;; your setup in order to apply itself correctly
-;; ;;;;
-
-;; ;;; Evil mode plugins
-;; ;evil-commentary    20150628.... unsigned              Comment stuff out. A port of vim-commentary.
-;; ;evil-jumper        20150628.... unsigned              Jump like vimmers do!
-;; ;evil-leader        20140606.543 unsigned              let there be <leader>
-;; ;evil-numbers       20140606.551 unsigned              increment/decrement numbers like in vim
-;; ;evil-org           20150513.... unsigned              evil keybindings for org-mode
-;; ;evil-surround      20150605.... unsigned              emulate surround.vim from Vim
-;; ;evil-terminal-cursor-changer  20150710.... unsigned              Change cursor shape by evil state on terminal.
-;; ;evil-visual-mar... 20150202.... unsigned              Display evil marks on buffer
-;; ;evil-visualstar    20150514.... unsigned              Starts a * or # search from the visual selection
-
-;; (setq evil-toggle-key "C-M-z")
-;; (require 'evil)
-
-;; ;; evil-jumper
-;; ;; https://github.com/bling/evil-jumper
-;; (require 'evil-jumper)
-;; (global-evil-jumper-mode)
-
-;; ;; evil-terminal-cursor-changer
-;; ;; https://github.com/7696122/evil-terminal-cursor-changer
-;; (unless (display-graphic-p)
-;;   (require 'evil-terminal-cursor-changer))
-;; ;; If want change cursor shape type, add below line. This is evil's setting.
-;; ;; (setq evil-visual-state-cursor 'box)
-;; ;; (setq evil-insert-state-cursor 'bar)
-;; ;; (setq evil-emacs-state-cursor 'hbar)
-
-;; ;; evil-visual-mark-mode
-;; ;; https://github.com/roman/evil-visual-mark-mode
-;; (require 'evil-visual-mark-mode)
-
-;; ;; evil-numbers
-;; ;; https://github.com/cofi/evil-numbers
-;; (require 'evil-numbers)
-;; (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
-;; (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
-
-;; ;; Make <C-]> do The Right Thing
-;; ;; https://emacs.stackexchange.com/questions/608/evil-map-keybindings-the-vim-way
-;; (define-key evil-normal-state-map (kbd "C-]") (kbd "\\ M-."))
-
-;; (defun my-esc (prompt)
-;;   "Functionality for escaping generally.  Includes exiting Evil insert
-;;    state and C-g binding. "
-;;   (cond
-;;    ;; If we're in one of the Evil states that defines [escape] key,
-;;    ;; return [escape] so as Key Lookup will use it.
-;;    ((or
-;;      (evil-insert-state-p)
-;;      (evil-normal-state-p)
-;;      (evil-replace-state-p)
-;;      (evil-visual-state-p))
-;;     [escape])
-;;    ;; This is the best way I could infer for now to have C-c work
-;;    ;; during evil-read-key.  Note: As long as I return [escape] in
-;;    ;; normal-state, I don't need this.  ((eq
-;;    ;; overriding-terminal-local-map evil-read-key-map) (keyboard-quit)
-;;    ;; (kbd ""))
-;;    ;(t
-;;    ; (kbd "C-g"))
-;;    ))
-;; (define-key key-translation-map (kbd "C-c") 'my-esc)
-;; ;;;
-;; ;;; Works around the fact that Evil uses read-event directly when in
-;; ;;; operator state, which doesn't use the key-translation-map.
-;; (define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
-;; ;;;
-;; ;;; Not sure what behavior this changes, but might as well set it,
-;; ;;; seeing the Elisp manual's documentation of it.
-;; ;;(set-quit-char "C-c") ; recommended by the article, but doesn't work
-;; ;;(set-quit-char ?\a) ; works, but isn't useful
-;; ;;;
-;; ;;; Set up some window switching binds
-;; (define-key evil-normal-state-map (kbd "M-h") 'evil-window-left)
-;; (define-key evil-normal-state-map (kbd "M-j") 'evil-window-down)
-;; (define-key evil-normal-state-map (kbd "M-k") 'evil-window-up)
-;; (define-key evil-normal-state-map (kbd "M-l") 'evil-window-right)
-
-;; ;; expand-region binds matching vim-expand-region
-;; (define-key evil-visual-state-map (kbd "+") 'er/expand-region)
-;; (define-key evil-visual-state-map (kbd "-") 'er/contract-region)
-
-;; ;; Move down a split and maximize it
-;; (define-key evil-normal-state-map (kbd "C-j")
-;;   (lambda ()
-;;     (interactive)
-;;     (evil-window-down 1)
-;;     (evil-window-set-height (frame-height))))
-
-;; ;; Move up a split and maximize it
-;; (define-key evil-normal-state-map (kbd "C-k")
-;;   (lambda ()
-;;     (interactive)
-;;     (evil-window-up 1)
-;;     (evil-window-set-height (frame-height))))
-
-;; (require 'evil-commentary)
-;; (evil-commentary-mode)
-
-;; (require 'evil-surround)
-;; (global-evil-surround-mode 1)
-
-;; (require 'evil-leader)
-;; (global-evil-leader-mode)
-;; (evil-leader/set-leader "<SPC>")
-;; (evil-leader/set-key
-;;   "RET" (lambda ()
-;;           (interactive)
-;;           (dired (file-name-directory (buffer-file-name))))
-;;   "e" 'find-file
-;;   "f" 'fill-paragraph
-;;   "w" 'save-buffer
-;;   "c" 'delete-window
-;;   "s" 'evil-window-split
-;;   "v" 'evil-window-vsplit
-;;   "b" 'switch-to-buffer
-;;   "B" 'ibuffer
-;;   "n" 'linum-mode
-;;   "q" 'save-buffers-kill-terminal
-;;   "Q" 'kill-emacs
-;;   "u" 'undo-tree-visualize
-;;   "z" 'delete-other-windows
-;;   ")" 'paredit-forward-slurp-sexp
-;;   "(" 'paredit-backward-slurp-sexp
-;;   "}" 'paredit-forward-barf-sexp
-;;  "{" 'paredit-backward-barf-sexp)
-
-;;; Invoke evil
-;; (evil-mode)
-
 ;; Always open open this file for the time being
 (find-file load-file-name)
+
+;;;
+;;; org-mode
+;;;
+
+(load "~/.emacs.d/org.el")
+
+;;;
+;;; wanderlust
+;;; 
+
+(load "~/.emacs.d/wanderlust.el")
+
+;;;
+;;; evil
+;;;
+
+(load "~/.emacs.d/evil.el")
+
+;; Preserve scratch buffer across sessions
+;; Had some problems with this coming too early in user.el.
+(require 'persistent-scratch)
+(persistent-scratch-setup-default)
 
 ;; Start a server (emacs --daemon) if there isn't one running already
 (server-start)
