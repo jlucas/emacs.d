@@ -397,7 +397,17 @@
     (message "Opening %s..." file)
     (call-process "/usr/bin/mplayer" nil 0 nil "-ao" "jack" file)
     (message "Opening %s done" file)))
-(define-key dired-mode-map (kbd "C-c C-c") 'play-audio-jack)
+
+(defun play-audio ()
+  "In dired, open the file named on this line."
+  (interactive)
+  (let* ((file (dired-get-filename nil t)))
+    (message "Opening %s..." file)
+    (with-temp-buffer
+      (shell (current-buffer))
+      (process-send-string "shell" (concat "/usr/bin/mplayer " file "\n")))))
+
+(define-key dired-mode-map (kbd "C-c C-c") 'play-audio)
 
 ;;;
 ;;; ibuffer
