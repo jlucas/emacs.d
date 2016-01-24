@@ -64,9 +64,9 @@
    `(font-lock-variable-name-face     ((t (:foreground "#dadada"))))
    `(font-lock-builtin-face           ((t (:foreground "#87ffaf"))))
    `(font-lock-string-face            ((t (:foreground "#5f8787"))))
-   `(font-lock-comment-face           ((t (:foreground "#767676"))))
-   `(font-lock-comment-delimiter-face ((t (:foreground "#767676"))))
-   `(font-lock-doc-string-face        ((t (:foreground "#767676"))))
+   `(font-lock-comment-face           ((t (:foreground "#8787af"))))
+   `(font-lock-comment-delimiter-face ((t (:foreground "#8787af"))))
+   `(font-lock-doc-string-face        ((t (:foreground "#8787af"))))
 
   ;; Rainbow delimiters
   ;; *****************************************************************************************

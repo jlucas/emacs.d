@@ -2,14 +2,13 @@
 (unless (>= emacs-major-version 24)
   (error "requires Emacs 24 or later."))
 
-;; this is great
 (deftheme xterm16 "A dark color theme based on xterm16.vim")
 
 (let ((*normal*             "#b0b0b0")
       (*background*         "#1c1c1c")
       (*comments*           "#8787af")
       (*constant*           "#8700d7")
-      (*current-line*       "#151515")
+      (*current-line*       "#333")
       (*cursor-underscore*  "#FFFAAA")
       (*keywords*           "#0087af")
       (*line-number*        "#afaf87")
@@ -29,7 +28,8 @@
       (*paren*              "#00af87")
       (*paren-match*        "#87ffaf")
       (*paren-mismatch*     "#ff0000")
-      (*bright-orange*      "#ff8700"))
+      (*bright-orange*      "#ff8700")
+      (*light-brown*        "#af8700"))
 
   (custom-theme-set-faces
    'xterm16
@@ -43,7 +43,7 @@
    `(header-line ((t (:background ,*mode-line-bg* :foreground ,*normal*)))) ;; info header
    `(highlight ((t (:background ,*current-line*))))
    `(highlight-face ((t (:background ,*current-line*))))
-   `(hl-line ((t (:background ,*current-line* :underline t))))
+   `(hl-line ((t (:background ,*current-line*))))
    `(info-xref ((t (:foreground ,*keywords* :underline t))))
    `(region ((t (:background ,*greenblue* :foreground ,*lightgreenblue*))))
    `(underline ((nil (:underline t))))
@@ -136,7 +136,11 @@
   `(eshell-ls-symlink-face ((t (:foreground ,*paren-match*))))
   ;`(eshell-ls-unreadable-face ((t (:foreground "dim gray"))))
   `(eshell-prompt ((t (:foreground ,*keywords* :weight bold))))
-  ))
+
+  ;; git-gutter+
+  `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*mode-line-fg*))))
+  `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*mode-line-fg*))))
+  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*mode-line-fg*))))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
