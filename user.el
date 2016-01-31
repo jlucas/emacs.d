@@ -471,6 +471,9 @@
 ;;; slime
 ;;;
 
+;; When there is a local copy of the Hyperspec (CLHS) use this:
+;; (setq common-lisp-hyperspec-root "/home/jlucas/src/lisp/HyperSpec/")
+
 ;; Syntax highlighting in the SLIME REPL
 (defvar slime-repl-font-lock-keywords lisp-font-lock-keywords-2)
 (defun slime-repl-font-lock-setup ()
