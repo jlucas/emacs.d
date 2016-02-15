@@ -206,6 +206,10 @@
         (t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "C-c %") 'goto-match-paren)
 
+;; Similar to C-o and C-i in vim
+(global-set-key (kbd "C-c o") 'previous-buffer)
+(global-set-key (kbd "C-c i") 'next-buffer)
+
 ;; Swap windows
 ;; From: http://www.emacswiki.org/emacs/TransposeWindows
 (setq swapping-window nil)
