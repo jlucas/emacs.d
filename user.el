@@ -151,6 +151,10 @@
                                 (interactive)
                                 (split-window-below)
                                 (windmove-down)))
+
+;; Close window
+(global-set-key (kbd "C-c c") 'delete-window)
+
 ;; Move to previous/next buffer
 (global-set-key (kbd "C-c b n") 'switch-to-next-buffer)
 (global-set-key (kbd "C-c b p") 'switch-to-prev-buffer)
