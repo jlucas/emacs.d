@@ -159,6 +159,20 @@
 (global-set-key (kbd "C-c b n") 'switch-to-next-buffer)
 (global-set-key (kbd "C-c b p") 'switch-to-prev-buffer)
 
+;; Switch to previous/next frame
+(global-set-key (kbd "C-c N") (lambda ()
+                                 (interactive)
+                                 (select-frame-set-input-focus
+                                  (next-frame)
+                                  (message "Switched to frame: %s"
+                                           (cdr (assoc 'name (frame-parameters)))))))
+(global-set-key (kbd "C-c P") (lambda ()
+                                 (interactive)
+                                 (select-frame-set-input-focus
+                                  (previous-frame)
+                                  (message "Switched to frame: %s"
+                                           (cdr (assoc 'name (frame-parameters)))))))
+
 ;; H, M, L as in vim
 (global-set-key (kbd "C-c H")(lambda () (interactive) (move-to-window-line-top-bottom 0)))
 (global-set-key (kbd "C-c M") (lambda () (interactive) (move-to-window-line-top-bottom)))
