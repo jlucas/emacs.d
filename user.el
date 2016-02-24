@@ -196,7 +196,10 @@
 (global-set-key (kbd "C-c g p") 'magit-push-current-to-upstream)
 
 ;; Join line as in vim
-(global-set-key (kbd "C-c J") 'join-line)
+(global-set-key (kbd "C-c J") (lambda ()
+                                (interactive)
+                                (forward-line)
+                                (join-line)))
 
 ;; Just type the char you want to align your text to
 (global-set-key (kbd "C-c a") 'align-regexp)
