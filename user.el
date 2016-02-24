@@ -266,7 +266,7 @@
 ;;; Global override binds
 ;;;
 
-;;; Window navigation bindings (and rebindings of built-ins)
+;;; Window navigation bindings (and rebindings of shadowed built-ins)
 
 ;; Emacs defaults:
 ;; M-h bound to mark-paragraph (now rebound to C-M-h)
