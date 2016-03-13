@@ -151,9 +151,27 @@
                                 (interactive)
                                 (split-window-below)
                                 (windmove-down)))
+
+;; Close window
+(global-set-key (kbd "C-c c") 'delete-window)
+
 ;; Move to previous/next buffer
 (global-set-key (kbd "C-c b n") 'switch-to-next-buffer)
 (global-set-key (kbd "C-c b p") 'switch-to-prev-buffer)
+
+;; Switch to previous/next frame
+(global-set-key (kbd "C-c N") (lambda ()
+                                 (interactive)
+                                 (select-frame-set-input-focus
+                                  (next-frame)
+                                  (message "Switched to frame: %s"
+                                           (cdr (assoc 'name (frame-parameters)))))))
+(global-set-key (kbd "C-c P") (lambda ()
+                                 (interactive)
+                                 (select-frame-set-input-focus
+                                  (previous-frame)
+                                  (message "Switched to frame: %s"
+                                           (cdr (assoc 'name (frame-parameters)))))))
 
 ;; H, M, L as in vim
 (global-set-key (kbd "C-c H")(lambda () (interactive) (move-to-window-line-top-bottom 0)))
@@ -178,7 +196,10 @@
 (global-set-key (kbd "C-c g p") 'magit-push-current-to-upstream)
 
 ;; Join line as in vim
-(global-set-key (kbd "C-c J") 'join-line)
+(global-set-key (kbd "C-c J") (lambda ()
+                                (interactive)
+                                (forward-line)
+                                (join-line)))
 
 ;; Just type the char you want to align your text to
 (global-set-key (kbd "C-c a") 'align-regexp)
@@ -205,6 +226,10 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "C-c %") 'goto-match-paren)
+
+;; Similar to C-o and C-i in vim
+(global-set-key (kbd "C-c o") 'previous-buffer)
+(global-set-key (kbd "C-c i") 'next-buffer)
 
 ;; Swap windows
 ;; From: http://www.emacswiki.org/emacs/TransposeWindows
@@ -241,7 +266,7 @@
 ;;; Global override binds
 ;;;
 
-;;; Window navigation bindings (and rebindings of built-ins)
+;;; Window navigation bindings (and rebindings of shadowed built-ins)
 
 ;; Emacs defaults:
 ;; M-h bound to mark-paragraph (now rebound to C-M-h)
