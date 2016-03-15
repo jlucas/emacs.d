@@ -94,8 +94,10 @@
 ;;;
 
 ;; (set-frame-font "Envy Code R-16" nil t)
-;; (set-frame-font "Terminus-11" nil t)
-(set-frame-font "Monospace-9" nil t)
+(set-frame-font "Terminus-11" nil t)
+;;(set-frame-font "Monospace-12" nil t)
+;;(set-frame-font "snap-12" nil t)
+;;(set-frame-font "Monospace-12" nil t)
 ;; (set-face-attribute 'default nil :height 100)
 
 ;; Resizing fonts
@@ -149,9 +151,27 @@
                                 (interactive)
                                 (split-window-below)
                                 (windmove-down)))
+
+;; Close window
+(global-set-key (kbd "C-c c") 'delete-window)
+
 ;; Move to previous/next buffer
 (global-set-key (kbd "C-c b n") 'switch-to-next-buffer)
 (global-set-key (kbd "C-c b p") 'switch-to-prev-buffer)
+
+;; Switch to previous/next frame
+(global-set-key (kbd "C-c N") (lambda ()
+                                 (interactive)
+                                 (select-frame-set-input-focus
+                                  (next-frame)
+                                  (message "Switched to frame: %s"
+                                           (cdr (assoc 'name (frame-parameters)))))))
+(global-set-key (kbd "C-c P") (lambda ()
+                                 (interactive)
+                                 (select-frame-set-input-focus
+                                  (previous-frame)
+                                  (message "Switched to frame: %s"
+                                           (cdr (assoc 'name (frame-parameters)))))))
 
 ;; H, M, L as in vim
 (global-set-key (kbd "C-c H")(lambda () (interactive) (move-to-window-line-top-bottom 0)))
@@ -176,7 +196,10 @@
 (global-set-key (kbd "C-c g p") 'magit-push-current-to-upstream)
 
 ;; Join line as in vim
-(global-set-key (kbd "C-c J") 'join-line)
+(global-set-key (kbd "C-c J") (lambda ()
+                                (interactive)
+                                (forward-line)
+                                (join-line)))
 
 ;; Just type the char you want to align your text to
 (global-set-key (kbd "C-c a") 'align-regexp)
@@ -203,6 +226,10 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "C-c %") 'goto-match-paren)
+
+;; Similar to C-o and C-i in vim
+(global-set-key (kbd "C-c o") 'previous-buffer)
+(global-set-key (kbd "C-c i") 'next-buffer)
 
 ;; Swap windows
 ;; From: http://www.emacswiki.org/emacs/TransposeWindows
@@ -239,7 +266,7 @@
 ;;; Global override binds
 ;;;
 
-;;; Window navigation bindings (and rebindings of built-ins)
+;;; Window navigation bindings (and rebindings of shadowed built-ins)
 
 ;; Emacs defaults:
 ;; M-h bound to mark-paragraph (now rebound to C-M-h)
@@ -631,10 +658,16 @@ scroll-step 1)
   (unless (display-graphic-p)
     (message "running my-terminal-config...")
     (xterm-mouse-mode t)
+    ;; From: http://offbytwo.com/2012/01/15/emacs-plus-paredit-under-terminal.html
     (define-key input-decode-map "\e[1;5A" [C-up])
     (define-key input-decode-map "\e[1;5B" [C-down])
     (define-key input-decode-map "\e[1;5C" [C-right])
     (define-key input-decode-map "\e[1;5D" [C-left])
+    (define-key input-decode-map "\e[13;5u" [(control return)])
+    (define-key input-decode-map "\e[1;7C" [C-M-right])
+    (define-key input-decode-map "\e[1;7D" [C-M-left])
+    (define-key input-decode-map "\e[1;7A" [C-M-up])
+    (define-key input-decode-map "\e[1;7B" [C-M-down])
     (define-key input-decode-map "\e[13;5u" [(control return)])))
 
 (add-hook 'after-make-frame-functions 'my-terminal-config)
@@ -780,19 +813,31 @@ scroll-step 1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/vendor/color-theme/color-theme-6.6.0")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-assemblage-theme")
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)))
+
+;;(load-theme 'assemblage t)
+;;(load-theme 'apropospriate-dark t)  ; ****.
+;;(load-theme 'arjen-grey t)  ; ****.
+;;(load-theme 'bliss t)  ; ****.
+;;(load-theme 'borland-blue t)  ; ***..
+;;(load-theme 'boron t)  ; ****.
+;;(load-theme 'soothe t)  ; *....
+;;(load-theme 'subatomic t)  ; ****
+;;(load-theme 'subatomic256 t)  ; ****
+
 ;;(load-theme 'fogus
 ;;(load-theme 'dorsey)
 ;;(load-theme 'graham t)
 (load-theme 'xterm16 t)
+;;(load-theme 'solarized-dark t)
 ;;(load-theme 'deep-thought t)
 ;;(load-theme 'hickey t)
 ;;(load-theme 'granger t)
 ;;(load-theme 'odersky t)
-;;(load-theme 'fogus t)
 ;;(load-theme 'jlucas t)
 ;;(load-theme 'tao-yin t)
 
@@ -804,8 +849,16 @@ scroll-step 1)
 
 ;;; hippie expand
 ;;; Don't try to complete with file names
-(setq hippie-expand-try-functions-list (delete 'try-complete-file-name hippie-expand-try-functions-list))
-(setq hippie-expand-try-functions-list (delete 'try-complete-file-name-partially hippie-expand-try-functions-list))
+;; (setq hippie-expand-try-functions-list (delete 'try-complete-file-name hippie-expand-try-functions-list))
+;; (setq hippie-expand-try-functions-list (delete 'try-complete-file-name-partially hippie-expand-try-functions-list))
+
+;;; Tried to re-add these functions for autocompletion of filenames like vim's C-x C-f
+;;; See: http://superuser.com/questions/67170/how-do-i-complete-file-paths-in-emacs
+;;; 
+;; (setq hippie-expand-try-functions-list
+;;       (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially))
+;; (setq hippie-expand-try-functions-list
+;;       (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name))
 
 ;;; ido
 ;(setq ido-use-filename-at-point nil)
@@ -889,7 +942,7 @@ scroll-step 1)
 ;;; evil
 ;;;
 
-(load "~/.emacs.d/evil.el")
+;;(load "~/.emacs.d/evil.el")
 
 ;; Preserve scratch buffer across sessions
 ;; Had some problems with this coming too early in user.el.
