@@ -362,7 +362,10 @@
 
 ;; Use PRIMARY selection in X
 ;; From: http://emacswiki.org/emacs/CopyAndPaste
+;; From: http://www.gnu.org/software/emacs/manual/html_node/emacs/Clipboard.html
+(setq x-select-enable-clipboard nil)
 (setq x-select-enable-primary t)
+(setq mouse-drag-and-copy t)
 
 ;; Include newline when killing a line
 (setq kill-whole-line t)
