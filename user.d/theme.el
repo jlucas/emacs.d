@@ -1,0 +1,7 @@
+;;;
+;;; Theme
+;;;
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'xterm16 t)
+
