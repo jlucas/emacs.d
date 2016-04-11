@@ -1,4 +1,0 @@
-# https://www.masteringemacs.org/article/complete-guide-mastering-eshell
-
-alias ff 'find-file $1'
-alias d 'dired $1'
