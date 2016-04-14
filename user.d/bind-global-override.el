@@ -75,19 +75,19 @@
   (kill-line (- 1 arg)))
 (global-set-key (kbd "C-c w") 'backward-kill-line) ; C-u in readline
 
-(defun move-up-line ()
-  "Move display up one line"
-  (interactive)
-  (scroll-down 1)
-  (previous-line 1))
-(global-set-key "\M-p" 'move-up-line)
+;; (defun move-up-line ()
+;;   "Move display up one line"
+;;   (interactive)
+;;   (scroll-down 1)
+;;   (previous-line 1))
+;; (global-set-key "\M-p" 'move-up-line)
 
-(defun move-down-line ()
-  "Move display down one line"
-  (interactive)
-  (scroll-up 1)
-  (next-line 1))
-(global-set-key "\M-n" 'move-down-line)
+;; (defun move-down-line ()
+;;   "Move display down one line"
+;;   (interactive)
+;;   (scroll-up 1)
+;;   (next-line 1))
+;; (global-set-key "\M-n" 'move-down-line)
 
 ;; Remove whitespace from point to first non-whitespace char
 (defun whack-whitespace (arg)
