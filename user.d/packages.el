@@ -165,6 +165,11 @@
   :bind (("M-p" . elscreen-previous) ; built-in: C-z C-p
 	 ("M-n" . elscreen-next))) ; built-in: C-z C-n
 
+;; Just use 'winner-undo and 'winner-redo
+(setq winner-dont-bind-my-keys t)
+(when (fboundp 'winner-mode) 
+  (winner-mode 1))
+
 ;; http://orgmode.org/worg/org-contrib/org-collector.html
 ;; (use-package org-collector
 ;;   :ensure)
