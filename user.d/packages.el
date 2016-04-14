@@ -156,6 +156,15 @@
 (use-package yaml-mode
   :ensure)
 
+(use-package elscreen
+  :ensure
+  :init (progn
+	  (elscreen-start)
+	  (set-face-attribute 'elscreen-tab-background-face nil
+			      :inherit 'default :background nil))
+  :bind (("M-p" . elscreen-previous) ; built-in: C-z C-p
+	 ("M-n" . elscreen-next))) ; built-in: C-z C-n
+
 ;; http://orgmode.org/worg/org-contrib/org-collector.html
 ;; (use-package org-collector
 ;;   :ensure)
