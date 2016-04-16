@@ -2,6 +2,13 @@
 ;;; Basic settings
 ;;;
 
+;; Auto-save path
+(defconst my-temp-dir "~/tmp")
+(setq backup-directory-alist
+      `((".*" . ,my-temp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,my-temp-dir t)))
+
 ;; No splash screen messages
 (setq inhibit-startup-message t)
 
