@@ -46,14 +46,6 @@
   :bind (("M-i" . change-inner)
 	 ("M-o" . change-outer)))
 
-(use-package xt-mouse
-  :ensure
-  :init (progn
-	  (defun up-slightly () (interactive) (scroll-up 2))
-	  (defun down-slightly () (interactive) (scroll-down 2)))
-  :bind (("<mouse-4>" . down-slightly)
-	 ("<mouse-5>" . up-slightly)))
-
 (use-package markdown-mode
   :ensure
   :config (progn
