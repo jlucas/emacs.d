@@ -27,6 +27,9 @@
 ;; From: http://emacswiki.org/emacs/CopyAndPaste
 (setq x-select-enable-primary t)
 
+;; Include newline when killing a line
+(setq kill-whole-line t)
+
 ;; No splash screen messages
 (setq inhibit-startup-message t)
 
