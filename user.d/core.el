@@ -10,6 +10,11 @@
 (setq auto-save-file-name-transforms
       `((".*" ,my-temp-dir t)))
 
+;;; Preserve history across sessions
+;;; http://stackoverflow.com/questions/1229142
+(setq savehist-file (concat (file-name-as-directory my-temp-dir) "history"))
+(savehist-mode 1)
+
 ;; No splash screen messages
 (setq inhibit-startup-message t)
 
