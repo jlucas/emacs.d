@@ -9,6 +9,9 @@
 ;; C-M-h bound to mark-defun (now unbound)
 (global-set-key (kbd "M-h" ) 'windmove-left)
 (global-set-key (kbd "C-M-h") 'mark-paragraph)
+;; nxml-mode binds M-h to 'nxml-mark-paragraph
+(add-hook 'nxml-mode-hook
+	  (lambda () (local-unset-key (kbd "M-h"))))
 
 ;; Emacs defaults:
 ;; M-j and C-M-j bound to indent-new-comment-line
