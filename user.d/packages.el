@@ -102,7 +102,7 @@
 ;;
 ;; TODO: Write a function that acts like pressing $ in visual block
 ;; mode (note, this is implemented in evil-mode).  This should be
-;; triggered when the cursor is alread at the end of a line with a
+;; triggered when the cursor is already at the end of a line with a
 ;; rectangular region active and the user presses C-e again.
 (use-package rectangle-utils
   :ensure
