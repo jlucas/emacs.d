@@ -71,3 +71,10 @@
                          '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
 (global-set-key [f11] 'fullscreen)
 
+;;; Mouse scrolling and pointing in terminal mode
+(require 'xt-mouse)
+(defun up-slightly () (interactive) (scroll-up 2))
+(defun down-slightly () (interactive) (scroll-down 2))
+(global-set-key (kbd "<mouse-4>") 'down-slightly)
+(global-set-key (kbd "<mouse-5>") 'up-slightly)
+
