@@ -23,6 +23,10 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+;; Use PRIMARY selection in X
+;; From: http://emacswiki.org/emacs/CopyAndPaste
+(setq x-select-enable-primary t)
+
 ;; No splash screen messages
 (setq inhibit-startup-message t)
 
