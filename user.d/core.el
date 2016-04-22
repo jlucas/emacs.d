@@ -3,7 +3,8 @@
 ;;;
 
 ;; Auto-save path
-(defconst my-temp-dir "~/tmp")
+(defconst my-temp-dir "~/tmp/emacs")
+(make-directory my-temp-dir t)
 (setq backup-directory-alist
       `((".*" . ,my-temp-dir)))
 (setq auto-save-file-name-transforms
