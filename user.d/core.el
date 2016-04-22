@@ -63,3 +63,11 @@
 ;; C-x C-= to increase
 ;; C-x C-- to decrease
 
+;; Fullscreen in X with f11 key
+;; From: http://emacswiki.org/emacs/FullScreen#toc22
+(defun fullscreen ()
+  (interactive)
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                         '(2 "_NET_WM_STATE_FULLSCREEN" 0)))
+(global-set-key [f11] 'fullscreen)
+
