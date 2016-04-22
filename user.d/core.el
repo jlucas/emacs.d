@@ -58,12 +58,6 @@
 ;; Show empty lines and indicate start/end of buffer
 ;; (setq-default indicate-empty-lines t)
 ;; (setq-default indicate-buffer-boundaries t)
-
-(set-frame-font "Terminus-11" nil t)
-;;(set-frame-font "Monospace-12" nil t)
-;;(set-frame-font "snap-12" nil t)
-;;(set-frame-font "Monospace-12" nil t)
-;;(set-face-attribute 'default nil :height 100)
   
 ;; Resizing fonts
 ;; C-x C-= to increase
