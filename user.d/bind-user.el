@@ -38,6 +38,13 @@
 ;; Close window
 (global-set-key (kbd "C-c c") 'delete-window)
 
+(require 'xt-mouse)
+(xterm-mouse-mode t)
+(defun up-slightly () (interactive) (scroll-up 2))
+(defun down-slightly () (interactive) (scroll-down 2))
+(global-set-key (kbd "<mouse-4>") 'down-slightly)
+(global-set-key (kbd "<mouse-5>") 'up-slightly)
+
 ;; Switch to previous/next frame
 (global-set-key (kbd "C-c N") (lambda ()
                                  (interactive)
