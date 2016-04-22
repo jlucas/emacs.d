@@ -15,6 +15,10 @@
 (setq savehist-file (concat (file-name-as-directory my-temp-dir) "history"))
 (savehist-mode 1)
 
+;; Turn on automatic bracket insertion by pairs.  New in Emacs 24.
+(if (>= emacs-major-version 24)
+    (electric-pair-mode 1))
+
 ;; No splash screen messages
 (setq inhibit-startup-message t)
 
