@@ -1,4 +1,4 @@
-;;
+;;;
 ;;; evil
 ;;;
 
@@ -9,7 +9,7 @@
 ;; Must be loaded before evil-mode
 (use-package evil-leader
   :ensure
-  :config (progn
+  :init (progn
 	    (global-evil-leader-mode 1)
 	    (evil-leader/set-leader "<SPC>")
 	    (evil-leader/set-key
