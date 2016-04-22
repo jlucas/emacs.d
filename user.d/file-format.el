@@ -32,3 +32,17 @@
      (define-key muttrc-mode-map (kbd "C-c h") nil)
      ;; Don't override my split-window-below bind
      (define-key muttrc-mode-map (kbd "C-c s") nil)))
+
+;;
+;; python
+;;
+
+;; Perhaps look in to https://github.com/kaz-yos/eval-in-repl
+
+(when (executable-find "ipython")
+  (setq python-shell-interpreter "ipython"))
+
+(defun ipython ()
+  (interactive)
+  (execute-extended command 'run-python))
+
