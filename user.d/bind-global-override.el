@@ -31,10 +31,6 @@
 (global-set-key (kbd "M-l" ) 'windmove-right)
 (global-set-key (kbd "C-M-l" ) 'downcase-word)
 
-;; Critically, make it easier on the hands to move by paragraph
-(global-set-key (kbd "M-]") (lambda () (interactive) (forward-paragraph)))
-(global-set-key (kbd "M-[") (lambda () (interactive) (backward-paragraph)))
-
 ;; C-x C-v gets bound to 'ffap-alternate-file when you invoke
 ;; 'ffap-bindings as I do earlier in my config
 (global-set-key (kbd "C-x C-v") 'find-alternate-file)
