@@ -138,9 +138,9 @@
   `(eshell-prompt ((t (:foreground ,*keywords* :weight bold))))
 
   ;; git-gutter+
-  `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*gray251*))))
-  `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*gray251*))))
-  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray251*))))
+  `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*gray238*))))
+  `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*gray238*))))
+  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))
 
   `(elscreen-tab-background-face ((t (:foreground "grey90" :background "grey10"))))
   `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
