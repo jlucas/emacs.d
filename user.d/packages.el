@@ -153,7 +153,8 @@
   :init (progn
 	  (elscreen-start)
 	  (set-face-attribute 'elscreen-tab-background-face nil
-			      :inherit 'default :background nil))
+			      :inherit 'default :background nil)
+	  (custom-set-variables '(elscreen-tab-display-kill-screen nil)))
   :bind (("M-p" . elscreen-previous) ; built-in: C-z C-p
 	 ("M-n" . elscreen-next))) ; built-in: C-z C-n
 
