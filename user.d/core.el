@@ -52,9 +52,8 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 
-;; Show un/matched parens
-(show-paren-mode 1)      
-(setq show-paren-delay 0)
+; Line numbers
+(setq linum-format "%3d ")
 
 ;; Show empty lines and indicate start/end of buffer
 ;; (setq-default indicate-empty-lines t)
