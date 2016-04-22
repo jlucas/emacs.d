@@ -19,6 +19,10 @@
 (if (>= emacs-major-version 24)
     (electric-pair-mode 1))
 
+;; Show un/matched parens
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+
 ;; No splash screen messages
 (setq inhibit-startup-message t)
 
