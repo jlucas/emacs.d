@@ -14,8 +14,3 @@
       (t
        (add-to-list 'default-frame-alist '(font . "Terminus-11"))))
 
-;;(set-frame-font "Monospace-12" nil t)
-;;(set-frame-font "snap-12" nil t)
-;;(set-frame-font "Monospace-12" nil t)
-;;(set-face-attribute 'default nil :height 100)
-
