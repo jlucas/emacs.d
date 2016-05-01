@@ -27,6 +27,14 @@
 ;; From: http://emacswiki.org/emacs/CopyAndPaste
 (setq x-select-enable-primary t)
 
+;; From: http://stackoverflow.com/questions/28403647/
+;; Paste the X PRIMARY selection with shift-insert
+(defun paste-primary-selection ()
+  (interactive)
+  (insert
+   (x-get-selection 'PRIMARY)))
+(global-set-key (kbd "S-<insert>") 'paste-primary-selection)
+
 ;; Include newline when killing a line
 (setq kill-whole-line t)
 
