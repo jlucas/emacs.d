@@ -31,8 +31,9 @@
 ;; Paste the X PRIMARY selection with shift-insert
 (defun paste-primary-selection ()
   (interactive)
-  (insert
-   (x-get-selection 'PRIMARY)))
+  (if (>= emacs-major-version 25)
+      (insert (gui-get-primary-selection))
+    (insert (x-get-selection 'PRIMARY))))
 (global-set-key (kbd "S-<insert>") 'paste-primary-selection)
 
 ;; Include newline when killing a line
