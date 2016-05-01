@@ -87,6 +87,7 @@
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
 
 ;; http://unix.stackexchange.com/questions/79374
+;; https://www.emacswiki.org/emacs/MetaKeyProblems#toc16
 (defun jl/terminal-setup (&optional frame)
   ;; You need this in order to make the hook run on the correct frame.
   ;; This is important when running emacsclient in a terminal under an
@@ -98,18 +99,20 @@
   ;; nil when emacs is started graphically
   (message (format "display-graphic-p is %s" (display-graphic-p)))
   (unless (display-graphic-p)
-    (message "running my-terminal-config...")
+    (message "running terminal setup...")
     (xterm-mouse-mode t)
     ;; From: http://offbytwo.com/2012/01/15/emacs-plus-paredit-under-terminal.html
+    (define-key input-decode-map "\e[1;2C" [S-right])
+    (define-key input-decode-map "\e[1;2D" [S-left])
+    (define-key input-decode-map "\e[1;2A" [S-up])
+    (define-key input-decode-map "\e[1;2B" [S-down])
     (define-key input-decode-map "\e[1;5A" [C-up])
     (define-key input-decode-map "\e[1;5B" [C-down])
     (define-key input-decode-map "\e[1;5C" [C-right])
     (define-key input-decode-map "\e[1;5D" [C-left])
-    (define-key input-decode-map "\e[13;5u" [(control return)])
     (define-key input-decode-map "\e[1;7C" [C-M-right])
     (define-key input-decode-map "\e[1;7D" [C-M-left])
     (define-key input-decode-map "\e[1;7A" [C-M-up])
     (define-key input-decode-map "\e[1;7B" [C-M-down])
-    (define-key input-decode-map "\e[13;5u" [(control return)])
-    ))
+    (define-key input-decode-map "\e[13;5u" [(control return)])))
 (add-hook 'after-make-frame-functions 'jl/terminal-setup)
