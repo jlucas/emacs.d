@@ -145,6 +145,10 @@
   :ensure
   :config (jl/load-if-readable "~/.emacs.d/user.d/org.el"))
 
+(use-package hungry-delete
+  :ensure
+  :bind ("M-\\" . hungry-delete-forward))
+
 (use-package yaml-mode
   :ensure)
 
