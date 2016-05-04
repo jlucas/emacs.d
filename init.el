@@ -33,3 +33,4 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'upcase-region 'disabled nil)
