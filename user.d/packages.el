@@ -167,6 +167,11 @@
 ;; (use-package org-collector
 ;;   :ensure)
 
+;; org
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (local-unset-key (kbd "M-h"))))
+
 ;; dired-x for 'F' bind which visits all marked files (dired-x.el
 ;; ships with emacs)
 (add-hook 'dired-load-hook (function (lambda () (load "dired-x"))))
