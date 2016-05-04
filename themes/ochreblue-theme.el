@@ -140,7 +140,13 @@
   ;; git-gutter+
   `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*gray238*))))
   `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*gray238*))))
-  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))))
+  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))
+
+  `(elscreen-tab-background-face ((t (:foreground "grey90" :background "grey10"))))
+  `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
+  `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
+  `(elscreen-tab-other-screen-face ((t (:foreground ,*gray248* :background ,*gray236*))))
+  ))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
