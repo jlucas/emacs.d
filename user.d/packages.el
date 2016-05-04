@@ -148,6 +148,9 @@
 (use-package yaml-mode
   :ensure)
 
+(use-package latex-preview-pane
+  :ensure)
+
 (use-package elscreen
   :ensure
   :init (progn
