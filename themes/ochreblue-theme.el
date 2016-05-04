@@ -140,7 +140,7 @@
   ;; git-gutter+
   `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*gray238*))))
   `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*gray238*))))
-  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))
+  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
