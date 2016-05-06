@@ -13,10 +13,10 @@
       (*keywords*           "#0087af")
       (*line-number*        "#afaf87")
       (*method-declaration* "#a8a8a8")
-      (*mode-line-fg*       "#c6c6c6")
-      (*mode-line-bg*       "#444444")
-      (*mode-inactive-fg*   "#8a8a8a")
-      (*mode-inactive-bg*   "#303030")
+      (*gray236*            "#303030")
+      (*gray238*            "#444444")
+      (*gray245*            "#8a8a8a")
+      (*gray251*            "#c6c6c6")
       (*number*             "#87afaf")
       (*operators*          "#00af87")
       (*warning*            "#9d7a04")
@@ -40,7 +40,7 @@
    `(linum ((t (:background ,*background* :foreground ,*line-number* :bold nil :underline nil))))
    `(button ((t (:foreground ,*keywords* :underline t))))
    `(default ((t (:background ,*background* :foreground ,*normal*))))
-   `(header-line ((t (:background ,*mode-line-bg* :foreground ,*normal*)))) ;; info header
+   `(header-line ((t (:background ,*gray238* :foreground ,*normal*)))) ;; info header
    `(highlight ((t (:background ,*current-line*))))
    `(highlight-face ((t (:background ,*current-line*))))
    `(hl-line ((t (:background ,*current-line*))))
@@ -81,11 +81,11 @@
    ;`(fringe ((t (:background, *background*))))
    ;`(linum ((t (:background, *line-number*))))
    `(minibuffer-prompt ((t (:foreground, *cyan*))))
-   `(mode-line ((t (:background, *mode-line-bg* :foreground, *mode-line-fg*))))
-   `(mode-line-inactive ((t (:background, *mode-inactive-bg* :foreground, *mode-inactive-fg*))))
+   `(mode-line ((t (:background, *gray238* :foreground, *gray251*))))
+   `(mode-line-inactive ((t (:background, *gray236* :foreground, *gray245*))))
    `(cursor ((t (:background, *normal*))))
    ;; `(text-cursor ((t (:background, *cursor-underscore*))))
-   `(vertical-border ((t (:foreground, *mode-inactive-bg* :background, *mode-inactive-bg*)))) ;; between splits
+   `(vertical-border ((t (:foreground, *gray236* :background, *gray236*)))) ;; between splits
 
    ;; search
    `(isearch ((t (:background, *regexp* :foreground, *lightgreenblue*))))
@@ -138,14 +138,14 @@
   `(eshell-prompt ((t (:foreground ,*keywords* :weight bold))))
 
   ;; git-gutter+
-  `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*mode-line-fg*))))
-  `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*mode-line-fg*))))
-  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*mode-line-fg*))))
+  `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*gray238*))))
+  `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*gray238*))))
+  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))
 
   `(elscreen-tab-background-face ((t (:foreground "grey90" :background "grey10"))))
   `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
-  `(elscreen-tab-current-screen-face ((t (:foreground ,*mode-line-fg* :background ,*mode-line-bg*))))
-  `(elscreen-tab-other-screen-face ((t (:foreground ,*mode-inactive-fg* :background ,*mode-inactive-bg*))))
+  `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
+  `(elscreen-tab-other-screen-face ((t (:foreground ,*gray245* :background ,*gray236*))))
   ))
 
 ;;;###autoload

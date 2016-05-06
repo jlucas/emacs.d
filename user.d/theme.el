@@ -8,13 +8,9 @@
     (load-theme 'ochreblue t)
   (load-theme 'xterm16 t))
 
+;; From: http://emacs.stackexchange.com/questions/16313
 (cond ((string= system-name "yew.106.net")
-       (set-frame-font "Terminus-13" nil t))
+       (add-to-list 'default-frame-alist '(font . "Terminus-13")))
       (t
-       (set-frame-font "Terminus-11" nil t)))
-
-;;(set-frame-font "Monospace-12" nil t)
-;;(set-frame-font "snap-12" nil t)
-;;(set-frame-font "Monospace-12" nil t)
-;;(set-face-attribute 'default nil :height 100)
+       (add-to-list 'default-frame-alist '(font . "Terminus-11"))))
 
