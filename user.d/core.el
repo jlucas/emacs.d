@@ -10,6 +10,12 @@
 (setq auto-save-file-name-transforms
       `((".*" ,my-temp-dir t)))
 
+;; Vim's tabbing behavior Just Works
+;; From: http://stackoverflow.com/questions/69934/
+;;(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq tab-stop-list (number-sequence 4 200 4))
+
 ;;; Preserve history across sessions
 ;;; http://stackoverflow.com/questions/1229142
 (setq savehist-file (concat (file-name-as-directory my-temp-dir) "history"))
