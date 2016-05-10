@@ -93,6 +93,14 @@
 (global-set-key (kbd "<mouse-4>") 'down-slightly)
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
 
+;; Useful frame-related functions:
+;;
+;; framep (returns different values depending on frame attributes)
+;; frame-live-p (tells you if a frame is active)
+;; selected-frame (returns the frame object of the current frame)
+;;
+;; See: http://ftp.gnu.org/old-gnu/Manuals/elisp-manual-20-2.5/html_chapter/elisp_29.html
+
 ;; http://unix.stackexchange.com/questions/79374
 ;; https://www.emacswiki.org/emacs/MetaKeyProblems#toc16
 (defun jl/terminal-setup (&optional frame)
