@@ -35,6 +35,10 @@
 ;; 'ffap-bindings as I do earlier in my config
 (global-set-key (kbd "C-x C-v") 'find-alternate-file)
 
+;; hippie-expand
+(global-set-key (kbd "C-M-/") 'hippie-expand)
+(global-set-key (kbd "C-M-_") 'hippie-expand) ; xterm seeing C-M-/ as C-M-_ (?)
+
 ;; Join like Vim
 (global-set-key (kbd "C-j") (lambda ()
 			      (interactive)
