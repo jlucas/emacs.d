@@ -4,6 +4,10 @@
 
 (require 'use-package)
 
+(use-package isearch+
+    :ensure
+    :config (global-git-gutter+-mode))
+
 (use-package git-gutter+
     :ensure
     :config (global-git-gutter+-mode))
