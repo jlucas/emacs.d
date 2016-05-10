@@ -117,16 +117,29 @@
     (message "running terminal setup...")
     (xterm-mouse-mode t)
     ;; From: http://offbytwo.com/2012/01/15/emacs-plus-paredit-under-terminal.html
-    (define-key input-decode-map "\e[1;2C" [S-right])
+    ;; shift-arrow
     (define-key input-decode-map "\e[1;2D" [S-left])
+    (define-key input-decode-map "\e[1;2C" [S-right])
     (define-key input-decode-map "\e[1;2A" [S-up])
     (define-key input-decode-map "\e[1;2B" [S-down])
+    ;; ctrl-arrow
+    (define-key input-decode-map "\e[1;5D" [C-left])
+    (define-key input-decode-map "\e[1;5C" [C-right])
     (define-key input-decode-map "\e[1;5A" [C-up])
     (define-key input-decode-map "\e[1;5B" [C-down])
-    (define-key input-decode-map "\e[1;5C" [C-right])
-    (define-key input-decode-map "\e[1;5D" [C-left])
-    (define-key input-decode-map "\e[1;7C" [C-M-right])
+    ;; meta-arrow
+    (define-key input-decode-map "\e[1;3D" [M-left])
+    (define-key input-decode-map "\e[1;3C" [M-right])
+    (define-key input-decode-map "\e[1;3A" [M-up])
+    (define-key input-decode-map "\e[1;3B" [M-down])
+    ;; shift-meta-arrow
+    (define-key input-decode-map "\e[1;4D" [M-S-left])
+    (define-key input-decode-map "\e[1;4C" [M-S-right])
+    (define-key input-decode-map "\e[1;4A" [M-S-up])
+    (define-key input-decode-map "\e[1;4B" [M-S-down])
+    ;; ctrl-meta-arrow
     (define-key input-decode-map "\e[1;7D" [C-M-left])
+    (define-key input-decode-map "\e[1;7C" [C-M-right])
     (define-key input-decode-map "\e[1;7A" [C-M-up])
     (define-key input-decode-map "\e[1;7B" [C-M-down])
     (define-key input-decode-map "\e[13;5u" [(control return)])))
