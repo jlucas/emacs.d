@@ -10,6 +10,12 @@
 (setq auto-save-file-name-transforms
       `((".*" ,my-temp-dir t)))
 
+;; Vim's tabbing behavior Just Works
+;; From: http://stackoverflow.com/questions/69934/
+;;(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq tab-stop-list (number-sequence 4 200 4))
+
 ;;; Preserve history across sessions
 ;;; http://stackoverflow.com/questions/1229142
 (setq savehist-file (concat (file-name-as-directory my-temp-dir) "history"))
@@ -87,6 +93,14 @@
 (global-set-key (kbd "<mouse-4>") 'down-slightly)
 (global-set-key (kbd "<mouse-5>") 'up-slightly)
 
+;; Useful frame-related functions:
+;;
+;; framep (returns different values depending on frame attributes)
+;; frame-live-p (tells you if a frame is active)
+;; selected-frame (returns the frame object of the current frame)
+;;
+;; See: http://ftp.gnu.org/old-gnu/Manuals/elisp-manual-20-2.5/html_chapter/elisp_29.html
+
 ;; http://unix.stackexchange.com/questions/79374
 ;; https://www.emacswiki.org/emacs/MetaKeyProblems#toc16
 (defun jl/terminal-setup (&optional frame)
@@ -103,16 +117,29 @@
     (message "running terminal setup...")
     (xterm-mouse-mode t)
     ;; From: http://offbytwo.com/2012/01/15/emacs-plus-paredit-under-terminal.html
-    (define-key input-decode-map "\e[1;2C" [S-right])
+    ;; shift-arrow
     (define-key input-decode-map "\e[1;2D" [S-left])
+    (define-key input-decode-map "\e[1;2C" [S-right])
     (define-key input-decode-map "\e[1;2A" [S-up])
     (define-key input-decode-map "\e[1;2B" [S-down])
+    ;; ctrl-arrow
+    (define-key input-decode-map "\e[1;5D" [C-left])
+    (define-key input-decode-map "\e[1;5C" [C-right])
     (define-key input-decode-map "\e[1;5A" [C-up])
     (define-key input-decode-map "\e[1;5B" [C-down])
-    (define-key input-decode-map "\e[1;5C" [C-right])
-    (define-key input-decode-map "\e[1;5D" [C-left])
-    (define-key input-decode-map "\e[1;7C" [C-M-right])
+    ;; meta-arrow
+    (define-key input-decode-map "\e[1;3D" [M-left])
+    (define-key input-decode-map "\e[1;3C" [M-right])
+    (define-key input-decode-map "\e[1;3A" [M-up])
+    (define-key input-decode-map "\e[1;3B" [M-down])
+    ;; shift-meta-arrow
+    (define-key input-decode-map "\e[1;4D" [M-S-left])
+    (define-key input-decode-map "\e[1;4C" [M-S-right])
+    (define-key input-decode-map "\e[1;4A" [M-S-up])
+    (define-key input-decode-map "\e[1;4B" [M-S-down])
+    ;; ctrl-meta-arrow
     (define-key input-decode-map "\e[1;7D" [C-M-left])
+    (define-key input-decode-map "\e[1;7C" [C-M-right])
     (define-key input-decode-map "\e[1;7A" [C-M-up])
     (define-key input-decode-map "\e[1;7B" [C-M-down])
     (define-key input-decode-map "\e[13;5u" [(control return)])))
