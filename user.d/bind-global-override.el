@@ -65,6 +65,7 @@
 ;; You can get M-SPC #'just-one-space functionality with M-\
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 (global-set-key (kbd "C-x C-k") 'kill-region) ; instead of default bind to C-w
+                                              ; usually bound to 'edit-kbd-macro
 (global-set-key (kbd "C-w") 'backward-kill-word) ; as in the shell, vim. etc.
 (global-set-key (kbd "M-%") 'replace-regexp) ; do i ever not want this?
 
