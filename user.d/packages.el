@@ -97,7 +97,11 @@
   :ensure
   :config (progn
 	    (add-hook 'lisp-mode-hook (lambda () (paredit-mode)))
-	    (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode)))))
+	    (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode))))
+  :bind (("C-M-k" . kill-sexp)))		; This is actually the
+										; standard bind for kill-sexp,
+										; but I have it overridden in
+										; other modes
 
 ;; By default, Emacs will only draw a rectangular selection out to the
 ;; shortest line.  This package has a function to make it behave like
