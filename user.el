@@ -5,12 +5,12 @@
 
 ;; Full paths so I can use ffap to jump to them
 (let ((config-files '("~/.emacs.d/user.d/packages.el"
-		      "~/.emacs.d/user.d/core.el"
-		      "~/.emacs.d/user.d/theme.el"
-		      "~/.emacs.d/user.d/file-format.el"
-		      "~/.emacs.d/user.d/bind-user.el"
-		      "~/.emacs.d/user.d/bind-global-override.el"
-		      "~/.emacs.d/user.d/local.el")))
+					  "~/.emacs.d/user.d/core.el"
+					  "~/.emacs.d/user.d/theme.el"
+					  "~/.emacs.d/user.d/file-format.el"
+					  "~/.emacs.d/user.d/bind-user.el"
+					  "~/.emacs.d/user.d/bind-global-override.el"
+					  "~/.emacs.d/user.d/local.el")))
   (dolist (filepath config-files)
     (jl/load-if-readable filepath)))
 
