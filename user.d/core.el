@@ -14,7 +14,10 @@
 ;; From: http://stackoverflow.com/questions/69934/
 ;;(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)    
+(defvaralias 'cperl-indent-level 'tab-width)
 (setq tab-stop-list (number-sequence 4 200 4))
+;; Remember: `M-x tabify` and `M-x untabify`
 
 ;;; Preserve history across sessions
 ;;; http://stackoverflow.com/questions/1229142
