@@ -12,6 +12,9 @@
     :ensure
     :config (global-git-gutter+-mode))
 
+(use-package git-blame
+	:ensure)
+
 (use-package undo-tree
   :ensure
   :config (global-undo-tree-mode 1))
