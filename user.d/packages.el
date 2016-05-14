@@ -18,6 +18,10 @@
 (use-package mo-git-blame
   :ensure)
 
+(use-package sudo-edit
+  :ensure
+  :bind (("C-x C-r" . sudo-edit-current-file)))
+
 (use-package undo-tree
   :ensure
   :config (global-undo-tree-mode 1))
