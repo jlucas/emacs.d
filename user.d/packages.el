@@ -12,6 +12,42 @@
     :ensure
     :config (global-git-gutter+-mode))
 
+(use-package git-blame
+	:ensure)
+
+(use-package mo-git-blame
+  :ensure)
+
+(use-package sudo-edit
+  :ensure
+  :bind (("C-x C-r" . sudo-edit-current-file)))
+
+(defun multi-term-set-cursor-according-to-mode ()
+  "Change cursor type according to multi-term mode."
+  (cond
+   ((term-in-char-mode)
+    (setq cursor-type 'hbar))
+   (t
+    (setq cursor-type 'bar))))
+
+(defun term-toggle-line-char-mode ()
+  (interactive)
+  (if (term-in-line-mode)
+      (term-char-mode)
+    (term-line-mode)))
+
+;; https://github.com/rlister/emacs.d/blob/master/lisp/multi-term-cfg.el
+(use-package multi-term
+  :ensure
+  :init (progn
+		  (setq multi-term-program "/bin/bash")
+		  (eval-after-load "multi-term"
+			'(progn
+			   (add-hook 'post-command-hook 'multi-term-set-cursor-according-to-mode))))
+  :bind (("C-c ;" . multi-term)
+		 ("C-M-f" . ffap-other-window)
+		 ("C-c C-j" . term-toggle-line-char)))
+
 (use-package undo-tree
   :ensure
   :config (global-undo-tree-mode 1))
