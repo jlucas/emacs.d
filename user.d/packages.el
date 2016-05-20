@@ -45,7 +45,6 @@
 			'(progn
 			   (add-hook 'post-command-hook 'multi-term-set-cursor-according-to-mode))))
   :bind (("C-c ;" . multi-term)
-		 ("C-M-f" . ffap-other-window)
 		 ("C-c C-j" . term-toggle-line-char)))
 
 (use-package undo-tree
