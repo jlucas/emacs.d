@@ -118,7 +118,7 @@
 (global-set-key (kbd "C-c i") 'next-buffer)
 
 ;; Invoke dired mode quickly
-(global-set-key (kbd "C-c RET") (lambda ()
+(global-set-key (kbd "C-c d") (lambda ()
 				  (interactive)
 				  (dired default-directory)))
 
