@@ -121,7 +121,7 @@
 
 (use-package multiple-cursors
   :ensure
-  :config (global-set-key (kbd "C-c I") 'mc/mark-next-like-this))
+  :config (global-set-key (kbd "C-c m") 'mc/mark-next-like-this))
 
 
 (use-package rainbow-delimiters
