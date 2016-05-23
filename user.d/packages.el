@@ -38,14 +38,16 @@
 
 ;; https://github.com/rlister/emacs.d/blob/master/lisp/multi-term-cfg.el
 (use-package multi-term
-  :ensure
-  :init (progn
-		  (setq multi-term-program "/bin/bash")
-		  (eval-after-load "multi-term"
-			'(progn
-			   (add-hook 'post-command-hook 'multi-term-set-cursor-according-to-mode))))
-  :bind (("C-c ;" . multi-term)
-		 ("C-c C-j" . term-toggle-line-char)))
+  :commands multi-term
+  :config (setq multi-term-program "/bin/bash")
+  :bind (("C-c t" . multi-term)
+         :map term-mode-map
+         ("M-p" . term-send-up)
+         ("M-n" . term-send-down)
+         :map term-raw-map
+         ("M-o" . other-window)
+         ("M-p" . term-send-up)
+         ("M-n" . term-send-down)))
 
 (use-package undo-tree
   :ensure
