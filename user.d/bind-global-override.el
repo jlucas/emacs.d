@@ -2,6 +2,9 @@
 ;;; Global override binds
 ;;;
 
+;; Unbind describe-copying (show GNU license)
+(global-unset-key (kbd "C-h C-c"))
+
 ;;; Rebindings of shadowed built-ins
 
 ;; Emacs defaults:
