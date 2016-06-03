@@ -2,7 +2,7 @@
 ;;; Global override binds
 ;;;
 
-;; Unbind describe-copying (show GNU license)
+;; Unbind describe-copying
 (global-unset-key (kbd "C-h C-c"))
 
 ;;; Rebindings of shadowed built-ins
