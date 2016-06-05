@@ -4,6 +4,8 @@
 
 ;; Unbind describe-copying
 (global-unset-key (kbd "C-h C-c"))
+;; Unbind describe-no-warranty
+(global-unset-key (kbd "C-h C-w"))
 
 ;;; Rebindings of shadowed built-ins
 
