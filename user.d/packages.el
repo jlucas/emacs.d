@@ -168,7 +168,7 @@
 (use-package recentf
   :ensure
   :config (recentf-mode 1)
-  :bind ("C-x C-a" . recentf-open-files))
+  :bind ("C-x C-r" . recentf-open-files))
 
 ;; ;; Multiple instances of term
 ;; (use-package multi-term
