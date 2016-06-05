@@ -49,6 +49,10 @@
          ("M-p" . term-send-up)
          ("M-n" . term-send-down)))
 
+(use-package with-editor
+  :ensure t
+  :config (add-hook 'term-mode-hook 'with-editor-export-editor))
+
 (use-package undo-tree
   :ensure
   :config (global-undo-tree-mode 1))
