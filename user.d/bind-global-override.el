@@ -40,12 +40,6 @@
 ;; 'ffap-bindings as I do earlier in my config
 (global-set-key (kbd "C-x C-v") 'find-alternate-file)
 
-;; hippie-expand
-(global-set-key (kbd "C-M-/") 'hippie-expand)
-(global-set-key (kbd "C-M-_") 'hippie-expand) ; xterm seeing C-M-/ as C-M-_ (?)
-(add-to-list hippie-expand-try-functions-list
-             '(try-complete-file-name-partially try-complete-file-name))
-
 ;; Join like Vim
 (global-set-key (kbd "C-j") (lambda ()
 			      (interactive)

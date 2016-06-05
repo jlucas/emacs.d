@@ -200,6 +200,14 @@
 (use-package latex-preview-pane
   :ensure)
 
+(use-package hippie-exp
+  :ensure
+  :config (progn
+            (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially)
+            (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name))
+  :bind (("C-M-/" . hippie-expand)
+         ("C-M-_" . hippie-expand)))
+
 (use-package elscreen
   :ensure
   :init (progn
