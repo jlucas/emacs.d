@@ -31,7 +31,8 @@
      ;; Don't override my windmove-left bind
      (define-key muttrc-mode-map (kbd "C-c h") nil)
      ;; Don't override my split-window-below bind
-     (define-key muttrc-mode-map (kbd "C-c s") nil)))
+     (define-key muttrc-mode-map (kbd "C-c s") nil)
+     (setq indent-tabs-mode nil)))
 
 ;;
 ;; python
