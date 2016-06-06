@@ -135,10 +135,12 @@
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package paredit
-  :ensure
-  :config (progn
-	    (add-hook 'lisp-mode-hook (lambda () (paredit-mode)))
-	    (add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode))))
+  :ensure t
+  :init (progn
+            (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+            (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+            (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+            (add-hook 'scheme-mode-hook 'enable-paredit-mode))
   :bind (("C-M-k" . kill-sexp)))		; This is actually the
 										; standard bind for kill-sexp,
 										; but I have it overridden in
