@@ -127,7 +127,9 @@
 
 (use-package multiple-cursors
   :ensure
-  :config (global-set-key (kbd "C-c m") 'mc/mark-next-like-this))
+  :bind (("C-c m" . mc/edit-lines)))
+;; multiple-cursors key binding discussion
+;; http://endlessparentheses.com/multiple-cursors-keybinds.html
 
 
 (use-package rainbow-delimiters
