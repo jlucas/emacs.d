@@ -19,8 +19,7 @@
   :ensure)
 
 (use-package sudo-edit
-  :ensure
-  :bind (("C-x C-r" . sudo-edit-current-file)))
+  :ensure t)
 
 (defun multi-term-set-cursor-according-to-mode ()
   "Change cursor type according to multi-term mode."
@@ -204,6 +203,23 @@
 
 (use-package yaml-mode
   :ensure)
+
+;; Mediawiki syntax highlighting.
+;; C-j is my join line bind.
+
+(use-package mediawiki
+  :ensure t
+  :config (progn
+            (unbind-key "C-j" mediawiki-mode-map)
+            (add-to-list 'auto-mode-alist
+                         '("itsalltext.*\\.txt$" . mediawiki))
+            (add-to-list 'auto-mode-alist
+                         '("\\.wiki\\'" . mediawiki))
+            (add-to-list 'auto-mode-alist
+                         '("en\\.wikipedia\\.org" . mediawiki))
+            (setq mediawiki-site-alist
+                  (append '(("comms" "http://comms-wiki/" nil nil "/Special:AllPages"))
+                          mediawiki-site-alist))))
 
 (use-package latex-preview-pane
   :ensure)
