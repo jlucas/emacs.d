@@ -8,6 +8,8 @@
 (global-unset-key (kbd "C-h C-w"))
 ;; Unbind view-emacs-news
 (global-unset-key (kbd "C-h n"))
+;; Unbind about-emacs
+(global-unset-key (kbd "C-h C-a"))
 
 ;;; Rebindings of shadowed built-ins
 
