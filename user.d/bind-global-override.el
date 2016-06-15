@@ -10,6 +10,8 @@
 (global-unset-key (kbd "C-h n"))
 ;; Unbind about-emacs
 (global-unset-key (kbd "C-h C-a"))
+;; Unbind view-external-packages
+(global-unset-key (kbd "C-h C-e"))
 
 ;;; Rebindings of shadowed built-ins
 
