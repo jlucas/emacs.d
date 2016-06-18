@@ -88,6 +88,10 @@
 			(unless (eq ibuffer-sorting-mode 'alphabetic)
 			  (ibuffer-do-sort-by-alphabetic)))))
 
+(use-package openwith
+  :ensure t
+  :config (setq openwith-associations '(("\\.pdf" "xpdf" (file)))))
+
 (use-package zoom-window
   :ensure
   :bind (("C-x C-z" . zoom-window-zoom))
@@ -231,6 +235,16 @@
             (setq mediawiki-site-alist
                   (append '(("comms" "http://comms-wiki/" nil nil "/Special:AllPages"))
                           mediawiki-site-alist))))
+
+(use-package redmine
+  :load-path "packages/emacs-redmine"
+  :init (defun redmine-my-project ()
+          (interactive)
+          (setq redmine-program (concat user-emacs-directory "packages/emacs-redmine/redmine.py"))
+          (setq redmine-project-name "pipe-comms-global")
+          (setq redmine-login-key "1de2b422cd710882c5ce3556b47a215eed6c2bf5")
+          (setq redmine-url "http://redmine-comms/")
+          (redmine-show-sprints)))
 
 (use-package latex-preview-pane
   :ensure)

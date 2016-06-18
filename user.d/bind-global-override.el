@@ -6,6 +6,12 @@
 (global-unset-key (kbd "C-h C-c"))
 ;; Unbind describe-no-warranty
 (global-unset-key (kbd "C-h C-w"))
+;; Unbind view-emacs-news
+(global-unset-key (kbd "C-h n"))
+;; Unbind about-emacs
+(global-unset-key (kbd "C-h C-a"))
+;; Unbind view-external-packages
+(global-unset-key (kbd "C-h C-e"))
 
 ;;; Rebindings of shadowed built-ins
 

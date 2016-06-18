@@ -1,0 +1,3 @@
+[submodule "packages/emacs-redmine"]
+	path = packages/emacs-redmine
+	url = https://github.com/gtp/emacs-redmine.git
