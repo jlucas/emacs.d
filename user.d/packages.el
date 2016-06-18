@@ -2,7 +2,15 @@
 ;;; Packages
 ;;;
 
-(require 'use-package)
+;; https://github.com/jwiegley/use-package
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
+(use-package projectile
+  :ensure t
+  :config (projectile-global-mode))
 
 (use-package isearch+
     :ensure
@@ -130,7 +138,9 @@
 
 (use-package multiple-cursors
   :ensure
-  :config (global-set-key (kbd "C-c m") 'mc/mark-next-like-this))
+  :bind (("C-c m" . mc/edit-lines)))
+;; multiple-cursors key binding discussion
+;; http://endlessparentheses.com/multiple-cursors-keybinds.html
 
 
 (use-package rainbow-delimiters
@@ -197,7 +207,10 @@
 
 (use-package org
   :ensure
-  :config (jl/load-if-readable "~/.emacs.d/user.d/org.el"))
+  :config (progn
+            (unbind-key "C-j" org-mode-map)
+            (unbind-key "M-h" org-mode-map)
+            (jl/load-if-readable "~/.emacs.d/user.d/org.el")))
 
 (use-package hungry-delete
   :ensure
@@ -263,11 +276,6 @@
 ;; http://orgmode.org/worg/org-contrib/org-collector.html
 ;; (use-package org-collector
 ;;   :ensure)
-
-;; org
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (local-unset-key (kbd "M-h"))))
 
 ;; dired-x for 'F' bind which visits all marked files (dired-x.el
 ;; ships with emacs)
