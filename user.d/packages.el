@@ -80,6 +80,10 @@
 			(unless (eq ibuffer-sorting-mode 'alphabetic)
 			  (ibuffer-do-sort-by-alphabetic)))))
 
+(use-package openwith
+  :ensure t
+  :config (setq openwith-associations '(("\\.pdf" "xpdf" (file)))))
+
 (use-package zoom-window
   :ensure
   :bind (("C-x C-z" . zoom-window-zoom))
