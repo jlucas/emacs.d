@@ -227,7 +227,8 @@
   :load-path "packages/emacs-redmine"
   :init (defun redmine-my-project ()
           (interactive)
-          (setq redmine-program (concat user-emacs-directory "packages/emacs-redmine/redmine.py"))
+          (setq redmine-program (concat user-emacs-directory
+                                        "packages/emacs-redmine/redmine.py"))
           (setq redmine-project-name "pipe-comms-global")
           (setq redmine-login-key "1de2b422cd710882c5ce3556b47a215eed6c2bf5")
           (setq redmine-url "http://redmine-comms/")
