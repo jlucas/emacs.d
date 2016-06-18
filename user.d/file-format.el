@@ -45,5 +45,5 @@
 
 (defun ipython ()
   (interactive)
-  (execute-extended command 'run-python))
+  (execute-extended-command 'run-python))
 
