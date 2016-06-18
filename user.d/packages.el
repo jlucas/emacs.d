@@ -203,7 +203,10 @@
 
 (use-package org
   :ensure
-  :config (jl/load-if-readable "~/.emacs.d/user.d/org.el"))
+  :config (progn
+            (unbind-key "C-j" org-mode-map)
+            (unbind-key "M-h" org-mode-map)
+            (jl/load-if-readable "~/.emacs.d/user.d/org.el")))
 
 (use-package hungry-delete
   :ensure
@@ -258,11 +261,6 @@
 ;; http://orgmode.org/worg/org-contrib/org-collector.html
 ;; (use-package org-collector
 ;;   :ensure)
-
-;; org
-(add-hook 'org-mode-hook
-	  (lambda ()
-	    (local-unset-key (kbd "M-h"))))
 
 ;; dired-x for 'F' bind which visits all marked files (dired-x.el
 ;; ships with emacs)
