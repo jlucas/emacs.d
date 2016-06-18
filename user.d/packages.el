@@ -2,7 +2,11 @@
 ;;; Packages
 ;;;
 
-(require 'use-package)
+;; https://github.com/jwiegley/use-package
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 
 (use-package isearch+
     :ensure
