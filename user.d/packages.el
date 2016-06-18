@@ -8,6 +8,10 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package projectile
+  :ensure t
+  :config (projectile-global-mode))
+
 (use-package isearch+
     :ensure
     :config (global-git-gutter+-mode))
