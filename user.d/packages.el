@@ -209,6 +209,9 @@
   :config (setq recentf-max-saved-items 100)
   :bind ("C-x C-r" . recentf-open-files))
 
+(use-package edit-list
+  :ensure t)
+
 ;; ;; Multiple instances of term
 ;; (use-package multi-term
 ;;   :ensure
