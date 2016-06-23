@@ -262,8 +262,10 @@
             (jl/load-if-readable "~/.emacs.d/user.d/org.el")))
 
 (use-package hungry-delete
-  :ensure
-  :bind ("M-\\" . hungry-delete-forward))
+  :ensure t
+  :diminish hungry-delete-mode
+  :init (global-hungry-delete-mode))
+
 
 (use-package yaml-mode
   :ensure)
