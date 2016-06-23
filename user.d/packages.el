@@ -17,7 +17,23 @@
 
 (use-package projectile
   :ensure t
-  :config (projectile-global-mode))
+  :init (progn
+          (projectile-global-mode)
+          (setq projectile-enable-caching t)
+          (use-package ibuffer-projectile
+            :ensure t
+            :bind ("C-x C-b" . ibuffer)
+            :init (progn
+                    (add-hook 'ibuffer-hook
+                              (lambda ()
+                                (ibuffer-projectile-set-filter-groups)
+                                (unless (eq ibuffer-sorting-mode 'alphabetic)
+                                  (ibuffer-do-sort-by-alphabetic))))
+                    (bind-keys :map ibuffer-mode-map
+                               ("c" . clean-buffer-list)
+                               ("n" . ibuffer-forward-filter-group)
+                               ("p" . ibuffer-backward-filter-group))))))
+
 
 (use-package isearch+
     :ensure
