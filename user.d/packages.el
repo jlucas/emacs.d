@@ -279,7 +279,6 @@
 
 (setq save-interprogram-paste-before-kill t)
 
-
 (use-package yaml-mode
   :ensure)
 
