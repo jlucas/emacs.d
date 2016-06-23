@@ -50,6 +50,10 @@
   :ensure
   :config (global-git-gutter+-mode))
 
+(use-package smartscan
+  :defer t
+  :init (global-smartscan-mode))
+
 (use-package git-gutter+
     :ensure
     :config (global-git-gutter+-mode))
