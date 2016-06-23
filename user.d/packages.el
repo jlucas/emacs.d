@@ -230,6 +230,10 @@
   :bind (("C-c ," . goto-last-change)
          ("C-c ." . goto-last-change-reverse)))
 
+;; See Magnars’ tutorial on Emacs Rocks.
+(use-package restclient
+  :ensure t)
+
 ;; ;; Multiple instances of term
 ;; (use-package multi-term
 ;;   :ensure
