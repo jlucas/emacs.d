@@ -269,6 +269,10 @@
             (unbind-key "M-h" org-mode-map)
             (jl/load-if-readable "~/.emacs.d/user.d/org.el")))
 
+;; http://orgmode.org/worg/org-contrib/org-collector.html
+;; (use-package org-collector
+;;   :ensure)
+
 (use-package hungry-delete
   :ensure t
   :diminish hungry-delete-mode
@@ -340,9 +344,6 @@
 (when (fboundp 'winner-mode) 
   (winner-mode 1))
 
-;; http://orgmode.org/worg/org-contrib/org-collector.html
-;; (use-package org-collector
-;;   :ensure)
 
 ;; dired-x for 'F' bind which visits all marked files (dired-x.el
 ;; ships with emacs)
