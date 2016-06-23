@@ -83,16 +83,18 @@
 
 ;; https://github.com/rlister/emacs.d/blob/master/lisp/multi-term-cfg.el
 (use-package multi-term
-  :commands multi-term
-  :config (setq multi-term-program "/bin/bash")
-  :bind (("C-c t" . multi-term)
-         :map term-mode-map
-         ("M-p" . term-send-up)
-         ("M-n" . term-send-down)
-         :map term-raw-map
-         ("M-o" . other-window)
-         ("M-p" . term-send-up)
-         ("M-n" . term-send-down)))
+  :ensure t
+  :init
+  (setq multi-term-program "/bin/bash")
+  :bind
+  (("C-c t" . multi-term)
+   :map term-mode-map
+   ("M-p" . term-send-up)
+   ("M-n" . term-send-down)
+   :map term-raw-map
+   ("M-o" . other-window)
+   ("M-p" . term-send-up)
+   ("M-n" . term-send-down)))
 
 (use-package with-editor
   :ensure t
