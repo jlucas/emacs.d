@@ -338,10 +338,13 @@
                               :inherit 'default :background nil)
           (custom-set-variables '(elscreen-tab-display-kill-screen nil))))
 
-;; Just use 'winner-undo and 'winner-redo
-(setq winner-dont-bind-my-keys t)
-(when (fboundp 'winner-mode) 
-  (winner-mode 1))
+(use-package winner
+  :ensure t
+  :config
+  ;; Just use 'winner-undo and 'winner-redo
+  (setq winner-dont-bind-my-keys t)
+  (when (fboundp 'winner-mode)
+    (winner-mode 1)))
 
 
 ;; dired-x for 'F' bind which visits all marked files (dired-x.el
