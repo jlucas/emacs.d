@@ -233,6 +233,9 @@
 (use-package restclient
   :ensure t)
 
+(use-package dedicated
+  :bind ("C-c D" . dedicated-mode))
+
 ;; ;; Multiple instances of term
 ;; (use-package multi-term
 ;;   :ensure
