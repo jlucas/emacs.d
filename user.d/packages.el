@@ -99,8 +99,9 @@
   :config (add-hook 'term-mode-hook 'with-editor-export-editor))
 
 (use-package undo-tree
-  :ensure
-  :config (global-undo-tree-mode 1))
+  :ensure t
+  :config (global-undo-tree-mode 1)
+  :bind (("C-c u" . undo-tree-visualize)))
 
 (use-package expand-region
   :ensure
