@@ -115,11 +115,6 @@
   :ensure t
   :config (setq openwith-associations '(("\\.pdf" "xpdf" (file)))))
 
-(use-package zoom-window
-  :ensure
-  :bind (("C-x C-z" . zoom-window-zoom))
-  :config (setq zoom-window-mode-line-color "color27"))
-
 (use-package change-inner
   :ensure
   :bind (("M-i" . change-inner)
@@ -253,7 +248,7 @@
 ;; 	 ("C-c T" . multi-term-dedicated-toggle)))
 
 (use-package zoom-window
-  :ensure
+  :ensure t
   :init (setq zoom-window-mode-line-color "color-27")
   :bind ("C-x C-z" . zoom-window-zoom))
 
