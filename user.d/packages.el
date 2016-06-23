@@ -266,6 +266,11 @@
   :diminish hungry-delete-mode
   :init (global-hungry-delete-mode))
 
+;; https://github.com/leoliu/easy-kill
+(use-package easy-kill
+  :ensure t
+  :bind ("M-w" . easy-kill))
+
 
 (use-package yaml-mode
   :ensure)
