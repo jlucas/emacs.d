@@ -2,6 +2,9 @@
 ;;; Basic settings
 ;;;
 
+;; Save clipboard strings into kill ring before replacing them.
+(setq save-interprogram-paste-before-kill t)
+
 ;; Auto-save path
 (defconst my-temp-dir "~/tmp/emacs")
 (make-directory my-temp-dir t)

@@ -277,8 +277,6 @@
   :config
   (setq browse-kill-ring-quit-action 'kill-and-delete-window))
 
-(setq save-interprogram-paste-before-kill t)
-
 (use-package yaml-mode
   :ensure)
 
