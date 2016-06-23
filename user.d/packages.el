@@ -212,6 +212,14 @@
 (use-package edit-list
   :ensure t)
 
+(use-package beacon
+  :ensure t
+  :diminish beacon-mode
+  :init (progn
+          (beacon-mode 1)
+          (setq beacon-push-mark 35)
+          (setq beacon-color "#87ffaf")))
+
 ;; ;; Multiple instances of term
 ;; (use-package multi-term
 ;;   :ensure
