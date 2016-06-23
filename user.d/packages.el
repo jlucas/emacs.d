@@ -220,6 +220,16 @@
           (setq beacon-push-mark 35)
           (setq beacon-color "#87ffaf")))
 
+;; Adapted from the article Move Through Edit Points. This works like
+;; the mark, except it cycles through edit points. It takes you
+;; through your undo history without actually undoing anything.
+;;
+;; “C-u 0 C-c ,” will give a description of changes made.
+(use-package goto-chg
+  :ensure t
+  :bind (("C-c ," . goto-last-change)
+         ("C-c ." . goto-last-change-reverse)))
+
 ;; ;; Multiple instances of term
 ;; (use-package multi-term
 ;;   :ensure
