@@ -47,8 +47,8 @@
   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
 (use-package isearch+
-    :ensure
-    :config (global-git-gutter+-mode))
+  :ensure
+  :config (global-git-gutter+-mode))
 
 (use-package git-gutter+
     :ensure
