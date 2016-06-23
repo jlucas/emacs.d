@@ -250,9 +250,14 @@
 (use-package openwith
   :ensure t
   :config
-  (setq openwith-associations '(("\\.pdf" "xpdf" (file))
-                                ("\\.wav" "mplayer" (file))
-                                ("\\.mp3" "mplayer" (file))))
+  (setq openwith-associations
+        `((,(openwith-make-extension-regexp '("pdf"))
+           "xpdf" (file))
+          (,(openwith-make-extension-regexp '("mp3" "mp4" "wav"))
+           "mplayer"  (file))
+          (,(openwith-make-extension-regexp '("mp4" "avi" "mkv" "ogg" "webm"
+                                              "flv" "wmv" "mpg" "mpeg"))
+           "mplayer" (file))))
   (openwith-mode t))
 
 (use-package zoom-window
