@@ -34,6 +34,10 @@
                                ("n" . ibuffer-forward-filter-group)
                                ("p" . ibuffer-backward-filter-group))))))
 
+(use-package comment-dwim-2
+  :ensure t
+  :bind ("M-;" . comment-dwim-2))
+
 
 (use-package isearch+
     :ensure
