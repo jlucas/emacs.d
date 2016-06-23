@@ -111,10 +111,6 @@
   :ensure
   :config (wrap-region-global-mode t))
 
-(use-package openwith
-  :ensure t
-  :config (setq openwith-associations '(("\\.pdf" "xpdf" (file)))))
-
 (use-package change-inner
   :ensure
   :bind (("M-i" . change-inner)
@@ -246,6 +242,14 @@
 ;; 	    (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command))))
 ;;   :bind (("C-c t" . multi-term)
 ;; 	 ("C-c T" . multi-term-dedicated-toggle)))
+
+(use-package openwith
+  :ensure t
+  :config
+  (setq openwith-associations '(("\\.pdf" "xpdf" (file))
+                                ("\\.wav" "mplayer" (file))
+                                ("\\.mp3" "mplayer" (file))))
+  (openwith-mode t))
 
 (use-package zoom-window
   :ensure t
