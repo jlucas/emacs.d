@@ -8,6 +8,13 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package ibuffer
+  :ensure t
+  :bind (("C-x C-b" . ibuffer))
+  :config (progn
+            (setq ibuffer-show-empty-filter-groups nil)
+            (autoload 'ibuffer "ibuffer" "List buffers." t)))
+
 (use-package projectile
   :ensure t
   :config (projectile-global-mode))
@@ -72,13 +79,6 @@
 (use-package wrap-region
   :ensure
   :config (wrap-region-global-mode t))
-
-(use-package ibuffer
-  :ensure
-  :bind (("C-x C-b" . ibuffer))
-  :config (progn
-	    (setq ibuffer-show-empty-filter-groups nil)
-	    (autoload 'ibuffer "ibuffer" "List buffers." t)))
 
 (use-package ibuffer-vc
   :ensure
