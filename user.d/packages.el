@@ -156,8 +156,16 @@
 	 ("M-." . etags-select-find-tag)))
 
 (use-package magit
-  :ensure
-  :config (setq magit-last-seen-setup-instructions "1.4.0"))
+  :ensure t
+  :preface
+  (defun jrl/magit-commit-verbose ()
+    (interactive)
+    (magit-commit (list (cons "-v" (magit-commit-arguments)))))
+  :config (setq magit-last-seen-setup-instructions "1.4.0")
+  :bind (("C-c g s" . magit-status)
+         ("C-c g c" . jrl/magit-commit-verbose)
+         ("C-c g h" . git-gutter+-stage-hunks)
+         ("C-c g p" . magit-push-current-to-upstream)))
 
 (use-package multiple-cursors
   :ensure
