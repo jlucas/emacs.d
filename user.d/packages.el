@@ -204,8 +204,9 @@
 ;; package has been built into Emacs since version 21, but it's nice
 ;; to keep the config together with the binding here.
 (use-package recentf
-  :ensure
-  :config (recentf-mode 1)
+  :ensure t
+  :init (recentf-mode t)
+  :config (setq recentf-max-saved-items 100)
   :bind ("C-x C-r" . recentf-open-files))
 
 ;; ;; Multiple instances of term
