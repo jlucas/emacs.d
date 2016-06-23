@@ -349,18 +349,17 @@
   (when (fboundp 'winner-mode)
     (winner-mode 1)))
 
+(use-package dired
+  :preface
+  (defun play-audio-jack ()
+    "In dired, open the file named on this line."
+    (interactive)
+    (let* ((file (dired-get-filename nil t)))
+      (message "Opening %s..." file)
+      (call-process "/usr/bin/mplayer" nil 0 nil "-ao" "jack" file)
+      (message "Opening %s done" file)))
+  :config
+  (use-package dired-x)
+  (use-package dired+)
+  (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
 
-;; dired-x for 'F' bind which visits all marked files (dired-x.el
-;; ships with emacs)
-(add-hook 'dired-load-hook (function (lambda () (load "dired-x"))))
-(define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-(define-key dired-mode-map (kbd "-")
-  (lambda () (interactive) (find-alternate-file "..")))
-(defun play-audio-jack ()
-  "In dired, open the file named on this line."
-  (interactive)
-  (let* ((file (dired-get-filename nil t)))
-    (message "Opening %s..." file)
-    (call-process "/usr/bin/mplayer" nil 0 nil "-ao" "jack" file)
-    (message "Opening %s done" file)))
-(define-key dired-mode-map (kbd "C-c C-c") 'play-audio-jack)
