@@ -123,7 +123,7 @@
 (use-package change-inner
   :ensure
   :bind (("M-i" . change-inner)
-	 ("M-o" . change-outer)))
+         ("M-o" . change-outer)))
 
 (use-package markdown-mode
   :ensure
