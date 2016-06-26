@@ -70,9 +70,6 @@
                   (interactive)
                   (make-frame-on-display (getenv "DISPLAY"))))
 
-;; Undo tree
-(global-set-key (kbd "C-c u") 'undo-tree-visualize)
-
 ;; Join line as in vim
 (global-set-key (kbd "C-j") (lambda ()
                                 (interactive)
