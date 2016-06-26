@@ -5,11 +5,6 @@
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
-;; Open dired buffer
-(global-set-key (kbd "C-c RET") (lambda ()
-								  (interactive)
-								  (dired (file-name-directory buffer-file-name))))
-
 ;; https://www.emacswiki.org/emacs/HideShow
 ;; Don't forget about M-x occur
 ;;(global-set-key (kbd "C-c m") 'hs-toggle-hiding)
