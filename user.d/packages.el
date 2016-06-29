@@ -87,7 +87,8 @@
   :init
   (setq multi-term-program "/bin/bash")
   :bind
-  (("C-c t" . multi-term)
+  (("C-c T" . multi-term)
+   ("C-c t" . multi-term-dedicated-toggle)
    :map term-mode-map
    ("M-p" . term-send-up)
    ("M-n" . term-send-down)
