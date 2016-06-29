@@ -5,11 +5,6 @@
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
-;; Open dired buffer
-(global-set-key (kbd "C-c RET") (lambda ()
-								  (interactive)
-								  (dired (file-name-directory buffer-file-name))))
-
 ;; https://www.emacswiki.org/emacs/HideShow
 ;; Don't forget about M-x occur
 ;;(global-set-key (kbd "C-c m") 'hs-toggle-hiding)
@@ -74,9 +69,6 @@
                 (lambda ()
                   (interactive)
                   (make-frame-on-display (getenv "DISPLAY"))))
-
-;; Undo tree
-(global-set-key (kbd "C-c u") 'undo-tree-visualize)
 
 ;; Join line as in vim
 (global-set-key (kbd "C-j") (lambda ()
