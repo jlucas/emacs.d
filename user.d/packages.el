@@ -249,6 +249,21 @@
 ;;   :bind (("C-c t" . multi-term)
 ;; 	 ("C-c T" . multi-term-dedicated-toggle)))
 
+(use-package key-chord
+  :ensure t
+  :init
+  (setq key-chord-one-key-delay 0.30)
+  (key-chord-define-global ",f" 'find-file)
+  (key-chord-define-global ",s" 'isearch-forward)
+  (key-chord-define-global ",r" 'isearch-backward)
+  (key-chord-define-global ",g" 'keyboard-quit)
+  (key-chord-define-global ",d" 'hungry-delete-forward)
+  (key-chord-define-global ",a" 'move-beginning-of-line)
+  (key-chord-define-global ",e" 'move-end-of-line)
+  (key-chord-define-global ",z" 'save-buffer)
+  (key-chord-define-global ",b" 'switch-to-buffer)
+  :config (key-chord-mode t))
+
 (use-package openwith
   :ensure t
   :config
