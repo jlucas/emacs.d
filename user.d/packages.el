@@ -269,15 +269,10 @@
   :ensure t
   :init
   (setq key-chord-one-key-delay 0.30)
-  (key-chord-define-global ",f" 'find-file)
-  (key-chord-define-global ",s" 'isearch-forward)
-  (key-chord-define-global ",r" 'isearch-backward)
-  (key-chord-define-global ",g" 'keyboard-quit)
-  (key-chord-define-global ",d" 'hungry-delete-forward)
-  (key-chord-define-global ",a" 'move-beginning-of-line)
-  (key-chord-define-global ",e" 'move-end-of-line)
-  (key-chord-define-global ",z" 'save-buffer)
-  (key-chord-define-global ",b" 'switch-to-buffer)
+  (key-chord-define-global "ZS" 'isearch-forward)
+  (key-chord-define-global "ZR" 'isearch-backward)
+  (key-chord-define-global "ZZ" 'save-buffer)
+  (key-chord-define-global "ZF" 'find-file)
   :config (key-chord-mode t))
 
 (use-package openwith
