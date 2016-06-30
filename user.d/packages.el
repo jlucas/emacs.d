@@ -50,6 +50,14 @@
   :ensure
   :config (global-git-gutter+-mode))
 
+;; Recipe for making a global minor mode that is not active in certain major modes
+;; From: http://stackoverflow.com/a/6849467
+;;   (define-global-minor-mode my-global-smartscan-mode global-smartscan-mode
+;;     (lambda ()
+;;       (when (not (memq major-mode
+;;                        (list 'inferior-python-mode))))))
+;;   (my-global-smartscan-mode t)
+
 (use-package smartscan
   :defer t
   :init (global-smartscan-mode))
