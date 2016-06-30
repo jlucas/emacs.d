@@ -86,16 +86,21 @@
   :ensure t
   :init
   (setq multi-term-program "/bin/bash")
+  :config
+  (setq term-unbind-key-list nil)
+  (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command)))
   :bind
   (("C-c T" . multi-term)
    ("C-c t" . multi-term-dedicated-toggle)
    :map term-mode-map
    ("M-p" . term-send-up)
    ("M-n" . term-send-down)
+   ("C-j" . term-char-mode)
    :map term-raw-map
    ("M-o" . other-window)
    ("M-p" . term-send-up)
-   ("M-n" . term-send-down)))
+   ("M-n" . term-send-down)
+   ("C-j" . term-line-mode)))
 
 ;; Conflicts with multi-term package
 ;; (use-package with-editor
