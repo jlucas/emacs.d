@@ -59,8 +59,9 @@
 ;;   (my-global-smartscan-mode t)
 
 (use-package smartscan
-  :defer t
-  :init (global-smartscan-mode))
+  :ensure t
+  :bind (("M-p" . smartscan-symbol-go-backward)
+         ("M-n" . smartscan-symbol-go-forward)))
 
 (use-package git-gutter+
   :ensure
