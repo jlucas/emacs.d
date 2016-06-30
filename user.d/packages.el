@@ -225,7 +225,7 @@
   :ensure t
   :init (recentf-mode t)
   :config (setq recentf-max-saved-items 100)
-  :bind ("C-x C-r" . recentf-open-files))
+  :bind ("C-c f" . recentf-open-files))
 
 (use-package edit-list
   :ensure t)
