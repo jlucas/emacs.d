@@ -397,3 +397,11 @@
   (use-package dired+)
   (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
 
+;; https://github.com/7max/log4cl
+;; (ql:quickload :log4cl)
+;; (ql:quickload :log4slime)
+;; (log4slime:install)
+;; log4slime is installed via Quicklisp.  It points to a file in ~/quicklisp so you don't have to change your emacs configuration when you update it.
+(load "~/quicklisp/log4slime-setup.el")
+(global-log4slime-mode t)
+
