@@ -272,7 +272,7 @@
   (key-chord-define-global "ZS" 'isearch-forward)
   (key-chord-define-global "ZR" 'isearch-backward)
   (key-chord-define-global "ZZ" 'save-buffer)
-  (key-chord-define-global "ZF" 'find-file)
+  (key-chord-define-global "ZF" 'find-file-at-point)
   :config (key-chord-mode t))
 
 (use-package openwith
