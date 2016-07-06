@@ -108,8 +108,8 @@
 
 ;; Invoke dired mode quickly
 (global-set-key (kbd "C-c d") (lambda ()
-				  (interactive)
-				  (dired default-directory)))
+                                (interactive)
+                                (dired default-directory)))
 
 ;; Code folding
 ;; Emacs users don't seem to place much stock in cold folding
