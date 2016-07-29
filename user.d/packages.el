@@ -255,16 +255,6 @@
 (use-package dedicated
   :bind ("C-c D" . dedicated-mode))
 
-;; ;; Multiple instances of term
-;; (use-package multi-term
-;;   :ensure
-;;   :init (setq multi-term-program "/bin/bash")
-;;   :config (lambda ()
-;; 	    (setq term-unbind-key-list nil)
-;; 	    (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command))))
-;;   :bind (("C-c t" . multi-term)
-;; 	 ("C-c T" . multi-term-dedicated-toggle)))
-
 (use-package key-chord
   :ensure t
   :init
