@@ -356,6 +356,23 @@
           (setq redmine-url "http://redmine-comms/")
           (redmine-show-sprints)))
 
+(use-package python
+  :config
+  (when (executable-find "ipython")
+    (setq python-shell-interpreter "ipython"))
+  (defun ipython ()
+    (interactive)
+    (execute-extended-command 'run-python))
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args ""
+        python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+        python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+        python-shell-completion-setup-code "from IPython.core.completerlib import module_completion"
+        python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n"
+        python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"
+        python-shell-completion-string-code "';'.join(__IP.complete('''%s'''))\n"
+        python-shell-completion-module-string-code ""))
+
 (use-package latex-preview-pane
   :ensure)
 
