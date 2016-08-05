@@ -125,6 +125,12 @@
 ;; Delete trailing whitespace
 (global-set-key (kbd "C-c x w") 'delete-trailing-whitespace)
 
+;; Insert email signature
+(global-set-key (kbd "C-c x sig") (lambda ()
+                                    (interactive)
+                                    (insert "\n-- \n")
+                                    (insert-file "~/.sig")))
+
 ;; Code folding
 ;; Emacs users don't seem to place much stock in cold folding
 ;; See: http://stackoverflow.com/questions/1085170
