@@ -111,6 +111,17 @@
                                 (interactive)
                                 (dired default-directory)))
 
+;; Toggle electric-indent-mode
+(global-set-key (kbd "C-c x i") (lambda ()
+                                  (interactive)
+                                  (if (bound-and-true-p electric-indent-mode)
+                                      (progn
+                                        (electric-indent-mode -1)
+                                        (message "electric-indent-mode disabled"))
+                                    (progn
+                                      (electric-indent-mode 1)
+                                      (message "electric-indent-mode enabled")))))
+
 ;; Code folding
 ;; Emacs users don't seem to place much stock in cold folding
 ;; See: http://stackoverflow.com/questions/1085170
