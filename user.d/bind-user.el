@@ -136,8 +136,8 @@
 ;; See: http://stackoverflow.com/questions/1085170
 ;; From: https://emacs.wordpress.com/2007/01/16/quick-and-dirty-code-folding/
 (global-set-key [f1] (lambda ()
-		       (interactive)
-		       (set-selective-display (if selective-display nil 1))))
+                       (interactive)
+                       (set-selective-display (if selective-display nil 1))))
 
 ;; Swap windows
 ;; From: http://www.emacswiki.org/emacs/TransposeWindows
