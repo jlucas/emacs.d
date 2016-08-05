@@ -122,6 +122,9 @@
                                       (electric-indent-mode 1)
                                       (message "electric-indent-mode enabled")))))
 
+;; Delete trailing whitespace
+(global-set-key (kbd "C-c x w") 'delete-trailing-whitespace)
+
 ;; Code folding
 ;; Emacs users don't seem to place much stock in cold folding
 ;; See: http://stackoverflow.com/questions/1085170
