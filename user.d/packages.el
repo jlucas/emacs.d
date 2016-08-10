@@ -402,6 +402,10 @@
 ;; (ql:quickload :log4slime)
 ;; (log4slime:install)
 ;; log4slime is installed via Quicklisp.  It points to a file in ~/quicklisp so you don't have to change your emacs configuration when you update it.
-(load "~/quicklisp/log4slime-setup.el")
-(global-log4slime-mode t)
+(let ((log4slime "~/quicklisp/log4slime-setup.el"))
+  (if (file-readable-p log4slime)
+      (progn
+	(load log4slime)
+	(global-log4slime-mode 1))))
+
 
