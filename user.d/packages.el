@@ -262,7 +262,7 @@
   (key-chord-define-global "ZS" 'isearch-forward)
   (key-chord-define-global "ZR" 'isearch-backward)
   (key-chord-define-global "ZZ" 'save-buffer)
-  (key-chord-define-global "ZF" 'find-file)
+  (key-chord-define-global "ZF" 'find-file-at-point)
   (key-chord-define-global "ZQ" 'server-edit)
   :config (key-chord-mode t))
 
@@ -404,4 +404,16 @@
   (use-package dired-x)
   (use-package dired+)
   (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
+
+;; https://github.com/7max/log4cl
+;; (ql:quickload :log4cl)
+;; (ql:quickload :log4slime)
+;; (log4slime:install)
+;; log4slime is installed via Quicklisp.  It points to a file in ~/quicklisp so you don't have to change your emacs configuration when you update it.
+(let ((log4slime "~/quicklisp/log4slime-setup.el"))
+  (if (file-readable-p log4slime)
+      (progn
+	(load log4slime)
+	(global-log4slime-mode 1))))
+
 

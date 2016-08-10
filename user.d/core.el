@@ -31,6 +31,9 @@
 (if (>= emacs-major-version 24)
     (electric-pair-mode 1))
 
+;; https://www.emacswiki.org/emacs/DeleteSelectionMode
+(delete-selection-mode t)
+
 ;; Show un/matched parens
 (show-paren-mode 1)
 (setq show-paren-delay 0)
