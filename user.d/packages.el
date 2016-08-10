@@ -416,4 +416,10 @@
 	(load log4slime)
 	(global-log4slime-mode 1))))
 
+(use-package edit-server
+  :ensure t
+  :config
+  ;; For use with:
+  ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
+  (edit-server-start))
 
