@@ -416,8 +416,8 @@
 (let ((log4slime "~/quicklisp/log4slime-setup.el"))
   (if (file-readable-p log4slime)
       (progn
-	(load log4slime)
-	(global-log4slime-mode 1))))
+        (load log4slime)
+        (global-log4slime-mode 1))))
 
 (use-package edit-server
   :ensure t
