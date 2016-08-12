@@ -405,6 +405,9 @@
   (use-package dired+)
   (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
 
+(use-package crontab-mode
+  :ensure t)
+
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
 ;; (ql:quickload :log4slime)
