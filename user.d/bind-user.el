@@ -164,4 +164,4 @@
        (setq swapping-buffer (current-buffer))
        (setq swapping-window (selected-window))
        (message "Buffer and window marked for swapping."))))
-(global-set-key (kbd "C-c p") 'swap-buffers-in-windows)
+(global-set-key (kbd "C-c b") 'swap-buffers-in-windows)
