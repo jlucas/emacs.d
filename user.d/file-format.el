@@ -60,4 +60,12 @@
 ;;       python-shell-completion-string-code
 ;;       "';'.join(__IP.complete('''%s'''))\n"
 ;;       python-shell-completion-module-string-code "")
+;; strace
+;;
+
+;; Set up as a git submodule
+;; https://github.com/pkmoore/strace-mode
+(let ((strace "~/.emacs.d/elisp/strace-mode/strace-mode.el"))
+  (if (file-readable-p strace)
+      (load strace)))
 
