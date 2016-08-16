@@ -408,6 +408,13 @@
 (use-package crontab-mode
   :ensure t)
 
+(use-package edit-server
+  :ensure t
+  :config
+  ;; For use with:
+  ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
+  (edit-server-start))
+
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
 ;; (ql:quickload :log4slime)
@@ -418,11 +425,4 @@
       (progn
         (load log4slime)
         (global-log4slime-mode 1))))
-
-(use-package edit-server
-  :ensure t
-  :config
-  ;; For use with:
-  ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
-  (edit-server-start))
 
