@@ -5,6 +5,12 @@
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
+;; Revert buffer
+(global-set-key (kbd "C-c r") (lambda ()
+                                (interactive)
+                                (revert-buffer t t t)
+                                (message "Buffer is reverted")))
+
 ;; https://www.emacswiki.org/emacs/HideShow
 ;; Don't forget about M-x occur
 ;;(global-set-key (kbd "C-c m") 'hs-toggle-hiding)
