@@ -421,6 +421,9 @@
 (use-package doremi-frm
   :ensure t)
 
+(use-package lua-mode
+  :ensure t)
+
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
 ;; (ql:quickload :log4slime)
