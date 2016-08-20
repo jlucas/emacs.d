@@ -415,6 +415,12 @@
   ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
   (edit-server-start))
 
+;; For commands:
+;; doremi-all-faces-fg+
+;; doremi-all-faces-bg+
+(use-package doremi-frm
+  :ensure t)
+
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
 ;; (ql:quickload :log4slime)
