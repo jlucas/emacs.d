@@ -148,10 +148,10 @@
 (use-package slime
   :ensure
   :config (progn
-	    (setq inferior-lisp-program "sbcl")
-	    (require 'slime-autoloads)
-	    (setq slime-contribs '(slime-fancy slime-banner))
-	    (slime-setup)))
+            (setq inferior-lisp-program "sbcl")
+            (require 'slime-autoloads)
+            (setq slime-contribs '(slime-fancy slime-banner))
+            (slime-setup)
 
 ;; (use-package slime-autoloads
 ;;   :ensure
