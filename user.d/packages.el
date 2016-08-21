@@ -267,6 +267,9 @@
   (key-chord-define-global "ZZ" 'save-buffer)
   (key-chord-define-global "ZF" 'find-file-at-point)
   (key-chord-define-global "ZQ" 'server-edit)
+  (key-chord-define-global "za" 'hs-toggle-hiding)
+  (key-chord-define-global "zr" 'hs-show-all)
+  (key-chord-define-global "zm" 'hs-hide-all)
   :config (key-chord-mode t))
 
 (use-package openwith
