@@ -152,6 +152,10 @@
             (require 'slime-autoloads)
             (setq slime-contribs '(slime-fancy slime-banner))
             (slime-setup)
+            ;; Fall back to using etags if slime doesn't know about the function
+            (add-hook 'slime-edit-definition-hooks
+                      #'(lambda (name unused) (slime-edit-definition-with-etags name))
+                      t)))
 
 ;; (use-package slime-autoloads
 ;;   :ensure
