@@ -262,8 +262,6 @@
   :ensure t
   :init
   (setq key-chord-one-key-delay 0.30)
-  (key-chord-define-global "ZS" 'isearch-forward)
-  (key-chord-define-global "ZR" 'isearch-backward)
   (key-chord-define-global "ZZ" 'save-buffer)
   (key-chord-define-global "ZF" 'find-file-at-point)
   (key-chord-define-global "ZQ" 'server-edit)
