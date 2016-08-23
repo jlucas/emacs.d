@@ -8,6 +8,9 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package hs-minor-mode
+  :ensure t)
+
 (use-package ibuffer
   :ensure t
   :bind (("C-x C-b" . ibuffer))
@@ -145,10 +148,14 @@
 (use-package slime
   :ensure
   :config (progn
-	    (setq inferior-lisp-program "sbcl")
-	    (require 'slime-autoloads)
-	    (setq slime-contribs '(slime-fancy slime-banner))
-	    (slime-setup)))
+            (setq inferior-lisp-program "sbcl")
+            (require 'slime-autoloads)
+            (setq slime-contribs '(slime-fancy slime-banner))
+            (slime-setup)
+            ;; Fall back to using etags if slime doesn't know about the function
+            (add-hook 'slime-edit-definition-hooks
+                      #'(lambda (name unused) (slime-edit-definition-with-etags name))
+                      t)))
 
 ;; (use-package slime-autoloads
 ;;   :ensure
@@ -259,11 +266,12 @@
   :ensure t
   :init
   (setq key-chord-one-key-delay 0.30)
-  (key-chord-define-global "ZS" 'isearch-forward)
-  (key-chord-define-global "ZR" 'isearch-backward)
   (key-chord-define-global "ZZ" 'save-buffer)
   (key-chord-define-global "ZF" 'find-file-at-point)
   (key-chord-define-global "ZQ" 'server-edit)
+  (key-chord-define-global "za" 'hs-toggle-hiding)
+  (key-chord-define-global "zr" 'hs-show-all)
+  (key-chord-define-global "zm" 'hs-hide-all)
   :config (key-chord-mode t))
 
 (use-package openwith
