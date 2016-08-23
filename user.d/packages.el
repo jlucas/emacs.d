@@ -255,16 +255,6 @@
 (use-package dedicated
   :bind ("C-c D" . dedicated-mode))
 
-;; ;; Multiple instances of term
-;; (use-package multi-term
-;;   :ensure
-;;   :init (setq multi-term-program "/bin/bash")
-;;   :config (lambda ()
-;; 	    (setq term-unbind-key-list nil)
-;; 	    (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command))))
-;;   :bind (("C-c t" . multi-term)
-;; 	 ("C-c T" . multi-term-dedicated-toggle)))
-
 (use-package key-chord
   :ensure t
   :init
@@ -273,6 +263,7 @@
   (key-chord-define-global "ZR" 'isearch-backward)
   (key-chord-define-global "ZZ" 'save-buffer)
   (key-chord-define-global "ZF" 'find-file-at-point)
+  (key-chord-define-global "ZQ" 'server-edit)
   :config (key-chord-mode t))
 
 (use-package openwith
@@ -356,6 +347,23 @@
           (setq redmine-url "http://redmine-comms/")
           (redmine-show-sprints)))
 
+(use-package python
+  :config
+  (when (executable-find "ipython")
+    (setq python-shell-interpreter "ipython"))
+  (defun ipython ()
+    (interactive)
+    (execute-extended-command 'run-python))
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args ""
+        python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+        python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+        python-shell-completion-setup-code "from IPython.core.completerlib import module_completion"
+        python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n"
+        python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"
+        python-shell-completion-string-code "';'.join(__IP.complete('''%s'''))\n"
+        python-shell-completion-module-string-code ""))
+
 (use-package latex-preview-pane
   :ensure)
 
@@ -397,6 +405,25 @@
   (use-package dired+)
   (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
 
+(use-package crontab-mode
+  :ensure t)
+
+(use-package edit-server
+  :ensure t
+  :config
+  ;; For use with:
+  ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
+  (edit-server-start))
+
+;; For commands:
+;; doremi-all-faces-fg+
+;; doremi-all-faces-bg+
+(use-package doremi-frm
+  :ensure t)
+
+(use-package lua-mode
+  :ensure t)
+
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
 ;; (ql:quickload :log4slime)
@@ -405,7 +432,6 @@
 (let ((log4slime "~/quicklisp/log4slime-setup.el"))
   (if (file-readable-p log4slime)
       (progn
-	(load log4slime)
-	(global-log4slime-mode 1))))
-
+        (load log4slime)
+        (global-log4slime-mode 1))))
 

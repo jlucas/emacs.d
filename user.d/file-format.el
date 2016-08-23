@@ -35,15 +35,12 @@
      (setq indent-tabs-mode nil)))
 
 ;;
-;; python
+;; strace
 ;;
 
-;; Perhaps look in to https://github.com/kaz-yos/eval-in-repl
-
-(when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython"))
-
-(defun ipython ()
-  (interactive)
-  (execute-extended-command 'run-python))
+;; Set up as a git submodule
+;; https://github.com/pkmoore/strace-mode
+(let ((strace "~/.emacs.d/elisp/strace-mode/strace-mode.el"))
+  (if (file-readable-p strace)
+      (load strace)))
 

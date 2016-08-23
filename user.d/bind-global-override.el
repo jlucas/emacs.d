@@ -22,7 +22,11 @@
 (global-set-key (kbd "C-M-h") 'mark-paragraph)
 ;; nxml-mode binds M-h to 'nxml-mark-paragraph
 (add-hook 'nxml-mode-hook
-	  (lambda () (local-unset-key (kbd "M-h"))))
+          (lambda () (local-unset-key (kbd "M-h"))))
+
+;; Make undo easier on the hands
+;; M-u usually bound to 'upcase-word
+(global-set-key (kbd "M-u") 'undo-tree-undo)
 
 ;; Emacs defaults:
 ;; M-j and C-M-j bound to indent-new-comment-line

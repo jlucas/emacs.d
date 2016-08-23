@@ -108,16 +108,36 @@
 
 ;; Invoke dired mode quickly
 (global-set-key (kbd "C-c d") (lambda ()
-				  (interactive)
-				  (dired default-directory)))
+                                (interactive)
+                                (dired default-directory)))
+
+;; Toggle electric-indent-mode
+(global-set-key (kbd "C-c x i") (lambda ()
+                                  (interactive)
+                                  (if (bound-and-true-p electric-indent-mode)
+                                      (progn
+                                        (electric-indent-mode -1)
+                                        (message "electric-indent-mode disabled"))
+                                    (progn
+                                      (electric-indent-mode 1)
+                                      (message "electric-indent-mode enabled")))))
+
+;; Delete trailing whitespace
+(global-set-key (kbd "C-c x w") 'delete-trailing-whitespace)
+
+;; Insert email signature
+(global-set-key (kbd "C-c x sig") (lambda ()
+                                    (interactive)
+                                    (insert "\n-- \n")
+                                    (insert-file "~/.sig")))
 
 ;; Code folding
 ;; Emacs users don't seem to place much stock in cold folding
 ;; See: http://stackoverflow.com/questions/1085170
 ;; From: https://emacs.wordpress.com/2007/01/16/quick-and-dirty-code-folding/
 (global-set-key [f1] (lambda ()
-		       (interactive)
-		       (set-selective-display (if selective-display nil 1))))
+                       (interactive)
+                       (set-selective-display (if selective-display nil 1))))
 
 ;; Swap windows
 ;; From: http://www.emacswiki.org/emacs/TransposeWindows
@@ -144,4 +164,4 @@
        (setq swapping-buffer (current-buffer))
        (setq swapping-window (selected-window))
        (message "Buffer and window marked for swapping."))))
-(global-set-key (kbd "C-c p") 'swap-buffers-in-windows)
+(global-set-key (kbd "C-c b") 'swap-buffers-in-windows)
