@@ -8,9 +8,6 @@
 (require 'diminish)
 (require 'bind-key)
 
-(use-package hs-minor-mode
-  :ensure t)
-
 (use-package ibuffer
   :ensure t
   :bind (("C-x C-b" . ibuffer))
