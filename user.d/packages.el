@@ -107,8 +107,6 @@
    ("C-j" . term-char-mode)
    :map term-raw-map
    ("M-o" . other-window)
-   ("M-p" . term-send-up)
-   ("M-n" . term-send-down)
    ("C-j" . term-line-mode)))
 
 ;; Conflicts with multi-term package
