@@ -41,7 +41,7 @@
 (use-package aggressive-indent
   :ensure t
   :diminish aggressive-indent-mode
-  :init
+  :config
   (global-aggressive-indent-mode 1)
   (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
   (unbind-key "C-c C-q" aggressive-indent-mode-map))
@@ -58,6 +58,7 @@
 ;;                        (list 'inferior-python-mode))))))
 ;;   (my-global-smartscan-mode t)
 
+;; Tag hopping without ctags
 (use-package smartscan
   :ensure t
   :bind (("M-p" . smartscan-symbol-go-backward)
@@ -93,9 +94,8 @@
 ;; https://github.com/rlister/emacs.d/blob/master/lisp/multi-term-cfg.el
 (use-package multi-term
   :ensure t
-  :init
-  (setq multi-term-program "/bin/bash")
   :config
+  (setq multi-term-program "/bin/bash")
   (setq term-unbind-key-list nil)
   (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command)))
   :bind
@@ -225,9 +225,11 @@
 ;; to keep the config together with the binding here.
 (use-package recentf
   :ensure t
-  :init (recentf-mode t)
-  :config (setq recentf-max-saved-items 100)
-  :bind ("C-c f" . recentf-open-files))
+  :config
+  (setq recentf-max-saved-items 100)
+  (recentf-mode t)
+  :bind
+  ("C-c f" . recentf-open-files))
 
 (use-package edit-list
   :ensure t)
@@ -235,10 +237,10 @@
 (use-package beacon
   :ensure t
   :diminish beacon-mode
-  :init (progn
-          (beacon-mode 1)
-          (setq beacon-push-mark 35)
-          (setq beacon-color "#87ffaf")))
+  :config (progn
+            (beacon-mode 1)
+            (setq beacon-push-mark 35)
+            (setq beacon-color "#87ffaf")))
 
 ;; Adapted from the article Move Through Edit Points. This works like
 ;; the mark, except it cycles through edit points. It takes you
@@ -258,8 +260,8 @@
   :bind ("C-c D" . dedicated-mode))
 
 (use-package key-chord
-  :ensure t
-  :init
+  :ensure t  
+  :config
   (setq key-chord-one-key-delay 0.30)
   (key-chord-define-global "ZZ" 'save-buffer)
   (key-chord-define-global "ZF" 'find-file-at-point)
@@ -267,7 +269,7 @@
   (key-chord-define-global "za" 'hs-toggle-hiding)
   (key-chord-define-global "zr" 'hs-show-all)
   (key-chord-define-global "zm" 'hs-hide-all)
-  :config (key-chord-mode t))
+  (key-chord-mode t))
 
 (use-package openwith
   :ensure t
@@ -284,20 +286,20 @@
 
 (use-package zoom-window
   :ensure t
-  :init (setq zoom-window-mode-line-color "color-27")
+  :config (setq zoom-window-mode-line-color "color-27")
   :bind ("C-x C-z" . zoom-window-zoom))
 
 (use-package rainbow-delimiters
-  :ensure
+  :ensure t
   ;; add to most programming modes
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package org
-  :ensure
-  :config (progn
-            (unbind-key "C-j" org-mode-map)
-            (unbind-key "M-h" org-mode-map)
-            (jl/load-if-readable "~/.emacs.d/user.d/org.el")))
+  :ensure t
+  :config
+  (unbind-key "C-j" org-mode-map)
+  (unbind-key "M-h" org-mode-map)
+  (jl/load-if-readable "~/.emacs.d/user.d/org.el"))
 
 ;; http://orgmode.org/worg/org-contrib/org-collector.html
 ;; (use-package org-collector
@@ -306,7 +308,7 @@
 (use-package hungry-delete
   :ensure t
   :diminish hungry-delete-mode
-  :init (global-hungry-delete-mode))
+  :config (global-hungry-delete-mode))
 
 ;; https://github.com/leoliu/easy-kill
 (use-package easy-kill
@@ -327,28 +329,28 @@
 
 (use-package mediawiki
   :ensure t
-  :config (progn
-            (unbind-key "C-j" mediawiki-mode-map)
-            (add-to-list 'auto-mode-alist
-                         '("itsalltext.*\\.txt$" . mediawiki))
-            (add-to-list 'auto-mode-alist
-                         '("\\.wiki\\'" . mediawiki))
-            (add-to-list 'auto-mode-alist
-                         '("en\\.wikipedia\\.org" . mediawiki))
-            (setq mediawiki-site-alist
-                  (append '(("comms" "http://comms-wiki/" nil nil "/Special:AllPages"))
-                          mediawiki-site-alist))))
+  :config
+  (unbind-key "C-j" mediawiki-mode-map)
+  (add-to-list 'auto-mode-alist
+               '("itsalltext.*\\.txt$" . mediawiki))
+  (add-to-list 'auto-mode-alist
+               '("\\.wiki\\'" . mediawiki))
+  (add-to-list 'auto-mode-alist
+               '("en\\.wikipedia\\.org" . mediawiki))
+  (setq mediawiki-site-alist
+        (append '(("comms" "http://comms-wiki/" nil nil "/Special:AllPages"))
+                mediawiki-site-alist)))
 
 (use-package redmine
   :load-path "packages/emacs-redmine"
-  :init (defun redmine-my-project ()
-          (interactive)
-          (setq redmine-program (concat user-emacs-directory
-                                        "packages/emacs-redmine/redmine.py"))
-          (setq redmine-project-name "pipe-comms-global")
-          (setq redmine-login-key "1de2b422cd710882c5ce3556b47a215eed6c2bf5")
-          (setq redmine-url "http://redmine-comms/")
-          (redmine-show-sprints)))
+  :config (defun redmine-my-project ()
+            (interactive)
+            (setq redmine-program (concat user-emacs-directory
+                                          "packages/emacs-redmine/redmine.py"))
+            (setq redmine-project-name "pipe-comms-global")
+            (setq redmine-login-key "1de2b422cd710882c5ce3556b47a215eed6c2bf5")
+            (setq redmine-url "http://redmine-comms/")
+            (redmine-show-sprints)))
 
 (use-package python
   :config
@@ -368,10 +370,10 @@
         python-shell-completion-module-string-code ""))
 
 (use-package latex-preview-pane
-  :ensure)
+  :ensure t)
 
 (use-package hippie-exp
-  :ensure
+  :ensure t
   :config (progn
             (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially)
             (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name))
@@ -380,11 +382,11 @@
 
 (use-package elscreen
   :ensure
-  :init (progn
-          (elscreen-start)
-          (set-face-attribute 'elscreen-tab-background-face nil
-                              :inherit 'default :background nil)
-          (custom-set-variables '(elscreen-tab-display-kill-screen nil))))
+  :config
+  (elscreen-start)
+  (set-face-attribute 'elscreen-tab-background-face nil
+                      :inherit 'default :background nil)
+  (custom-set-variables '(elscreen-tab-display-kill-screen nil)))
 
 (use-package winner
   :ensure t
