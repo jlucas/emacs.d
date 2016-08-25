@@ -11,9 +11,9 @@
 (use-package ibuffer
   :ensure t
   :bind (("C-x C-b" . ibuffer))
-  :config (progn
-            (setq ibuffer-show-empty-filter-groups nil)
-            (autoload 'ibuffer "ibuffer" "List buffers." t)))
+  :config
+  (setq ibuffer-show-empty-filter-groups nil)
+  (autoload 'ibuffer "ibuffer" "List buffers." t))
 
 (use-package projectile
   :ensure t
@@ -135,22 +135,22 @@
 
 (use-package markdown-mode
   :ensure t
-  :config (progn
-	     (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-	     (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
-	     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))))
+  :config
+  (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
 (use-package slime
   :ensure t
-  :config (progn
-            (setq inferior-lisp-program "sbcl")
-            (require 'slime-autoloads)
-            (setq slime-contribs '(slime-fancy slime-banner))
-            (slime-setup)
-            ;; Fall back to using etags if slime doesn't know about the function
-            (add-hook 'slime-edit-definition-hooks
-                      #'(lambda (name unused) (slime-edit-definition-with-etags name))
-                      t)))
+  :config
+  (setq inferior-lisp-program "sbcl")
+  (require 'slime-autoloads)
+  (setq slime-contribs '(slime-fancy slime-banner))
+  (slime-setup)
+  ;; Fall back to using etags if slime doesn't know about the function
+  (add-hook 'slime-edit-definition-hooks
+            #'(lambda (name unused) (slime-edit-definition-with-etags name))
+            t))
 
 ;; (use-package slime-autoloads
 ;;   :ensure t
@@ -192,11 +192,11 @@
 
 (use-package paredit
   :ensure t
-  :init (progn
-            (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-            (add-hook 'lisp-mode-hook 'enable-paredit-mode)
-            (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-            (add-hook 'scheme-mode-hook 'enable-paredit-mode))
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+  (add-hook 'scheme-mode-hook 'enable-paredit-mode)
   :bind (("C-M-k" . kill-sexp)))		; This is actually the
 										; standard bind for kill-sexp,
 										; but I have it overridden in
@@ -237,10 +237,10 @@
 (use-package beacon
   :ensure t
   :diminish beacon-mode
-  :config (progn
-            (beacon-mode 1)
-            (setq beacon-push-mark 35)
-            (setq beacon-color "#87ffaf")))
+  :config
+  (beacon-mode 1)
+  (setq beacon-push-mark 35)
+  (setq beacon-color "#87ffaf"))
 
 ;; Adapted from the article Move Through Edit Points. This works like
 ;; the mark, except it cycles through edit points. It takes you
@@ -374,9 +374,9 @@
 
 (use-package hippie-exp
   :ensure t
-  :config (progn
-            (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially)
-            (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name))
+  :config
+  (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially)
+  (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name)
   :bind (("C-M-/" . hippie-expand)
          ("C-M-_" . hippie-expand)))
 
