@@ -47,7 +47,7 @@
   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
 (use-package isearch+
-  :ensure
+  :ensure t
   :config (global-git-gutter+-mode))
 
 ;; Recipe for making a global minor mode that is not active in certain major modes
@@ -65,14 +65,14 @@
          ("M-n" . smartscan-symbol-go-forward)))
 
 (use-package git-gutter+
-  :ensure
+  :ensure t
   :config (global-git-gutter+-mode))
 
 (use-package git-blame
-  :ensure)
+  :ensure t)
 
 (use-package mo-git-blame
-  :ensure)
+  :ensure t)
 
 (use-package sudo-edit
   :ensure t)
@@ -120,28 +120,28 @@
   :bind (("C-c u" . undo-tree-visualize)))
 
 (use-package expand-region
-  :ensure
+  :ensure t
   :bind (("M-=" . er/expand-region)
-	 ("M--" . er/contract-region)))
+         ("M--" . er/contract-region)))
 
 (use-package wrap-region
-  :ensure
+  :ensure t
   :config (wrap-region-global-mode t))
 
 (use-package change-inner
-  :ensure
+  :ensure t
   :bind (("M-i" . change-inner)
          ("M-o" . change-outer)))
 
 (use-package markdown-mode
-  :ensure
+  :ensure t
   :config (progn
 	     (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 	     (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
 	     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))))
 
 (use-package slime
-  :ensure
+  :ensure t
   :config (progn
             (setq inferior-lisp-program "sbcl")
             (require 'slime-autoloads)
@@ -153,7 +153,7 @@
                       t)))
 
 ;; (use-package slime-autoloads
-;;   :ensure
+;;   :ensure t
 ;;   :config (slime-setup '(slime-fancy)))
 
 ;; call (describe-unbound-keys 5) to list keys
@@ -163,9 +163,9 @@
 
 ;; Select between multiple matches for a tag
 (use-package etags-select
-  :ensure
+  :ensure t
   :bind (("M-?" . etags-select-find-tag-at-point)
-	 ("M-." . etags-select-find-tag)))
+         ("M-." . etags-select-find-tag)))
 
 (use-package magit
   :ensure t
@@ -180,7 +180,7 @@
          ("C-c g p" . magit-push-current-to-upstream)))
 
 (use-package multiple-cursors
-  :ensure
+  :ensure t
   :bind (("C-c m" . mc/edit-lines)))
 ;; multiple-cursors key binding discussion
 ;; http://endlessparentheses.com/multiple-cursors-keybinds.html
