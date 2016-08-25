@@ -8,20 +8,20 @@
 (require 'diminish)
 (require 'bind-key)
 
-;; Ensure every instance of use-package
-(setq use-package-always-ensure t)
-
 (use-package ibuffer
+  :ensure t
   :bind (("C-x C-b" . ibuffer))
   :config (progn
             (setq ibuffer-show-empty-filter-groups nil)
             (autoload 'ibuffer "ibuffer" "List buffers." t)))
 
 (use-package projectile
+  :ensure t
   :init (progn
           (projectile-global-mode)
           (setq projectile-enable-caching t)
           (use-package ibuffer-projectile
+            :ensure t
             :bind ("C-x C-b" . ibuffer)
             :init (progn
                     (add-hook 'ibuffer-hook
@@ -35,9 +35,11 @@
                                ("p" . ibuffer-backward-filter-group))))))
 
 (use-package comment-dwim-2
+  :ensure t
   :bind ("M-;" . comment-dwim-2))
 
 (use-package aggressive-indent
+  :ensure t
   :diminish aggressive-indent-mode
   :config
   (global-aggressive-indent-mode 1)
@@ -45,6 +47,7 @@
   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
 (use-package isearch+
+  :ensure
   :config (global-git-gutter+-mode))
 
 ;; Recipe for making a global minor mode that is not active in certain major modes
@@ -57,17 +60,22 @@
 
 ;; Tag hopping without ctags
 (use-package smartscan
+  :ensure t
   :bind (("M-p" . smartscan-symbol-go-backward)
          ("M-n" . smartscan-symbol-go-forward)))
 
 (use-package git-gutter+
+  :ensure
   :config (global-git-gutter+-mode))
 
-(use-package git-blame)
+(use-package git-blame
+  :ensure)
 
-(use-package mo-git-blame)
+(use-package mo-git-blame
+  :ensure)
 
-(use-package sudo-edit)
+(use-package sudo-edit
+  :ensure t)
 
 (defun multi-term-set-cursor-according-to-mode ()
   "Change cursor type according to multi-term mode."
@@ -85,6 +93,7 @@
 
 ;; https://github.com/rlister/emacs.d/blob/master/lisp/multi-term-cfg.el
 (use-package multi-term
+  :ensure t
   :config
   (setq multi-term-program "/bin/bash")
   (setq term-unbind-key-list nil)
@@ -106,27 +115,33 @@
 ;;   :config (add-hook 'term-mode-hook 'with-editor-export-editor))
 
 (use-package undo-tree
+  :ensure t
   :config (global-undo-tree-mode 1)
   :bind (("C-c u" . undo-tree-visualize)))
 
 (use-package expand-region
+  :ensure
   :bind (("M-=" . er/expand-region)
-         ("M--" . er/contract-region)))
+	 ("M--" . er/contract-region)))
 
 (use-package wrap-region
+  :ensure
   :config (wrap-region-global-mode t))
 
 (use-package change-inner
+  :ensure
   :bind (("M-i" . change-inner)
          ("M-o" . change-outer)))
 
 (use-package markdown-mode
+  :ensure
   :config (progn
-            (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-            (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
-            (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))))
+	     (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+	     (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
+	     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))))
 
 (use-package slime
+  :ensure
   :config (progn
             (setq inferior-lisp-program "sbcl")
             (require 'slime-autoloads)
@@ -143,14 +158,17 @@
 
 ;; call (describe-unbound-keys 5) to list keys
 ;; http://emacswiki.org/emacs/unbound.el
-(use-package unbound)
+(use-package unbound
+  :ensure)
 
 ;; Select between multiple matches for a tag
 (use-package etags-select
+  :ensure
   :bind (("M-?" . etags-select-find-tag-at-point)
-         ("M-." . etags-select-find-tag)))
+	 ("M-." . etags-select-find-tag)))
 
 (use-package magit
+  :ensure t
   :preface
   (defun jrl/magit-commit-verbose ()
     (interactive)
@@ -162,20 +180,23 @@
          ("C-c g p" . magit-push-current-to-upstream)))
 
 (use-package multiple-cursors
+  :ensure
   :bind (("C-c m" . mc/edit-lines)))
 ;; multiple-cursors key binding discussion
 ;; http://endlessparentheses.com/multiple-cursors-keybinds.html
 
 
 (use-package rainbow-delimiters
+  :ensure
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package paredit
+  :ensure t
   :init (progn
-          (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-          (add-hook 'lisp-mode-hook 'enable-paredit-mode)
-          (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-          (add-hook 'scheme-mode-hook 'enable-paredit-mode))
+            (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+            (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+            (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+            (add-hook 'scheme-mode-hook 'enable-paredit-mode))
   :bind (("C-M-k" . kill-sexp)))		; This is actually the
 										; standard bind for kill-sexp,
 										; but I have it overridden in
@@ -191,25 +212,30 @@
 ;; triggered when the cursor is already at the end of a line with a
 ;; rectangular region active and the user presses C-e again.
 (use-package rectangle-utils
+  :ensure
   :bind ("C-x r e" . extend-rectangle-to-end))
 
 ;; Preserve scratch buffer across sessions
 (use-package persistent-scratch
+  :ensure
   :config (persistent-scratch-setup-default))
 
 ;; According to https://www.emacswiki.org/emacs/RecentFiles this
 ;; package has been built into Emacs since version 21, but it's nice
 ;; to keep the config together with the binding here.
 (use-package recentf
+  :ensure t
   :config
   (setq recentf-max-saved-items 100)
   (recentf-mode t)
   :bind
   ("C-c f" . recentf-open-files))
 
-(use-package edit-list)
+(use-package edit-list
+  :ensure t)
 
 (use-package beacon
+  :ensure t
   :diminish beacon-mode
   :config (progn
             (beacon-mode 1)
@@ -222,16 +248,19 @@
 ;;
 ;; “C-u 0 C-c ,” will give a description of changes made.
 (use-package goto-chg
+  :ensure t
   :bind (("C-c ," . goto-last-change)
          ("C-c ." . goto-last-change-reverse)))
 
 ;; See Magnars’ tutorial on Emacs Rocks.
-(use-package restclient)
+(use-package restclient
+  :ensure t)
 
 (use-package dedicated
   :bind ("C-c D" . dedicated-mode))
 
 (use-package key-chord
+  :ensure t  
   :config
   (setq key-chord-one-key-delay 0.30)
   (key-chord-define-global "ZZ" 'save-buffer)
@@ -243,6 +272,7 @@
   (key-chord-mode t))
 
 (use-package openwith
+  :ensure t
   :config
   (setq openwith-associations
         `((,(openwith-make-extension-regexp '("pdf"))
@@ -255,14 +285,17 @@
   (openwith-mode t))
 
 (use-package zoom-window
+  :ensure t
   :config (setq zoom-window-mode-line-color "color-27")
   :bind ("C-x C-z" . zoom-window-zoom))
 
 (use-package rainbow-delimiters
+  :ensure t
   ;; add to most programming modes
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package org
+  :ensure t
   :config
   (unbind-key "C-j" org-mode-map)
   (unbind-key "M-h" org-mode-map)
@@ -273,24 +306,29 @@
 ;;   :ensure)
 
 (use-package hungry-delete
+  :ensure t
   :diminish hungry-delete-mode
   :config (global-hungry-delete-mode))
 
 ;; https://github.com/leoliu/easy-kill
 (use-package easy-kill
+  :ensure t
   :bind ("M-w" . easy-kill))
 
 (use-package browse-kill-ring
+  :ensure t
   :bind ("C-x C-y" . browse-kill-ring)
   :config
   (setq browse-kill-ring-quit-action 'kill-and-delete-window))
 
-(use-package yaml-mode)
+(use-package yaml-mode
+  :ensure)
 
 ;; Mediawiki syntax highlighting.
 ;; C-j is my join line bind.
 
 (use-package mediawiki
+  :ensure t
   :config
   (unbind-key "C-j" mediawiki-mode-map)
   (add-to-list 'auto-mode-alist
@@ -331,9 +369,11 @@
         python-shell-completion-string-code "';'.join(__IP.complete('''%s'''))\n"
         python-shell-completion-module-string-code ""))
 
-(use-package latex-preview-pane)
+(use-package latex-preview-pane
+  :ensure t)
 
 (use-package hippie-exp
+  :ensure t
   :config (progn
             (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially)
             (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name))
@@ -341,6 +381,7 @@
          ("C-M-_" . hippie-expand)))
 
 (use-package elscreen
+  :ensure
   :config
   (elscreen-start)
   (set-face-attribute 'elscreen-tab-background-face nil
@@ -348,6 +389,7 @@
   (custom-set-variables '(elscreen-tab-display-kill-screen nil)))
 
 (use-package winner
+  :ensure t
   :config
   ;; Just use 'winner-undo and 'winner-redo
   (setq winner-dont-bind-my-keys t)
@@ -368,9 +410,11 @@
   (use-package dired+)
   (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
 
-(use-package crontab-mode)
+(use-package crontab-mode
+  :ensure t)
 
 (use-package edit-server
+  :ensure t
   :config
   ;; For use with:
   ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
@@ -379,9 +423,11 @@
 ;; For commands:
 ;; doremi-all-faces-fg+
 ;; doremi-all-faces-bg+
-(use-package doremi-frm)
+(use-package doremi-frm
+  :ensure t)
 
-(use-package lua-mode)
+(use-package lua-mode
+  :ensure t)
 
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
