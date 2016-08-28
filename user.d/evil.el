@@ -16,26 +16,26 @@
   (global-evil-leader-mode 1)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-    "RET" (lambda ()
-            (interactive)
-            (dired (file-name-directory (buffer-file-name))))
-    "e" 'find-file
-    "f" 'fill-paragraph
-    "w" 'save-buffer
-    "c" 'delete-window
-    "s" 'evil-window-split
-    "v" 'evil-window-vsplit
-    "b" 'switch-to-buffer
-    "B" 'ibuffer
-    "n" 'linum-mode
-    "q" 'save-buffers-kill-terminal
-    "Q" 'kill-emacs
-    "u" 'undo-tree-visualize
-    "z" 'delete-other-windows
-    ">" 'paredit-forward-slurp-sexp
-    "<" 'paredit-forward-barf-sexp
-    "}" 'paredit-backward-slurp-sexp
-    "{" 'paredit-backward-barf-sexp))
+   "RET" (lambda ()
+           (interactive)
+           (dired (file-name-directory (buffer-file-name))))
+   "e" 'find-file
+   "f" 'fill-paragraph
+   "w" 'save-buffer
+   "c" 'delete-window
+   "s" 'evil-window-split
+   "v" 'evil-window-vsplit
+   "b" 'switch-to-buffer
+   "B" 'ibuffer
+   "n" 'linum-mode
+   "q" 'save-buffers-kill-terminal
+   "Q" 'kill-emacs
+   "u" 'undo-tree-visualize
+   "z" 'delete-other-windows
+   ">" 'paredit-forward-slurp-sexp
+   "<" 'paredit-forward-barf-sexp
+   "}" 'paredit-backward-slurp-sexp
+   "{" 'paredit-backward-barf-sexp))
 
 (use-package evil
   :ensure t
