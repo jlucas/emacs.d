@@ -116,6 +116,8 @@
 (loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
                               (ibuffer-mode . normal)
                               (dired-mode . normal)
-                              (package-menu-mode . normal))
+                              (package-menu-mode . normal)
+                              (term-mode . emacs)
+                              (shell-mode . emacs))
       do (evil-set-initial-state mode state))
 
