@@ -16,7 +16,10 @@
 
 (defun vim ()
   (interactive)
+  (evil-mode 1)
   (load "~/.emacs.d/user.d/evil.el"))
+
+(vim)
 
 ;; Always load this file as an entry point into my config
 (find-file load-file-name)
