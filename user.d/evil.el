@@ -43,6 +43,14 @@
   :ensure t
   :config (evil-visual-mark-mode))
 
+;; https://github.com/bling/evil-visualstar
+;; Search from visual selection with * or #
+(use-package evil-visualstar
+  :ensure t
+  :config
+  (global-evil-visualstar-mode)
+  (setq evil-visualstar/persistent nil))
+
 (use-package evil-numbers
   :ensure t
   :config
