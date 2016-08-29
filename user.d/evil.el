@@ -51,6 +51,11 @@
   (global-evil-visualstar-mode)
   (setq evil-visualstar/persistent nil))
 
+(use-package evil-tabs
+  :ensure t
+  :config
+  (global-evil-tabs-mode t))
+
 (use-package evil-numbers
   :ensure t
   :config
