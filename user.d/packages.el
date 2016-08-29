@@ -386,7 +386,7 @@
   (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map))
 
 (use-package elscreen
-  :ensure
+  :ensure t
   :config
   (elscreen-start)
   (set-face-attribute 'elscreen-tab-background-face nil
