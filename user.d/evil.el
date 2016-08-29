@@ -2,8 +2,6 @@
 ;;; evil
 ;;;
 
-(message "loading evil config...")
-
 (setq evil-toggle-key "C-M-z")
 
 (key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
