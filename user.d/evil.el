@@ -2,11 +2,6 @@
 ;;; evil
 ;;;
 
-(setq evil-toggle-key "C-M-z")
-
-(key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
-(key-chord-define evil-visual-state-map "kj" 'evil-normal-state)
-
 ;; Must be loaded before evil-mode
 (use-package evil-leader
   :ensure t
@@ -112,6 +107,11 @@
       (define-key slime-repl-mode-map (kbd "M-j") 'evil-window-down)
       (define-key slime-repl-mode-map (kbd "M-k") 'evil-window-up)
       (define-key slime-repl-mode-map (kbd "M-l") 'evil-window-right)))
+
+(setq evil-toggle-key "C-M-z")
+
+(key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
+(key-chord-define evil-visual-state-map "kj" 'evil-normal-state)
 
 (loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
                               (ibuffer-mode . normal)
