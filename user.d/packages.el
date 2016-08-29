@@ -380,6 +380,11 @@
   :bind (("C-M-/" . hippie-expand)
          ("C-M-_" . hippie-expand)))
 
+(use-package vdiff
+  :ensure t
+  :config
+  (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map))
+
 (use-package elscreen
   :ensure
   :config
