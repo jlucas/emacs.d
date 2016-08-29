@@ -117,6 +117,7 @@
                               (ibuffer-mode . normal)
                               (dired-mode . normal)
                               (package-menu-mode . normal)
+                              (org-mode . emacs)
                               (term-mode . emacs)
                               (shell-mode . emacs))
       do (evil-set-initial-state mode state))
