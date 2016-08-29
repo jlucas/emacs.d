@@ -107,3 +107,10 @@
       (define-key slime-repl-mode-map (kbd "M-j") 'evil-window-down)
       (define-key slime-repl-mode-map (kbd "M-k") 'evil-window-up)
       (define-key slime-repl-mode-map (kbd "M-l") 'evil-window-right)))
+
+(loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
+                              (ibuffer-mode . normal)
+                              (dired-mode . normal)
+                              (package-menu-mode . normal))
+      do (evil-set-initial-state mode state))
+
