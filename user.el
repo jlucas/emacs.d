@@ -15,7 +15,7 @@
     (jl/load-if-readable filepath)))
 
 ;; Use evil-mode
-(load-file "~/.emacs.d/user.d/evil.el")
+;; (load-file "~/.emacs.d/user.d/evil.el")
 
 ;; Always load this file as an entry point into my config
 (find-file load-file-name)

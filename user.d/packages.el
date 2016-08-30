@@ -386,7 +386,6 @@
   (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map))
 
 (use-package elscreen
-  :disabled t
   :ensure t
   :config
   (elscreen-start)
