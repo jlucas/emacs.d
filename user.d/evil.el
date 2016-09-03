@@ -2,6 +2,8 @@
 ;;; evil
 ;;;
 
+(setq evil-toggle-key "C-M-z")
+
 ;; Must be loaded before evil-mode
 (use-package evil-leader
   :ensure t
