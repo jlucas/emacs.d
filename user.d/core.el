@@ -2,8 +2,49 @@
 ;;; Basic settings
 ;;;
 
+;; Remove UI elements from GUI mode
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+
+;; Accept simply 'y' or 'n'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; No splash screen messages
+(setq inhibit-startup-message t)
+
+;; Silence description of the *scratch* buffer
+(setq initial-scratch-message "")
+
+;; Display cursor line/column number in modeline
+(column-number-mode)
+
 ;; Save clipboard strings into kill ring before replacing them.
 (setq save-interprogram-paste-before-kill t)
+
+;; https://www.emacswiki.org/emacs/DeleteSelectionMode
+(delete-selection-mode t)
+
+;; Use PRIMARY selection in X
+;; From: http://emacswiki.org/emacs/CopyAndPaste
+(setq x-select-enable-primary t)
+
+;; Include newline when killing a line
+(setq kill-whole-line t)
+
+;; find-file-at-point, ala vim's gf command
+(ffap-bindings)
+
+;; linum package line number formatting
+(setq linum-format "%3d ")
+
+;; Insert matched pairs
+(if (>= emacs-major-version 24)
+    (electric-pair-mode 1))
+
+;; Show un/matched parens
+(show-paren-mode 1)
+(setq show-paren-delay 0)
 
 ;; Auto-save path
 (defconst my-temp-dir "~/tmp/emacs")
@@ -26,17 +67,6 @@
 ;;; http://stackoverflow.com/questions/1229142
 (setq savehist-file (concat (file-name-as-directory my-temp-dir) "history"))
 (savehist-mode 1)
-
-;; Turn on automatic bracket insertion by pairs.  New in Emacs 24.
-(if (>= emacs-major-version 24)
-    (electric-pair-mode 1))
-
-;; https://www.emacswiki.org/emacs/DeleteSelectionMode
-(delete-selection-mode t)
-
-;; Show un/matched parens
-(show-paren-mode 1)
-(setq show-paren-delay 0)
 
 ;; ediff
 ;; https://www.emacswiki.org/emacs/EdiffMode
@@ -88,11 +118,6 @@
 ;; (add-hook 'ediff-after-setup-windows-hook 'my-ediff-ash 'append)
 ;; (add-hook 'ediff-quit-hook 'my-ediff-qh)
 
-
-;; Use PRIMARY selection in X
-;; From: http://emacswiki.org/emacs/CopyAndPaste
-(setq x-select-enable-primary t)
-
 ;; From: http://stackoverflow.com/questions/28403647/
 ;; Paste the X PRIMARY selection with shift-insert
 (defun paste-primary-selection ()
@@ -102,38 +127,10 @@
     (insert (x-get-selection 'PRIMARY))))
 (global-set-key (kbd "S-<insert>") 'paste-primary-selection)
 
-;; Include newline when killing a line
-(setq kill-whole-line t)
-
-;; No splash screen messages
-(setq inhibit-startup-message t)
-
-;; Silence description of the *scratch* buffer
-(setq initial-scratch-message "")
-
-;; Accept simply 'y' or 'n'
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Display cursor line/column number in modeline
-(column-number-mode)
-
-;; ffap (find-file-at-point)
-;; From: http://stackoverflow.com/questions/259354/goto-file-in-emacs
-;; Replace C-x C-f and others with ffap versions, ala vim's gf command.
-(ffap-bindings)
-
-;; Remove UI elements from GUI mode
-(scroll-bar-mode 0)
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-
-; Line numbers
-(setq linum-format "%3d ")
-
 ;; Show empty lines and indicate start/end of buffer
 ;; (setq-default indicate-empty-lines t)
 ;; (setq-default indicate-buffer-boundaries t)
-  
+
 ;; Resizing fonts
 ;; C-x C-= to increase
 ;; C-x C-- to decrease
