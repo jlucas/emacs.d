@@ -29,9 +29,6 @@
 ;; From: http://emacswiki.org/emacs/CopyAndPaste
 (setq x-select-enable-primary t)
 
-;; Include newline when killing a line
-(setq kill-whole-line t)
-
 ;; find-file-at-point, ala vim's gf command
 (ffap-bindings)
 
