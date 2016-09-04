@@ -381,6 +381,7 @@
          ("C-M-_" . hippie-expand)))
 
 (use-package vdiff
+  :if (fboundp 'define-fringe-bitmap)
   :ensure t
   :config
   (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map))
