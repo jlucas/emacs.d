@@ -47,8 +47,7 @@
   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
 (use-package isearch+
-  :ensure t
-  :config (global-git-gutter+-mode))
+  :ensure t)
 
 ;; Recipe for making a global minor mode that is not active in certain major modes
 ;; From: http://stackoverflow.com/a/6849467
