@@ -47,8 +47,7 @@
   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
 (use-package isearch+
-  :ensure t
-  :config (global-git-gutter+-mode))
+  :ensure t)
 
 ;; Recipe for making a global minor mode that is not active in certain major modes
 ;; From: http://stackoverflow.com/a/6849467
@@ -381,6 +380,7 @@
          ("C-M-_" . hippie-expand)))
 
 (use-package vdiff
+  :if (fboundp 'define-fringe-bitmap)
   :ensure t
   :config
   (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map))
