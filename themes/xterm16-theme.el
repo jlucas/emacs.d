@@ -71,15 +71,15 @@
    `(font-lock-warning-face ((t (:foreground ,*warning*))))
    ;; `(font-lock-add-keywords 'lisp-mode
    ;;                          )
-   ;`(font-lock-add-keywords-face nil '(("[\(\)]+" 1 font-lock-constant-face t)))
-   ;`(font-lock-add-keywords nil '(("[\(\)]+" 1 font-lock-warning-face t)))
-   ;`(font-lock-add-keywords nil '(("\\([\{\}\\[\]\(\)]+\\)" 1 font-lock-warning-face t)))
-   ;`(font-lock-add-keywords nil '(("\\([\{\}\\[\]\(\)]+\\)" 1 ,parenthesis t)))
-   ;`(font-lock-prepend-face ((t (:foreground ,*paren-match*))))
+                                        ;`(font-lock-add-keywords-face nil '(("[\(\)]+" 1 font-lock-constant-face t)))
+                                        ;`(font-lock-add-keywords nil '(("[\(\)]+" 1 font-lock-warning-face t)))
+                                        ;`(font-lock-add-keywords nil '(("\\([\{\}\\[\]\(\)]+\\)" 1 font-lock-warning-face t)))
+                                        ;`(font-lock-add-keywords nil '(("\\([\{\}\\[\]\(\)]+\\)" 1 ,parenthesis t)))
+                                        ;`(font-lock-prepend-face ((t (:foreground ,*paren-match*))))
 
    ;; GUI
-   ;`(fringe ((t (:background, *background*))))
-   ;`(linum ((t (:background, *line-number*))))
+                                        ;`(fringe ((t (:background, *background*))))
+                                        ;`(linum ((t (:background, *line-number*))))
    `(minibuffer-prompt ((t (:foreground, *cyan*))))
    `(mode-line ((t (:background, *gray238* :foreground, *gray251*))))
    `(mode-line-inactive ((t (:background, *gray236* :foreground, *gray245*))))
@@ -93,60 +93,60 @@
    `(lazy-highlight ((t (:background, *operators* :foreground, *lightgreenblue*))))
 
    ;; rainbow-delimiters
-  `(rainbow-delimiters-depth-1-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-depth-2-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-depth-3-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-depth-4-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-depth-5-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-depth-6-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-depth-7-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-depth-8-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-depth-9-face ((t (:foreground ,*paren*))))
-  `(rainbow-delimiters-unmatched-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-1-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-2-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-3-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-4-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-5-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-7-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-8-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-depth-9-face ((t (:foreground ,*paren*))))
+   `(rainbow-delimiters-unmatched-face ((t (:foreground ,*paren*))))
 
-  ;; show-paren-mode
-  `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
-  `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
+   ;; show-paren-mode
+   `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
+   `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
 
-  ;; dired
-  `(dired-directory ((t (:ground ,*keywords* :weight bold))))
-  `(dired-symlink ((t (:foreground ,*paren-match* :weight bold))))
-  ; `(dired-flagged ((t (:foreground ,red))))
-  ; `(dired-header ((t (:foreground ,type :weight bold))))
-  ; `(dired-ignored ((t (:inherit shadow))))
-  ; `(dired-mark ((t (:foreground ,type :weight bold))))
-  ; `(dired-marked ((t (:foreground ,violet :weight bold))))
-  ; `(dired-perm-write ((t (:foreground ,base :underline t))))
-  ; `(dired-warning ((t (:foreground ,war))))
+   ;; dired
+   `(dired-directory ((t (:ground ,*keywords* :weight bold))))
+   `(dired-symlink ((t (:foreground ,*paren-match* :weight bold))))
+                                        ; `(dired-flagged ((t (:foreground ,red))))
+                                        ; `(dired-header ((t (:foreground ,type :weight bold))))
+                                        ; `(dired-ignored ((t (:inherit shadow))))
+                                        ; `(dired-mark ((t (:foreground ,type :weight bold))))
+                                        ; `(dired-marked ((t (:foreground ,violet :weight bold))))
+                                        ; `(dired-perm-write ((t (:foreground ,base :underline t))))
+                                        ; `(dired-warning ((t (:foreground ,war))))
 
-  ;; org-mode
-  `(org-todo ((t (:foreground ,*bright-orange* :weight bold))))
-    
-  ;; eshell
-  ;`(eshell-ls-archive-face ((t (:bold t :foreground "medium purple" :weight bold))))
-  ;`(eshell-ls-backup-face ((t (:foreground "dim gray"))))
-  ;`(eshell-ls-clutter-face ((t (:foreground "dim gray"))))
-  ;`(eshell-ls-directory-face ((t (:bold t :foreground "medium slate blue" :weight bold))))
-  ;`(eshell-ls-executable-face ((t (:bold t :foreground "aquamarine" :weight bold))))
-  ;`(eshell-ls-missing-face ((t (:foreground "black"))))
-  ;`(eshell-ls-picture-face ((t (:foreground "violet"))))
-  ;`(eshell-ls-product-face ((t (:foreground "light steel blue"))))
-  ;`(eshell-ls-readonly-face ((t (:foreground "aquamarine"))))
-  ;`(eshell-ls-special-face ((t (:foreground "gold"))))
-  `(eshell-ls-symlink-face ((t (:foreground ,*paren-match*))))
-  ;`(eshell-ls-unreadable-face ((t (:foreground "dim gray"))))
-  `(eshell-prompt ((t (:foreground ,*keywords* :weight bold))))
+   ;; org-mode
+   `(org-todo ((t (:foreground ,*bright-orange* :weight bold))))
+   
+   ;; eshell
+                                        ;`(eshell-ls-archive-face ((t (:bold t :foreground "medium purple" :weight bold))))
+                                        ;`(eshell-ls-backup-face ((t (:foreground "dim gray"))))
+                                        ;`(eshell-ls-clutter-face ((t (:foreground "dim gray"))))
+                                        ;`(eshell-ls-directory-face ((t (:bold t :foreground "medium slate blue" :weight bold))))
+                                        ;`(eshell-ls-executable-face ((t (:bold t :foreground "aquamarine" :weight bold))))
+                                        ;`(eshell-ls-missing-face ((t (:foreground "black"))))
+                                        ;`(eshell-ls-picture-face ((t (:foreground "violet"))))
+                                        ;`(eshell-ls-product-face ((t (:foreground "light steel blue"))))
+                                        ;`(eshell-ls-readonly-face ((t (:foreground "aquamarine"))))
+                                        ;`(eshell-ls-special-face ((t (:foreground "gold"))))
+   `(eshell-ls-symlink-face ((t (:foreground ,*paren-match*))))
+                                        ;`(eshell-ls-unreadable-face ((t (:foreground "dim gray"))))
+   `(eshell-prompt ((t (:foreground ,*keywords* :weight bold))))
 
-  ;; git-gutter+
-  `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*gray238*))))
-  `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*gray238*))))
-  `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))
+   ;; git-gutter+
+   `(git-gutter+-added ((t (:foreground ,*bright-orange* :background ,*gray238*))))
+   `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*gray238*))))
+   `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))
 
-  `(elscreen-tab-background-face ((t (:foreground "grey90" :background "grey10"))))
-  `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
-  `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
-  `(elscreen-tab-other-screen-face ((t (:foreground ,*gray245* :background ,*gray236*))))
-  ))
+   `(elscreen-tab-background-face ((t (:foreground "grey90" :background "grey10"))))
+   `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
+   `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
+   `(elscreen-tab-other-screen-face ((t (:foreground ,*gray245* :background ,*gray236*))))
+   ))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
