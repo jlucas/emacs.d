@@ -10,6 +10,7 @@
       (*constant*           "#8700d7")
       (*current-line*       "#303030")
       (*cursor-underscore*  "#FFFAAA")
+      (*darkpurple*         "#8700af")
       (*keywords*           "#0087af")
       (*line-number*        "#afaf87")
       (*method-declaration* "#a8a8a8")
@@ -22,6 +23,7 @@
       (*warning*            "#9d7a04")
       (*regexp*             "#90d070")
       (*string*             "#87afaf")
+      (*bluegreen*          "#00af87")
       (*cyan*               "#00afaf")
       (*greenblue*          "#005f5f")
       (*lightgreenblue*     "#87ffaf")
@@ -29,7 +31,8 @@
       (*paren-match*        "#87ffaf")
       (*paren-mismatch*     "#ff0000")
       (*bright-orange*      "#ff8700")
-      (*light-brown*        "#af8700"))
+      (*light-brown*        "#af8700")
+      (*yellow*             "#afaf87"))
 
   (custom-theme-set-faces
    'xterm16
@@ -146,6 +149,11 @@
    `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
    `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
    `(elscreen-tab-other-screen-face ((t (:foreground ,*gray245* :background ,*gray236*))))
+
+   ;; markdown-mode
+   `(markdown-header-delimiter-face ((t (:foreground ,*bluegreen*))))
+   `(markdown-header-face ((t (:foreground ,*yellow*))))
+   `(markdown-link-face ((t (:foreground ,*darkpurple*))))
    ))
 
 ;;;###autoload
