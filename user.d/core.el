@@ -36,6 +36,15 @@
 ;; linum package line number formatting
 (setq linum-format "%3d ")
 
+;; show-trailing-whitespace is a buffer local variable
+(setq-default show-trailing-whitespace t)
+
+(defun toggle-show-trailing-whitespace ()
+  "Toggle show-trailing-whitespace between t and nil
+http://stackoverflow.com/questions/11700934"
+  (interactive)
+  (setq show-trailing-whitespace (not show-trailing-whitespace)))
+
 ;; Insert matched pairs
 (if (>= emacs-major-version 24)
     (electric-pair-mode 1))
