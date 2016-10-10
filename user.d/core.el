@@ -199,3 +199,17 @@ http://stackoverflow.com/questions/11700934"
   (define-key input-decode-map "\e[13;5u" [(control return)]))
 (add-to-list 'tty-setup-hook 'jl/terminal-setup)
 
+(defun paste ()
+  "Like vim's :paste"
+  (interactive)
+  (electric-pair-mode -1)
+  (electric-indent-mode -1)
+  (message "Paste mode on")  )
+
+(defun nopaste ()
+  "Like vim's :nopaste"
+  (interactive)
+  (electric-pair-mode 1)
+  (electric-indent-mode 1)
+  (message "Paste mode off"))
+
