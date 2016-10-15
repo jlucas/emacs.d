@@ -65,6 +65,7 @@ http://stackoverflow.com/questions/11700934"
 ;; From: http://stackoverflow.com/questions/69934/
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq tab-width 4)
 (defvaralias 'c-basic-offset 'tab-width)    
 (defvaralias 'cperl-indent-level 'tab-width)
 (setq tab-stop-list (number-sequence 4 200 4))
