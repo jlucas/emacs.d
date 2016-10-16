@@ -8,6 +8,11 @@
 (require 'diminish)
 (require 'bind-key)
 
+;; find-file-at-point, ala vim's gf command
+(use-package ffap
+  :config
+  (ffap-bindings))
+
 (use-package ibuffer
   :ensure t
   :bind (("C-x C-b" . ibuffer))

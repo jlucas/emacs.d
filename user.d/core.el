@@ -30,9 +30,6 @@
 ;; From: http://emacswiki.org/emacs/CopyAndPaste
 (setq x-select-enable-primary t)
 
-;; find-file-at-point, ala vim's gf command
-(ffap-bindings)
-
 ;; linum package line number formatting
 (setq linum-format "%3d ")
 
