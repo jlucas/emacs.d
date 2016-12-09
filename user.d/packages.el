@@ -411,6 +411,7 @@
       (call-process "/usr/bin/mplayer" nil 0 nil "-ao" "jack" file)
       (message "Opening %s done" file)))
   :config
+  (setq dired-dwim-target t)  ;; http://emacs.stackexchange.com/a/5604
   (use-package dired-x)
   (use-package dired+)
   (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
