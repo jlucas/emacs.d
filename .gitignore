@@ -1,11 +1,13 @@
 *~*
 *#*
 *-history
+.persistent-scratch
 .smex-items
 .persistent-scratch
 places
 savehist
 recentf
+custom.el
 ac-comphist.dat
 eshell/history
 eshell/lastdir
