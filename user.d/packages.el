@@ -383,6 +383,13 @@
   (when (fboundp 'winner-mode)
     (winner-mode 1)))
 
+(use-package eshell
+  :commands eshell
+  :config
+  (require 'em-alias)
+  (add-to-list 'eshell-command-aliases-list (list "ll" "ls -l $*"))
+  (add-to-list 'eshell-command-aliases-list (list "lla" "ls -la $*")))
+
 (use-package dired
   :preface
   (defun play-audio-jack ()
