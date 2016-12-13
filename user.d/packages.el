@@ -388,7 +388,9 @@
   :config
   (require 'em-alias)
   (add-to-list 'eshell-command-aliases-list (list "ll" "ls -l $*"))
-  (add-to-list 'eshell-command-aliases-list (list "lla" "ls -la $*")))
+  (add-to-list 'eshell-command-aliases-list (list "lla" "ls -la $*"))
+  (add-to-list 'eshell-command-aliases-list (list "ff" "find-file $1"))
+  (add-to-list 'eshell-command-aliases-list (list "d" "dired $1")))
 
 (use-package dired
   :preface
