@@ -269,11 +269,11 @@
   :config
   (setq key-chord-one-key-delay 0.30)
   (key-chord-define-global "ZZ" 'save-buffer)
-  (key-chord-define-global "ZF" 'find-file-at-point)
   (key-chord-define-global "ZQ" 'server-edit)
   (key-chord-define-global "za" 'hs-toggle-hiding)
   (key-chord-define-global "zr" 'hs-show-all)
   (key-chord-define-global "zm" 'hs-hide-all)
+  (key-chord-define-global "gf" 'find-file-at-point) ; ala vim
   (key-chord-mode t))
 
 (use-package openwith
