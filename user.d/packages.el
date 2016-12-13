@@ -11,9 +11,9 @@
 (use-package ibuffer
   :ensure t
   :bind (("C-x C-b" . ibuffer))
-  :config (progn
-            (setq ibuffer-show-empty-filter-groups nil)
-            (autoload 'ibuffer "ibuffer" "List buffers." t)))
+  :config
+  (setq ibuffer-show-empty-filter-groups nil)
+  (autoload 'ibuffer "ibuffer" "List buffers." t))
 
 (use-package projectile
   :ensure t
@@ -41,14 +41,13 @@
 (use-package aggressive-indent
   :ensure t
   :diminish aggressive-indent-mode
-  :init
+  :config
   (global-aggressive-indent-mode 1)
   (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
 (use-package isearch+
-  :ensure
-  :config (global-git-gutter+-mode))
+  :ensure t)
 
 ;; Recipe for making a global minor mode that is not active in certain major modes
 ;; From: http://stackoverflow.com/a/6849467
@@ -58,20 +57,21 @@
 ;;                        (list 'inferior-python-mode))))))
 ;;   (my-global-smartscan-mode t)
 
+;; Tag hopping without ctags
 (use-package smartscan
   :ensure t
   :bind (("M-p" . smartscan-symbol-go-backward)
          ("M-n" . smartscan-symbol-go-forward)))
 
 (use-package git-gutter+
-  :ensure
+  :ensure t
   :config (global-git-gutter+-mode))
 
 (use-package git-blame
-  :ensure)
+  :ensure t)
 
 (use-package mo-git-blame
-  :ensure)
+  :ensure t)
 
 (use-package sudo-edit
   :ensure t)
@@ -93,9 +93,8 @@
 ;; https://github.com/rlister/emacs.d/blob/master/lisp/multi-term-cfg.el
 (use-package multi-term
   :ensure t
-  :init
-  (setq multi-term-program "/bin/bash")
   :config
+  (setq multi-term-program "/bin/bash")
   (setq term-unbind-key-list nil)
   (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command)))
   :bind
@@ -107,8 +106,6 @@
    ("C-j" . term-char-mode)
    :map term-raw-map
    ("M-o" . other-window)
-   ("M-p" . term-send-up)
-   ("M-n" . term-send-down)
    ("C-j" . term-line-mode)))
 
 ;; Conflicts with multi-term package
@@ -122,36 +119,40 @@
   :bind (("C-c u" . undo-tree-visualize)))
 
 (use-package expand-region
-  :ensure
+  :ensure t
   :bind (("M-=" . er/expand-region)
-	 ("M--" . er/contract-region)))
+         ("M--" . er/contract-region)))
 
 (use-package wrap-region
-  :ensure
+  :ensure t
   :config (wrap-region-global-mode t))
 
 (use-package change-inner
-  :ensure
+  :ensure t
   :bind (("M-i" . change-inner)
          ("M-o" . change-outer)))
 
 (use-package markdown-mode
-  :ensure
-  :config (progn
-	     (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-	     (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
-	     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))))
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
 (use-package slime
-  :ensure
-  :config (progn
-	    (setq inferior-lisp-program "sbcl")
-	    (require 'slime-autoloads)
-	    (setq slime-contribs '(slime-fancy slime-banner))
-	    (slime-setup)))
+  :ensure t
+  :config
+  (setq inferior-lisp-program "sbcl")
+  (require 'slime-autoloads)
+  (setq slime-contribs '(slime-fancy slime-banner))
+  (slime-setup)
+  ;; Fall back to using etags if slime doesn't know about the function
+  (add-hook 'slime-edit-definition-hooks
+            #'(lambda (name unused) (slime-edit-definition-with-etags name))
+            t))
 
 ;; (use-package slime-autoloads
-;;   :ensure
+;;   :ensure t
 ;;   :config (slime-setup '(slime-fancy)))
 
 ;; call (describe-unbound-keys 5) to list keys
@@ -161,9 +162,9 @@
 
 ;; Select between multiple matches for a tag
 (use-package etags-select
-  :ensure
+  :ensure t
   :bind (("M-?" . etags-select-find-tag-at-point)
-	 ("M-." . etags-select-find-tag)))
+         ("M-." . etags-select-find-tag)))
 
 (use-package magit
   :ensure t
@@ -178,7 +179,7 @@
          ("C-c g p" . magit-push-current-to-upstream)))
 
 (use-package multiple-cursors
-  :ensure
+  :ensure t
   :bind (("C-c m" . mc/edit-lines)))
 ;; multiple-cursors key binding discussion
 ;; http://endlessparentheses.com/multiple-cursors-keybinds.html
@@ -190,11 +191,11 @@
 
 (use-package paredit
   :ensure t
-  :init (progn
-            (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-            (add-hook 'lisp-mode-hook 'enable-paredit-mode)
-            (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-            (add-hook 'scheme-mode-hook 'enable-paredit-mode))
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+  (add-hook 'scheme-mode-hook 'enable-paredit-mode)
   :bind (("C-M-k" . kill-sexp)))		; This is actually the
 										; standard bind for kill-sexp,
 										; but I have it overridden in
@@ -223,9 +224,11 @@
 ;; to keep the config together with the binding here.
 (use-package recentf
   :ensure t
-  :init (recentf-mode t)
-  :config (setq recentf-max-saved-items 100)
-  :bind ("C-c f" . recentf-open-files))
+  :config
+  (setq recentf-max-saved-items 100)
+  (recentf-mode t)
+  :bind
+  ("C-c f" . recentf-open-files))
 
 (use-package edit-list
   :ensure t)
@@ -233,10 +236,10 @@
 (use-package beacon
   :ensure t
   :diminish beacon-mode
-  :init (progn
-          (beacon-mode 1)
-          (setq beacon-push-mark 35)
-          (setq beacon-color "#87ffaf")))
+  :config
+  (beacon-mode 1)
+  (setq beacon-push-mark 35)
+  (setq beacon-color "#87ffaf"))
 
 ;; Adapted from the article Move Through Edit Points. This works like
 ;; the mark, except it cycles through edit points. It takes you
@@ -255,25 +258,17 @@
 (use-package dedicated
   :bind ("C-c D" . dedicated-mode))
 
-;; ;; Multiple instances of term
-;; (use-package multi-term
-;;   :ensure
-;;   :init (setq multi-term-program "/bin/bash")
-;;   :config (lambda ()
-;; 	    (setq term-unbind-key-list nil)
-;; 	    (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command))))
-;;   :bind (("C-c t" . multi-term)
-;; 	 ("C-c T" . multi-term-dedicated-toggle)))
-
 (use-package key-chord
-  :ensure t
-  :init
+  :ensure t  
+  :config
   (setq key-chord-one-key-delay 0.30)
-  (key-chord-define-global "ZS" 'isearch-forward)
-  (key-chord-define-global "ZR" 'isearch-backward)
   (key-chord-define-global "ZZ" 'save-buffer)
   (key-chord-define-global "ZF" 'find-file-at-point)
-  :config (key-chord-mode t))
+  (key-chord-define-global "ZQ" 'server-edit)
+  (key-chord-define-global "za" 'hs-toggle-hiding)
+  (key-chord-define-global "zr" 'hs-show-all)
+  (key-chord-define-global "zm" 'hs-hide-all)
+  (key-chord-mode t))
 
 (use-package openwith
   :ensure t
@@ -290,20 +285,20 @@
 
 (use-package zoom-window
   :ensure t
-  :init (setq zoom-window-mode-line-color "color-27")
+  :config (setq zoom-window-mode-line-color "color-27")
   :bind ("C-x C-z" . zoom-window-zoom))
 
 (use-package rainbow-delimiters
-  :ensure
+  :ensure t
   ;; add to most programming modes
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package org
-  :ensure
-  :config (progn
-            (unbind-key "C-j" org-mode-map)
-            (unbind-key "M-h" org-mode-map)
-            (jl/load-if-readable "~/.emacs.d/user.d/org.el")))
+  :ensure t
+  :config
+  (unbind-key "C-j" org-mode-map)
+  (unbind-key "M-h" org-mode-map)
+  (jl/load-if-readable "~/.emacs.d/user.d/org.el"))
 
 ;; http://orgmode.org/worg/org-contrib/org-collector.html
 ;; (use-package org-collector
@@ -312,7 +307,7 @@
 (use-package hungry-delete
   :ensure t
   :diminish hungry-delete-mode
-  :init (global-hungry-delete-mode))
+  :config (global-hungry-delete-mode))
 
 ;; https://github.com/leoliu/easy-kill
 (use-package easy-kill
@@ -333,47 +328,70 @@
 
 (use-package mediawiki
   :ensure t
-  :config (progn
-            (unbind-key "C-j" mediawiki-mode-map)
-            (add-to-list 'auto-mode-alist
-                         '("itsalltext.*\\.txt$" . mediawiki))
-            (add-to-list 'auto-mode-alist
-                         '("\\.wiki\\'" . mediawiki))
-            (add-to-list 'auto-mode-alist
-                         '("en\\.wikipedia\\.org" . mediawiki))
-            (setq mediawiki-site-alist
-                  (append '(("comms" "http://comms-wiki/" nil nil "/Special:AllPages"))
-                          mediawiki-site-alist))))
+  :config
+  (unbind-key "C-j" mediawiki-mode-map)
+  (add-to-list 'auto-mode-alist
+               '("itsalltext.*\\.txt$" . mediawiki))
+  (add-to-list 'auto-mode-alist
+               '("\\.wiki\\'" . mediawiki))
+  (add-to-list 'auto-mode-alist
+               '("en\\.wikipedia\\.org" . mediawiki))
+  (setq mediawiki-site-alist
+        (append '(("comms" "http://comms-wiki/" nil nil "/Special:AllPages"))
+                mediawiki-site-alist)))
 
 (use-package redmine
   :load-path "packages/emacs-redmine"
-  :init (defun redmine-my-project ()
-          (interactive)
-          (setq redmine-program (concat user-emacs-directory
-                                        "packages/emacs-redmine/redmine.py"))
-          (setq redmine-project-name "pipe-comms-global")
-          (setq redmine-login-key "1de2b422cd710882c5ce3556b47a215eed6c2bf5")
-          (setq redmine-url "http://redmine-comms/")
-          (redmine-show-sprints)))
+  :config (defun redmine-my-project ()
+            (interactive)
+            (setq redmine-program (concat user-emacs-directory
+                                          "packages/emacs-redmine/redmine.py"))
+            (setq redmine-project-name "pipe-comms-global")
+            (setq redmine-login-key "1de2b422cd710882c5ce3556b47a215eed6c2bf5")
+            (setq redmine-url "http://redmine-comms/")
+            (redmine-show-sprints)))
+
+(use-package python
+  :config
+  (when (executable-find "ipython")
+    (setq python-shell-interpreter "ipython"))
+  (defun ipython ()
+    (interactive)
+    (execute-extended-command 'run-python))
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args ""
+        python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+        python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+        python-shell-completion-setup-code "from IPython.core.completerlib import module_completion"
+        python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n"
+        python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"
+        python-shell-completion-string-code "';'.join(__IP.complete('''%s'''))\n"
+        python-shell-completion-module-string-code ""))
 
 (use-package latex-preview-pane
-  :ensure)
+  :ensure t)
 
 (use-package hippie-exp
-  :ensure
-  :config (progn
-            (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially)
-            (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name))
+  :ensure t
+  :config
+  (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially)
+  (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name)
   :bind (("C-M-/" . hippie-expand)
          ("C-M-_" . hippie-expand)))
 
+(use-package vdiff
+  :if (fboundp 'define-fringe-bitmap)
+  :ensure t
+  :config
+  (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map))
+
 (use-package elscreen
-  :ensure
-  :init (progn
-          (elscreen-start)
-          (set-face-attribute 'elscreen-tab-background-face nil
-                              :inherit 'default :background nil)
-          (custom-set-variables '(elscreen-tab-display-kill-screen nil))))
+  :ensure t
+  :config
+  (elscreen-start)
+  (set-face-attribute 'elscreen-tab-background-face nil
+                      :inherit 'default :background nil)
+  (custom-set-variables '(elscreen-tab-display-kill-screen nil)))
 
 (use-package winner
   :ensure t
@@ -402,9 +420,29 @@
       (call-process "/usr/bin/mplayer" nil 0 nil "-ao" "jack" file)
       (message "Opening %s done" file)))
   :config
+  (setq dired-dwim-target t)  ;; http://emacs.stackexchange.com/a/5604
   (use-package dired-x)
   (use-package dired+)
   (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
+
+(use-package crontab-mode
+  :ensure t)
+
+(use-package edit-server
+  :ensure t
+  :config
+  ;; For use with:
+  ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
+  (edit-server-start))
+
+;; For commands:
+;; doremi-all-faces-fg+
+;; doremi-all-faces-bg+
+(use-package doremi-frm
+  :ensure t)
+
+(use-package lua-mode
+  :ensure t)
 
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
@@ -417,6 +455,4 @@
 	 (global-log4slime-mode t))
 	(t
 	 (message "Could not find log4slime setup"))))
-
-
 

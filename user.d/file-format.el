@@ -2,6 +2,18 @@
 ;;; File formats
 ;;;
 
+;;;
+;;; hide-show mode
+;;;
+
+(add-hook 'c-mode-common-hook 'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+(add-hook 'java-mode-hook 'hs-minor-mode)
+(add-hook 'python-mode-hook 'hs-minor-mode)
+(add-hook 'lisp-mode-hook 'hs-minor-mode)
+(add-hook 'perl-mode-hook 'hs-minor-mode)
+(add-hook 'sh-mode-hook 'hs-minor-mode)
+
 ;;
 ;; tcl mode
 ;;
@@ -35,15 +47,12 @@
      (setq indent-tabs-mode nil)))
 
 ;;
-;; python
+;; strace
 ;;
 
-;; Perhaps look in to https://github.com/kaz-yos/eval-in-repl
-
-(when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython"))
-
-(defun ipython ()
-  (interactive)
-  (execute-extended-command 'run-python))
+;; Set up as a git submodule
+;; https://github.com/pkmoore/strace-mode
+(let ((strace "~/.emacs.d/elisp/strace-mode/strace-mode.el"))
+  (if (file-readable-p strace)
+      (load strace)))
 

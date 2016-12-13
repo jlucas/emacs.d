@@ -3,6 +3,7 @@
 *-history
 .persistent-scratch
 .smex-items
+.persistent-scratch
 places
 savehist
 recentf
