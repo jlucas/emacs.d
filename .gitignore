@@ -1,6 +1,7 @@
 *~*
 *#*
 *-history
+.persistent-scratch
 .smex-items
 places
 savehist
