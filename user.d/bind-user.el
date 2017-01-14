@@ -82,9 +82,6 @@
 ;; Just type the char you want to align your text to
 (global-set-key (kbd "C-c a") 'align-regexp)
 
-;; Make this buffer the least likely candidate for C-x b
-(global-set-key (kbd "C-c r") 'bury-buffer)
-
 ;; Easy block indent
 (global-set-key (kbd "C-c >")
                 (lambda ()
