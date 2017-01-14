@@ -14,12 +14,6 @@
                                 (revert-buffer t t t)
                                 (message "Buffer is reverted")))
 
-;; https://www.emacswiki.org/emacs/HideShow
-;; Don't forget about M-x occur
-;;(global-set-key (kbd "C-c m") 'hs-toggle-hiding)
-(global-set-key (kbd "C-c z") 'hs-hide-all)
-(global-set-key (kbd "C-c Z") 'hs-show-all)
-
 ;; Toggle line numbers on 'C-c l' (linum mode)
 (global-set-key (kbd "C-c n") 'linum-mode)
 
