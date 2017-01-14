@@ -50,6 +50,13 @@ http://stackoverflow.com/questions/11700934"
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+;; save-place-mode
+(if (>= emacs-major-version 25)
+    (save-place-mode 1)
+  (progn
+    (require 'saveplace)
+    (setq-default save-place t)))
+
 ;; Auto-save path
 (defconst my-temp-dir "~/tmp/emacs")
 (make-directory my-temp-dir t)
