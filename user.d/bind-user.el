@@ -5,6 +5,9 @@
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
+;; Make
+(global-set-key (kbd "C-c M") 'recompile)
+
 ;; Revert buffer
 (global-set-key (kbd "C-c r") (lambda ()
                                 (interactive)
