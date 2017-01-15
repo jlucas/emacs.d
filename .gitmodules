@@ -4,3 +4,6 @@
 [submodule "elisp/strace-mode"]
 	path = elisp/strace-mode
 	url = https://github.com/pkmoore/strace-mode.git
+[submodule "elisp/dictionary-el"]
+	path = elisp/dictionary-el
+	url = https://github.com/myrkr/dictionary-el.git
