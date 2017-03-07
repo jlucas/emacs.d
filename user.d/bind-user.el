@@ -5,17 +5,14 @@
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
+;; Make
+(global-set-key (kbd "C-c M") 'recompile)
+
 ;; Revert buffer
 (global-set-key (kbd "C-c r") (lambda ()
                                 (interactive)
                                 (revert-buffer t t t)
                                 (message "Buffer is reverted")))
-
-;; https://www.emacswiki.org/emacs/HideShow
-;; Don't forget about M-x occur
-;;(global-set-key (kbd "C-c m") 'hs-toggle-hiding)
-(global-set-key (kbd "C-c z") 'hs-hide-all)
-(global-set-key (kbd "C-c Z") 'hs-show-all)
 
 ;; Toggle line numbers on 'C-c l' (linum mode)
 (global-set-key (kbd "C-c n") 'linum-mode)
@@ -84,9 +81,6 @@
 
 ;; Just type the char you want to align your text to
 (global-set-key (kbd "C-c a") 'align-regexp)
-
-;; Make this buffer the least likely candidate for C-x b
-(global-set-key (kbd "C-c r") 'bury-buffer)
 
 ;; Easy block indent
 (global-set-key (kbd "C-c >")
