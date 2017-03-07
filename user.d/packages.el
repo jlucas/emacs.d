@@ -434,6 +434,14 @@
 (use-package lua-mode
   :ensure t)
 
+(use-package jabber
+  :ensure t
+  :config
+  (setq jabber-account-list
+        '(("jesse.lucas@framestore.com"
+           (:network-server . "talk.google.com")
+           (:connection-type . ssl)))))
+
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
 ;; (ql:quickload :log4slime)
