@@ -8,6 +8,9 @@
 ;; Make
 (global-set-key (kbd "C-c M") 'recompile)
 
+;; Command repeat
+(global-set-key (kbd "C-z C-z") 'repeat)
+
 ;; Revert buffer
 (global-set-key (kbd "C-c r") (lambda ()
                                 (interactive)
