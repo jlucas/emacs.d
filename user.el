@@ -10,7 +10,6 @@
 					  "~/.emacs.d/user.d/file-format.el"
 					  "~/.emacs.d/user.d/bind-user.el"
 					  "~/.emacs.d/user.d/bind-global-override.el"
-                      "~/.emacs.d/user.d/evil.el"
                       "~/.emacs.d/user.d/local.el")))
   (dolist (filepath config-files)
     (jl/load-if-readable filepath)))
