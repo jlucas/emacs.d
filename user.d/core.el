@@ -30,9 +30,6 @@
 ;; From: http://emacswiki.org/emacs/CopyAndPaste
 (setq x-select-enable-primary t)
 
-;; find-file-at-point, ala vim's gf command
-(ffap-bindings)
-
 ;; linum package line number formatting
 (setq linum-format "%3d ")
 
@@ -52,6 +49,13 @@ http://stackoverflow.com/questions/11700934"
 ;; Show un/matched parens
 (show-paren-mode 1)
 (setq show-paren-delay 0)
+
+;; save-place-mode
+(if (>= emacs-major-version 25)
+    (save-place-mode 1)
+  (progn
+    (require 'saveplace)
+    (setq-default save-place t)))
 
 ;; Auto-save path
 (defconst my-temp-dir "~/tmp/emacs")

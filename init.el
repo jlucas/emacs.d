@@ -19,3 +19,5 @@
 ;; The rest of my user setup
 (load "~/.emacs.d/user.el")
 
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

@@ -8,6 +8,11 @@
 (require 'diminish)
 (require 'bind-key)
 
+;; find-file-at-point, ala vim's gf command
+(use-package ffap
+  :config
+  (ffap-bindings))
+
 (use-package ibuffer
   :ensure t
   :bind (("C-x C-b" . ibuffer))
@@ -173,7 +178,8 @@
     (interactive)
     (magit-commit (list (cons "-v" (magit-commit-arguments)))))
   :config (setq magit-last-seen-setup-instructions "1.4.0")
-  :bind (("C-c g s" . magit-status)
+  :bind (("C-x g" . magit-status)
+         ("C-c g s" . magit-status)
          ("C-c g c" . jrl/magit-commit-verbose)
          ("C-c g h" . git-gutter+-stage-hunks)
          ("C-c g p" . magit-push-current-to-upstream)))
@@ -263,11 +269,11 @@
   :config
   (setq key-chord-one-key-delay 0.30)
   (key-chord-define-global "ZZ" 'save-buffer)
-  (key-chord-define-global "ZF" 'find-file-at-point)
   (key-chord-define-global "ZQ" 'server-edit)
   (key-chord-define-global "za" 'hs-toggle-hiding)
   (key-chord-define-global "zr" 'hs-show-all)
   (key-chord-define-global "zm" 'hs-hide-all)
+  (key-chord-define-global "gf" 'find-file-at-point) ; ala vim
   (key-chord-mode t))
 
 (use-package openwith
@@ -443,6 +449,14 @@
 
 (use-package lua-mode
   :ensure t)
+
+(use-package jabber
+  :ensure t
+  :config
+  (setq jabber-account-list
+        '(("jesse.lucas@framestore.com"
+           (:network-server . "talk.google.com")
+           (:connection-type . ssl)))))
 
 ;; https://github.com/7max/log4cl
 ;; (ql:quickload :log4cl)
