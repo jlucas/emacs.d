@@ -2,6 +2,13 @@
 ;;; File formats
 ;;;
 
+;;
+;; paredit
+;;
+
+(add-hook 'lisp-mode-hook (lambda ()
+                            (paredit-mode t)))
+
 ;;;
 ;;; hide-show mode
 ;;;
