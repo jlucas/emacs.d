@@ -27,8 +27,8 @@
 
 (setq gnus-thread-sort-functions
       '(gnus-thread-sort-by-number
-	gnus-thread-sort-by-most-recent-date))
+        gnus-thread-sort-by-most-recent-date))
 
-(setq gnus-extract-address-components)
+;; (setq gnus-extract-address-components)
 
 
