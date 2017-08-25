@@ -124,7 +124,7 @@
 
    ;; org-mode
    `(org-todo ((t (:foreground ,*bright-orange* :weight bold))))
-   
+
    ;; eshell
                                         ;`(eshell-ls-archive-face ((t (:bold t :foreground "medium purple" :weight bold))))
                                         ;`(eshell-ls-backup-face ((t (:foreground "dim gray"))))
@@ -145,10 +145,14 @@
    `(git-gutter+-deleted ((t (:foreground ,*light-brown* :background ,*gray238*))))
    `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))
 
+   ;; elscreen
    `(elscreen-tab-background-face ((t (:foreground "grey90" :background "grey10"))))
    `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
    `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
    `(elscreen-tab-other-screen-face ((t (:foreground ,*gray245* :background ,*gray236*))))
+
+   ;; fic-face (TODO FIXME BUG)
+   `(fic-face ((t (:foreground ,*bright-orange*))))
 
    ;; markdown-mode
    `(markdown-header-delimiter-face ((t (:foreground ,*bluegreen*))))
