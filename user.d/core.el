@@ -57,9 +57,11 @@ http://stackoverflow.com/questions/11700934"
     (require 'saveplace)
     (setq-default save-place t)))
 
-;; Auto-save path
+;; Backups
 (defconst my-temp-dir "~/tmp/emacs")
 (make-directory my-temp-dir t)
+(setq version-control t)
+(setq vc-make-backup-files t)
 (setq backup-directory-alist
       `((".*" . ,my-temp-dir)))
 (setq auto-save-file-name-transforms
