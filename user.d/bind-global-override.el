@@ -90,19 +90,19 @@
   (kill-line (- 1 arg)))
 (global-set-key (kbd "C-c w") 'backward-kill-line) ; C-u in readline
 
-;; (defun move-up-line ()
-;;   "Move display up one line"
-;;   (interactive)
-;;   (scroll-down 1)
-;;   (previous-line 1))
-;; (global-set-key "\M-p" 'move-up-line)
+(defun move-up-line ()
+  "Move display up one line"
+  (interactive)
+  (scroll-down 1)
+  (previous-line 1))
+(global-set-key "\M-\S-p" 'move-up-line)
 
-;; (defun move-down-line ()
-;;   "Move display down one line"
-;;   (interactive)
-;;   (scroll-up 1)
-;;   (next-line 1))
-;; (global-set-key "\M-n" 'move-down-line)
+(defun move-down-line ()
+  "Move display down one line"
+  (interactive)
+  (scroll-up 1)
+  (next-line 1))
+(global-set-key "\M-\S-n" 'move-down-line)
 
 (global-set-key (kbd "M-p") 'backward-paragraph) ; built-in M-{
 (global-set-key (kbd "M-n") 'forward-paragraph) ; built-in M-}
