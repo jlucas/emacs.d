@@ -67,6 +67,19 @@ http://stackoverflow.com/questions/11700934"
 (setq auto-save-file-name-transforms
       `((".*" ,my-temp-dir t)))
 
+;;; Preserve history across sessions
+;;; http://stackoverflow.com/questions/1229142
+(setq savehist-file (concat (file-name-as-directory my-temp-dir) "history"))
+(savehist-mode 1)
+;; From: http://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html:
+(setq history-length t)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history 1)
+(setq savehist-additional-variables
+      '(kill-ring
+        search-ring
+        regexp-search-ring))
+
 ;; Vim's tabbing behavior Just Works
 ;; From: http://stackoverflow.com/questions/69934/
 (setq-default indent-tabs-mode nil)
@@ -76,11 +89,6 @@ http://stackoverflow.com/questions/11700934"
 (defvaralias 'cperl-indent-level 'tab-width)
 (setq tab-stop-list (number-sequence 4 200 4))
 ;; Remember: `M-x tabify` and `M-x untabify`
-
-;;; Preserve history across sessions
-;;; http://stackoverflow.com/questions/1229142
-(setq savehist-file (concat (file-name-as-directory my-temp-dir) "history"))
-(savehist-mode 1)
 
 ;; ediff
 ;; https://www.emacswiki.org/emacs/EdiffMode
