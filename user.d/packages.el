@@ -72,9 +72,6 @@
   :ensure t
   :config (global-git-gutter+-mode))
 
-(use-package git-blame
-  :ensure t)
-
 (use-package mo-git-blame
   :ensure t)
 
