@@ -46,11 +46,11 @@
 
 ;; Switch to previous/next frame
 (global-set-key (kbd "C-c N") (lambda ()
-                                 (interactive)
-                                 (select-frame-set-input-focus
-                                  (next-frame)
-                                  (message "Switched to frame: %s"
-                                           (cdr (assoc 'name (frame-parameters)))))))
+                                (interactive)
+                                (select-frame-set-input-focus
+                                 (next-frame)
+                                 (message "Switched to frame: %s"
+                                          (cdr (assoc 'name (frame-parameters)))))))
 (global-set-key (kbd "C-c P") (lambda ()
                                  (interactive)
                                  (select-frame-set-input-focus
