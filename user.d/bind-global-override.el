@@ -103,9 +103,9 @@
 ;;   (scroll-up 1)
 ;;   (next-line 1))
 ;; (global-set-key "\M-n" 'move-down-line)
-(global-set-key (kbd "M-[") 'backward-paragraph)
-(global-set-key (kbd "M-]") 'forward-paragraph)
 
+(global-set-key (kbd "M-p") 'backward-paragraph) ; built-in M-{
+(global-set-key (kbd "M-n") 'forward-paragraph) ; built-in M-}
 
 ;; Remove whitespace from point to first non-whitespace char
 (defun whack-whitespace (arg)
