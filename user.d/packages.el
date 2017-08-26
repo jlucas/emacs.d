@@ -299,9 +299,10 @@
 (use-package org
   :ensure t
   :config
-  (unbind-key "C-j" org-mode-map)
-  (unbind-key "M-h" org-mode-map)
-  (jl/load-if-readable "~/.emacs.d/user.d/org.el"))
+  (unbind-key "C-j" org-mode-map)  ; Globally bound to my join-line function
+  (unbind-key "M-h" org-mode-map)  ; Globally bound to 'windmove-left
+  (jl/load-if-readable "~/.emacs.d/user.d/org.el")
+  :bind ("C-c a" . org-agenda))
 
 ;; http://orgmode.org/worg/org-contrib/org-collector.html
 ;; (use-package org-collector
