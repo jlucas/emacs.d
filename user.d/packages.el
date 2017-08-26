@@ -444,6 +444,12 @@
 (use-package doremi-frm
   :ensure t)
 
+;; Highlight TODO, FIXME, etc.
+(use-package fic-mode
+  :ensure t
+  :config
+  (setq fic-highlighted-words '("FIXME" "TODO" "BUG" "NOTE" "XXX")))
+
 (use-package lua-mode
   :ensure t)
 
