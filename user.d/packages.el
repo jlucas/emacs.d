@@ -262,7 +262,7 @@
   :bind ("C-c D" . dedicated-mode))
 
 (use-package key-chord
-  :ensure t  
+  :ensure t
   :config
   (setq key-chord-one-key-delay 0.30)
   (key-chord-define-global "ZZ" 'save-buffer)
