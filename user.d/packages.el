@@ -13,6 +13,10 @@
   :config
   (ffap-bindings))
 
+(use-package avy
+  :ensure t
+  :bind (("M-c" . avy-goto-word-1)))
+
 (use-package ibuffer
   :ensure t
   :bind (("C-x C-b" . ibuffer))
