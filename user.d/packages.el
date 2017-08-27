@@ -449,7 +449,8 @@
 (use-package fic-mode
   :ensure t
   :config
-  (setq fic-highlighted-words '("FIXME" "TODO" "BUG" "NOTE" "XXX")))
+  (setq fic-highlighted-words '("FIXME" "TODO" "BUG" "NOTE" "XXX"))
+  (add-hook 'prog-mode-hook 'fic-mode))
 
 (use-package lua-mode
   :ensure t)
