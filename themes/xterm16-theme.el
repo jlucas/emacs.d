@@ -151,13 +151,25 @@
    `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
    `(elscreen-tab-other-screen-face ((t (:foreground ,*gray245* :background ,*gray236*))))
 
-   ;; fic-face (TODO FIXME BUG)
+   ;; fic-face
    `(fic-face ((t (:foreground ,*bright-orange*))))
 
    ;; markdown-mode
    `(markdown-header-delimiter-face ((t (:foreground ,*bluegreen*))))
    `(markdown-header-face ((t (:foreground ,*yellow*))))
    `(markdown-link-face ((t (:foreground ,*darkpurple*))))
+
+   ;; avy
+   `(avy-background-face
+     ((t (:foreground ,*normal* :background ,*background*))))
+   `(avy-lead-face-0
+     ((t (:foreground ,*lightgreenblue* :background ,*greenblue* :weight bold))))
+   `(avy-lead-face-1
+     ((t (:foreground ,*lightgreenblue* :background ,*greenblue* :weight bold))))
+   `(avy-lead-face-2
+     ((t (:foreground ,*lightgreenblue* :background ,*greenblue* :weight bold))))
+   `(avy-lead-face
+     ((t (:foreground ,*lightgreenblue* :background ,*greenblue* :weight bold))))
    ))
 
 ;;;###autoload
