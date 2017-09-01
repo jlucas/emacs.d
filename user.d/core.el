@@ -62,6 +62,7 @@ http://stackoverflow.com/questions/11700934"
 (make-directory my-temp-dir t)
 (setq version-control t)
 (setq vc-make-backup-files t)
+(setq delete-old-versions t) ; https://nurikabe.blog/2008/04/11
 (setq backup-directory-alist
       `((".*" . ,my-temp-dir)))
 (setq auto-save-file-name-transforms
