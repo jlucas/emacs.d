@@ -8,6 +8,9 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; Just keep adding tag tables onto each other
+(setq tags-add-tables t)
+
 ;; Accept simply 'y' or 'n'
 (defalias 'yes-or-no-p 'y-or-n-p)
 
