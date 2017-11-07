@@ -228,3 +228,10 @@ http://stackoverflow.com/questions/11700934"
   (electric-indent-mode 1)
   (message "Paste mode off"))
 
+(defun sudo-save ()
+  "From: https://www.emacswiki.org/emacs/SudoSave"
+  (interactive)
+  (if (not buffer-file-name)
+      (write-file (concat "/sudo:root@localhost:" (ido-read-file-name "File:")))
+    (write-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
