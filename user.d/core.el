@@ -83,6 +83,16 @@ http://stackoverflow.com/questions/11700934"
         search-ring
         regexp-search-ring))
 
+;; Why doesn't i-search wrap automatically?
+;; https://stackoverflow.com/questions/285660
+(defadvice isearch-repeat (after isearch-no-fail activate)
+  (unless isearch-success
+    (ad-disable-advice 'isearch-repeat 'after 'isearch-no-fail)
+    (ad-activate 'isearch-repeat)
+    (isearch-repeat (if isearch-forward 'forward))
+    (ad-enable-advice 'isearch-repeat 'after 'isearch-no-fail)
+    (ad-activate 'isearch-repeat)))
+
 ;; Vim's tabbing behavior just works...
 ;; From: http://stackoverflow.com/questions/69934/
 (setq-default indent-tabs-mode nil)
