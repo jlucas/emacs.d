@@ -83,7 +83,7 @@ http://stackoverflow.com/questions/11700934"
         search-ring
         regexp-search-ring))
 
-;; Vim's tabbing behavior Just Works
+;; Vim's tabbing behavior just works...
 ;; From: http://stackoverflow.com/questions/69934/
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
