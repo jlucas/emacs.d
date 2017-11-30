@@ -70,6 +70,7 @@
                   (make-frame-on-display (getenv "DISPLAY"))))
 
 ;; Join line as in vim
+(define-key emacs-lisp-mode-map (kbd "C-j") nil) ; Have to override this explicitly
 (global-set-key (kbd "C-j") (lambda ()
                               (interactive)
                               (forward-line)
