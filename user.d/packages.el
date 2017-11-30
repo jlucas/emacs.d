@@ -27,6 +27,7 @@
 (use-package projectile
   :ensure t
   :init (progn
+          (setq projectile-keymap-prefix (kbd "C-x p"))
           (projectile-global-mode)
           (setq projectile-enable-caching t)
           (use-package ibuffer-projectile
