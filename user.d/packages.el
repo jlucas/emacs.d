@@ -156,7 +156,9 @@
   ;; Fall back to using etags if slime doesn't know about the function
   (add-hook 'slime-edit-definition-hooks
             #'(lambda (name unused) (slime-edit-definition-with-etags name))
-            t))
+            t)
+  ;; http://lispblog.xach.com/post/157864421363/the-slime-selector
+  :bind (("C-c p" . slime-selector)))
 
 ;; (use-package slime-autoloads
 ;;   :ensure t
