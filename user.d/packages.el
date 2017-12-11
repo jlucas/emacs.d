@@ -8,10 +8,24 @@
 (require 'diminish)
 (require 'bind-key)
 
+;; org-jira
+(use-package org-jira
+  :ensure t
+  :config
+  (setq jiralib-url "https://framestore.atlassian.net"))
+
+
 ;; find-file-at-point, ala vim's gf command
 (use-package ffap
   :config
   (ffap-bindings))
+
+(use-package org-gcal
+  :ensure t
+  :config
+  (setq org-gcal-client-id "oauth 2.0 client ID"
+        org-gcal-client-secret "client secret"
+        org-gcal-file-alist '(("jesse.lucas@framestore.com" . "~/org/gcal.org"))))
 
 (use-package avy
   :ensure t
@@ -432,7 +446,13 @@
       (message "Opening %s done" file)))
   :config
   (setq dired-dwim-target t)  ;; http://emacs.stackexchange.com/a/5604
-  (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map))
+  (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map)
+  (bind-key "o"
+            (lambda ()
+              (interactive)
+              (message (format "running xdg-open on: %s" (dired-get-file-for-visit)))
+              (call-process "firefox" nil nil nil (dired-get-file-for-visit)))
+            dired-mode-map))
 
 (use-package crontab-mode
   :ensure t)
@@ -509,4 +529,11 @@
          (global-log4slime-mode t))
         (t
          (message "Could not find log4slime setup"))))
+
+;;;
+;;; git submodules
+;;;
+
+;; https://github.com/owainlewis/emacs-color-themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/emacs-color-themes/themes")
 
