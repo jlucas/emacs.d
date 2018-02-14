@@ -1,3 +1,7 @@
+;; Set up LOAD-PATH
+(let ((default-directory "~/.emacs.d/elisp/"))
+  (add-to-list 'load-path default-directory)
+  (normal-top-level-add-subdirs-to-load-path))
 
 (defun jl/load-if-readable (filepath)
   (if (file-readable-p filepath)
