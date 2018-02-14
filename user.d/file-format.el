@@ -55,4 +55,10 @@
 (let ((strace "~/.emacs.d/elisp/strace-mode/strace-mode.el"))
   (if (file-readable-p strace)
       (load strace)))
+;;;
+;;; Maya Embedded Language (MEL)
+;;;
+
+(add-to-list 'auto-mode-alist '("\\.mel$" . mel-mode))
+(autoload 'mel-mode "mel-mode" nil t)
 
