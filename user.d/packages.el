@@ -21,12 +21,12 @@
   :config
   (ffap-bindings))
 
-(use-package org-gcal
-  :ensure t
-  :config
-  (setq org-gcal-client-id "oauth 2.0 client ID"
-        org-gcal-client-secret "client secret"
-        org-gcal-file-alist '(("jesse.lucas@framestore.com" . "~/org/gcal.org"))))
+;; (use-package org-gcal
+;;   :ensure t
+;;   :config
+;;   (setq org-gcal-client-id "oauth 2.0 client ID"
+;;         org-gcal-client-secret "client secret"
+;;         org-gcal-file-alist '(("jesse.lucas@framestore.com" . "~/org/gcal.org"))))
 
 (use-package avy
   :ensure t
@@ -71,8 +71,8 @@
   (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
-(use-package isearch+
-  :ensure t)
+;; (use-package isearch+
+;;   :ensure t)
 
 ;; Recipe for making a global minor mode that is not active in certain major modes
 ;; From: http://stackoverflow.com/a/6849467
@@ -161,10 +161,16 @@
   (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
+(use-package jira-markup-mode
+  :ensure t)
+
 (use-package slime
   :ensure t
   :config
   (setq inferior-lisp-program "sbcl")
+  (setq slime-lisp-implementations
+        '((sbcl ("sbcl"))
+          (sbcl-libtcod ("sbcl") :env ("LD_LIBRARY_PATH=/nfs/sw/libtcod/libtcod-1.6.4/lib"))))
   (require 'slime-autoloads)
   (setq slime-contribs '(slime-fancy slime-banner))
   (slime-setup)
@@ -181,14 +187,14 @@
 
 ;; call (describe-unbound-keys 5) to list keys
 ;; http://emacswiki.org/emacs/unbound.el
-(use-package unbound
-  :ensure)
+;; (use-package unbound
+;; :ensure)
 
 ;; Select between multiple matches for a tag
-(use-package etags-select
-  :ensure t
-  :bind (("M-?" . etags-select-find-tag-at-point)
-         ("M-." . etags-select-find-tag)))
+;; (use-package etags-select
+;;   :ensure t
+;;   :bind (("M-?" . etags-select-find-tag-at-point)
+;;          ("M-." . etags-select-find-tag)))
 
 (use-package magit
   :ensure t
@@ -455,8 +461,8 @@
               (call-process "firefox" nil nil nil (dired-get-file-for-visit)))
             dired-mode-map))
 
-(use-package crontab-mode
-  :ensure t)
+;; (use-package crontab-mode
+;;   :ensure t)
 
 (use-package edit-server
   :ensure t
@@ -468,8 +474,8 @@
 ;; For commands:
 ;; doremi-all-faces-fg+
 ;; doremi-all-faces-bg+
-(use-package doremi-frm
-  :ensure t)
+;; (use-package doremi-frm
+;;   :ensure t)
 
 ;; Highlight TODO, FIXME, etc.
 (use-package fic-mode
