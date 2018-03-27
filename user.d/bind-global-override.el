@@ -15,6 +15,12 @@
 
 ;;; Rebindings of shadowed built-ins
 
+;; Emulate vim's dt
+;; https://stackoverflow.com/questions/27162540
+;; http://www.emacswiki.org/emacs/ZapToCharUsage
+(require 'misc)
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+
 ;; Emacs defaults:
 ;; M-h bound to mark-paragraph (now rebound to C-M-h)
 ;; C-M-h bound to mark-defun (now unbound)
