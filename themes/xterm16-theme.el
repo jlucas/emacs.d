@@ -5,7 +5,7 @@
 (deftheme xterm16 "A dark color theme based on xterm16.vim")
 
 (let ((*normal*             "#b0b0b0")
-      (*background*         "#1c1c1c")
+      (*background*         "#000000")
       (*comments*           "#8787af")
       (*constant*           "#8700d7")
       (*current-line*       "#303030")
