@@ -248,7 +248,13 @@
 ;; Preserve scratch buffer across sessions
 (use-package persistent-scratch
   :ensure
-  :config (persistent-scratch-setup-default))
+  :config
+  (persistent-scratch-setup-default)
+  (when server-name
+    (setq persistent-scratch-save-file
+          (format "%s/.emacs.d/.persistent-scratch-%s"
+                  (getenv "HOME")
+                  server-name))))
 
 ;; According to https://www.emacswiki.org/emacs/RecentFiles this
 ;; package has been built into Emacs since version 21, but it's nice
