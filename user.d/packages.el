@@ -391,8 +391,11 @@
 
 (use-package python
   :config
-  (when (executable-find "ipython")
-    (setq python-shell-interpreter "ipython"))
+  (catch 'found-python
+    (mapc #'(lambda (str)
+              (if (executable-find str)
+                  (throw 'found-python (setq python-shell-interpreter str))))
+          (list "ipython-local" "ipython-site" "ipython")))
   (defun ipython ()
     (interactive)
     (execute-extended-command 'run-python))
