@@ -63,13 +63,13 @@
   :ensure t
   :bind ("M-;" . comment-dwim-2))
 
-(use-package aggressive-indent
-  :ensure t
-  :diminish aggressive-indent-mode
-  :config
-  (global-aggressive-indent-mode 1)
-  (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
-  (unbind-key "C-c C-q" aggressive-indent-mode-map))
+;; (use-package aggressive-indent
+;;   :ensure t
+;;   :diminish aggressive-indent-mode
+;;   :config
+;;   (global-aggressive-indent-mode 1)
+;;   (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+;;   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
 ;; (use-package isearch+
 ;;   :ensure t)
