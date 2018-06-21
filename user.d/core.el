@@ -223,16 +223,14 @@ http://stackoverflow.com/questions/11700934"
 (add-to-list 'tty-setup-hook 'jl/terminal-setup)
 
 (defun paste ()
-  "Like vim's :paste"
+  "Toggle paste mode, like vim's :paste and :nopaste"
   (interactive)
-  (electric-indent-mode -1)
-  (message "Paste mode on")  )
-
-(defun nopaste ()
-  "Like vim's :nopaste"
-  (interactive)
-  (electric-indent-mode 1)
-  (message "Paste mode off"))
+  (cond (electric-indent-mode
+         (electric-indent-mode -1)
+         (message "Paste mode on"))
+        (t
+         (electric-indent-mode 1)
+         (message "Paste mode off"))))
 
 (defun sudo-save ()
   "From: https://www.emacswiki.org/emacs/SudoSave"
