@@ -45,10 +45,6 @@ http://stackoverflow.com/questions/11700934"
   (interactive)
   (setq show-trailing-whitespace (not show-trailing-whitespace)))
 
-;; Insert matched pairs
-(if (>= emacs-major-version 24)
-    (electric-pair-mode 1))
-
 ;; Show un/matched parens
 (show-paren-mode 1)
 (setq show-paren-delay 0)
@@ -229,14 +225,12 @@ http://stackoverflow.com/questions/11700934"
 (defun paste ()
   "Like vim's :paste"
   (interactive)
-  (electric-pair-mode -1)
   (electric-indent-mode -1)
   (message "Paste mode on")  )
 
 (defun nopaste ()
   "Like vim's :nopaste"
   (interactive)
-  (electric-pair-mode 1)
   (electric-indent-mode 1)
   (message "Paste mode off"))
 
