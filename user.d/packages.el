@@ -7,6 +7,15 @@
   (require 'use-package))
 (require 'bind-key)
 
+;; atomic chrome
+;; websockets server to launch an editor via web browser plugins like
+;; GhostText and Atomic Chrome
+;; https://github.com/alpha22jp/atomic-chrome/
+(use-package atomic-chrome
+  :ensure t
+  :init
+  (atomic-chrome-start-server))
+
 ;; org-jira
 (use-package org-jira
   :ensure t
