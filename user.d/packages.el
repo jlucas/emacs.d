@@ -409,6 +409,7 @@
     (interactive)
     (execute-extended-command 'run-python))
   (setq python-shell-interpreter "ipython"
+        ;; python-shell-interpreter-args "--colors=NoColor"
         python-shell-interpreter-args ""
         python-shell-prompt-regexp "In \\[[0-9]+\\]: "
         python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
