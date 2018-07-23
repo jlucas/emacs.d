@@ -28,6 +28,7 @@
 ;; Use mail-mode for files that contain the string "/mutt"
 ;; http://www.emacswiki.org/emacs/MuttInEmacs
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+(add-hook 'mail-mode-hook 'flyspell-mode)
 
 ;;
 ;; mutt-mode
