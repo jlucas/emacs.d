@@ -161,6 +161,12 @@
    `(markdown-header-face ((t (:foreground ,*yellow*))))
    `(markdown-link-face ((t (:foreground ,*darkpurple*))))
 
+   ;; flyspell-mode
+   `(flyspell-incorrect
+     ((t (:bold nil :underline t))))
+   `(flyspell-duplicate
+     ((t (:bold nil :underline t))))
+
    ;; avy
    `(avy-background-face
      ((t (:foreground ,*normal* :background ,*background*))))
