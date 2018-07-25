@@ -52,7 +52,7 @@
    `(underline ((nil (:underline t))))
    `(paren ((t (:foreground ,*paren*))))
    `(trailing-whitespace
-     ((t (:foreground ,*bright-orange* :background ,*background*:underline t))))
+     ((t (:foreground ,*bright-orange* :background ,*background* :underline t))))
 
    ;; font-lock
    `(font-lock-builtin-face ((t (:foreground ,*operators*))))
