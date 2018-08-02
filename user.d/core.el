@@ -65,6 +65,7 @@ http://stackoverflow.com/questions/11700934"
 (custom-set-variables
  '(auto-save-file-name-transforms `((".*" ,my-temp-dir t)))
  '(backup-directory-alist `((".*" . ,my-temp-dir))))
+(setq create-lockfiles nil)
 
 ;;; Preserve history across sessions
 ;;; http://stackoverflow.com/questions/1229142
