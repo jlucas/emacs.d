@@ -48,6 +48,13 @@
      (setq indent-tabs-mode nil)))
 
 ;;
+;; inputrc
+;;
+
+;; Why doesn't Emacs Just Work?
+(add-to-list 'auto-mode-alist '("inputrc" . conf-mode))
+
+;;
 ;; strace
 ;;
 
