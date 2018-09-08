@@ -126,6 +126,7 @@
   :ensure t
   :config
   (setq multi-term-program "/bin/bash")
+  (setq comint-prompt-read-only t)
   (setq term-unbind-key-list nil)
   (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command)))
   :bind
