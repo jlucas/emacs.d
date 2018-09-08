@@ -131,6 +131,7 @@
   (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command)))
   :bind
   (("C-c T" . multi-term)
+   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Dedicated-Windows.html
    ("C-c t" . multi-term-dedicated-toggle)
    :map term-mode-map
    ("M-p" . term-send-up)
