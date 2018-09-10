@@ -96,19 +96,17 @@
   (kill-line (- 1 arg)))
 (global-set-key (kbd "C-c w") 'backward-kill-line) ; C-u in readline
 
-(defun move-up-line ()
+(defun scroll-window-down (arg)
   "Move display up one line"
-  (interactive)
-  (scroll-down 1)
-  (previous-line 1))
-(global-set-key "\M-\S-p" 'move-up-line)
+  (interactive "p")
+  (scroll-down arg))
+(global-set-key "\M-\S-p" 'scroll-window-down)
 
-(defun move-down-line ()
+(defun scroll-window-up (arg)
   "Move display down one line"
-  (interactive)
-  (scroll-up 1)
-  (next-line 1))
-(global-set-key "\M-\S-n" 'move-down-line)
+  (interactive "p")
+  (scroll-up arg))
+(global-set-key "\M-\S-n" 'scroll-window-up)
 
 (global-set-key (kbd "M-p") 'backward-paragraph) ; built-in M-{
 (global-set-key (kbd "M-n") 'forward-paragraph) ; built-in M-}
