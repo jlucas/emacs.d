@@ -5,6 +5,7 @@
 ;; https://github.com/jwiegley/use-package
 (eval-when-compile
   (require 'use-package))
+(require 'diminish)
 (require 'bind-key)
 
 ;; atomic chrome
@@ -21,9 +22,6 @@
   :ensure t
   :config
   (setq jiralib-url "https://framestore.atlassian.net"))
-
-(use-package diminish
-  :ensure t)
 
 ;; find-file-at-point, ala vim's gf command
 (use-package ffap
