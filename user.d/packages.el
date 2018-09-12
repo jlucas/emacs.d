@@ -46,25 +46,36 @@
   (setq ibuffer-show-empty-filter-groups nil)
   (autoload 'ibuffer "ibuffer" "List buffers." t))
 
-(use-package projectile
+;; Trying ibuffer-vc again to see if it's faster than
+;; ibuffer-projectile
+(use-package ibuffer-vc
   :ensure t
-  :init (progn
-          (setq projectile-keymap-prefix (kbd "C-x p"))
-          (projectile-global-mode)
-          (setq projectile-enable-caching t)
-          (use-package ibuffer-projectile
-            :ensure t
-            :bind ("C-x C-b" . ibuffer)
-            :init (progn
-                    (add-hook 'ibuffer-hook
-                              (lambda ()
-                                (ibuffer-projectile-set-filter-groups)
-                                (unless (eq ibuffer-sorting-mode 'alphabetic)
-                                  (ibuffer-do-sort-by-alphabetic))))
-                    (bind-keys :map ibuffer-mode-map
-                               ("c" . clean-buffer-list)
-                               ("n" . ibuffer-forward-filter-group)
-                               ("p" . ibuffer-backward-filter-group))))))
+  :init (add-hook 'ibuffer-hook
+                  (lambda ()
+                    (ibuffer-vc-set-filter-groups-by-vc-root)
+                    (unless (eq ibuffer-sorting-mode 'alphabetic)
+                      (ibuffer-do-sort-by-alphabetic))))
+  :config (setq vc-handled-backends '(Git))) ; My life is just Git right now
+
+;; (use-package projectile
+;;   :ensure t
+;;   :init (progn
+;;           (setq projectile-keymap-prefix (kbd "C-x p"))
+;;           (projectile-global-mode)
+;;           (setq projectile-enable-caching t)
+;;           (use-package ibuffer-projectile
+;;             :ensure t
+;;             :bind ("C-x C-b" . ibuffer)
+;;             :init (progn
+;;                     (add-hook 'ibuffer-hook
+;;                               (lambda ()
+;;                                 (ibuffer-projectile-set-filter-groups)
+;;                                 (unless (eq ibuffer-sorting-mode 'alphabetic)
+;;                                   (ibuffer-do-sort-by-alphabetic))))
+;;                     (bind-keys :map ibuffer-mode-map
+;;                                ("c" . clean-buffer-list)
+;;                                ("n" . ibuffer-forward-filter-group)
+;;                                ("p" . ibuffer-backward-filter-group))))))
 
 (use-package comment-dwim-2
   :ensure t
