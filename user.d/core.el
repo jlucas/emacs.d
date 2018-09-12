@@ -8,6 +8,12 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; Enable blinking cursor (GUI frames only)
+(blink-cursor-mode 1)
+
+;; Blink the cursor forever (GUI frames only)
+(setq blink-cursor-blinks 0)
+
 ;; Just keep adding tag tables onto each other
 (setq tags-add-tables t)
 
