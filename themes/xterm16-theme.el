@@ -24,6 +24,7 @@
       (*regexp*             "#90d070")
       (*string*             "#87afaf")
       (*bluegreen*          "#00af87")
+      (*cursor*             "#b0b0b0")
       (*cyan*               "#00afaf")
       (*greenblue*          "#005f5f")
       (*lightgreenblue*     "#87ffaf")
@@ -88,8 +89,7 @@
    `(minibuffer-prompt ((t (:foreground, *cyan*))))
    `(mode-line ((t (:background, *gray238* :foreground, *gray251*))))
    `(mode-line-inactive ((t (:background, *gray236* :foreground, *gray245*))))
-   `(cursor ((t (:background, *normal*))))
-   ;; `(text-cursor ((t (:background, *cursor-underscore*))))
+   `(cursor ((t (:background, *cursor*))))
    `(vertical-border ((t (:foreground, *gray236* :background, *gray236*)))) ;; between splits
 
    ;; search
