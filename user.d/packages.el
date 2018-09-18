@@ -35,6 +35,8 @@
 ;;         org-gcal-client-secret "client secret"
 ;;         org-gcal-file-alist '(("jesse.lucas@framestore.com" . "~/org/gcal.org"))))
 
+;; Instead of ace-jump-mode
+;; See: http://emacsredux.com/blog/2015/07/19/ace-jump-mode-is-dead-long-live-avy/
 (use-package avy
   :ensure t
   :bind (("M-c" . avy-goto-word-1)))
