@@ -10,3 +10,6 @@
 [submodule "elisp/emacs-color-themes"]
 	path = elisp/emacs-color-themes
 	url = https://github.com/owainlewis/emacs-color-themes
+[submodule "elisp/vim-empty-lines-mode"]
+	path = elisp/vim-empty-lines-mode
+	url = https://github.com/jmickelin/vim-empty-lines-mode.git
