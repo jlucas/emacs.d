@@ -569,3 +569,10 @@
 ;; https://github.com/owainlewis/emacs-color-themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/emacs-color-themes/themes")
 
+;; https://github.com/jmickelin/vim-empty-lines-mode See also:
+;; https://www.reddit.com/r/emacs/comments/2kdztw/emacs_in_evil_mode_show_tildes_for_blank_lines/
+;; Note setting empty-lines as in the above link only seems to be
+;; visible in GUI frames.
+(when (jl/load-maybe "vim-empty-lines-mode.el")
+    (global-vim-empty-lines-mode))
+
