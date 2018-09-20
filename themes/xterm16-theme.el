@@ -156,6 +156,9 @@
    ;; fic-face
    `(fic-face ((t (:foreground ,*bright-orange*))))
 
+   ;; vim-empty-lines-mode
+   `(vim-empty-lines-face ((t (:foreground ,*light-brown*))))
+
    ;; markdown-mode
    `(markdown-header-delimiter-face ((t (:foreground ,*bluegreen*))))
    `(markdown-header-face ((t (:foreground ,*yellow*))))
