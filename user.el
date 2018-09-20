@@ -7,6 +7,11 @@
   (if (file-readable-p filepath)
       (load filepath)))
 
+(defun jl/load-maybe (file)
+  (condition-case nil
+      (load file)
+    (error (warn (format "jl/load-maybe: File not found: %s" file)))))
+
 ;; Full paths so I can use ffap to jump to them
 (let ((config-files '("~/.emacs.d/user.d/packages.el"
                       "~/.emacs.d/user.d/core.el"
