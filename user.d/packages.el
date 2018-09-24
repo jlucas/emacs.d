@@ -422,19 +422,22 @@
               (if (executable-find str)
                   (throw 'found-python (setq python-shell-interpreter str))))
           (list "ipython-local" "ipython-site" "ipython")))
-  (defun ipython ()
+  (setq python-shell-interpreter-args "")
+  (defun ipython (&optional args)
     (interactive)
-    (execute-extended-command 'run-python))
-  (setq python-shell-interpreter "ipython"
-        ;; python-shell-interpreter-args "--colors=NoColor"
-        python-shell-interpreter-args ""
-        python-shell-prompt-regexp "In \\[[0-9]+\\]: "
-        python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
-        python-shell-completion-setup-code "from IPython.core.completerlib import module_completion"
-        python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n"
-        python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"
-        python-shell-completion-string-code "';'.join(__IP.complete('''%s'''))\n"
-        python-shell-completion-module-string-code ""))
+    (let ((python-shell-interpreter-args args))
+      (execute-extended-command 'run-python)))
+  ;; (setq python-shell-interpreter "ipython-site"
+  ;;       ;; python-shell-interpreter-args "--colors=NoColor"
+  ;;       ;; python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+  ;;       ;; python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+  ;;       ;; python-shell-completion-setup-code "from IPython.core.completerlib import module_completion"
+  ;;       ;; python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n"
+  ;;       ;; python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"
+  ;;       ;; python-shell-completion-string-code "';'.join(__IP.complete('''%s'''))\n"
+  ;;       ;; python-shell-completion-module-string-code ""
+  ;;       ;; )
+)
 
 (use-package latex-preview-pane
   :ensure t)
