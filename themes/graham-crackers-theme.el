@@ -4,9 +4,9 @@
 
 (deftheme graham-crackers "Subdued gray, orange, and light blue theme")
 
-(let ((*normal*             "#eeeeee")  ; 255
-      (*background*         "#1c1c1c")
-      (*comments*           "#5f5f00")  ; 58
+(let ((*normal*             "#eeeeee")  ; 255 gray93
+      (*background*         "#1c1c1c")  ; 234 grey11
+      (*comments*           "#5f5f00")  ; 58 orange4
       ;(*comments*           "#87875f")  ; 101
       ;(*comments*           "#875f5f")  ; 95
       ;(*comments*           "#875f00")  ; 94
@@ -14,21 +14,21 @@
       (*variable*           "#afafd7")  ; 146
       (*operators*          "#ff8700")  ; 208
       (*current-line*       "#303030")  ; 236
-      (*cursor-underscore*  "#FFFAAA")
-      (*darkpurple*         "#8700af")
+      (*cursor*             "#b2b2b2")  ; 249 grey70
+      (*cursor-underscore*  "#ffafaf")  ; 217 lightpink1
+      (*darkpurple*         "#8700af")  ; 91 darkmagenta
       (*keywords*           "#ffaf00")  ; 214 orange1
       (*line-number*        "#afaf87")  ; 144 navajowhite3
-      (*method-declaration* "#ffd7af")  ; 223
+      (*method-declaration* "#ffd7af")  ; 223 navajowhite1
       (*gray236*            "#303030")  ; 236 grey19
       (*gray238*            "#444444")  ; 238 grey27
       (*gray245*            "#8a8a8a")  ; 245 grey54
       (*gray251*            "#c6c6c6")  ; 251 grey78
       (*number*             "#ff5f00")  ; 202 orangered1
       (*warning*            "#ff5f5f")  ; 203 indianred1
-      (*regexp*             "#90d070")
+      (*regexp*             "#90d070")  ; ???
       (*string*             "#afafaf")  ; 145 grey69
       (*bluegreen*          "#00af87")  ; 36 darkcyan
-      (*cursor*             "#b0b0b0")  ; ???
       (*cyan*               "#00afaf")  ; 37 lightseagreen
       (*greenblue*          "#005f5f")  ; 23 deepskyblue4
       (*lightgreenblue*     "#87ffaf")  ; 121 palegreen1
@@ -42,7 +42,7 @@
       (*region*             "#303030")  ; 236 grey19
       (*bright-orange*      "#ff8700")  ; 220 gold1
       (*trailing-space*     "#d70000")  ; 160 red3
-      (*mode-line-bg*       "#c6c6c6")  ; 251 grey78
+      (*mode-line-bg*       "#eeeeee")  ; 255 grey93
       (*mode-line-fg*       "#303030")  ; 236 grey19
       (*mode-inactive-bg*   "#303030")  ; 236 grey19
       (*mode-inactive-fg*   "#eeeeee")  ; 255 grey93
@@ -101,7 +101,7 @@
    ;; GUI
                                         ;`(fringe ((t (:background, *background*))))
                                         ;`(linum ((t (:background, *line-number*))))
-   ;; `(minibuffer-prompt ((t (:foreground, *cyan*))))
+   `(minibuffer-prompt ((t (:foreground, *variable*))))
    `(mode-line ((t (:background, *mode-line-bg* :foreground, *mode-line-fg*))))
    `(mode-line-inactive ((t (:background, *mode-inactive-bg* :foreground, *mode-inactive-fg*))))
    `(cursor ((t (:background, *cursor*))))
@@ -117,6 +117,10 @@
    `(isearch-fail ((t (:background ,*warning*))))
    `(lazy-highlight ((t (:background ,*match-fg* :foreground ,*match-bg*))))
 
+   ;; show-paren-mode
+   `(show-paren-match ((t (:foreground ,*paren-match* :weight bold))))
+   `(show-paren-mismatch ((t (:foreground ,*paren-mismatch* :weight bold))))
+
    ;; rainbow-delimiters
    `(rainbow-delimiters-depth-1-face ((t (:foreground ,*paren*))))
    `(rainbow-delimiters-depth-2-face ((t (:foreground ,*paren-alt*))))
@@ -128,10 +132,6 @@
    `(rainbow-delimiters-depth-8-face ((t (:foreground ,*paren-alt*))))
    `(rainbow-delimiters-depth-9-face ((t (:foreground ,*paren*))))
    `(rainbow-delimiters-unmatched-face ((t (:foreground ,*paren*))))
-
-   ;; show-paren-mode
-   `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
-   `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
 
    ;; ;; dired
    ;; `(dired-directory ((t (:ground ,*keywords* :weight bold))))
@@ -168,10 +168,10 @@
    `(git-gutter+-modified ((t (:foreground ,*light-brown* :background ,*gray238*))))
 
    ;; elscreen
-   `(elscreen-tab-background-face ((t (:foreground "grey90" :background "grey10"))))
-   `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
-   `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
-   `(elscreen-tab-other-screen-face ((t (:foreground ,*gray245* :background ,*gray236*))))
+   `(elscreen-tab-background-face ((t (:background ,*background*))))
+   `(elscreen-tab-control-face ((t (:foreground ,*mode-line-fg* :background ,*mode-line-bg*))))
+   `(elscreen-tab-current-screen-face ((t (:foreground ,*mode-line-fg* :background ,*mode-line-bg*))))
+   `(elscreen-tab-other-screen-face ((t (:foreground ,*mode-inactive-fg* :background ,*mode-inactive-bg*))))
 
    ;; fic-face
    `(fic-face ((t (:foreground ,*bright-orange*))))
