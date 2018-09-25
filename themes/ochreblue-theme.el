@@ -121,7 +121,7 @@
 
   ;; org-mode
   `(org-todo ((t (:foreground ,*bright-orange* :weight bold))))
-
+    
   ;; eshell
   ;`(eshell-ls-archive-face ((t (:bold t :foreground "medium purple" :weight bold))))
   ;`(eshell-ls-backup-face ((t (:foreground "dim gray"))))
@@ -146,9 +146,6 @@
   `(elscreen-tab-control-face ((t (:foreground "grey90" :background "grey20"))))
   `(elscreen-tab-current-screen-face ((t (:foreground ,*gray251* :background ,*gray238*))))
   `(elscreen-tab-other-screen-face ((t (:foreground ,*gray248* :background ,*gray236*))))
-
-  ;; vim-empty-lines-mode
-  `(vim-empty-lines-face ((t (:foreground ,*light-brown*))))
   ))
 
 ;;;###autoload
