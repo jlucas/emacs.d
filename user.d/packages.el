@@ -370,8 +370,7 @@
 
 (use-package hungry-delete
   :ensure t
-  :diminish hungry-delete-mode
-  :config (global-hungry-delete-mode))
+  :diminish hungry-delete-mode)
 
 ;; https://github.com/leoliu/easy-kill
 (use-package easy-kill
