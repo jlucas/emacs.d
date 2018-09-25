@@ -6,9 +6,9 @@
 
 (let ((*normal*             "#eeeeee")  ; 255 gray93
       (*background*         "#1c1c1c")  ; 234 grey11
-      (*comments*           "#5f5f00")  ; 58 orange4
+      ;(*comments*           "#5f5f00")  ; 58 orange4
       ;(*comments*           "#87875f")  ; 101
-      ;(*comments*           "#875f5f")  ; 95
+      (*comments*           "#875f5f")  ; 95
       ;(*comments*           "#875f00")  ; 94
       (*constant*           "#ff8700")  ; 208
       (*variable*           "#afafd7")  ; 146
