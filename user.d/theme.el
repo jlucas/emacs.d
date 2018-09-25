@@ -7,7 +7,8 @@
 (unless (boundp 'my/theme)
   (if (display-graphic-p)
       (setq my/theme 'ochreblue)
-    (setq my/theme 'xterm16)))
+    (setq my/theme 'graham-crackers)
+    ))
 
 (load-theme my/theme t)
 
