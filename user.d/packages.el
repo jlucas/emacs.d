@@ -141,10 +141,7 @@
   (setq term-unbind-key-list nil)
   (setq term-bind-key-alist (list (cons "M-x" 'execute-extended-command)))
   :bind
-  (("C-c T" . multi-term)
-   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Dedicated-Windows.html
-   ("C-c t" . multi-term-dedicated-toggle)
-   :map term-mode-map
+  (:map term-mode-map
    ("M-p" . term-send-up)
    ("M-n" . term-send-down)
    ("C-j" . term-char-mode)
@@ -475,10 +472,69 @@
   :commands eshell
   :config
   (require 'em-alias)
-  (add-to-list 'eshell-command-aliases-list (list "ll" "ls -l $*"))
-  (add-to-list 'eshell-command-aliases-list (list "lla" "ls -la $*"))
-  (add-to-list 'eshell-command-aliases-list (list "ff" "find-file $1"))
-  (add-to-list 'eshell-command-aliases-list (list "d" "dired $1")))
+  ;; Informed by:
+  ;; https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org
+  (setenv "PATH"
+        (concat
+         "/usr/local/bin:/usr/local/sbin:"
+         (getenv "PATH")))
+  (setenv "PAGER" "cat")
+  (mapcar (lambda (x)
+            (add-to-list 'eshell-command-aliases-list x))
+          '(("ll" "ls -l $*")
+            ("lla" "ls -la $*")
+            ("ff" "find-file $1")
+            ("e" "find-file $1")
+            ("d" "dired $1")))
+  (mapcar (lambda (x)
+            (add-to-list 'eshell-visual-commands x))
+          '("ssh"
+            "tail"
+            "tig"
+            "irssi"
+            "bitchx"
+            "talk"
+            "ytalk"
+            "mutt"
+            "nano"))
+  (defun eshell-here ()
+    "Opens up a new shell in the directory associated with the
+current buffer's file. The eshell is renamed to match that
+directory to make multiple eshell windows easier.  From:
+http://www.howardism.org/Technical/Emacs/eshell-fun.html"
+    (interactive)
+    (let* ((parent (if (buffer-file-name)
+                       (file-name-directory (buffer-file-name))
+                     default-directory))
+           (height (/ (window-total-height) 3))
+           (name   (car (last (split-string parent "/" t)))))
+      (split-window-vertically (- height))
+      (other-window 1)
+      (eshell "new")
+      (rename-buffer (concat "*eshell: " name "*"))
+
+      (insert (concat "ls"))
+      (eshell-send-input)))
+  (defun eshell/x ()
+    (insert "exit")
+    (eshell-send-input)
+    (delete-window))
+  (defun jl/eshell-quit-or-delete-char (arg)
+    (interactive "p")
+    (if (and (eolp) (looking-back eshell-prompt-regexp))
+        (progn
+          (eshell-life-is-too-much) ; Why not? (eshell/exit)
+          (ignore-errors
+            (delete-window)))
+      (delete-forward-char arg)))
+  :init
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (bind-keys :map eshell-mode-map
+                         ("C-d" . jl/eshell-quit-or-delete-char))))
+  :bind
+  ("C-c t" . eshell-here)
+  ("C-c T" . eshell))
 
 (use-package dired
   :preface
