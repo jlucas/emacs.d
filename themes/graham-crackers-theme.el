@@ -7,13 +7,13 @@
 (let ((*normal*             "#eeeeee")  ; 255 gray93
       (*background*         "#1c1c1c")  ; 234 grey11
       ;(*comments*           "#5f5f00")  ; 58 orange4
-      ;(*comments*           "#87875f")  ; 101
-      (*comments*           "#875f5f")  ; 95
-      ;(*comments*           "#875f00")  ; 94
-      (*constant*           "#ff8700")  ; 208
-      (*variable*           "#afafd7")  ; 146
-      (*operators*          "#ff8700")  ; 208
-      (*current-line*       "#303030")  ; 236
+      ;(*comments*           "#87875f")  ; 101 wheat4
+      (*comments*           "#875f5f")  ; 95 lightpink4
+      ;(*comments*           "#875f00")  ; 94 orange4
+      (*constant*           "#ff8700")  ; 208 darkorange
+      (*variable*           "#afafd7")  ; 146 lightsteelblue3
+      (*operators*          "#ff8700")  ; 208 darkorange
+      (*current-line*       "#303030")  ; 236 grey19
       (*cursor*             "#b2b2b2")  ; 249 grey70
       (*cursor-underscore*  "#ffafaf")  ; 217 lightpink1
       (*darkpurple*         "#8700af")  ; 91 darkmagenta
