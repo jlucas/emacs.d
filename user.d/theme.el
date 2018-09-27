@@ -2,6 +2,9 @@
 ;;; Theme
 ;;;
 
+;; https://github.com/owainlewis/emacs-color-themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/emacs-color-themes/themes")
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 (unless (boundp 'my/theme)

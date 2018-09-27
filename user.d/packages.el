@@ -609,10 +609,3 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
 ;;          ("C-x c SPC" . helm-all-mark-rings)))
 ;; (ido-mode -1)
 
-;;;
-;;; git submodules
-;;;
-
-;; https://github.com/owainlewis/emacs-color-themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/emacs-color-themes/themes")
-
