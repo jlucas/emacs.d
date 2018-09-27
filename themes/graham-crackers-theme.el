@@ -146,6 +146,8 @@
 
    ;; org-mode
    `(org-todo ((t (:foreground ,*bright-orange* :weight bold))))
+   `(org-date ((t (:foreground ,*bluegreen* :weight bold))))
+   `(org-level-4 ((t (:foreground ,*constant*))))
 
    ;; eshell
                                         ;`(eshell-ls-archive-face ((t (:bold t :foreground "medium purple" :weight bold))))
