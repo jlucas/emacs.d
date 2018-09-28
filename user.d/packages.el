@@ -184,30 +184,32 @@
   :ensure t)
 
 (use-package slime
-  :ensure t
-  :config
+  :load-path "elisp/slime"
+  :init
   (setq inferior-lisp-program "sbcl")
+  (require 'slime-autoloads)
+  (setq slime-contribs '(slime-fancy slime-banner))
+  :config
+  ; Delay loading log4slime because it breaks slime-banner
+  (add-hook 'slime-connected-hook
+            (lambda ()
+              "https://github.com/sharplispers/log4cl"
+            (let ((log4slime-file "~/quicklisp/log4slime-setup.el"))
+              (cond ((file-exists-p log4slime-file)
+                     (load log4slime-file)
+                     (global-log4slime-mode t))
+                    (t
+                     (message (format "Could not find log4slime file: %s"
+                                      log4slime-file)))))))
   (setq slime-lisp-implementations
         '((sbcl ("sbcl"))
           (sbcl-libtcod ("sbcl") :env ("LD_LIBRARY_PATH=/nfs/sw/libtcod/libtcod-1.6.4/lib"))))
-  (require 'slime-autoloads)
-  (setq slime-contribs '(slime-fancy slime-banner))
-  (slime-setup)
   ;; Fall back to using etags if slime doesn't know about the function
   (add-hook 'slime-edit-definition-hooks
             #'(lambda (name unused) (slime-edit-definition-with-etags name))
             t)
   ;; http://lispblog.xach.com/post/157864421363/the-slime-selector
   :bind (("C-c p" . slime-selector)))
-
-;; (use-package slime-autoloads
-;;   :ensure t
-;;   :config (slime-setup '(slime-fancy)))
-
-;; call (describe-unbound-keys 5) to list keys
-;; http://emacswiki.org/emacs/unbound.el
-;; (use-package unbound
-;; :ensure)
 
 ;; Select between multiple matches for a tag
 ;; (use-package etags-select
@@ -618,18 +620,6 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
 ;;          ("C-x c b" . my/helm-do-grep-book-notes)
 ;;          ("C-x c SPC" . helm-all-mark-rings)))
 ;; (ido-mode -1)
-
-;; https://github.com/7max/log4cl
-;; (ql:quickload :log4cl)
-;; (ql:quickload :log4slime)
-;; (log4slime:install)
-;; log4slime is installed via Quicklisp.  It points to a file in ~/quicklisp so you don't have to change your emacs configuration when you update it.
-(let ((log4slime-file "~/quicklisp/log4slime-setup.el"))
-  (cond ((file-exists-p log4slime-file)
-         (load log4slime-file)
-         (global-log4slime-mode t))
-        (t
-         (message "Could not find log4slime setup"))))
 
 ;;;
 ;;; git submodules

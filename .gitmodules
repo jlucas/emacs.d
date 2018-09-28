@@ -10,3 +10,6 @@
 [submodule "elisp/emacs-color-themes"]
 	path = elisp/emacs-color-themes
 	url = https://github.com/owainlewis/emacs-color-themes
+[submodule "elisp/slime"]
+	path = elisp/slime
+	url = https://github.com/slime/slime
