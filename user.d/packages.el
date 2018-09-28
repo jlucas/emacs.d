@@ -477,17 +477,6 @@
             ("ff" "find-file $1")
             ("e" "find-file $1")
             ("d" "dired $1")))
-  (mapcar (lambda (x)
-            (add-to-list 'eshell-visual-commands x))
-          '("ssh"
-            "tail"
-            "tig"
-            "irssi"
-            "bitchx"
-            "talk"
-            "ytalk"
-            "mutt"
-            "nano"))
   (defun eshell-here ()
     "Opens up a new shell in the directory associated with the
 current buffer's file. The eshell is renamed to match that
@@ -522,6 +511,19 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
             (lambda ()
               (bind-keys :map eshell-mode-map
                          ("C-d" . jl/eshell-quit-or-delete-char))))
+  (add-hook 'eshell-mode-hook
+			(lambda ()
+			  (mapcar (lambda (x)
+						(add-to-list 'eshell-visual-commands x))
+					  '("ssh"
+						"tail"
+						"tig"
+						"irssi"
+						"bitchx"
+						"talk"
+						"ytalk"
+						"mutt"
+						"nano"))))
   :bind
   ("C-c t" . eshell-here)
   ("C-c T" . eshell))
