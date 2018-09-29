@@ -37,9 +37,9 @@
       (*paren-alt*          "#afafd7")  ; 146 lightsteelblue3
       (*paren-match*        "#ffd700")  ; 220 gold1
       (*paren-mismatch*     "#d70000")  ; 160 red3
-      (*match*              "#5f87ff")  ; 69 cornflowerblue
-      (*match-bg*           "#87ffaf")  ; 121 palegreen1
-      (*match-fg*           "#005f5f")  ; 23 deepskyblue4
+      (*match*              "#00d7ff")  ; 45 turquoise2
+      (*match-bg*           "#00d7ff")  ; 45 turquoise2
+      (*match-fg*           "#005f87")  ; 24 deepskyblue4
       (*region*             "#303030")  ; 236 grey19
       (*bright-orange*      "#ff8700")  ; 220 gold1
       (*trailing-space*     "#d70000")  ; 160 red3
