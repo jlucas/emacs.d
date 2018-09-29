@@ -42,7 +42,6 @@
       (*match-fg*           "#005f87")  ; 24 deepskyblue4
       (*region*             "#303030")  ; 236 grey19
       (*bright-orange*      "#ff8700")  ; 220 gold1
-      (*trailing-space*     "#d70000")  ; 160 red3
       (*mode-line-bg*       "#eeeeee")  ; 255 grey93
       (*mode-line-fg*       "#303030")  ; 236 grey19
       (*mode-inactive-bg*   "#303030")  ; 236 grey19
@@ -69,7 +68,7 @@
    `(underline ((nil (:underline t))))
    `(paren ((t (:foreground ,*paren*))))
    `(trailing-whitespace
-     ((t (:foreground ,*trailing-space* :background ,*background* :underline t))))
+     ((t (:foreground ,*warning* :background ,*background* :underline t))))
 
    ;; font-lock
    `(font-lock-builtin-face ((t (:foreground ,*operators*))))
