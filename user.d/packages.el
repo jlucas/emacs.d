@@ -465,11 +465,11 @@
   (require 'em-alias)
   ;; Informed by:
   ;; https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org
-  (setenv "PATH"
-        (concat
-         "/usr/local/bin:/usr/local/sbin:"
-         (getenv "PATH")))
-  (setenv "PAGER" "cat")
+  (setenv "EDITOR" "emacsclient"
+          "VISUAL" "emacsclient"
+          "GIT_EDITOR" "emacsclient"
+          "PAGER" "cat"
+          "PATH" (concat "/usr/local/bin:/usr/local/sbin:" (getenv "PATH")))
   (mapcar (lambda (x)
             (add-to-list 'eshell-command-aliases-list x))
           '(("ll" "ls -l $*")
