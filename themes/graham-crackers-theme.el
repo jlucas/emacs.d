@@ -26,6 +26,7 @@
       (*gray251*            "#c6c6c6")  ; 251 grey78
       (*number*             "#ff5f00")  ; 202 orangered1
       (*warning*            "#ff5f5f")  ; 203 indianred1
+      (*error*              "#ff5f5f")  ; 203 indianred1
       (*regexp*             "#90d070")  ; ???
       (*string*             "#afafaf")  ; 145 grey69
       (*bluegreen*          "#00af87")  ; 36 darkcyan
@@ -111,6 +112,7 @@
    `(match ((t (:background ,*match-fg* :foreground ,*match-bg*))))
    `(compilation-info ((t (:foreground ,*method-declaration*))))
    `(compilation-line-number ((t (:foreground ,*number*))))
+   `(compilation-error ((t (:foreground ,*error*))))
 
    ;; search
    `(isearch ((t (:background ,*match-bg* :foreground ,*match-fg*))))
