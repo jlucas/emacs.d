@@ -17,8 +17,15 @@
                                 (revert-buffer t t t)
                                 (message "Buffer is reverted")))
 
-;; Toggle line numbers on 'C-c l' (linum mode)
-(global-set-key (kbd "C-c n") 'linum-mode)
+;; Toggle line numbers with 'C-c l'
+;; See also:
+;; https://github.com/syohex/emacs-git-gutter/issues/156#issuecomment-394045050
+;; https://github.com/emacs-mirror/emacs/blob/master/etc/NEWS.26#L434 +513
+(global-set-key (kbd "C-c n") (lambda ()
+                                (interactive)
+                                (if (version< emacs-version "26.1")
+                                    (call-interactively 'linum-mode)
+                                  (call-interactively 'display-line-numbers-mode))))
 
 ;; Move around windows with vim-like hjkl binds
 (global-set-key (kbd "C-c h") 'windmove-left)
