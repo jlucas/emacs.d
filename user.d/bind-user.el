@@ -128,6 +128,7 @@
 
 ;; Delete trailing whitespace
 (global-set-key (kbd "C-c x w") 'delete-trailing-whitespace)
+(defalias 'dtw 'delete-trailing-whitespace)
 
 ;; Insert email signature
 (global-set-key (kbd "C-c x sig") (lambda ()
