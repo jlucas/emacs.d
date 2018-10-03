@@ -5,11 +5,9 @@
 (deftheme graham-crackers "Subdued gray, orange, and light blue theme")
 
 (let ((*normal*             "#eeeeee")  ; 255 gray93
-      (*background*         "#1c1c1c")  ; 234 grey11
-      ;(*comments*           "#5f5f00")  ; 58 orange4
-      ;(*comments*           "#87875f")  ; 101 wheat4
+      (*background*         "#181a1c")  ; 234 grey11
+      ;(*background*         "#161a1f")  ; for 16M colors
       (*comments*           "#875f5f")  ; 95 lightpink4
-      ;(*comments*           "#875f00")  ; 94 orange4
       (*constant*           "#ff8700")  ; 208 darkorange
       (*variable*           "#afafd7")  ; 146 lightsteelblue3
       (*operators*          "#ff8700")  ; 208 darkorange
