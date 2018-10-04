@@ -5,6 +5,9 @@
 ;;; http://stackoverflow.com/questions/1144424
 ;;;
 
+;; query-replace-regexp
+(defalias 'qrr 'query-replace-regexp)
+
 ;; Make
 (global-set-key (kbd "C-c M") 'recompile)
 
