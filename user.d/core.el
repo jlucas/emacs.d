@@ -51,6 +51,10 @@ http://stackoverflow.com/questions/11700934"
   (interactive)
   (setq show-trailing-whitespace (not show-trailing-whitespace)))
 
+;; Don't show trailing whitespace in shell modes
+(add-hook 'shell-mode-hook (lambda ()
+                             (setq show-trailing-whitespace nil)))
+
 ;; Show un/matched parens
 (show-paren-mode 1)
 (setq show-paren-delay 0)
