@@ -38,7 +38,9 @@
       (*match*              "#00d7ff")  ; 45 turquoise2
       (*match-bg*           "#00d7ff")  ; 45 turquoise2
       (*match-fg*           "#005f87")  ; 24 deepskyblue4
-      (*region*             "#303030")  ; 236 grey19
+      ;(*region*             "#303030")  ; 236 grey19
+      (*region-bg*             "#005f87")  ; 24 deepskyblue4
+      (*region-fg*             "#00d7ff")  ; 45 turquoise2
       (*bright-orange*      "#ff8700")  ; 220 gold1
       (*mode-line-bg*       "#eeeeee")  ; 255 grey93
       (*mode-line-fg*       "#303030")  ; 236 grey19
@@ -62,7 +64,8 @@
    `(highlight-face ((t (:background ,*current-line*))))
    `(hl-line ((t (:background ,*current-line*))))
    `(info-xref ((t (:foreground ,*keywords* :underline t))))
-   `(region ((t (:background ,*region*))))
+   ;`(region ((t (:background ,*region*))))
+   `(region ((t (:background ,*region-bg* :foreground ,*region-fg*))))
    `(underline ((nil (:underline t))))
    `(paren ((t (:foreground ,*paren*))))
    `(trailing-whitespace
