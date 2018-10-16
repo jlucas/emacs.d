@@ -3,13 +3,22 @@
 ;;;
 
 ;; Support embedding the following languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((sh . t)
-   (python . t)
-   (dot . t)
-   (sqlite . t)
-   (lisp . t)))
+(if (>= emacs-major-version 25)
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((shell . t)
+       (python . t)
+       (dot . t)
+       (sqlite . t)
+       (lisp . t)))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((sh . t)
+     (python . t)
+     (dot . t)
+     (sqlite . t)
+     (lisp . t))))
+
 ;; Prompt for a comment and add a datestamp to DONE items.
 (setq org-log-done 'note)
 ;; http://orgmode.org/manual/Clean-view.html
