@@ -83,8 +83,14 @@
 (define-key emacs-lisp-mode-map (kbd "C-j") nil) ; Have to override this explicitly
 (global-set-key (kbd "C-j") (lambda ()
                               (interactive)
-                              (forward-line)
-                              (join-line)))
+                              (cond ((region-active-p)
+                                     (let ((lines (count-screen-lines (region-beginning)
+                                                                      (region-end))))
+                                       (while (> lines 0)
+                                         (join-line t)
+                                         (setq lines (- lines 1)))))
+                                    (t
+                                     (join-line t)))))
 
 ;; Just type the char you want to align your text to
 (global-set-key (kbd "C-c a") 'align-regexp)
