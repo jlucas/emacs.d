@@ -19,6 +19,7 @@
                       "~/.emacs.d/user.d/file-format.el"
                       "~/.emacs.d/user.d/bind-user.el"
                       "~/.emacs.d/user.d/bind-global-override.el"
+                      "~/.emacs.d/user.d/mail.el"
                       "~/.emacs.d/user.d/gnus.el"
                       "~/.emacs.d/user.d/session-management.el"
                       "~/.emacs.d/user.d/local.el")))
