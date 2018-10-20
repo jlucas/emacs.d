@@ -86,7 +86,7 @@
                               (cond ((region-active-p)
                                      (let ((lines (count-screen-lines (region-beginning)
                                                                       (region-end))))
-                                       (while (> lines 0)
+                                       (while (> lines 1)
                                          (join-line t)
                                          (setq lines (- lines 1)))))
                                     (t
