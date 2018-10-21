@@ -110,8 +110,8 @@
    `(rainbow-delimiters-unmatched-face ((t (:foreground ,*paren*))))
 
    ;; show-paren-mode
-   `(show-paren-match-face ((t (:foreground ,*paren-match* :bold t))))
-   `(show-paren-mismatch-face ((t (:foreground ,*paren-mismatch* :bold t))))
+   `(show-paren-match ((t (:foreground ,*paren-match* :bold t))))
+   `(show-paren-mismatch ((t (:foreground ,*paren-mismatch* :bold t))))
 
    ;; dired
    `(dired-directory ((t (:ground ,*keywords* :weight bold))))
