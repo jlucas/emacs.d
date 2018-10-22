@@ -132,7 +132,13 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 (use-package git-gutter+
   :ensure t
-  :config (global-git-gutter+-mode))
+  :config
+  (global-git-gutter+-mode)
+  (defalias 'ggm (lambda ()
+                   (interactive)
+                   (if git-gutter+-mode
+                       (git-gutter+-mode -1)
+                     (git-gutter+-mode 1)))))
 
 (use-package mo-git-blame
   :ensure t)
