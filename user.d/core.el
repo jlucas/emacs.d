@@ -42,18 +42,25 @@
 ;; linum package line number formatting
 (setq linum-format "%3d ")
 
-;; show-trailing-whitespace is a buffer local variable
+;; show-trailing-whitespace is a buffer local variable,
+;; which will now default to t
 (setq-default show-trailing-whitespace t)
 
-(defun toggle-show-trailing-whitespace ()
-  "Toggle show-trailing-whitespace between t and nil
-http://stackoverflow.com/questions/11700934"
-  (interactive)
-  (setq show-trailing-whitespace (not show-trailing-whitespace)))
-
-;; Don't show trailing whitespace in shell modes
-(add-hook 'shell-mode-hook (lambda ()
-                             (setq show-trailing-whitespace nil)))
+;; Disable show-trailing-whitespace in certain cases
+;; See: https://emacs.stackexchange.com/questions/37069
+;; See also: http://stackoverflow.com/questions/11700934
+;; TODO: Run delete-trailing-whitespace when leaving COMMIT_EDITMSG
+;; buffers as we never want to have a commit message with trailing
+;; whitespace
+(defun my-hide-trailing-whitespace-maybe ()
+  "Disable show-trailing-whitespace in selected modes"
+  (when (or (derived-mode-p 'shell-mode
+                            'eshell-mode
+                            'magit-mode)
+            (equal (buffer-name) "COMMIT_EDITMSG"))
+    (setq show-trailing-whitespace nil)))
+(add-hook 'after-change-major-mode-hook
+          'my-hide-trailing-whitespace-maybe)
 
 ;; Show un/matched parens
 (show-paren-mode 1)
