@@ -470,6 +470,21 @@
   (setenv "GIT_EDITOR" "emacsclient")
   (setenv "PAGER" "cat")
   (setenv "PATH" (concat "/usr/local/bin:/usr/local/sbin:" (getenv "PATH")))
+  (setq eshell-prompt-function
+        (lambda ()
+          "Prompt with Git branch"
+          (let ((branch
+                 (replace-regexp-in-string
+                  "\n$" ""
+                  (shell-command-to-string "git symbolic-ref HEAD 2>/dev/null"))))
+            (concatenate
+             'string
+             (format "%s" (abbreviate-file-name (eshell/pwd)))
+             (when (> (length branch) 0)
+               (format " (%s)" (replace-regexp-in-string "refs/heads/" "" branch)))
+             (if (eq (user-uid) 0)
+                 "# "
+               "$ ")))))
   (mapcar (lambda (x)
             (add-to-list 'eshell-command-aliases-list x))
           '(("ll" "ls -l $*")
