@@ -509,10 +509,11 @@ Argument REPLACE String used to replace the matched strings in the buffer.
             (concat
              (abbreviate-file-name (eshell/pwd))
              (when (> (length branch) 0)
-               (format " (%s)" (replace-regexp-in-string "refs/heads/" "" branch)))
-             (if (eq (user-uid) 0)
-                 "# "
-               "$ ")))))
+               (format " (%s)"
+                       (replace-regexp-in-string
+                        "refs/heads/" ""
+                        (propertize branch 'face `(:foreground "orange")))))
+             (if (eq (user-uid) 0) " # " " $ ")))))
   (mapcar (lambda (x)
             (add-to-list 'eshell-command-aliases-list x))
           '(("ll" "ls -l $*")
