@@ -55,6 +55,7 @@
 (defun my-hide-trailing-whitespace-maybe ()
   "Disable show-trailing-whitespace in selected modes"
   (when (or (derived-mode-p 'shell-mode
+                            'term-mode
                             'eshell-mode
                             'magit-mode)
             (equal (buffer-name) "COMMIT_EDITMSG"))
