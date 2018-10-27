@@ -37,7 +37,11 @@
 
 ;; Use PRIMARY selection in X
 ;; From: http://emacswiki.org/emacs/CopyAndPaste
-(setq x-select-enable-primary t)
+(if (version<= "25.1" emacs-version)
+    (setq-default select-enable-primary t
+                  select-enable-clipboard t)
+    (setq-default x-select-enable-primary t
+                  x-select-enable-clipboard t))
 
 ;; linum package line number formatting
 (setq linum-format "%3d ")
