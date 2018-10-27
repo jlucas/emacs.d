@@ -37,7 +37,9 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 (use-package atomic-chrome
   :ensure t
   :init
-  (atomic-chrome-start-server))
+  (atomic-chrome-start-server)
+  :config
+  (setq atomic-chrome-buffer-open-style 'frame))
 
 ;; org-jira
 (use-package org-jira
