@@ -522,7 +522,15 @@ Argument REPLACE String used to replace the matched strings in the buffer.
             ("lla" "ls -la $*")
             ("ff" "find-file $1")
             ("e" "find-file $1")
-            ("d" "dired $1")))
+            ("d" "dired $1")
+            ("up2" "cd ../..")
+            ("up3" "cd ../../..")
+            ("up4" "cd ../../../..")
+            ("up5" "cd ../../../../..")
+            ("up6" "cd ../../../../../..")
+            ("up7" "cd ../../../../../../..")
+            ("up8" "cd ../../../../../../../..")
+            ("up9" "cd ../../../../../../../../..")))
   (defun eshell-here ()
     "Opens up a new shell in the directory associated with the
 current buffer's file. The eshell is renamed to match that
