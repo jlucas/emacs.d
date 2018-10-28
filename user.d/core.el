@@ -61,6 +61,7 @@
   (when (or (derived-mode-p 'shell-mode
                             'term-mode
                             'eshell-mode
+                            'slime-repl-mode
                             'magit-mode)
             (equal (buffer-name) "COMMIT_EDITMSG"))
     (setq show-trailing-whitespace nil)))
