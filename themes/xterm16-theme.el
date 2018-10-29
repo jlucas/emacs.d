@@ -167,6 +167,10 @@
    `(flyspell-duplicate
      ((t (:bold nil :underline t))))
 
+   ;; slime
+   `(slime-repl-inputed-output-face
+     ((t (:foreground ,*warning*))))
+
    ;; avy
    `(avy-background-face
      ((t (:foreground ,*normal* :background ,*background*))))
