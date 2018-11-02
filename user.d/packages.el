@@ -443,7 +443,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (defun ipython (&optional args)
     (interactive)
     (let ((python-shell-interpreter-args args))
-      (execute-extended-command 'run-python)))
+      (run-python python-shell-interpreter nil t)))
   ;; (setq python-shell-interpreter "ipython-site"
   ;;       ;; python-shell-interpreter-args "--colors=NoColor"
   ;;       ;; python-shell-prompt-regexp "In \\[[0-9]+\\]: "
