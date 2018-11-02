@@ -438,7 +438,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
     (mapc #'(lambda (str)
               (if (executable-find str)
                   (throw 'found-python (setq python-shell-interpreter str))))
-          (list "ipython-local" "ipython-site" "ipython")))
+          (list "ipython-local" "ipython-site" "ipython" "python")))
   (setq python-shell-interpreter-args "")
   (defun ipython (&optional args)
     (interactive)
