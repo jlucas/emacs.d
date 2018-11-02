@@ -62,7 +62,8 @@
                             'term-mode
                             'eshell-mode
                             'slime-repl-mode
-                            'magit-mode)
+                            'magit-mode
+                            'inferior-python-mode)
             (equal (buffer-name) "COMMIT_EDITMSG"))
     (setq show-trailing-whitespace nil)))
 (add-hook 'after-change-major-mode-hook
