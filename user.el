@@ -22,6 +22,7 @@
                       "~/.emacs.d/user.d/mail.el"
                       "~/.emacs.d/user.d/gnus.el"
                       "~/.emacs.d/user.d/session-management.el"
+                      "~/.emacs.d-site/site.el"
                       "~/.emacs.d/user.d/local.el")))
   (dolist (filepath config-files)
     (jl/load-if-readable filepath)))
