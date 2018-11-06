@@ -624,6 +624,32 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
   (setq fic-highlighted-words '("FIXME" "TODO" "BUG" "NOTE" "XXX"))
   (add-hook 'prog-mode-hook 'fic-mode))
 
+(use-package hydra
+  :ensure t
+  :config
+  (global-set-key
+   (kbd "C-n")
+   (defhydra hydra-move
+     (:body-pre (next-line))
+     "move"
+     ("n" next-line)
+     ("d" (lambda ()
+            (interactive)
+            (next-line 4)))
+     ("p" previous-line)
+     ("u" (lambda ()
+            (interactive)
+            (previous-line 4)))
+     ("f" forward-char)
+     ("b" backward-char)
+     ("a" beginning-of-line)
+     ("e" move-end-of-line)
+     ("[" backward-paragraph)
+     ("]" forward-paragraph)
+     ("v" scroll-up-command)
+     ("V" scroll-down-command)
+     ("l" recenter-top-bottom))))
+
 (use-package lua-mode
   :ensure t)
 
