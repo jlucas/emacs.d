@@ -443,18 +443,27 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (defun ipython (&optional args)
     (interactive)
     (let ((python-shell-interpreter-args args))
-      (run-python python-shell-interpreter nil t)))
-  ;; (setq python-shell-interpreter "ipython-site"
-  ;;       ;; python-shell-interpreter-args "--colors=NoColor"
-  ;;       ;; python-shell-prompt-regexp "In \\[[0-9]+\\]: "
-  ;;       ;; python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
-  ;;       ;; python-shell-completion-setup-code "from IPython.core.completerlib import module_completion"
-  ;;       ;; python-shell-completion-module-string-code "';'.join(module_completion('''%s'''))\n"
-  ;;       ;; python-shell-completion-string-code "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"
-  ;;       ;; python-shell-completion-string-code "';'.join(__IP.complete('''%s'''))\n"
-  ;;       ;; python-shell-completion-module-string-code ""
-  ;;       ;; )
-)
+      (run-python nil t t)))
+  (defun my-python-shell-send-line ()
+    (interactive)
+    (save-excursion
+      (move-beginning-of-line nil)
+      (set-mark-command nil)
+      (move-end-of-line nil)
+      (python-shell-send-region (region-beginning) (region-end))
+      (deactivate-mark)))
+  (defun my-python-shell-send-smartly ()
+    (interactive)
+    (cond ((use-region-p)
+           (python-shell-send-region (region-beginning) (region-end)))
+          (t
+           (save-excursion
+             (mark-paragraph)
+             (python-shell-send-region (region-beginning) (region-end))
+             (deactivate-mark)))))
+  :bind (:map python-mode-map
+              ("C-c C-e" . my-python-shell-send-line)
+              ("C-c C-c" . my-python-shell-send-smartly)))
 
 (use-package latex-preview-pane
   :ensure t)
