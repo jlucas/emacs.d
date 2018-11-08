@@ -264,3 +264,13 @@
       (write-file (concat "/sudo:root@localhost:" (ido-read-file-name "File:")))
     (write-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
+(defun touch ()
+  "Create an empty file in current directory"
+  (interactive)
+  (call-interactively 'find-file)
+  (save-buffer)
+  (kill-buffer)
+  ;; Update dired if you touch'd from there
+  (if (equal major-mode 'dired-mode)
+      (revert-buffer)))
+
