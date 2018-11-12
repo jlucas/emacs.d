@@ -618,13 +618,6 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
 ;; (use-package crontab-mode
 ;;   :ensure t)
 
-;; (use-package edit-server
-;;   :ensure t
-;;   :config
-;;   ;; For use with:
-;;   ;; https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en
-;;   (edit-server-start))
-
 ;; For commands:
 ;; doremi-all-faces-fg+
 ;; doremi-all-faces-bg+
