@@ -610,6 +610,11 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
               (call-process "firefox" nil nil nil (dired-get-file-for-visit)))
             dired-mode-map))
 
+;;; Built-in Emacs package
+;;; Use for 'F' bind, to open multiple tagged files in splits
+;;; https://www.reddit.com/r/emacs/comments/2lzssf/dired_vs_diredx_vs_dired_vs_diredaux/
+(use-package dired-x)
+
 ;; (use-package crontab-mode
 ;;   :ensure t)
 
