@@ -29,6 +29,14 @@
       '(gnus-thread-sort-by-number
         gnus-thread-sort-by-most-recent-date))
 
+;;; https://www.gnu.org/software/emacs/manual/html_node/gnus/Checking-New-Groups.html#Checking-New-Groups
+;;; (setq gnus-check-new-newsgroups ask-server)
+
+;;; https://www.gnu.org/software/emacs/manual/html_node/gnus/The-Active-File.html#The-Active-File
+;;; "If you think that starting up Gnus takes too long, try all the
+;;; three different values for this variable and see what works best
+;;; for you."
+
 ;; (setq gnus-extract-address-components)
 
 
