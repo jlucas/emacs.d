@@ -10,7 +10,7 @@
 (unless (boundp 'my/theme)
   (if (display-graphic-p)
       (setq my/theme 'ochreblue)
-    (setq my/theme 'graham-crackers)
+    (setq my/theme 'xterm16)
     ))
 
 (load-theme my/theme t)
