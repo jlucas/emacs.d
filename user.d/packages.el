@@ -635,7 +635,7 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
   :ensure t
   :config
   (global-set-key
-   (kbd "C-n")
+   (kbd "C-c y")
    (defhydra hydra-move
      (:body-pre (next-line))
      "move"
