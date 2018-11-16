@@ -655,7 +655,10 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
      ("]" forward-paragraph)
      ("v" scroll-up-command)
      ("V" scroll-down-command)
-     ("l" recenter-top-bottom))))
+     ("l" recenter-top-bottom)
+     ("q" (lambda ()
+            (interactive)
+            (setq hydra-deactivate t))))))
 
 (use-package lua-mode
   :ensure t)
