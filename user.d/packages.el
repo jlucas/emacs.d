@@ -556,6 +556,7 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
       (message "Opening %s done" file)))
   :config
   (setq dired-dwim-target t)  ;; http://emacs.stackexchange.com/a/5604
+  (add-hook 'dired-mode-hook 'auto-revert-mode) ; refresh dired automatically
   (bind-key "-" (lambda () (interactive) (find-alternate-file "..")) dired-mode-map)
   (bind-key "o"
             (lambda ()
