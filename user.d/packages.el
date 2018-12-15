@@ -515,6 +515,9 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
     (insert "exit")
     (eshell-send-input)
     (delete-window))
+  (defun eshell/ffs (file-list)
+    (mapcar 'find-file
+         file-list))
   (defun jl/eshell-quit-or-delete-char (arg)
     (interactive "p")
     (if (and (eolp) (looking-back eshell-prompt-regexp))
