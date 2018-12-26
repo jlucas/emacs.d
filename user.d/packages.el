@@ -35,6 +35,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;; GhostText and Atomic Chrome
 ;; https://github.com/alpha22jp/atomic-chrome/
 (use-package atomic-chrome
+  :ensure t
   :init
   (atomic-chrome-start-server)
   :config
@@ -42,6 +43,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 ;; org-jira
 (use-package org-jira
+  :ensure t
   :config
   (setq jiralib-url "https://framestore.atlassian.net"))
 
@@ -51,6 +53,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (ffap-bindings))
 
 ;; (use-package org-gcal
+;;   :ensure t
 ;;   :config
 ;;   (setq org-gcal-client-id "oauth 2.0 client ID"
 ;;         org-gcal-client-secret "client secret"
@@ -59,9 +62,11 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;; Instead of ace-jump-mode
 ;; See: http://emacsredux.com/blog/2015/07/19/ace-jump-mode-is-dead-long-live-avy/
 (use-package avy
+  :ensure t
   :bind (("M-c" . avy-goto-word-1)))
 
 (use-package ibuffer
+  :ensure t
   :bind (("C-x C-b" . ibuffer))
   :config
   (setq ibuffer-show-empty-filter-groups nil)
@@ -70,6 +75,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;; Trying ibuffer-vc again to see if it's faster than
 ;; ibuffer-projectile
 (use-package ibuffer-vc
+  :ensure t
   :init (add-hook 'ibuffer-hook
                   (lambda ()
                     (ibuffer-vc-set-filter-groups-by-vc-root)
@@ -78,11 +84,13 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   :config (setq vc-handled-backends '(Git))) ; My life is just Git right now
 
 ;; (use-package projectile
+;;   :ensure t
 ;;   :init (progn
 ;;           (setq projectile-keymap-prefix (kbd "C-x p"))
 ;;           (projectile-global-mode)
 ;;           (setq projectile-enable-caching t)
 ;;           (use-package ibuffer-projectile
+;;             :ensure t
 ;;             :bind ("C-x C-b" . ibuffer)
 ;;             :init (progn
 ;;                     (add-hook 'ibuffer-hook
@@ -96,9 +104,11 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;;                                ("p" . ibuffer-backward-filter-group))))))
 
 (use-package comment-dwim-2
+  :ensure t
   :bind ("M-;" . comment-dwim-2))
 
 ;; (use-package aggressive-indent
+;;   :ensure t
 ;;   :diminish aggressive-indent-mode
 ;;   :config
 ;;   (global-aggressive-indent-mode 1)
@@ -106,6 +116,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;;   (unbind-key "C-c C-q" aggressive-indent-mode-map))
 
 ;; (use-package isearch+
+;;   :ensure t)
 
 ;; Recipe for making a global minor mode that is not active in certain major modes
 ;; From: http://stackoverflow.com/a/6849467
@@ -117,10 +128,12 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 ;; Tag hopping without ctags
 (use-package smartscan
+  :ensure t
   :bind (("M-p" . smartscan-symbol-go-backward)
          ("M-n" . smartscan-symbol-go-forward)))
 
 (use-package git-gutter+
+  :ensure t
   :config
   (global-git-gutter+-mode)
   (defalias 'ggm (lambda ()
@@ -130,8 +143,10 @@ Argument REPLACE String used to replace the matched strings in the buffer.
                      (git-gutter+-mode 1)))))
 
 (use-package mo-git-blame
+  :ensure t)
 
 (use-package sudo-edit
+  :ensure t)
 
 (defun multi-term-set-cursor-according-to-mode ()
   "Change cursor type according to multi-term mode."
@@ -149,6 +164,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 ;; https://github.com/rlister/emacs.d/blob/master/lisp/multi-term-cfg.el
 (use-package multi-term
+  :ensure t
   :config
   (setq multi-term-program "/bin/bash")
   (setq comint-prompt-read-only t)
@@ -165,30 +181,37 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 ;; Conflicts with multi-term package
 ;; (use-package with-editor
+;;   :ensure t
 ;;   :config (add-hook 'term-mode-hook 'with-editor-export-editor))
 
 (use-package undo-tree
+  :ensure t
   :config (global-undo-tree-mode 1)
   :bind (("C-c u" . undo-tree-visualize)))
 
 (use-package expand-region
+  :ensure t
   :bind (("M-=" . er/expand-region)
          ("M--" . er/contract-region)))
 
 (use-package wrap-region
+  :ensure t
   :config (wrap-region-global-mode t))
 
 (use-package change-inner
+  :ensure t
   :bind (("M-i" . change-inner)
          ("M-o" . change-outer)))
 
 (use-package markdown-mode
+  :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
 (use-package jira-markup-mode
+  :ensure t)
 
 (use-package slime
   :load-path "elisp/slime"
@@ -220,10 +243,12 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 ;; Select between multiple matches for a tag
 ;; (use-package etags-select
+;;   :ensure t
 ;;   :bind (("M-?" . etags-select-find-tag-at-point)
 ;;          ("M-." . etags-select-find-tag)))
 
 (use-package magit
+  :ensure t
   :preface
   (defun jrl/magit-commit-verbose ()
     (interactive)
@@ -236,6 +261,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
          ("C-c g p" . magit-push-current-to-upstream)))
 
 (use-package multiple-cursors
+  :ensure t
   :bind (("C-c m" . mc/edit-lines)))
 ;; multiple-cursors key binding discussion
 ;; http://endlessparentheses.com/multiple-cursors-keybinds.html
@@ -246,6 +272,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package paredit
+  :ensure t
   :init
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
@@ -288,6 +315,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;; package has been built into Emacs since version 21, but it's nice
 ;; to keep the config together with the binding here.
 (use-package recentf
+  :ensure t
   :config
   (setq recentf-max-saved-items 100)
   (recentf-mode t)
@@ -295,8 +323,10 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   ("C-c f" . recentf-open-files))
 
 (use-package edit-list
+  :ensure t)
 
 (use-package beacon
+  :ensure t
   :diminish beacon-mode
   :config
   (beacon-mode 1)
@@ -309,16 +339,19 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;;
 ;; “C-u 0 C-c ,” will give a description of changes made.
 (use-package goto-chg
+  :ensure t
   :bind (("C-c ," . goto-last-change)
          ("C-c ." . goto-last-change-reverse)))
 
 ;; See Magnars’ tutorial on Emacs Rocks.
 (use-package restclient
+  :ensure t)
 
 (use-package dedicated
   :bind ("C-c D" . dedicated-mode))
 
 (use-package key-chord
+  :ensure t
   :config
   (setq key-chord-one-key-delay 0.30)
   (key-chord-define-global "ZZ" 'save-buffer)
@@ -330,6 +363,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (key-chord-mode t))
 
 (use-package openwith
+  :ensure t
   :config
   (setq openwith-associations
         `((,(openwith-make-extension-regexp '("pdf"))
@@ -342,14 +376,17 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (openwith-mode t))
 
 (use-package zoom-window
+  :ensure t
   :config (setq zoom-window-mode-line-color "color-27")
   :bind ("C-x C-z" . zoom-window-zoom))
 
 (use-package rainbow-delimiters
+  :ensure t
   ;; add to most programming modes
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package org
+  :ensure t
   :config
   (unbind-key "C-j" org-mode-map)  ; Globally bound to my join-line function
   (unbind-key "M-h" org-mode-map)  ; Globally bound to 'windmove-left
@@ -361,13 +398,16 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;;   :ensure)
 
 (use-package hungry-delete
+  :ensure t
   :diminish hungry-delete-mode)
 
 ;; https://github.com/leoliu/easy-kill
 (use-package easy-kill
+  :ensure t
   :bind ("M-w" . easy-kill))
 
 (use-package browse-kill-ring
+  :ensure t
   :bind ("C-x C-y" . browse-kill-ring)
   :config
   (setq browse-kill-ring-quit-action 'kill-and-delete-window))
@@ -379,6 +419,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 ;; C-j is my join line bind.
 
 (use-package mediawiki
+  :ensure t
   :config
   (unbind-key "C-j" mediawiki-mode-map)
   (add-to-list 'auto-mode-alist
@@ -425,8 +466,10 @@ Argument REPLACE String used to replace the matched strings in the buffer.
               ("C-c C-c" . my-python-shell-send-smartly)))
 
 (use-package latex-preview-pane
+  :ensure t)
 
 (use-package hippie-exp
+  :ensure t
   :config
   (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially)
   (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name)
@@ -435,10 +478,12 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 (use-package vdiff
   :if (fboundp 'define-fringe-bitmap)
+  :ensure t
   :config
   (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map))
 
 (use-package elscreen
+  :ensure t
   :config
   (elscreen-start)
   (set-face-attribute 'elscreen-tab-background-face nil
@@ -446,6 +491,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (custom-set-variables '(elscreen-tab-display-kill-screen nil)))
 
 (use-package winner
+  :ensure t
   :config
   ;; Just use 'winner-undo and 'winner-redo
   (setq winner-dont-bind-my-keys t)
@@ -574,19 +620,23 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
 (use-package dired-x)
 
 ;; (use-package crontab-mode
+;;   :ensure t)
 
 ;; For commands:
 ;; doremi-all-faces-fg+
 ;; doremi-all-faces-bg+
 ;; (use-package doremi-frm
+;;   :ensure t)
 
 ;; Highlight TODO, FIXME, etc.
 (use-package fic-mode
+  :ensure t
   :config
   (setq fic-highlighted-words '("FIXME" "TODO" "BUG" "NOTE" "XXX"))
   (add-hook 'prog-mode-hook 'fic-mode))
 
 (use-package hydra
+  :ensure t
   :config
   (global-set-key
    (kbd "C-c y")
@@ -615,8 +665,10 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
             (setq hydra-deactivate t))))))
 
 (use-package lua-mode
+  :ensure t)
 
 (use-package jabber
+  :ensure t
   :config
   (setq jabber-account-list
         '(("jesse.lucas@framestore.com"
@@ -624,6 +676,7 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
            (:connection-type . ssl)))))
 
 ;; (use-package helm
+;;   :ensure t
 ;;   :diminish helm-mode
 ;;   :init
 ;;   (progn
