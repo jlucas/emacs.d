@@ -15,6 +15,13 @@
 (add-hook 'sh-mode-hook 'hs-minor-mode)
 
 ;;
+;; c++ mode
+;;
+
+;; Stick with 'mark-paragraph instead of 'c-mark-function
+(unbind-key "C-M-h" c++-mode-map)
+
+;;
 ;; tcl mode
 ;;
 
