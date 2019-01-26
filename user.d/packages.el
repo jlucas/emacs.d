@@ -253,7 +253,10 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (defun jrl/magit-commit-verbose ()
     (interactive)
     (magit-commit (list (cons "-v" (magit-commit-arguments)))))
-  :config (setq magit-last-seen-setup-instructions "1.4.0")
+  :config
+  (setq magit-last-seen-setup-instructions "1.4.0")
+  (setq magit-commit-show-diff nil)     ; instead of opening a split...
+  (setq magit-commit-arguments '("-v")) ; ...show diff in commit mesg buffer
   :bind (("C-x g" . magit-status)
          ("C-c g s" . magit-status)
          ("C-c g c" . jrl/magit-commit-verbose)
