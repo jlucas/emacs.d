@@ -24,6 +24,14 @@
             (unbind-key "C-M-h" c++-mode-map)))
 
 ;;
+;; yaml mode
+;;
+
+;; OCIO config files (http://opencolorio.org/)
+(add-to-list 'auto-mode-alist '("\\.ocio$" . yaml-mode))
+(add-to-list 'magic-fallback-mode-alist '("ocio_profile_version" . yaml-mode))
+
+;;
 ;; tcl mode
 ;;
 
