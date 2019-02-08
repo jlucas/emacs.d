@@ -19,7 +19,9 @@
 ;;
 
 ;; Stick with 'mark-paragraph instead of 'c-mark-function
-(unbind-key "C-M-h" c++-mode-map)
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (unbind-key "C-M-h" c++-mode-map)))
 
 ;;
 ;; tcl mode
