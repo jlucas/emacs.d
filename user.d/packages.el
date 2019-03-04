@@ -79,6 +79,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (setq ibuffer-show-empty-filter-groups nil)
   (bind-keys :map ibuffer-mode-map
              ("C" . ibuffer-collapse-all-filter-groups))
+  (unbind-key "M-j" ibuffer-mode-map)   ; move down window
   (autoload 'ibuffer "ibuffer" "List buffers." t))
 
 ;; Trying ibuffer-vc again to see if it's faster than
