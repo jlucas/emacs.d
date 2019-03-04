@@ -67,9 +67,18 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 (use-package ibuffer
   :ensure t
+  :init
+  (defun ibuffer-collapse-all-filter-groups ()
+    "Collapse all filter groups at once"
+    (interactive)
+    (setq ibuffer-hidden-filter-groups
+          (mapcar #'car (ibuffer-current-filter-groups-with-position)))
+    (ibuffer-update nil t))
   :bind (("C-x C-b" . ibuffer))
   :config
   (setq ibuffer-show-empty-filter-groups nil)
+  (bind-keys :map ibuffer-mode-map
+             ("C" . ibuffer-collapse-all-filter-groups))
   (autoload 'ibuffer "ibuffer" "List buffers." t))
 
 ;; Trying ibuffer-vc again to see if it's faster than
