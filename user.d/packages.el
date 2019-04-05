@@ -358,7 +358,8 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 ;; See Magnars’ tutorial on Emacs Rocks.
 (use-package restclient
-  :ensure t)
+  :ensure t
+  :mode ("\\.http\\'" . restclient-mode))
 
 (use-package dedicated
   :bind ("C-c D" . dedicated-mode))
