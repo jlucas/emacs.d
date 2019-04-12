@@ -133,6 +133,18 @@
 ;;; This is "C-x z" by default, but that's a terrible bind
 ;;;(global-set-key (kbd "C-\.") 'repeat)
 
+(defun my-isearch-forward (&rest args)
+  "Like vim's '*', except you have to select text first"
+  (interactive)
+  (if (and transient-mark-mode mark-active)
+      (save-excursion
+        (deactivate-mark)
+        (goto-char (region-beginning))
+        (isearch-forward nil 1)
+        (isearch-yank-internal (lambda () (region-end))))
+    (isearch-forward)))
+(global-set-key (kbd "C-s") 'my-isearch-forward)
+
 (defun my-isearch-yank-word-or-char-from-beginning ()
   "Move to beginning of word before yanking word in isearch-mode."
   (interactive)
