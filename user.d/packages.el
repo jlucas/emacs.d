@@ -689,6 +689,10 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
            (:network-server . "talk.google.com")
            (:connection-type . ssl)))))
 
+(use-package powerline
+  :ensure t
+  :config (powerline-default-theme))
+
 ;; (use-package helm
 ;;   :ensure t
 ;;   :diminish helm-mode
