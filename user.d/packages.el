@@ -287,6 +287,7 @@ Argument REPLACE String used to replace the matched strings in the buffer.
 
 (use-package paredit
   :ensure t
+  :diminish paredit-mode
   :init
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
