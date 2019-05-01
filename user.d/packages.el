@@ -384,9 +384,8 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   (setq openwith-associations
         `((,(openwith-make-extension-regexp '("pdf"))
            "xpdf" (file))
-          (,(openwith-make-extension-regexp '("mp3" "mp4" "wav"))
-           "mplayer"  (file))
-          (,(openwith-make-extension-regexp '("mp4" "avi" "mkv" "ogg" "webm"
+          (,(openwith-make-extension-regexp '("mp3" "mp4" "wav"
+                                              "avi" "mkv" "ogg" "webm"
                                               "flv" "wmv" "mpg" "mpeg"))
            "mplayer" (file))))
   (openwith-mode t))
