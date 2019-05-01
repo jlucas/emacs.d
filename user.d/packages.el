@@ -491,6 +491,10 @@ Argument REPLACE String used to replace the matched strings in the buffer.
   :bind (("C-M-/" . hippie-expand)
          ("C-M-_" . hippie-expand)))
 
+(use-package git-link
+  :ensure t
+  :bind (("C-c g l" . git-link)))
+
 (use-package vdiff
   :if (fboundp 'define-fringe-bitmap)
   :ensure t
