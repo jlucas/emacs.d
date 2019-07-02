@@ -728,3 +728,8 @@ http://www.howardism.org/Technical/Emacs/eshell-fun.html"
 ;;          ("C-x c SPC" . helm-all-mark-rings)))
 ;; (ido-mode -1)
 
+(use-package wrap-region
+  :ensure t
+  :config
+  (wrap-region-add-wrapper "*" "*"))
+
